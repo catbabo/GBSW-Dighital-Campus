@@ -11,7 +11,6 @@ public class VRController : MonoBehaviour
     private Vector3 _dir;
     private float _rayLength = 100f;
     private RaycastHit _hit;
-    public LayerMask LayerUI;
 
     private LineRenderer _laser;
     private Color _laserColor;
@@ -26,10 +25,7 @@ public class VRController : MonoBehaviour
     {
         SetLaser();
 
-        _dir = transform.forward;
-        _origin = transform.position;
-
-        _inputField.ActivateInputField();
+        //_inputField.ActivateInputField();
     }
 
     private void SetLaser()
@@ -40,6 +36,7 @@ public class VRController : MonoBehaviour
 
         _laserColor = Color.cyan;
 
+        SetLaserColor(_laserColor);
         _laser.material = material;
         _laser.positionCount = 2;
         _laser.startWidth = 0.01f;
@@ -49,6 +46,9 @@ public class VRController : MonoBehaviour
     private void Update()
     {
         //Debug.DrawRay(_origin, _dir * _rayLength, Color.green, 0.5f);
+
+        _dir = transform.forward;
+        _origin = transform.position;
 
         if (IsHitRay())
         {
@@ -73,19 +73,19 @@ public class VRController : MonoBehaviour
 
     }
 
-    private void GetDownTrigger()
+    private bool IsHitRay(int layer = -1)
     {
-        SetLaserColor(Color.white);
-
-        if (_selectedObject == null)
-            return;
-
-        EnterInteract();
+        if (layer == -1)
+        {
+            return Physics.Raycast(_origin, _dir, out _hit, _rayLength);
+        }
+        return Physics.Raycast(_origin, _dir, out _hit, _rayLength, layer);
     }
 
-    private void GetUpTrigger()
+    private void DrawLaser(Vector3 destnation)
     {
-        SetLaserColor(Color.cyan);
+        _laser.SetPosition(0, transform.position);
+        _laser.SetPosition(1, destnation);
     }
 
     private void ObjectCasted()
@@ -104,24 +104,6 @@ public class VRController : MonoBehaviour
             _targetType = Define.CatingType.Object;
         }
         _selectedObject = _hit.transform;
-    }
-
-    private void EnterInteract()
-    {
-        if (_targetType == Define.CatingType.Button)
-        {
-            _button.onClick.Invoke();
-        }
-
-        if (_targetType == Define.CatingType.InputField)
-        {
-            _inputField.ActivateInputField();
-        }
-
-        if (_targetType == Define.CatingType.Object)
-        {
-
-        }
     }
 
     private void ExitInteract()
@@ -144,19 +126,14 @@ public class VRController : MonoBehaviour
         _selectedObject = null;
     }
 
-    private bool IsHitRay(int layer = -1)
+    private void GetDownTrigger()
     {
-        if(layer == -1)
-        {
-            return Physics.Raycast(_origin, _dir, out _hit, _rayLength);
-        }
-        return Physics.Raycast(_origin, _dir, out _hit, _rayLength, layer);
-    }
+        SetLaserColor(Color.white);
 
-    private void DrawLaser(Vector3 destnation)
-    {
-        _laser.SetPosition(0, transform.position);
-        _laser.SetPosition(1, destnation);
+        if (_selectedObject == null)
+            return;
+
+        EnterInteract();
     }
 
     private void SetLaserColor(Color color)
@@ -164,5 +141,28 @@ public class VRController : MonoBehaviour
         _laserColor = color;
         _laserColor.a = 0.5f;
         _laser.material.color = _laserColor;
-    }    
+    }
+
+    private void EnterInteract()
+    {
+        if (_targetType == Define.CatingType.Button)
+        {
+            _button.onClick.Invoke();
+        }
+
+        if (_targetType == Define.CatingType.InputField)
+        {
+            _inputField.ActivateInputField();
+        }
+
+        if (_targetType == Define.CatingType.Object)
+        {
+
+        }
+    }
+
+    private void GetUpTrigger()
+    {
+        SetLaserColor(Color.cyan);
+    }
 }
