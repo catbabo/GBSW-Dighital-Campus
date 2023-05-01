@@ -8,6 +8,6 @@ public class Define : MonoBehaviour
     {
         Object,
         Button,
-        InputField
+        InputField,
     }
 }
