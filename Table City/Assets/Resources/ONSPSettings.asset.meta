@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: 63ef84c86585bd04ca8c4a101ad6580e
+=======
+guid: 12c176607890db54388f68a635a5f6fb
+>>>>>>> origin/플레이어_기본_상호작용_기능_구현
 NativeFormatImporter:
   externalObjects: {}
   mainObjectFileID: 11400000
