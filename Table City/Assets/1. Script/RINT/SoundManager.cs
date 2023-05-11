@@ -25,8 +25,8 @@ public class SoundManager : MonoBehaviour
 
         sfxParent = EmptyInstantiate("sfx").transform;
 
-        bgmClip = ResourceLoad("1.Sound/1.BGM");
-        sfxClip = ResourceLoad("1.Sound/2.SFX");
+        ResourceLoad(bgmClip, "1.Sound/1.BGM");
+        ResourceLoad(sfxClip, "1.Sound/2.SFX");
     }
 
     private void Update()
@@ -35,18 +35,16 @@ public class SoundManager : MonoBehaviour
             SfxPlay("a");
     }
 
-    private Dictionary<string, AudioClip> ResourceLoad(string filePath)
+
+    private void ResourceLoad(Dictionary<string, AudioClip> dictionary, string filePath)
     {
-        
-        AudioClip[] clip = Resources.LoadAll<AudioClip>(filePath);
-        Dictionary<string, AudioClip> audioData = new Dictionary<string, AudioClip>();
 
-        foreach (AudioClip oneClip in clip)
+        AudioClip[] gameObject = Resources.LoadAll<AudioClip>(filePath);
+
+        foreach (AudioClip oneGameObject in gameObject)
         {
-            audioData.Add(oneClip.name, oneClip);
+            dictionary.Add(oneGameObject.name, oneGameObject);
         }
-
-        return audioData;
     }
 
     private GameObject EmptyInstantiate(string name)

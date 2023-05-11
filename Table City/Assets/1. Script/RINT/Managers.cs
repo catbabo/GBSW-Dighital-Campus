@@ -28,7 +28,7 @@ public class Managers : MonoBehaviour
         }
         else
         {
-            if(data == this)
+            if(data.gameObject != this.gameObject)
                 Destroy(this.gameObject);
         }
 

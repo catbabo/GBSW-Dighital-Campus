@@ -4,27 +4,69 @@ using UnityEngine;
 
 public class PrefabManager : MonoBehaviour
 {
+    /*프리펩 데이터*/
+    Dictionary<string, GameObject> prefab = new Dictionary<string, GameObject>();
+
+    /*오브젝트 풀링*/
+    private Dictionary<string, Queue<GameObject>> poolingObject = new Dictionary<string, Queue<GameObject>>();
+    private Transform poolingParent;
+
     private void Awake()
     {
-        
+        if (prefab.Count == 0)
+        {
+            ResourceLoad(prefab, prefabType.building, "2.Prefab/0.Build");
+            ResourceLoad(prefab, prefabType.effect, "2.Prefab/1.Effect");
+            ResourceLoad(prefab, prefabType.other, "2.Prefab/3.Other");
+        }
+
+        poolingParent = new GameObject("Pooling").transform;
+        poolingParent.position = Vector3.zero;
+        poolingObject = new Dictionary<string, Queue<GameObject>>();
     }
 
-    private Dictionary<string, GameObject> ResourceLoad(string filePath)
+    private void ResourceLoad(Dictionary<string, GameObject> dictionary,prefabType type,string filePath)
     {
 
         GameObject[] gameObject = Resources.LoadAll<GameObject>(filePath);
-        Dictionary<string, GameObject> gameObjectData = new Dictionary<string, GameObject>();
 
         foreach (GameObject oneGameObject in gameObject)
         {
-            gameObjectData.Add(oneGameObject.name, oneGameObject);
+            dictionary.Add(type+oneGameObject.name, oneGameObject);
         }
-
-        return gameObjectData;
     }
-
-    public GameObject InstantiatePrefab(string name)
+    
+    /*오브젝트 풀링*/
+    public GameObject UsePoolingObject(GameObject useObject, Vector3 position, Quaternion rotation)
     {
-        return null;
+        if (poolingObject.ContainsKey(useObject.name) && poolingObject[useObject.name].Count > 0)
+        {
+            GameObject returnObject = poolingObject[useObject.name].Dequeue();
+            returnObject.transform.position = position;
+            returnObject.transform.rotation = rotation;
+
+            returnObject.SetActive(true);
+
+            return returnObject;
+        }
+        else
+        {
+            GameObject returnObject = Instantiate(useObject, position, rotation);
+            returnObject.name = useObject.name;
+            returnObject.transform.parent = poolingParent;
+            return returnObject;
+        }
     }
+    public void AddPooling(GameObject addObject)
+    {
+        if (!poolingObject.ContainsKey(addObject.name)) poolingObject.Add(addObject.name, new Queue<GameObject>());
+        poolingObject[addObject.name].Enqueue(addObject);
+        addObject.SetActive(false);
+    }
+}
+enum prefabType
+{
+    building,
+    effect,
+    other
 }
