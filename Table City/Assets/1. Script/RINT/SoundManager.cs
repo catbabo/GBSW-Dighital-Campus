@@ -31,8 +31,10 @@ public class SoundManager : MonoBehaviour
 
     private void Update()
     {
+        /*테스트 부분
         if(Input.GetKey(KeyCode.Space))
             SfxPlay("a");
+        */
     }
 
 

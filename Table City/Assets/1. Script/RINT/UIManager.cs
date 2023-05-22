@@ -14,6 +14,7 @@ public class UIManager : MonoBehaviour
     {
         if(ui.Count == 0) ResourceLoad(ui, "2.Prefab/2.UI");
 
+        /*테스트 부분
         ButtonData[] test = new ButtonData[2];
         test[0].text = "Yes";
         test[0].action = () => T();
@@ -21,6 +22,7 @@ public class UIManager : MonoBehaviour
         test[1].action = () => DeletePopup();
 
         UsePopup("선택해", test,transform.position+new Vector3(0,0,800),Quaternion.identity);
+        */
 
     }
     private void ResourceLoad(Dictionary<string, GameObject> dictionary, string filePath)
@@ -54,6 +56,7 @@ public class UIManager : MonoBehaviour
         GameObject set =  order.Pop();
         Destroy(set);
     }
+    /*테스트 부분
     public void T()
     {
         ButtonData[] test = new ButtonData[2];
@@ -64,6 +67,7 @@ public class UIManager : MonoBehaviour
 
         UsePopup("선택해", test, transform.position + new Vector3(0, 0, 800), Quaternion.identity);
     }
+    */
 }
 public struct ButtonData
 {
