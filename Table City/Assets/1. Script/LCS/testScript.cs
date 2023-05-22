@@ -11,6 +11,8 @@ public class testScript : MonoBehaviourPunCallbacks
     public TMP_Text StatusText;
     public TMP_InputField roomInput, NickNameInput;
 
+    public GameObject ConnectCanvas;
+
 	void Update()
     {
         // 현재 어떤 상태인지. (정의로 올라가다보면, Enum으로 ClientState가 선언되어있다.)
@@ -128,6 +130,8 @@ public class testScript : MonoBehaviourPunCallbacks
     {
         print("방 참가 완료.");
         PhotonNetwork.Instantiate("Player", Vector3.zero, Quaternion.identity);
+        ConnectCanvas.SetActive(false);
+        Camera.main.gameObject.SetActive(false);
     }
 
     /// <summary>
