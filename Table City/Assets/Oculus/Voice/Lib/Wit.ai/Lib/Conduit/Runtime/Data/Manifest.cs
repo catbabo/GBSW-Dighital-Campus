@@ -52,7 +52,7 @@ namespace Meta.Conduit
         /// </summary>
         public List<ManifestAction> Actions { get; set; } = new List<ManifestAction>();
 
-        
+
         /// <summary>
         /// List of error handlers (methods).
         /// </summary>
@@ -73,7 +73,7 @@ namespace Meta.Conduit
         public Dictionary<string, Type> CustomEntityTypes { get; } = new Dictionary<string, Type>();
 
         /// <summary>
-        /// A list of registered callbacks 
+        /// A list of registered callbacks
         /// </summary>
         [JsonIgnore]
         public static List<string> WitResponseMatcherIntents = new List<string>();
@@ -139,9 +139,7 @@ namespace Meta.Conduit
             return Tuple.Create( targetMethod, targetType);
         }
 
-        /// <summary>
-        /// Processes all actions in the manifest and associate them with the methods they should invoke.
-        /// </summary>
+
         private bool ResolveAllActions()
         {
             var resolvedAll = true;
@@ -204,7 +202,7 @@ namespace Meta.Conduit
             {
                 return true;
             }
-            
+
             var resolvedAll = true;
             foreach (var action in this.ErrorHandlers)
             {
@@ -231,7 +229,7 @@ namespace Meta.Conduit
                     VLog.E("Found null attribute when one was expected");
                     continue;
                 }
-                
+
                 var invocationContext = new InvocationContext()
                 {
                     Type = targetType,
@@ -257,7 +255,7 @@ namespace Meta.Conduit
 
             return resolvedAll;
         }
-        
+
         /// <summary>
         /// Processes all actions in the manifest and associate them with the methods they should invoke.
         /// </summary>
@@ -292,7 +290,7 @@ namespace Meta.Conduit
         /// <returns>The invocationContext.</returns>
         public List<InvocationContext> GetInvocationContexts(string actionId)
         {
-            return _methodLookup.ContainsKey(actionId) ? _methodLookup[actionId] : new List<InvocationContext>();
+            return _methodLookup.ContainsKey(actionId) ? _methodLookup[actionId] : null;
         }
 
         public override string ToString()
@@ -302,7 +300,7 @@ namespace Meta.Conduit
 
         public List<InvocationContext> GetErrorHandlerContexts()
         {
-            List<InvocationContext> contexts = new List<InvocationContext>(); 
+            List<InvocationContext> contexts = new List<InvocationContext>();
             foreach (var methodLookupValue in _methodLookup.Values)
             {
                 foreach (var invocationContext in methodLookupValue)

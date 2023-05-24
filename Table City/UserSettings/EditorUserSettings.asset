@@ -6,10 +6,14 @@ EditorUserSettings:
   serializedVersion: 4
   m_ConfigSettings:
     RecentlyUsedSceneGuid-0:
-      value: 5a5757560101590a5d0c0e24427b5d44434e4c7a7b7a23677f2b4565b7b5353a
+      value: 56530d0300030c035e580d7212705c44124e4f79757924317a781b37e3b0616f
       flags: 0
     RecentlyUsedSceneGuid-1:
+<<<<<<< HEAD
       value: 53040d0204515c0e5d0a5f23427b0944134f417f2d7d7068757e4c62b6b5636b
+=======
+      value: 5a5757560101590a5d0c0e24427b5d44434e4c7a7b7a23677f2b4565b7b5353a
+>>>>>>> origin/PlayerGrab_Tools_Resources
       flags: 0
     RecentlyUsedSceneGuid-2:
       value: 56530d0300030c035e580d7212705c44124e4f79757924317a781b37e3b0616f

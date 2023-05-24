@@ -25,7 +25,7 @@ namespace Meta.Conduit
         /// The Conduit manifest which captures the structure of the voice-enabled methods.
         /// </summary>
         public Manifest Manifest { get; private set; }
-        
+
         /// <summary>
         /// The manifest loader.
         /// </summary>
@@ -65,11 +65,12 @@ namespace Meta.Conduit
             }
 
             Manifest = _manifestLoader.LoadManifest(manifestFilePath);
-            
+
             if (Manifest == null)
             {
                 return;
             }
+
             // Map fully qualified role names to internal parameters.
             foreach (var action in Manifest.Actions)
             {
@@ -110,7 +111,7 @@ namespace Meta.Conduit
             }
 
             parameterProvider.PopulateRoles(_parameterToRoleMap);
- 
+
             var filter =
                 new InvocationContextFilter(parameterProvider, Manifest.GetInvocationContexts(actionId), relaxed);
 
@@ -127,7 +128,7 @@ namespace Meta.Conduit
                     );
                 return false;
             }
-            
+
             var allSucceeded = true;
             foreach (var invocationContext in invocationContexts)
             {
@@ -163,7 +164,7 @@ namespace Meta.Conduit
 
             return true;
         }
-            
+
         /// <summary>
         /// Invokes a method on all callbacks of a specific invocation context. If the method is static, then only a
         /// single call is made. If it's an instance method, then it is invoked on all instances.
@@ -280,8 +281,8 @@ namespace Meta.Conduit
             public List<InvocationContext> ResolveInvocationContexts(string actionId, float confidence, bool partial)
             {
                 // We may have multiple overloads, find the correct match.
-                return _actionContexts.Where(context => CompatibleInvocationContext(context, confidence, partial))
-                    .ToList();
+                return _actionContexts != null ? _actionContexts.Where(context => CompatibleInvocationContext(context, confidence, partial))
+                    .ToList() : new List<InvocationContext>();
             }
 
             /// <summary>
@@ -304,7 +305,7 @@ namespace Meta.Conduit
 
                 if (invocationContext.MinConfidence > confidence || confidence > invocationContext.MaxConfidence)
                 {
-                    //todo: throw error for out of confidence 
+                    //todo: throw error for out of confidence
                     return false;
                 }
 

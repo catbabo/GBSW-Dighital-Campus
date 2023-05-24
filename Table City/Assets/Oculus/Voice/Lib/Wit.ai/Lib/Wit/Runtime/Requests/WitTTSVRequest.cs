@@ -12,6 +12,7 @@
 using System;
 using System.Text;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Meta.WitAi.Json;
 using UnityEngine;
 using UnityEngine.Networking;
@@ -31,7 +32,7 @@ namespace Meta.WitAi.Requests
     public class WitTTSVRequest : WitVRequest
     {
         // Constructor
-        public WitTTSVRequest(IWitRequestConfiguration configuration) : base(configuration, false)
+        public WitTTSVRequest(IWitRequestConfiguration configuration) : base(configuration, null, false)
         {
             Timeout = WitConstants.ENDPOINT_TTS_TIMEOUT;
         }
@@ -41,24 +42,18 @@ namespace Meta.WitAi.Requests
         {
             switch (witAudioType)
             {
-                // PCM
-                case TTSWitAudioType.PCM:
-                    return AudioType.UNKNOWN;
                 #if OGG_SUPPORT
-                // OGG
                 case TTSWitAudioType.OGG:
                     return AudioType.OGGVORBIS;
                 #endif
-                // MP3 & WAV
                 case TTSWitAudioType.MPEG:
+                    return AudioType.MPEG;
                 case TTSWitAudioType.WAV:
+                    return AudioType.WAV;
+                // Custom implementation
+                case TTSWitAudioType.PCM:
                 default:
-                    AudioType result = AudioType.UNKNOWN;
-                    if (!AudioType.TryParse(witAudioType.ToString().ToUpper(), out result))
-                    {
-                        VLog.W($"Cannot parse audio type\nAudio Type: {witAudioType}");
-                    }
-                    return result;
+                    return AudioType.UNKNOWN;
             }
         }
         // Get audio type
@@ -127,29 +122,6 @@ namespace Meta.WitAi.Requests
             }
         }
 
-        // Internal base method for tts request
-        private UnityWebRequest GetUnityRequest(string textToSpeak,
-            TTSWitAudioType audioType,
-            Dictionary<string, string> ttsData)
-        {
-            // Get uri
-            Uri uri = GetUri(WitConstants.ENDPOINT_TTS);
-
-            // Generate request
-            UnityWebRequest unityRequest = new UnityWebRequest(uri, UnityWebRequest.kHttpVerbPOST);
-            unityRequest.SetRequestHeader(WitConstants.HEADER_POST_CONTENT, "application/json");
-            unityRequest.SetRequestHeader(WitConstants.HEADER_GET_CONTENT, GetAudioMimeType(audioType));
-
-            // Add upload handler
-            ttsData[WitConstants.ENDPOINT_TTS_PARAM] = textToSpeak;
-            string jsonString = JsonConvert.SerializeObject(ttsData);
-            byte[] jsonBytes = Encoding.UTF8.GetBytes(jsonString);
-            unityRequest.uploadHandler = new UploadHandlerRaw(jsonBytes);
-
-            // Perform json request
-            return unityRequest;
-        }
-
         /// <summary>
         /// Streams text to speech audio clip
         /// </summary>
@@ -178,11 +150,17 @@ namespace Meta.WitAi.Requests
                 VLog.W($"Wit cannot stream {audioType} files please use {TTSWitAudioType.PCM} instead.");
             }
 
-            // Get tts unity request
-            UnityWebRequest unityRequest = GetUnityRequest(textToSpeak, audioType, ttsData);
+            // Async encode
+            EncodePostBytesAsync(textToSpeak, ttsData, (bytes) =>
+            {
+                // Get tts unity request
+                UnityWebRequest unityRequest = GetUnityRequest(audioType, bytes);
 
-            // Perform an audio stream request
-            return RequestAudioClip(unityRequest, onClipReady, GetAudioType(audioType), audioStream, audioStreamReadyDuration, audioStreamChunkLength, onProgress);
+                // Perform an audio stream request
+                RequestAudioClip(unityRequest, onClipReady, GetAudioType(audioType), audioStream,
+                    audioStreamReadyDuration, audioStreamChunkLength, onProgress);
+            });
+            return true;
         }
 
         /// <summary>
@@ -208,11 +186,47 @@ namespace Meta.WitAi.Requests
                 return false;
             }
 
-            // Get tts unity request
-            UnityWebRequest unityRequest = GetUnityRequest(textToSpeak, audioType, ttsData);
+            // Async encode
+            EncodePostBytesAsync(textToSpeak, ttsData, (bytes) =>
+            {
+                // Get tts unity request
+                UnityWebRequest unityRequest = GetUnityRequest(audioType, bytes);
 
-            // Perform a file download request
-            return RequestFileDownload(downloadPath, unityRequest, onComplete, onProgress);
+                // Perform an audio stream request
+                RequestFileDownload(downloadPath, unityRequest, onComplete, onProgress);
+            });
+            return true;
+        }
+
+        // Encode post bytes async
+        private void EncodePostBytesAsync(string textToSpeak, Dictionary<string, string> ttsData,
+            Action<byte[]> onEncoded) => ThreadUtility.PerformInBackground(() => EncodePostData(textToSpeak, ttsData),
+            (bytes, error) => onEncoded(bytes));
+
+        // Encode tts post bytes
+        private byte[] EncodePostData(string textToSpeak, Dictionary<string, string> ttsData)
+        {
+            ttsData[WitConstants.ENDPOINT_TTS_PARAM] = textToSpeak;
+            string jsonString = JsonConvert.SerializeObject(ttsData);
+            return Encoding.UTF8.GetBytes(jsonString);
+        }
+
+        // Internal base method for tts request
+        private UnityWebRequest GetUnityRequest(TTSWitAudioType audioType, byte[] postData)
+        {
+            // Get uri
+            Uri uri = GetUri(WitConstants.ENDPOINT_TTS);
+
+            // Generate request
+            UnityWebRequest unityRequest = new UnityWebRequest(uri, UnityWebRequest.kHttpVerbPOST);
+            unityRequest.SetRequestHeader(WitConstants.HEADER_POST_CONTENT, "application/json");
+            unityRequest.SetRequestHeader(WitConstants.HEADER_GET_CONTENT, GetAudioMimeType(audioType));
+
+            // Add upload handler
+            unityRequest.uploadHandler = new UploadHandlerRaw(postData);
+
+            // Perform json request
+            return unityRequest;
         }
     }
 }

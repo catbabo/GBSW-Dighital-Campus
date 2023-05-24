@@ -62,6 +62,11 @@ namespace Meta.WitAi.Dictation.Events
             "Called when a a request has completed and all response and error callbacks have fired.")]
         public UnityEvent OnRequestCompleted = new UnityEvent();
 
+        [EventCategory(EVENT_CATEGORY_ACTIVATION_RESULT_EVENTS)]
+        [Tooltip(
+            "Called when a a request has been created.")]
+        public WitRequestCreatedEvent OnRequestCreated = new WitRequestCreatedEvent();
+
         /// <summary>
         /// Called when the microphone begins listening to capture transcriptions
         /// </summary>

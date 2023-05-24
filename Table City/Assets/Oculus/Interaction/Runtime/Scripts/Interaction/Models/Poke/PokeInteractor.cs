@@ -300,6 +300,17 @@ namespace Oculus.Interaction
             return closestInteractable;
         }
 
+        protected override int ComputeCandidateTiebreaker(PokeInteractable a, PokeInteractable b)
+        {
+            int result = base.ComputeCandidateTiebreaker(a, b);
+            if (result != 0)
+            {
+                return result;
+            }
+
+            return a.TiebreakerScore.CompareTo(b.TiebreakerScore);
+        }
+
         private PokeInteractable ComputeSelectCandidate()
         {
             PokeInteractable closestInteractable = null;
@@ -398,7 +409,7 @@ namespace Oculus.Interaction
 
                         if (normalDistanceEqual)
                         {
-                            if (interactable.TiebreakerScore > closestInteractable.TiebreakerScore)
+                            if (ComputeCandidateTiebreaker(interactable, closestInteractable) > 0)
                             {
                                 closestNormalDistance = normalDistance;
                                 closestTangentDistance = tangentDistance;
@@ -483,7 +494,7 @@ namespace Oculus.Interaction
 
                     if (Mathf.Abs(normalDistance) < _equalDistanceThreshold)
                     {
-                        if (closestInteractable.TiebreakerScore > interactable.TiebreakerScore)
+                        if (ComputeCandidateTiebreaker(closestInteractable, interactable) > 0)
                         {
                             continue;
                         }
@@ -613,8 +624,7 @@ namespace Oculus.Interaction
                         if (normalDistanceEqual)
                         {
                             // Select this interactable if its tiebreakerscore is highest
-                            if (closestInteractable != null && interactable.TiebreakerScore >
-                                closestInteractable.TiebreakerScore)
+                            if (closestInteractable != null && ComputeCandidateTiebreaker(interactable, closestInteractable) > 0)
                             {
                                 closestInteractable = interactable;
                                 closestNormalDistance = normalDistance;

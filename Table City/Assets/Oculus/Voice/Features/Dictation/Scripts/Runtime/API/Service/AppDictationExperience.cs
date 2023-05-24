@@ -1,4 +1,4 @@
-/*
+﻿/*
  * Copyright (c) Meta Platforms, Inc. and affiliates.
  * All rights reserved.
  *
@@ -28,6 +28,7 @@ using Meta.WitAi.Dictation;
 using Meta.WitAi.Dictation.Data;
 using Meta.WitAi.Events;
 using Meta.WitAi.Interfaces;
+using Meta.WitAi.Requests;
 using Oculus.Voice.Dictation.Bindings.Android;
 using Oculus.VoiceSDK.Utilities;
 using Oculus.Voice.Core.Bindings.Android.PlatformLogger;
@@ -41,6 +42,9 @@ namespace Oculus.Voice.Dictation
         [SerializeField] private WitDictationRuntimeConfiguration runtimeConfiguration;
         [Tooltip("Uses platform dictation service instead of accessing wit directly from within the application.")]
         [SerializeField] private bool usePlatformServices;
+
+        [Tooltip("Dictation will not fallback to Wit if platform dictation is not available. Not applicable in Unity Editor")]
+        [SerializeField] private bool doNotFallbackToWit;
         [Tooltip("Enables logs related to the interaction to be displayed on console")]
         [SerializeField] private bool enableConsoleLogging;
 
@@ -63,11 +67,14 @@ namespace Oculus.Voice.Dictation
         private DictationSession _activeSession;
         private WitRequestOptions _activeRequestOptions;
 
+        public DictationSession ActiveSession => _activeSession;
+        public WitRequestOptions ActiveRequestOptions => _activeRequestOptions;
+
         public event Action OnInitialized;
 
 #if UNITY_ANDROID && !UNITY_EDITOR
         // This version is auto-updated for a release build
-        private readonly string PACKAGE_VERSION = "51.0.0.154.269";
+        private readonly string PACKAGE_VERSION = "53.0.0.130.132";
 #endif
 
 #if UNITY_ANDROID && !UNITY_EDITOR
@@ -94,27 +101,44 @@ namespace Oculus.Voice.Dictation
             }
         }
 
+        public bool DoNotFallbackToWit
+        {
+            get => doNotFallbackToWit;
+            set => doNotFallbackToWit = value;
+        }
+
         private void InitDictation()
         {
             // Clean up if we're switching to native C# wit impl
-            if (!UsePlatformIntegrations && _dictationServiceImpl is PlatformDictationImpl)
+            if (!UsePlatformIntegrations)
             {
-                ((PlatformDictationImpl) _dictationServiceImpl).Disconnect();
+                if (_dictationServiceImpl is PlatformDictationImpl)
+                {
+                    ((PlatformDictationImpl) _dictationServiceImpl).Disconnect();
+                }
+
+                if (_voiceSDKLogger is VoiceSDKPlatformLoggerImpl)
+                {
+                    try
+                    {
+                        ((VoiceSDKPlatformLoggerImpl)_voiceSDKLogger).Disconnect();
+                    }
+                    catch (Exception e)
+                    {
+                        VLog.E($"Disconnection error: {e.Message}");
+                    }
+                }
             }
 #if UNITY_ANDROID && !UNITY_EDITOR
-            // Do not re-init logging if we've already initialized logger
-            if (_voiceSDKLogger == null)
-            {
-                var loggerImpl = new VoiceSDKPlatformLoggerImpl();
-                loggerImpl.Connect(PACKAGE_VERSION);
-                _voiceSDKLogger = loggerImpl;
-            }
+            var loggerImpl = new VoiceSDKPlatformLoggerImpl();
+            loggerImpl.Connect(PACKAGE_VERSION);
+            _voiceSDKLogger = loggerImpl;
 
             if (UsePlatformIntegrations)
             {
                 VLog.D("Checking platform dictation capabilities...");
                 var platformDictationImpl = new PlatformDictationImpl(this);
-                platformDictationImpl.OnServiceNotAvailableEvent += RevertToWitDictation;
+                platformDictationImpl.OnServiceNotAvailableEvent += OnPlatformServiceNotAvailable;
                 platformDictationImpl.Connect(PACKAGE_VERSION);
                 if (platformDictationImpl.PlatformSupportsDictation)
                 {
@@ -127,8 +151,7 @@ namespace Oculus.Voice.Dictation
                 }
                 else
                 {
-                    VLog.D("Platform dictation service unavailable. Falling back to WitDictation");
-                    RevertToWitDictation();
+                    OnPlatformServiceNotAvailable();
                 }
             }
             else
@@ -143,6 +166,27 @@ namespace Oculus.Voice.Dictation
             _voiceSDKLogger.ShouldLogToConsole = enableConsoleLogging;
 
             OnInitialized?.Invoke();
+        }
+
+        private void OnPlatformServiceNotAvailable()
+        {
+#if !UNITY_EDITOR
+            if (DoNotFallbackToWit)
+            {
+                VLog.D("Platform dictation service unavailable. Falling back to WitDictation is disabled");
+                DictationEvents.onError?.Invoke("Platform dictation unavailable", "Platform dictation service is not available");
+                return;
+            }
+#endif
+
+            VLog.D("Platform dictation service unavailable. Falling back to WitDictation");
+            RevertToWitDictation();
+        }
+
+        private void OnDictationServiceNotAvailable()
+        {
+            VLog.D("Dictation service unavailable");
+            DictationEvents.onError?.Invoke("Dictation unavailable", "Dictation service is not available");
         }
 
         private void RevertToWitDictation()
@@ -241,16 +285,14 @@ namespace Oculus.Voice.Dictation
         /// <summary>
         /// Activate the microphone and send data to Wit for NLU processing.
         /// </summary>
-        public override void Activate()
+        public override VoiceServiceRequest Activate(WitRequestOptions requestOptions, VoiceServiceRequestEvents requestEvents)
         {
-            Activate(new WitRequestOptions());
-        }
+            if (_dictationServiceImpl == null)
+            {
+                OnDictationServiceNotAvailable();
+                return null;
+            }
 
-        /// <summary>
-        /// Activate the microphone and send data to Wit for NLU processing.
-        /// </summary>
-        public override void Activate(WitRequestOptions requestOptions)
-        {
             if (null == requestOptions) requestOptions = new WitRequestOptions();
 
             if (!_isActive)
@@ -263,23 +305,21 @@ namespace Oculus.Voice.Dictation
             _isActive = true;
             _voiceSDKLogger.LogInteractionStart(requestOptions.RequestId, "dictation");
             LogRequestConfig();
-            _dictationServiceImpl.Activate(requestOptions);
-        }
-
-        /// <summary>
-        /// Activates immediately and starts sending data to the server. This will not wait for min wake threshold
-        /// </summary>
-        public override void ActivateImmediately()
-        {
-            ActivateImmediately(new WitRequestOptions());
+            return _dictationServiceImpl.Activate(requestOptions, requestEvents);
         }
 
         /// <summary>
         /// Activates immediately and starts sending data to the server. This will not wait for min wake threshold
         /// </summary>
         /// <param name="options"></param>
-        public override void ActivateImmediately(WitRequestOptions requestOptions)
+        public override VoiceServiceRequest ActivateImmediately(WitRequestOptions requestOptions, VoiceServiceRequestEvents requestEvents)
         {
+            if (_dictationServiceImpl == null)
+            {
+                OnDictationServiceNotAvailable();
+                return null;
+            }
+
             if (!_isActive)
             {
                 _activeSession = new DictationSession();
@@ -290,7 +330,7 @@ namespace Oculus.Voice.Dictation
             _isActive = true;
             _voiceSDKLogger.LogInteractionStart(requestOptions.RequestId, "dictation");
             LogRequestConfig();
-            _dictationServiceImpl.ActivateImmediately(requestOptions);
+            return _dictationServiceImpl.ActivateImmediately(requestOptions, requestEvents);
         }
 
         /// <summary>
@@ -299,6 +339,12 @@ namespace Oculus.Voice.Dictation
         /// </summary>
         public override void Deactivate()
         {
+            if (_dictationServiceImpl == null)
+            {
+                OnDictationServiceNotAvailable();
+                return;
+            }
+
             _isActive = false;
             _dictationServiceImpl.Deactivate();
         }
@@ -308,6 +354,12 @@ namespace Oculus.Voice.Dictation
         /// </summary>
         public override void Cancel()
         {
+            if (_dictationServiceImpl == null)
+            {
+                OnDictationServiceNotAvailable();
+                return;
+            }
+
             _dictationServiceImpl.Cancel();
             CleanupSession();
         }
