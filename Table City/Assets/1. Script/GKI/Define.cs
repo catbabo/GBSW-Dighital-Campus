@@ -6,7 +6,7 @@ public class Define : MonoBehaviour
 {
     public enum CatingType
     {
-        Object,
+        Tool,
         Button,
         InputField,
     }
