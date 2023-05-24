@@ -148,7 +148,7 @@ namespace Oculus.Interaction
 
         [SerializeField]
         [Tooltip("If enabled, recoil assist will affect unselection and reselection criteria. " +
-                 "Useful for triggering unselect in response to a smaller motion in the negative "+
+                 "Useful for triggering unselect in response to a smaller motion in the negative " +
                  "direction from a surface.")]
         private RecoilAssistConfig _recoilAssist =
             new RecoilAssistConfig()

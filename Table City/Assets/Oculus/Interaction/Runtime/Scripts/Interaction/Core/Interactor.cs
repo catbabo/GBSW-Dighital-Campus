@@ -44,6 +44,10 @@ namespace Oculus.Interaction
         private List<UnityEngine.Object> _interactableFilters = new List<UnityEngine.Object>();
         private List<IGameObjectFilter> InteractableFilters = null;
 
+        [SerializeField, Interface(nameof(CandidateTiebreaker)), Optional]
+        private UnityEngine.Object _candidateTiebreaker;
+        private IComparer<TInteractable> CandidateTiebreaker;
+
         private Func<TInteractable> _computeCandidateOverride;
         private bool _clearComputeCandidateOverrideOnSelect = false;
         private Func<bool> _computeShouldSelectOverride;
@@ -263,6 +267,7 @@ namespace Oculus.Interaction
         {
             _identifier = UniqueIdentifier.Generate();
             ActiveState = _activeState as IActiveState;
+            CandidateTiebreaker = _candidateTiebreaker as IComparer<TInteractable>;
             InteractableFilters =
                 _interactableFilters.ConvertAll(mono => mono as IGameObjectFilter);
         }
@@ -494,6 +499,16 @@ namespace Oculus.Interaction
         // Returns the best interactable for selection or null
         protected abstract TInteractable ComputeCandidate();
 
+        protected virtual int ComputeCandidateTiebreaker(TInteractable a, TInteractable b)
+        {
+            if (CandidateTiebreaker == null)
+            {
+                return 0;
+            }
+
+            return CandidateTiebreaker.Compare(a, b);
+        }
+
         public virtual bool CanSelect(TInteractable interactable)
         {
             if (InteractableFilters == null)
@@ -714,6 +729,12 @@ namespace Oculus.Interaction
             InteractableFilters = interactableFilters;
             _interactableFilters = interactableFilters.ConvertAll(interactableFilter =>
                                     interactableFilter as UnityEngine.Object);
+        }
+
+        public void InjectOptionalCandidateTiebreaker(IComparer<TInteractable> candidateTiebreaker)
+        {
+            _candidateTiebreaker = candidateTiebreaker as UnityEngine.Object;
+            CandidateTiebreaker = candidateTiebreaker;
         }
 
         public void InjectOptionalData(object data)

@@ -6,6 +6,8 @@ using TMPro;
 
 public class VRController : MonoBehaviour
 {
+    [SerializeField]
+    private bool _isRightController;
     private Vector3 _origin;
     private Vector3 _dir;
     private float _rayLength = 100f;
@@ -64,11 +66,22 @@ public class VRController : MonoBehaviour
             }
         }
 
-        if (OVRInput.GetDown(OVRInput.Button.SecondaryIndexTrigger))
-        { GetDownTrigger(); }
+        if(_isRightController)
+        {
+            if (OVRInput.GetDown(OVRInput.RawButton.RHandTrigger))
+            { GetDownTrigger(); }
 
-        if (OVRInput.GetUp(OVRInput.Button.SecondaryIndexTrigger))
-        { GetUpTrigger(); }
+            if (OVRInput.GetUp(OVRInput.RawButton.RHandTrigger))//(OVRInput.Button.SecondaryIndexTrigger))
+            { GetUpTrigger(); }
+        }
+        else
+        {
+            if (OVRInput.GetDown(OVRInput.RawButton.LHandTrigger))//(OVRInput.Button.SecondaryIndexTrigger))
+            { GetDownTrigger(); }
+
+            if (OVRInput.GetUp(OVRInput.RawButton.LHandTrigger))//(OVRInput.Button.SecondaryIndexTrigger))
+            { GetUpTrigger(); }
+        }
 
     }
 

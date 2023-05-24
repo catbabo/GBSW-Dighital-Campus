@@ -126,17 +126,17 @@ namespace Oculus.Interaction.HandGrab
         {
             base.Awake();
             MovementProvider = _movementProvider as IMovementProvider;
-            if (_registry == null)
-            {
-                _registry = new CollisionInteractionRegistry<HandGrabInteractor, HandGrabInteractable>();
-                SetRegistry(_registry);
-            }
         }
 
         protected override void Start()
         {
             this.BeginStart(ref _started, () => base.Start());
             this.AssertField(Rigidbody, nameof(Rigidbody));
+            if (_registry == null)
+            {
+                _registry = new CollisionInteractionRegistry<HandGrabInteractor, HandGrabInteractable>();
+                SetRegistry(_registry);
+            }
             Colliders = Rigidbody.GetComponentsInChildren<Collider>();
             this.AssertCollectionField(Colliders, nameof(Colliders),
                 whyItFailed: $"The associated {nameof(Rigidbody)} must have at least one collider.");

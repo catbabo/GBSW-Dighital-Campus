@@ -6,11 +6,13 @@
  * LICENSE file in the root directory of this source tree.
  */
 
+using System.IO;
 using Meta.WitAi.Configuration;
 using Meta.WitAi.Data.Configuration;
 using Meta.WitAi.Events;
 using Meta.WitAi.Interfaces;
 using Meta.WitAi.Json;
+using Meta.WitAi.Requests;
 using UnityEngine;
 
 namespace Meta.WitAi.Dictation
@@ -56,48 +58,33 @@ namespace Meta.WitAi.Dictation
 
         #region IWitRequestProvider
         public WitRequest CreateWitRequest(WitConfiguration config, WitRequestOptions requestOptions,
+            VoiceServiceRequestEvents requestEvents,
             IDynamicEntitiesProvider[] additionalEntityProviders = null)
         {
-            return config.CreateDictationRequest(requestOptions);
+            return config.CreateDictationRequest(requestOptions, requestEvents);
         }
 
         #endregion
 
         #region Voice Service Methods
-
-
         /// <summary>
         /// Activates and waits for the user to exceed the min wake threshold before data is sent to the server.
         /// </summary>
-        public override void Activate()
+        /// <param name="requestOptions">Additional options such as custom request id</param>
+        /// <param name="requestEvents">Events specific to the request's lifecycle</param>
+        public override VoiceServiceRequest Activate(WitRequestOptions requestOptions, VoiceServiceRequestEvents requestEvents)
         {
-            witService.Activate();
-        }
-
-        /// <summary>
-        /// Activates and waits for the user to exceed the min wake threshold before data is sent to the server.
-        /// </summary>
-        /// <param name="options"></param>
-        public override void Activate(WitRequestOptions options)
-        {
-            witService.Activate(options);
+            return witService.Activate(requestOptions, requestEvents);
         }
 
         /// <summary>
         /// Activates immediately and starts sending data to the server. This will not wait for min wake threshold
         /// </summary>
-        public override void ActivateImmediately()
+        /// <param name="requestOptions">Additional options such as custom request id</param>
+        /// <param name="requestEvents">Events specific to the request's lifecycle</param>
+        public override VoiceServiceRequest ActivateImmediately(WitRequestOptions requestOptions, VoiceServiceRequestEvents requestEvents)
         {
-            witService.ActivateImmediately();
-        }
-
-        /// <summary>
-        /// Activates immediately and starts sending data to the server. This will not wait for min wake threshold
-        /// </summary>
-        /// <param name="options"></param>
-        public override void ActivateImmediately(WitRequestOptions options)
-        {
-            witService.ActivateImmediately(options);
+            return witService.ActivateImmediately(requestOptions, requestEvents);
         }
 
         /// <summary>
@@ -141,6 +128,7 @@ namespace Meta.WitAi.Dictation
             VoiceEvents.OnRequestCompleted.AddListener(OnCompleted);
             VoiceEvents.OnAborting.AddListener(OnAborting);
             VoiceEvents.OnAborted.AddListener(OnAborted);
+            VoiceEvents.OnRequestCreated.AddListener(OnRequestCreated);
         }
 
         protected override void OnDisable()
@@ -156,6 +144,12 @@ namespace Meta.WitAi.Dictation
             VoiceEvents.OnRequestCompleted.RemoveListener(OnCompleted);
             VoiceEvents.OnAborting.RemoveListener(OnAborting);
             VoiceEvents.OnAborted.RemoveListener(OnAborted);
+            VoiceEvents.OnRequestCreated.RemoveListener(OnRequestCreated);
+        }
+
+        private void OnRequestCreated(WitRequest requestCreated)
+        {
+            DictationEvents.OnRequestCreated?.Invoke(requestCreated);
         }
 
         private void OnCompleted()
@@ -206,6 +200,14 @@ namespace Meta.WitAi.Dictation
         private void OnResponse(WitResponseNode response)
         {
             DictationEvents.onResponse?.Invoke(response);
+        }
+
+        public void TranscribeFile(string fileName)
+        {
+            var request = CreateWitRequest(witRuntimeConfiguration.witConfiguration, new WitRequestOptions(), new VoiceServiceRequestEvents());
+            var data = File.ReadAllBytes(fileName);
+            request.postData = data;
+            witService.ExecuteRequest(request);
         }
     }
 }
