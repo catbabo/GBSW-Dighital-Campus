@@ -69,11 +69,11 @@ public class VRController : MonoBehaviour
     {
         if (_isRightController)
         {
-            _triggerButton = OVRInput.RawButton.RHandTrigger;
+            _triggerButton = OVRInput.RawButton.RIndexTrigger;
         }
         else
         {
-            _triggerButton = OVRInput.RawButton.LHandTrigger;
+            _triggerButton = OVRInput.RawButton.LIndexTrigger;
         }
     }
 

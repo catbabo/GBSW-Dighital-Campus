@@ -25,10 +25,17 @@ public class NetworkPlayer : MonoBehaviourPunCallbacks, IPunObservable
 
 	private void SpawnCamrea()
 	{
+		if (!_PV.IsMine)
+		{
+			Destroy(transform.GetChild(0));
+		}
+
+		/*
 		if (_PV.IsMine)
 		{
 			Instantiate(Resources.Load<GameObject>("0. Player/PlayerCamera"), transform.position + Vector3.up, transform.rotation, gameObject.transform);
 		}
+		*/
 	}
 
 	public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
