@@ -5,50 +5,71 @@ using UnityEngine.UI;
 using TMPro;
 using Photon.Pun;
 using Photon.Realtime;
+using UnityEngine.SceneManagement;
+
 
 public class NetworkManager : MonoBehaviourPunCallbacks
 {
 
-	public Transform[] _SpawnPoint;
+	public static NetworkManager Net = null;
+
+	public string _roomCode;
 
 	private void Awake()
 	{
+		if(Net == null)
+		{
+			Net = this;
+
+			DontDestroyOnLoad(this.gameObject);
+		}
+		else
+		{
+			Destroy(this.gameObject);
+		}
+
 		PhotonNetwork.SendRate = 60;
 		PhotonNetwork.SerializationRate = 30;
 	}
 
-	private void Start()
-	{
-		Connect();
-	}
-
 	// 서버 연결
-	public void Connect() => PhotonNetwork.ConnectUsingSettings();
+	public void Connect() 
+				=> PhotonNetwork.ConnectUsingSettings();
 
+	// 마스터 서버에 접속 하면 실행
 	public override void OnConnectedToMaster()
 	{
-		//PhotonNetwork.LocalPlayer.NickName = _NickName.text;
-		PhotonNetwork.JoinOrCreateRoom("Room", new RoomOptions { MaxPlayers = 2 }, null);
+		SceneManager.LoadScene("PlayRoom");
+		JoinOrCreate(_roomCode);
 	}
 
-	// 캐릭터 소환
-	public void SpawnCharater()
+	// 플레이어 닉네임 설정
+	public void NickNameSet(string _name) 
+				=> PhotonNetwork.LocalPlayer.NickName = _name;
+
+	// 방 입장 또는 생성 ( 방 이름, 방 옵션 (현재는 옵션 고정), 로비 타입)
+	public void JoinOrCreate(string _name) 
+				=> PhotonNetwork.JoinOrCreateRoom(_name, new RoomOptions { MaxPlayers = 2 }, null);
+
+	// 오브젝트 소환
+	public void SpawnObject(string objectName, Transform MarsterPoint, Transform CommonPoint)
 	{
-
-		// 캐릭터 한명이라도 나간다면 방폭
-
-		GameObject _player = PhotonNetwork.Instantiate("0. Player/PlayerPrefab",
-							 PhotonNetwork.IsMasterClient ? _SpawnPoint[0].position : _SpawnPoint[1].position, 
-							 PhotonNetwork.IsMasterClient ? _SpawnPoint[0].rotation : _SpawnPoint[1].rotation);
-
-		PhotonView _pv = _player.GetComponent<PhotonView>();
-		PhotonNetwork.LocalPlayer.NickName = _pv.ViewID.ToString();
+		GameObject _object = PhotonNetwork.Instantiate(objectName,
+							 PhotonNetwork.IsMasterClient ? MarsterPoint.position : CommonPoint.position, 
+							 PhotonNetwork.IsMasterClient ? MarsterPoint.rotation : CommonPoint.rotation);
 	}
 
-	// 서버룸 조인
+	// 만들어진 방에 들어가면 실행
 	public override void OnJoinedRoom()
 	{
-		SpawnCharater();
+		Transform[] _sp = new Transform[2];
+
+		GameObject _spParent = GameObject.Find("SpawnPoint");
+
+		_sp[0] = _spParent.transform.GetChild(0);
+		_sp[1] = _spParent.transform.GetChild(1);
+
+		SpawnObject("0. Player/PlayerPrefab", _sp[0], _sp[1]);
 	}
 
 	// 서버 연결 해제
@@ -65,4 +86,5 @@ public class NetworkManager : MonoBehaviourPunCallbacks
 	{
 		
 	}
+
 }

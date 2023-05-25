@@ -6,8 +6,11 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/0. Scenes/LCS/LCS_Connect.unity
-    guid: 836f205390887c145acd080eccf2f019
+    path: Assets/0. Scenes/LCS/MainLobby.unity
+    guid: cc6687fb4fc2a4945b58d77568580c56
+  - enabled: 1
+    path: Assets/0. Scenes/LCS/PlayRoom.unity
+    guid: 59a3d63c624d1b54c8eb4ef868e530e4
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: a4e6d5b8999e8ef4498855fbdb6153af, type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 8c9a8581acd99ae4381adc63b662dc46, type: 2}
