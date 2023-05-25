@@ -35,8 +35,28 @@ public class PrefabManager : MonoBehaviour
             dictionary.Add(type+oneGameObject.name, oneGameObject);
         }
     }
-    
     /*오브젝트 풀링*/
+    public GameObject UsePoolingObject(string useObjectname, Vector3 position, Quaternion rotation)
+    {
+        if (poolingObject.ContainsKey(useObjectname) && poolingObject[useObjectname].Count > 0)
+        {
+            GameObject returnObject = poolingObject[useObjectname].Dequeue();
+            returnObject.transform.position = position;
+            returnObject.transform.rotation = rotation;
+
+            returnObject.SetActive(true);
+
+            return returnObject;
+        }
+        else
+        {
+            GameObject returnObject = Instantiate(prefab[useObjectname], position, rotation);
+            returnObject.name = useObjectname;
+            returnObject.transform.parent = poolingParent;
+            return returnObject;
+        }
+        /*오브젝트 풀링*/
+    }
     public GameObject UsePoolingObject(GameObject useObject, Vector3 position, Quaternion rotation)
     {
         if (poolingObject.ContainsKey(useObject.name) && poolingObject[useObject.name].Count > 0)
