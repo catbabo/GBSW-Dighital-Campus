@@ -4,16 +4,16 @@ using UnityEngine;
 
 public class Managers : MonoBehaviour
 {
-    public static GameManager data { get; set; }
+    public static GameManager system { get; set; }
     public static UIManager ui { get; private set; }
     public static SoundManager sound { get; private set; }
     public static PrefabManager instantiate { get; private set; }
 
     private void Awake()
     {
-        if(data == null)
+        if(system == null)
         {
-            data = gameObject.AddComponent<GameManager>();
+            system = gameObject.AddComponent<GameManager>();
 
             GameObject soundObject = EmptyInstantiate("SoundManager");
             sound = soundObject.AddComponent<SoundManager>();
@@ -28,7 +28,7 @@ public class Managers : MonoBehaviour
         }
         else
         {
-            if(data.gameObject != this.gameObject)
+            if(system.gameObject != this.gameObject)
                 Destroy(this.gameObject);
         }
 
