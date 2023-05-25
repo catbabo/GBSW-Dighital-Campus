@@ -219,6 +219,7 @@ public class VRController : MonoBehaviour
 
         if (_targetType == Define.CatingType.Button)
         {
+            _button = _castedComponent.Button;
             _button.OnPointerExit(null);
             _button = null;
         }

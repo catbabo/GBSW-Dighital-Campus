@@ -27,7 +27,7 @@ public class NetworkPlayer : MonoBehaviourPunCallbacks, IPunObservable
 	{
 		if (!_PV.IsMine)
 		{
-			Destroy(transform.GetChild(0));
+			Destroy(transform.GetChild(0).gameObject);
 		}
 
 		/*
