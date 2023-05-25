@@ -366,6 +366,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2295779402989067037}
     m_Modifications:
+    - target: {fileID: 5194647082126033034, guid: 8a2440de0c7b641ee942898adc9a79df, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 4300220, guid: bd0bb729cb6159b4ab21c5f62cad24ee, type: 3}
     - target: {fileID: 8427110966400587157, guid: 8a2440de0c7b641ee942898adc9a79df, type: 3}
       propertyPath: m_Name
       value: bakery house

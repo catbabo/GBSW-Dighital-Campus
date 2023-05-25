@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 3053041411685728750}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.0125, y: 0.0125, z: 0.0125}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6546717045296656377}
@@ -473,6 +473,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: brewery house
       objectReference: {fileID: 0}
+    - target: {fileID: 6283052944460535676, guid: 10cc773d64df24feb8349091e33f7904, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 7555002116953459752, guid: 4f478673bf01d83498e0d887d0e44bf5, type: 3}
+    - target: {fileID: 8130426781667304374, guid: 10cc773d64df24feb8349091e33f7904, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 880805446427783824, guid: 4f478673bf01d83498e0d887d0e44bf5, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10cc773d64df24feb8349091e33f7904, type: 3}
 --- !u!4 &3309686079348840504 stripped
