@@ -12,6 +12,7 @@ public class VRController : MonoBehaviour
     private Vector3 _dir;
     private float _rayLength = 100f;
     private RaycastHit _hit;
+    private Transform _hitTransform;
 
     private OVRInput.RawButton _triggerButton;
 
@@ -23,6 +24,7 @@ public class VRController : MonoBehaviour
     private Define.CatingType _targetType;
 
     private Transform _toolGrabPoint;
+    private bool _isGrab, _isTouch;
 
     private Button _button;
     private InputField _inputField;
@@ -38,7 +40,7 @@ public class VRController : MonoBehaviour
 
     private void SetLaser()
     {
-        _laser = gameObject.AddComponent<LineRenderer>();
+        _laser = GetComponent<LineRenderer>();
 
         Material material = new Material(Shader.Find("Standard"));
 
@@ -80,8 +82,18 @@ public class VRController : MonoBehaviour
         _dir = transform.forward;
         _origin = transform.position;
 
+        if (OVRInput.GetDown(_triggerButton))
+        { GetDownTrigger(); }
+
+        if (OVRInput.GetUp(_triggerButton))
+        { GetUpTrigger(); }
+
+        if (_isGrab)
+            return;
+
         if (IsHitRay())
         {
+            _hitTransform = _hit.transform;
             DrawLaser(_hit.point);
             ObjectCasting();
         }
@@ -94,12 +106,6 @@ public class VRController : MonoBehaviour
                 ExitCasting();
             }
         }
-
-        if (OVRInput.GetDown(_triggerButton))
-        { GetDownTrigger(); }
-
-        if (OVRInput.GetUp(_triggerButton))
-        { GetUpTrigger(); }
 
     }
 
@@ -138,11 +144,11 @@ public class VRController : MonoBehaviour
 
     private void ObjectCasting()
     {
-        if (_hit.transform.TryGetComponent(out _castedComponent))
+        if (_hitTransform.TryGetComponent(out _castedComponent))
         {
             _targetType = _castedComponent._type;
         }
-        _castedObject = _hit.transform;
+        _castedObject = _hitTransform;
     }
 
     private void ExitCasting()
@@ -177,6 +183,9 @@ public class VRController : MonoBehaviour
 
     private void EnterInteract()
     {
+        if (_castedComponent == null)
+            return;
+
         if (_targetType == Define.CatingType.Button)
         {
             _button = _castedComponent.Button;
@@ -192,6 +201,8 @@ public class VRController : MonoBehaviour
         if (_targetType == Define.CatingType.Tool)
         {
             _castedComponent.Interact(_toolGrabPoint);
+            _isGrab = true;
+            _laser.enabled = false;
         }
     }
 
@@ -203,6 +214,9 @@ public class VRController : MonoBehaviour
 
     private void ExitInteract()
     {
+        if (_castedComponent == null)
+            return;
+
         if (_targetType == Define.CatingType.Button)
         {
             _button.OnPointerExit(null);
@@ -217,8 +231,9 @@ public class VRController : MonoBehaviour
         if (_targetType == Define.CatingType.Tool)
         {
             _castedComponent.ExitInteract();
+            _isGrab = false;
+            _laser.enabled = true;
         }
         _castedObject = null;
     }
-
 }
