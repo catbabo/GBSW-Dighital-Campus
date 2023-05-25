@@ -18,7 +18,6 @@ public class LobbyManager : MonoBehaviour
 
     public void Button_Start()
 	{
-		NetworkManager.Net.Connect();
 		TitleWindow.SetActive(false);
 		MainWindow.SetActive(true);
 	}
@@ -32,8 +31,9 @@ public class LobbyManager : MonoBehaviour
 			return;
 		}
 
+		NetworkManager.Net._roomCode = RoomCode.text;
 		NetworkManager.Net.NickNameSet(NickName.text);
-		NetworkManager.Net.JoinOrCreate(RoomCode.text);
+		NetworkManager.Net.Connect();
 	}
 
 	public void Button_OK()
