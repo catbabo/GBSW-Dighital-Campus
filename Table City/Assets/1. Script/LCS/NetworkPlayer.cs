@@ -11,6 +11,9 @@ public class NetworkPlayer : MonoBehaviourPunCallbacks, IPunObservable
 
 	public PhotonView _PV;
 	public TMP_Text _NickNameTMP;
+	public AudioListener _AL;
+
+	public OVRManager _ovrm;
 
 	private void Start()
 	{
@@ -23,12 +26,24 @@ public class NetworkPlayer : MonoBehaviourPunCallbacks, IPunObservable
 		_NickNameTMP.text = _PV.IsMine ? PhotonNetwork.NickName : _PV.Owner.NickName;
 	}
 
+	private void FixedUpdate()
+	{
+		if(_ovrm == null)
+		{
+			_ovrm = gameObject.AddComponent<OVRManager>();
+		}
+	}
+
 	private void SpawnCamrea()
 	{
-		if (!_PV.IsMine)
+		if (_PV.IsMine)
 		{
-			Destroy(transform.GetChild(0).gameObject);
+			gameObject.GetComponent<OVRCameraRig>().disableEyeAnchorCameras = false;
+			_AL.enabled = true;
+		//	gameObject.AddComponent<OVRManager>();
 		}
+
+
 
 		/*
 		if (_PV.IsMine)

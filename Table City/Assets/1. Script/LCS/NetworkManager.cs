@@ -32,6 +32,15 @@ public class NetworkManager : MonoBehaviourPunCallbacks
 		PhotonNetwork.SerializationRate = 30;
 	}
 
+	private void Update()
+	{
+		if (Input.GetKeyDown(KeyCode.A))
+		{
+			_roomCode = "1234";
+			Connect();
+		}
+	}
+
 	// 서버 연결
 	public void Connect() 
 				=> PhotonNetwork.ConnectUsingSettings();
