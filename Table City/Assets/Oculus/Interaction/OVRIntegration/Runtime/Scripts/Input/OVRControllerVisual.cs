@@ -37,6 +37,8 @@ namespace Oculus.Interaction.Input.Visuals
 
         private bool _started = false;
 
+        private bool isInit = false;
+
         protected virtual void Awake()
         {
             Controller = _controller as IController;
@@ -46,7 +48,21 @@ namespace Oculus.Interaction.Input.Visuals
         {
             this.BeginStart(ref _started);
             this.AssertField(Controller, nameof(Controller));
-            this.AssertField(_ovrControllerHelper, nameof(_ovrControllerHelper));
+            //this.AssertField(_ovrControllerHelper, nameof(_ovrControllerHelper));
+            //switch (Controller.Handedness)
+            //{
+            //    case Handedness.Left:
+            //        _ovrControllerHelper.m_controller = OVRInput.Controller.LTouch;
+            //        break;
+            //    case Handedness.Right:
+            //        _ovrControllerHelper.m_controller = OVRInput.Controller.RTouch;
+            //        break;
+            //}
+            this.EndStart(ref _started);
+        }
+
+        private void StartMethod()
+        {
             switch (Controller.Handedness)
             {
                 case Handedness.Left:
@@ -56,7 +72,6 @@ namespace Oculus.Interaction.Input.Visuals
                     _ovrControllerHelper.m_controller = OVRInput.Controller.RTouch;
                     break;
             }
-            this.EndStart(ref _started);
         }
 
         protected virtual void OnEnable()
@@ -77,6 +92,9 @@ namespace Oculus.Interaction.Input.Visuals
 
         private void HandleUpdated()
         {
+            if (!isInit)
+                return;
+
             if (!Controller.IsConnected ||
                 ForceOffVisibility ||
                 !Controller.TryGetPose(out Pose rootPose))
@@ -109,6 +127,9 @@ namespace Oculus.Interaction.Input.Visuals
         public void InjectAllOVRControllerHelper(OVRControllerHelper ovrControllerHelper)
         {
             _ovrControllerHelper = ovrControllerHelper;
+            _ovrControllerHelper.m_controller = OVRInput.Controller.LTouch;
+            StartMethod();
+            isInit = true;
         }
 
         #endregion

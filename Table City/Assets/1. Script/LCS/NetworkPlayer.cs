@@ -30,7 +30,7 @@ public class NetworkPlayer : MonoBehaviourPunCallbacks, IPunObservable
 	{
 		if(_ovrm == null)
 		{
-			_ovrm = gameObject.AddComponent<OVRManager>();
+			//_ovrm = gameObject.AddComponent<OVRManager>();
 		}
 	}
 
