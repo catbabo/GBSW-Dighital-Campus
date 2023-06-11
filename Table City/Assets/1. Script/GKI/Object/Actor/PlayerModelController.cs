@@ -29,6 +29,9 @@ public class PlayerModelController : MonoBehaviour
     {
         _leftHelper.transform.parent = left;
         _rightHelper.transform.parent = right;
+
+        _leftHelper.transform.localRotation = Quaternion.identity;
+        _rightHelper.transform.localRotation = Quaternion.identity;
     }
 
     public OVRControllerHelper[] GetControllerHelper()

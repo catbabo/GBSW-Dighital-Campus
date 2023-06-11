@@ -38,7 +38,7 @@ public class PlayerController : MonoBehaviour
         _ovrRoot = Instantiate<GameObject>(_ovrSource, transform);
         _ovrRoot.name = "OVR_Systems";
         _ovrRoot.transform.localPosition = Vector3.zero;
-        _ovrRoot.transform.rotation = Quaternion.identity;
+        _ovrRoot.transform.localRotation = Quaternion.identity;
         _controllerRoot = _ovrRoot.transform.Find("OVRInteraction").Find("OVRControllers");
     }
 
