@@ -21,8 +21,9 @@ public class ToolController : ObjectBase
         _originRot = transform.rotation;
     }
 
-    public override void Interact(Transform target)
+    public override void Interact(Transform interactedHand, Transform target)
     {
+        _interactedHand = interactedHand;
         _grapPoint = target;
         _isGrab = true;
     }

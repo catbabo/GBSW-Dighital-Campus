@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class ObjectBase : MonoBehaviour
 {
     public Define.CatingType _type;
+    protected Transform _interactedHand;
 
     public Button Button
     {
@@ -38,8 +39,8 @@ public class ObjectBase : MonoBehaviour
 
     public virtual void Init() { }
 
-    public virtual void Interact() { }
-    public virtual void Interact(Transform target) { }
+    public virtual void Interact(Transform interactedHand) { }
+    public virtual void Interact(Transform interactedHand, Transform target) { }
 
     public virtual void ExitInteract() { }
 }
