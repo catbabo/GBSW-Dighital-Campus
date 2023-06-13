@@ -2917,6 +2917,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1374461931545386492}
     m_Modifications:
+    - target: {fileID: 6376169440303900839, guid: 0f987cd90ea82054d988d14de3683437, type: 3}
+      propertyPath: sceneViewId
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6376169440303900839, guid: 0f987cd90ea82054d988d14de3683437, type: 3}
+      propertyPath: ObservedComponents.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6376169440303900839, guid: 0f987cd90ea82054d988d14de3683437, type: 3}
+      propertyPath: ObservedComponents.Array.data[0]
+      value: 
+      objectReference: {fileID: 3087562331933613893}
     - target: {fileID: 7876508005684230217, guid: 0f987cd90ea82054d988d14de3683437, type: 3}
       propertyPath: m_Name
       value: PlayerTool
@@ -2965,7 +2977,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6381912176067218609, guid: 0f987cd90ea82054d988d14de3683437, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 0f987cd90ea82054d988d14de3683437, type: 3}
 --- !u!4 &7876508006805326564 stripped
 Transform:
