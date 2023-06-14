@@ -37,5 +37,7 @@ public class RoomManager : MonoBehaviour
 		Transform spawnPoint = GameObject.Find("SpawnPoint").transform;
 		MasterPoint = spawnPoint.Find("MasterPoint");
 		CommonPoint = spawnPoint.Find("CommonPoint");
+
+		NetworkManager.Net.SpawnPlayer();
 	}
 }

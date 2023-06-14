@@ -25,5 +25,6 @@ public class NetworkPlayer : MonoBehaviourPunCallbacks
 	// 플레이어의 닉네임 텍스트에 닉네임 넣기
 	private void SetNick() => _NickNameTMP.text = _PV.IsMine ? PhotonNetwork.NickName : _PV.Owner.NickName;
 
+	// 플레이어의 머리 오브젝트의 레이어 바꾸기
 	private void SetHeadLayer() => _PlayerHead.layer = _PV.IsMine ? LayerMask.NameToLayer("Head_IsMine") : LayerMask.NameToLayer("Head");
 }

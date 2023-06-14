@@ -5,7 +5,6 @@ using UnityEngine.UI;
 using TMPro;
 using Photon.Pun;
 using Photon.Realtime;
-using UnityEngine.SceneManagement;
 
 
 public class NetworkManager : MonoBehaviourPunCallbacks
@@ -29,7 +28,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
 	#endregion
 
 	// 게임 버전
-	//private string _gameVersion = "1";
+	private string _gameVersion = "1";
 
 	// 방 이름
 	public string _roomCode { get; private set; } = "12345";
@@ -45,33 +44,21 @@ public class NetworkManager : MonoBehaviourPunCallbacks
 	// 네트워크 세팅 초기화
 	private void InitNetworkSetting()
 	{
-		//PhotonNetwork.GameVersion = this._gameVersion;
+		PhotonNetwork.GameVersion = this._gameVersion;
 		PhotonNetwork.SendRate = 60;
 		PhotonNetwork.SerializationRate = 30;
+		PhotonNetwork.AutomaticallySyncScene = true;
 	}
 
-	// 개발자 모드
-	private void DevelopMode()
-	{
-		// M을 누르면 마스터 서버로 입장
-		if (Input.GetKeyDown(KeyCode.M)) Connect();
+	#region SetInfo
+	// 플레이어 닉네임 설정
+	public void SetNickName(string _name) => _nickName = _name;
 
-		// B를 누르면 로비 입장
-		if (Input.GetKeyDown(KeyCode.B)) JoinLobby();
+	// 입장할 방 이름 설정
+	public void SetRoomCode(string _code) => _roomCode = _code;
+	#endregion
 
-		// I를 누르면 서버 정보 호출
-		if (Input.GetKeyDown(KeyCode.I)) Info();
-
-		// L을 누르면 방 떠나기
-		if (Input.GetKeyDown(KeyCode.L)) LeaveRoom();
-
-		// R을 누르면 방 입장
-		if (Input.GetKeyDown(KeyCode.J)) JoinOrCreate(_roomCode);
-
-		// D를 누르면 서버 연결 해제
-		if (Input.GetKeyDown(KeyCode.D)) DisConnect();
-	}
-
+	#region Connect
 	// 서버 연결
 	public void Connect() => PhotonNetwork.ConnectUsingSettings();
 
@@ -79,9 +66,10 @@ public class NetworkManager : MonoBehaviourPunCallbacks
 	public override void OnConnectedToMaster()
 	{
 		print("마스터 서버 연결 성공!");
+
 		PhotonNetwork.LocalPlayer.NickName = _nickName;
-		PhotonNetwork.LoadLevel("PlayRoom");
 	}
+	#endregion
 
 	#region Lobby
 	// 로비에 접속하기.
@@ -94,21 +82,15 @@ public class NetworkManager : MonoBehaviourPunCallbacks
 	public override void OnJoinedLobby()
 	{
 		print("로비 접속 완료.");
+
+		JoinOrCreate(_roomCode, 2);
 	}
 	#endregion
 
-	#region PlayerInfo
-	// 플레이어 닉네임 설정
-	public void _SetNickName(string _name) => _nickName = _name;
-
-	// 입장할 방 이름 설정
-	public void _SetRoomCode(string _code) => _roomCode = _code;
-	#endregion
-
 	#region Room
-	// 방 입장 또는 생성 ( 방 이름, 방 옵션 (현재는 입장 인원수 2인 최대로 고정), 로비 타입)
-	public void JoinOrCreate(string _name) 
-				=> PhotonNetwork.JoinOrCreateRoom(_name, new RoomOptions { MaxPlayers = 2 }, null);
+	// 방 입장 또는 생성 ( 방 이름, 입장 가능 인원수)
+	public void JoinOrCreate(string _name, int _maxPlayer)
+				=> PhotonNetwork.JoinOrCreateRoom(_name, new RoomOptions { MaxPlayers = _maxPlayer }, null); // ( 방 이름, 방 옵션, 로비 타입 )
 
 	// 방이 만들어지면 실행
 	public override void OnCreatedRoom()
@@ -120,7 +102,6 @@ public class NetworkManager : MonoBehaviourPunCallbacks
 	public override void OnJoinedRoom()
 	{
 		print("방 입장 성공!");
-		SpawnPlayer();
 	}
 
 	// 방 퇴장
@@ -136,6 +117,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
 	}
 	#endregion
 
+	#region Spawn
 	// 오브젝트 소환 ( 오브젝트 이름 (Resources 에서 소환함), 소환될 위치, 마스터 서버에서 소환될 위치(소환 위치가 상관 없다면 안적어도 됨))
 	public void SpawnObject(string objectName, Transform CommonPoint, Transform MarsterPoint = null)
 	{
@@ -146,11 +128,13 @@ public class NetworkManager : MonoBehaviourPunCallbacks
 	}
 
 	// 플레이어 소환
-	private void SpawnPlayer()
+	public void SpawnPlayer()
 	{
 		SpawnObject("0. Player/PlayerPrefab", RoomManager.room.CommonPoint, RoomManager.room.MasterPoint);
 	}
+	#endregion
 
+	#region Disconnect
 	// 서버 연결 해제
 	public void DisConnect()
 	{
@@ -165,6 +149,10 @@ public class NetworkManager : MonoBehaviourPunCallbacks
 	{
 		print("서버 연결 해제");
 	}
+	#endregion
+
+	// 방에 들어온 플레이어의 수를 리턴
+	public void SetJoinRoomPlayerCount(TMP_Text _text) => _text.text = "Player : " + PhotonNetwork.CurrentRoom.PlayerCount + " / " + PhotonNetwork.CurrentRoom.MaxPlayers;
 
 	// 서버 정보
 	public void Info()
@@ -188,4 +176,27 @@ public class NetworkManager : MonoBehaviourPunCallbacks
 			print("연결됐는지? : " + PhotonNetwork.IsConnected);
 		}
 	}
+
+	// 개발자 모드
+	private void DevelopMode()
+	{
+		// M을 누르면 마스터 서버로 입장
+		if (Input.GetKeyDown(KeyCode.M)) Connect();
+
+		// B를 누르면 로비 입장
+		if (Input.GetKeyDown(KeyCode.B)) JoinLobby();
+
+		// I를 누르면 서버 정보 호출
+		if (Input.GetKeyDown(KeyCode.I)) Info();
+
+		// L을 누르면 방 떠나기
+		if (Input.GetKeyDown(KeyCode.L)) LeaveRoom();
+
+		// R을 누르면 방 입장
+		if (Input.GetKeyDown(KeyCode.J)) JoinOrCreate(_roomCode, 2);
+
+		// D를 누르면 서버 연결 해제
+		if (Input.GetKeyDown(KeyCode.D)) DisConnect();
+	}
+
 }
