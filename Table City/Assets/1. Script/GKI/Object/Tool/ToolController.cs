@@ -16,16 +16,23 @@ public class ToolController : ObjectBase
 
     public override void Init()
     {
+        _isInteracting = false;
         _type = Define.CatingType.Tool;
         _originPos = transform.position;
         _originRot = transform.rotation;
     }
 
-    public override void Interact(Transform interactedHand, Transform target)
+    public override void Interact(VRController interactedHand, Transform target)
     {
+        if(_isInteracting)
+        {
+            _interactedHand.Interrupt();
+        }
+
         _interactedHand = interactedHand;
         _grapPoint = target;
         _isGrab = true;
+        _isInteracting = true;
     }
 
     public override void ExitInteract()
@@ -33,6 +40,7 @@ public class ToolController : ObjectBase
         _isGrab = false;
         transform.position = _originPos;
         transform.rotation = _originRot;
+        _isInteracting = false;
     }
 
     private void Update()

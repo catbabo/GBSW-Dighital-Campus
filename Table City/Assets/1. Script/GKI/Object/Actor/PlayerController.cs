@@ -1,5 +1,4 @@
 using Oculus.Interaction.Input.Visuals;
-using Photon.Compression;
 using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;

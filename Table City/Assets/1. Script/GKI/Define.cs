@@ -10,6 +10,9 @@ public class Define : MonoBehaviour
         Tool,
         Button,
         InputField,
+        Text,
+        Image,
+        Scrollbar
     }
 
 
