@@ -21,7 +21,7 @@ namespace Photon.Voice.Unity
             }
         }
 
-#if UNITY_WEBGL
+#if UNITY_WEBGL && !UNITY_EDITOR
         public override bool IsSupported => false;
 
         public override string Error { get { return "Current platform " + Application.platform + " is not supported by AudioInEnumerator."; } }

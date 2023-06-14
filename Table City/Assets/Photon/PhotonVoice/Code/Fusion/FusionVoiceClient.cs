@@ -46,7 +46,7 @@ namespace Photon.Voice.Fusion
 
 #region Private Methods
 
-        protected void Start()
+        protected virtual void Start()
         {
             // skip "Temporary Runner Prefab"
             if (this.networkRunner.State == NetworkRunner.States.Shutdown)

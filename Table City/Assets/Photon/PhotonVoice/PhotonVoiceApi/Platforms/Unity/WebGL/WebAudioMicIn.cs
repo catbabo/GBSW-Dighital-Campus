@@ -21,7 +21,7 @@ namespace Photon.Voice.Unity
         static Dictionary<int, WebAudioMicIn> handles = new Dictionary<int, WebAudioMicIn>();
         static int handleCnt;
 
-        [AOT.MonoPInvokeCallbackAttribute(typeof(Action))]
+        [MonoPInvokeCallbackAttribute(typeof(Action))]
         static void createCallbackStatic(int handle, int err, int samplingRate, int channels)
         {
             handles[handle].createCallback(err, samplingRate, channels);
@@ -41,7 +41,7 @@ namespace Photon.Voice.Unity
             }
         }
 
-        [AOT.MonoPInvokeCallbackAttribute(typeof(Action<int, IntPtr, int>))]
+        [MonoPInvokeCallbackAttribute(typeof(Action<int, IntPtr, int>))]
         static void dataCallbackStatic(int handle, IntPtr p, int countFloat)
         {
             handles[handle].dataCallback(p, countFloat);

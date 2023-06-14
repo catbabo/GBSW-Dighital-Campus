@@ -158,7 +158,10 @@ namespace ExitGames.Demos.DemoPunVoice
 
         public void OnLeftRoom()
         {
-            this.defaultCamera.gameObject.SetActive(true);
+            if (this.defaultCamera)
+            {
+                this.defaultCamera.gameObject.SetActive(true);
+            }
             this.FirstPersonCamActivator.interactable = true;
             this.ThirdPersonCamActivator.interactable = true;
             this.OrthographicCamActivator.interactable = false;

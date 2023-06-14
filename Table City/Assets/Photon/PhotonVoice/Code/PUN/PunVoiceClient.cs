@@ -174,10 +174,17 @@ namespace Photon.Voice.PUN
 
         #region Private Methods
 
-        protected void Start()
+        protected virtual void Start()
         {
             if (Instance == this)
             {
+                PhotonNetwork.NetworkingClient.StateChanged += this.OnPunStateChanged;
+                this.FollowPun(); // in case this is enabled or activated late
+                this.clientCalledConnectAndJoin = false;
+                this.clientCalledConnectOnly = false;
+                this.clientCalledDisconnect = false;
+                this.internalDisconnect = false;
+
                 if (this.UsePrimaryRecorder)
                 {
                     if (this.PrimaryRecorder != null)
@@ -192,33 +199,12 @@ namespace Photon.Voice.PUN
             }
         }
 
-        private void OnEnable()
-        {
-            if (Instance == this)
-            {
-                PhotonNetwork.NetworkingClient.StateChanged += this.OnPunStateChanged;
-                this.FollowPun(); // in case this is enabled or activated late
-                this.clientCalledConnectAndJoin = false;
-                this.clientCalledConnectOnly = false;
-                this.clientCalledDisconnect = false;
-                this.internalDisconnect = false;
-            }
-        }
-
-        protected override void OnDisable()
-        {
-        	base.OnDisable();
-            if (Instance == this)
-            {
-                PhotonNetwork.NetworkingClient.StateChanged -= this.OnPunStateChanged;
-            }
-        }
-
         protected override void OnDestroy()
         {
             base.OnDestroy();
             if (instance == this)
             {
+                PhotonNetwork.NetworkingClient.StateChanged -= this.OnPunStateChanged;
                 instance.Logger.LogInfo("PunVoiceClient singleton instance is being reset because destroyed.");
                 instance = null;
             }

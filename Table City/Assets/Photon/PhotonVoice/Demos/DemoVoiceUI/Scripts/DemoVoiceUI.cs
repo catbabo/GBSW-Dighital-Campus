@@ -90,7 +90,16 @@ namespace Photon.Voice.Unity.Demos.DemoVoiceUI
         private Toggle photonVadToggle;
 
         [SerializeField]
-        private GameObject microphoneSetupGameObject;
+        private MicrophoneSelector microphoneSelector;
+
+        [SerializeField]
+        private GameObject androidMicSettingGameObject;
+        [SerializeField]
+        private Toggle androidAgcToggle;
+        [SerializeField]
+        private Toggle androidAecToggle;
+        [SerializeField]
+        private Toggle androidNsToggle;
 
         [SerializeField]
         private bool defaultTransmitEnabled = false;
@@ -112,6 +121,8 @@ namespace Photon.Voice.Unity.Demos.DemoVoiceUI
 
         [SerializeField]
         private int rttVariationRedThreshold = 50;
+
+
 #pragma warning restore 649
 
         private GameObject compressionGainGameObject;
@@ -132,7 +143,7 @@ namespace Photon.Voice.Unity.Demos.DemoVoiceUI
         private readonly Color redColor = new Color(1.0f, 0.0f, 0.0f, 1f);
         private readonly Color defaultColor = new Color(0.0f, 0.0f, 0.0f, 1f);
 
-        private void Awake()
+        private void Start()
         {
             this.connectAndJoin = this.GetComponent<ConnectAndJoin>();
             this.voiceConnection = this.GetComponent<UnityVoiceClient>();
@@ -144,9 +155,11 @@ namespace Photon.Voice.Unity.Demos.DemoVoiceUI
             this.aecOptionsGameObject = this.aecHighPassToggle.transform.parent.gameObject;
             this.SetDefaults();
             this.InitUiCallbacks();
-            this.InitUiValues();
             this.GetSavedNickname();
-            this.voiceConnection.PrimaryRecorder.InputFactory = () => new AudioUtil.ToneAudioReader<float>(null, 440, 48000, 2);
+            this.voiceConnection.PrimaryRecorder.InputFactory = () => new AudioUtil.ToneAudioPusher<float>(440, 100, 48000, 2);
+
+            this.voiceConnection.SpeakerLinked += this.OnSpeakerCreated;
+            this.voiceConnection.Client.AddCallbackTarget(this);
         }
 
         protected virtual void SetDefaults()
@@ -154,13 +167,7 @@ namespace Photon.Voice.Unity.Demos.DemoVoiceUI
             this.muteToggle.isOn = !this.defaultTransmitEnabled;
         }
 
-        private void OnEnable()
-        {
-            this.voiceConnection.SpeakerLinked += this.OnSpeakerCreated;
-            this.voiceConnection.Client.AddCallbackTarget(this);
-        }
-
-        private void OnDisable()
+        private void OnDestroy()
         {
             this.voiceConnection.SpeakerLinked -= this.OnSpeakerCreated;
             this.voiceConnection.Client.RemoveCallbackTarget(this);
@@ -230,6 +237,7 @@ namespace Photon.Voice.Unity.Demos.DemoVoiceUI
         {
             this.voiceAudioPreprocessor.AEC = isOn;
             this.aecOptionsGameObject.SetActive(isOn);
+            this.voiceConnection.Client.LocalPlayer.SetAEC(isOn);
         }
 
         private void ToggleNoiseSuppression(bool isOn)
@@ -242,11 +250,14 @@ namespace Photon.Voice.Unity.Demos.DemoVoiceUI
             this.voiceAudioPreprocessor.AGC = isOn;
             this.compressionGainGameObject.SetActive(isOn);
             this.targetLevelGameObject.SetActive(isOn);
+
+            this.voiceConnection.Client.LocalPlayer.SetAGC(isOn, this.voiceAudioPreprocessor.AgcCompressionGain, this.voiceAudioPreprocessor.AgcTargetLevel);
         }
 
         private void ToggleVAD(bool isOn)
         {
             this.voiceAudioPreprocessor.VAD = isOn;
+            this.voiceConnection.Client.LocalPlayer.SetWebRTCVAD(isOn);
         }
 
         private void ToggleHighPass(bool isOn)
@@ -263,11 +274,15 @@ namespace Photon.Voice.Unity.Demos.DemoVoiceUI
             // this.voiceAudioPreprocessor.Bypass = !isOn;
 
             this.webRtcDspGameObject.SetActive(isOn); // gui update
+
+            this.voiceConnection.Client.LocalPlayer.SetWebRTCVAD(this.voiceAudioPreprocessor.VAD);
+            this.voiceConnection.Client.LocalPlayer.SetAEC(this.voiceAudioPreprocessor.AEC);
+            this.voiceConnection.Client.LocalPlayer.SetAGC(this.voiceAudioPreprocessor.AGC, this.voiceAudioPreprocessor.AgcCompressionGain, this.voiceAudioPreprocessor.AgcTargetLevel);
         }
 
         private void ToggleAudioClipStreaming(bool isOn)
         {
-            this.microphoneSetupGameObject.SetActive(!isOn && !this.audioToneToggle.isOn);
+            this.microphoneSelector.gameObject.SetActive(!isOn && !this.audioToneToggle.isOn);
             if (isOn)
             {
                 this.audioToneToggle.SetValue(false);
@@ -281,7 +296,7 @@ namespace Photon.Voice.Unity.Demos.DemoVoiceUI
 
         private void ToggleAudioToneFactory(bool isOn)
         {
-            this.microphoneSetupGameObject.SetActive(!isOn && !this.streamAudioClipToggle.isOn);
+            this.microphoneSelector.gameObject.SetActive(!isOn && !this.streamAudioClipToggle.isOn);
             if (isOn)
             {
                 this.streamAudioClipToggle.SetValue(false);
@@ -296,23 +311,27 @@ namespace Photon.Voice.Unity.Demos.DemoVoiceUI
         private void TogglePhotonVAD(bool isOn)
         {
             this.voiceConnection.PrimaryRecorder.VoiceDetection = isOn;
+            this.voiceConnection.Client.LocalPlayer.SetPhotonVAD(isOn);
         }
 
         private void ToggleAecHighPass(bool isOn)
         {
             this.voiceAudioPreprocessor.AecHighPass = isOn;
+            this.voiceConnection.Client.LocalPlayer.SetAEC(isOn);
         }
 
         private void OnAgcCompressionGainChanged(float agcCompressionGain)
         {
             this.voiceAudioPreprocessor.AgcCompressionGain = (int)agcCompressionGain;
             this.compressionGainText.text = string.Concat("Compression Gain: ", agcCompressionGain);
+            this.voiceConnection.Client.LocalPlayer.SetAGC(this.voiceAudioPreprocessor.AGC, (int)agcCompressionGain, this.voiceAudioPreprocessor.AgcTargetLevel);
         }
 
         private void OnAgcTargetLevelChanged(float agcTargetLevel)
         {
             this.voiceAudioPreprocessor.AgcTargetLevel = (int)agcTargetLevel;
             this.targetLevelText.text = string.Concat("Target Level: ", agcTargetLevel);
+            this.voiceConnection.Client.LocalPlayer.SetAGC(this.voiceAudioPreprocessor.AGC, this.voiceAudioPreprocessor.AgcCompressionGain, (int)agcTargetLevel);
         }
 
         private void OnReverseStreamDelayChanged(string newReverseStreamString)
@@ -326,6 +345,18 @@ namespace Photon.Voice.Unity.Demos.DemoVoiceUI
             {
                 this.reverseStreamDelayInputField.text = this.voiceAudioPreprocessor.ReverseStreamDelayMs.ToString();
             }
+        }
+
+        private void OnMicrophoneChanged(Recorder.MicType micType, DeviceInfo deviceInfo)
+        {
+            this.voiceConnection.Client.LocalPlayer.SetMic(micType);
+
+            this.androidMicSettingGameObject.SetActive(micType == Recorder.MicType.Photon);
+        }
+
+        private void OnAndroidMicSettingsChanged(bool isOn)
+        {
+            this.voiceConnection.PrimaryRecorder.SetAndroidNativeMicrophoneSettings(this.androidAecToggle.isOn, this.androidAgcToggle.isOn, this.androidNsToggle.isOn);
         }
 
         private void UpdateSyncedNickname(string nickname)
@@ -355,6 +386,11 @@ namespace Photon.Voice.Unity.Demos.DemoVoiceUI
             {
                 this.voiceConnection.ConnectUsingSettings();
             }
+        }
+
+        void PhotonVoiceCreated(PhotonVoiceCreatedParams p)
+        {
+            this.InitUiValues();
         }
 
         protected virtual void Update()
@@ -445,6 +481,12 @@ namespace Photon.Voice.Unity.Demos.DemoVoiceUI
             this.roomNameInputField.SetSingleOnEndEditCallback(this.JoinOrCreateRoom);
 
             this.reverseStreamDelayInputField.SetSingleOnEndEditCallback(this.OnReverseStreamDelayChanged);
+
+            this.microphoneSelector.SetSingleOnValueChangedCallback(this.OnMicrophoneChanged);
+
+            this.androidAgcToggle.SetSingleOnValueChangedCallback(this.OnAndroidMicSettingsChanged);
+            this.androidAecToggle.SetSingleOnValueChangedCallback(this.OnAndroidMicSettingsChanged);
+            this.androidNsToggle.SetSingleOnValueChangedCallback(this.OnAndroidMicSettingsChanged);
         }
 
         private void InitUiValues()
@@ -457,7 +499,11 @@ namespace Photon.Voice.Unity.Demos.DemoVoiceUI
             this.audioToneToggle.SetValue(this.voiceConnection.PrimaryRecorder.SourceType == Recorder.InputSourceType.Factory);
             this.photonVadToggle.SetValue(this.voiceConnection.PrimaryRecorder.VoiceDetection);
 
-            this.microphoneSetupGameObject.SetActive(!this.streamAudioClipToggle.isOn && !this.audioToneToggle.isOn);
+            this.androidAgcToggle.SetValue(this.voiceConnection.PrimaryRecorder.AndroidMicrophoneAGC);
+            this.androidAecToggle.SetValue(this.voiceConnection.PrimaryRecorder.AndroidMicrophoneAEC);
+            this.androidNsToggle.SetValue(this.voiceConnection.PrimaryRecorder.AndroidMicrophoneNS);
+
+            this.microphoneSelector.gameObject.SetActive(!this.streamAudioClipToggle.isOn && !this.audioToneToggle.isOn);
 
             if (this.webRtcDspGameObject != null)
             {
@@ -564,6 +610,9 @@ namespace Photon.Voice.Unity.Demos.DemoVoiceUI
         void IMatchmakingCallbacks.OnJoinedRoom()
         {
             this.SetRoomDebugText();
+
+            this.voiceConnection.Client.LocalPlayer.SetMic(this.voiceConnection.PrimaryRecorder.MicrophoneType);
+
         }
 
         void IMatchmakingCallbacks.OnJoinRoomFailed(short returnCode, string message)

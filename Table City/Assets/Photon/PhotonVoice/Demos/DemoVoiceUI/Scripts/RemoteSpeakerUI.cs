@@ -22,6 +22,17 @@
         private Text bufferLagText;
         [SerializeField]
         private Slider volumeSlider;
+        [SerializeField]
+        private Text photonVad;
+        [SerializeField]
+        private Text webrtcVad;
+        [SerializeField]
+        private Text aec;
+        [SerializeField]
+        private Text agc;
+        [SerializeField]
+        private Text mic;
+
 #pragma warning restore 649
         protected Speaker speaker;
         private AudioSource audioSource;
@@ -39,6 +50,7 @@
             this.playDelayInputField.SetSingleOnEndEditCallback(this.OnPlayDelayChanged);
             this.SetNickname();
             this.SetMutedState();
+            this.SetProperties();
 
             this.volumeSlider.minValue = 0f;
             this.volumeSlider.maxValue = 1f;
@@ -68,8 +80,18 @@
         {
             // TODO: It would be nice, if we could show if a user is actually talking right now (Voice Detection)
             this.remoteIsTalking.enabled = this.speaker.IsPlaying;
-            this.bufferLagText.text = string.Concat("Buffer Lag: ", this.speaker.Lag);
+            if (this.speaker.IsPlaying)
+            {
+                int lag = this.speaker.Lag;
+                smoothedLag = (lag + smoothedLag * 99) / 100;
+                this.bufferLagText.text = string.Concat("Buffer Lag: ", smoothedLag, "/", lag);
+            }
+            else
+            {
+                this.bufferLagText.text = string.Concat("Buffer Lag: ", smoothedLag, "/-");
+            }
         }
+        int smoothedLag;
 
         private void OnDestroy()
         {
@@ -84,11 +106,7 @@
             string nick = this.speaker.name;
             if (this.Actor != null)
             {
-                nick = this.Actor.NickName;
-                if (string.IsNullOrEmpty(nick))
-                {
-                    nick = string.Concat("user ", this.Actor.ActorNumber);
-                }
+                nick = this.Actor.UserId;
             }
             this.nameText.text = nick;
         }
@@ -96,6 +114,18 @@
         private void SetMutedState()
         {
             this.SetMutedState(this.Actor.IsMuted());
+        }
+
+        private void SetProperties()
+        {
+            this.photonVad.enabled = this.Actor.HasPhotonVAD();
+            this.webrtcVad.enabled = this.Actor.HasWebRTCVAD();
+            this.aec.enabled = this.Actor.HasAEC();
+            this.agc.enabled = this.Actor.HasAGC();
+            this.agc.text = "AGC Gain: " + this.Actor.GetAGCGain() + " Level: "+this.Actor.GetAGCLevel();
+            var micVal = this.Actor.GetMic();
+            this.mic.enabled = micVal.HasValue;
+            this.mic.text = micVal.HasValue?(micVal == Recorder.MicType.Unity?"Unity MIC":"Photon MIC"):"";
         }
 
         protected virtual void SetMutedState(bool isMuted)
@@ -109,6 +139,7 @@
             {
                 this.SetMutedState();
                 this.SetNickname();
+                this.SetProperties();
             }
         }
 

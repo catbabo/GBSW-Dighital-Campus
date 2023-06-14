@@ -1,5 +1,6 @@
 ﻿namespace Photon.Voice.Unity.Demos
 {
+    using Photon.Voice.Unity.Demos.DemoVoiceUI;
     using UnityEngine;
     using UnityEngine.Events;
     using UnityEngine.UI;
@@ -152,6 +153,12 @@
         {
             slider.onValueChanged.RemoveAllListeners();
             slider.onValueChanged.AddListener(action);
+        }
+
+        public static void SetSingleOnValueChangedCallback(this MicrophoneSelector selector, UnityAction<Recorder.MicType, DeviceInfo> action)
+        {
+            selector.onValueChanged.RemoveAllListeners();
+            selector.onValueChanged.AddListener(action);
         }
     }
 }

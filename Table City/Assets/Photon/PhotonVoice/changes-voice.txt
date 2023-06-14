@@ -1,6 +1,49 @@
 Photon Voice 2 Change Log
 
-v2.51 (February 02, 2022)
+v2.52 (May 23, 2023)
+   PUN2: v2.42 (PUN2.42) 
+   RT/lib: 4.1.6.24
+   PhotonVoiceApi: revision 6905
+   Unity: 2019.4.39 or higher
+   UPDATED: Photon3Unity3D.dll, Photon Realtime (LoadBalancing) and Chat APIs to v4.1.6.24
+   UPDATED: PUN to v2.42
+VoiceConnection:
+   ADDED: 'C++ API Compatibility Mode' checkbox in VoiceConnection editor inspector
+Recorder:
+   ADDED: TargetPlayers property: only players specified in this property receive the voice info event and stream data, remote players also receive the voice remove event when removed from the list
+   FIXED: SetAndroidNativeMicrophoneSettings() did not update anything
+   CHANGED: Recorder uses Photon microphone type for WebGLPlayer even if Unity microphone type set
+   CHANGED: Recorder uses AndroidAudioInParameters from Voice API directly instead of locally defined proxy struct NativeAndroidMicrophoneSettings
+   BREAKING: Android microphone settings field name and type changed, all settings will be reset to true in Editor
+   CHANGED: added public getters for Android microphone settings properties
+Speaker:
+   CHANGED: AudioOutDelayControl delay tolerance reduced (smaller drifts from the target delay)
+   CHANGED: Speaker.Lag returns audioOutput.Lag or 0 if audioOutput is null (was -1 if not playing)
+   FIXED: SpeakerFMOD editor inspector did not show SpeakerFMOD parameters: added SpeakerFMODEditor extending SpeakerEditor
+iOS:
+   FIXED: audio capture on iPhone14: InputCallback is added and used for capture, RenderCallback still exists in the pipeline but does not do anything
+Android:
+   CHANGED: audio library: all permissions removed from the manifest, user must set permissions correctly in the application manifest
+WebGL:
+   CHANGED: Platform.CreateAudioInEnumerator() returns an instance of the new DeviceEnumeratorSingleDevice calss with the device named 'Default' instead of AudioInEnumeratorNotSupported for Unity WebGL platform
+   CHANGED: Unity.AudioInEnumerator and UnityMicrophone rely on Unity Microphone API in Editor even if the platform is WebGL
+Other:
+   CHANGED: Unity methods are made protected virtual in UnityVoiceClient, FusionVoiceClient, PunVoiceClient and Speaker to allow component inheritance
+   CHANGED: CustomEditor are marked as 'for child classes' in UnityVoiceClientEditor, FusionVoiceClientEditor, PunVoiceClientEditor to allow component inheritance
+   BREAKING: VoiceConnection transport creation moved from constructor to Awake(): VoiceConnection.Client can be referenced by other components not earlier than in Start()
+   CHANGED: code referencing VoiceConnection.Client moved from Awake() and OnEnabled() to Start() in PunVoiceClient, utility scripts and demos components
+   CHANGED: in the above components, code form OnDisable() moved to OnDestroy()
+   FIXED: OpusDecoder: IL2CPP-specific attribute is disabled for Unity prior to version 2021 in to avoid compilation error due to Unity bug (the affected method is experimental and unlikely to be used in older versions)
+   REMOVED: UnityVoiceClientEditor photon components versions section
+Demos:
+   CHANGED: demos use Unity.AudioInEnumerator() as a recommended way to enumerate Unity microphones instead of UnityMicrophone.devices
+   CHANGED: DemoVoicePun lists both Unity and Photon microphones in the device info
+   CHANGED: DelayProcessor attenuates original signal to avoid overload
+DemoVoiceUI:
+   ADDED: mic intesity bar + color when transmitting
+   ADDED: Android native microphone settings to demo ui
+
+v2.51 (February 02, 2023)
    PUN2: v2.41 (PUN2.41) 
    RT/lib:4.1.6.18f2
    PhotonVoiceApi: revision 6697

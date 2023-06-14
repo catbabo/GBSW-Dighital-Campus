@@ -8,7 +8,7 @@ namespace Photon.Voice.PUN.Editor
     using UnityEngine;
     using Pun;
 
-    [CustomEditor(typeof(PunVoiceClient))]
+    [CustomEditor(typeof(PunVoiceClient), true)]
     public class PunVoiceClientEditor : VoiceConnectionEditor
     {
         private SerializedProperty autoConnectAndJoinSp;
@@ -53,20 +53,6 @@ namespace Photon.Voice.PUN.Editor
             if (EditorGUI.EndChangeCheck())
             {
                 this.serializedObject.ApplyModifiedProperties();
-            }
-        }
-
-        protected override void ShowAssetVersions()
-        {
-            base.ShowAssetVersions();
-            string version = this.GetVersionString(this.punChangelogVersion).TrimStart('v');
-            if (!PhotonNetwork.PunVersion.Equals(version, StringComparison.OrdinalIgnoreCase))
-            {
-                EditorGUILayout.LabelField(string.Format("PUN2, Inside Voice: {0} != Imported Separately: {1}", version, PhotonNetwork.PunVersion));
-            }
-            else
-            {
-                EditorGUILayout.LabelField(string.Format("PUN2: {0}", version));
             }
         }
     }

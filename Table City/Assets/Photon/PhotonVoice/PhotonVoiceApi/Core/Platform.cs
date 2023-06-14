@@ -13,6 +13,8 @@ namespace Photon.Voice
             return new Windows.AudioInEnumerator(logger);
 #elif UNITY_EDITOR_OSX || UNITY_STANDALONE_OSX
             return new MacOS.AudioInEnumerator(logger);
+#elif UNITY_WEBGL
+            return new DeviceEnumeratorSingleDevice(logger, "Default");
 #else
             return new AudioInEnumeratorNotSupported(logger);
 #endif

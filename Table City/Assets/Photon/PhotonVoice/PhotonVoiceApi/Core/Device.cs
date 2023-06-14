@@ -153,6 +153,22 @@ namespace Photon.Voice
         public abstract void Dispose();
     }
 
+    internal class DeviceEnumeratorSingleDevice : DeviceEnumeratorBase
+    {
+        public DeviceEnumeratorSingleDevice(ILogger logger, string deviceName)
+            : base(logger)
+        {
+            devices = new List<DeviceInfo>() { new DeviceInfo(deviceName) };
+        }
+        public override void Refresh()
+        {
+        }
+
+        public override void Dispose()
+        {
+        }
+    }
+
     internal class DeviceEnumeratorNotSupported : DeviceEnumeratorBase
     {
         public override bool IsSupported => false;
