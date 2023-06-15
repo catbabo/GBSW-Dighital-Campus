@@ -15,10 +15,6 @@ public class PlayerWithoutVR : MonoBehaviour
 
     private Define.CatingType _targetType;
 
-    private Button _button;
-
-    private InputField _inputField;
-
     private Ray _ray;
     #endregion
 
@@ -80,27 +76,8 @@ public class PlayerWithoutVR : MonoBehaviour
 
     private void ExitCasting()
     {
-        if (_targetType == Define.CatingType.Button)
-        {
-            _button = null;
-        }
-
-        if (_targetType == Define.CatingType.InputField)
-        {
-            _inputField = null;
-        }
 
         if (_targetType == Define.CatingType.Tool)
-        {
-            Debug.Log("Exit");
-        }
-
-        if (_targetType == Define.CatingType.Image)
-        {
-            Debug.Log("Exit");
-        }
-
-        if (_targetType == Define.CatingType.Text)
         {
             Debug.Log("Exit");
         }
@@ -120,36 +97,9 @@ public class PlayerWithoutVR : MonoBehaviour
         if (_castedComponent == null)
             return;
 
-        if (_targetType == Define.CatingType.Button)
-        {
-            _button = _castedComponent.Button;
-            _button.onClick.Invoke();
-        }
-
-        if (_targetType == Define.CatingType.InputField)
-        {
-            _inputField = _castedComponent.InputField;
-            _inputField.ActivateInputField();
-        }
-
         if (_targetType == Define.CatingType.Tool)
         {
             Debug.Log("Interact");
-        }
-
-        if (_targetType == Define.CatingType.Text)
-        {
-            _castedComponent.Interact(_vrController);
-        }
-
-        if (_targetType == Define.CatingType.Image)
-        {
-            _castedComponent.Interact(_vrController);
-        }
-
-        if (_targetType == Define.CatingType.Scrollbar)
-        {
-            _castedComponent.Interact(_vrController);
         }
     }
 
@@ -162,21 +112,6 @@ public class PlayerWithoutVR : MonoBehaviour
     {
         if (_castedComponent == null)
             return;
-
-        if (_targetType == Define.CatingType.Button)
-        {
-            _button = _castedComponent.Button;
-            _button = null;
-        }
-
-        if (_targetType == Define.CatingType.InputField)
-        {
-            _inputField = null;
-        }
-
-        if (_targetType == Define.CatingType.Tool)
-        {
-        }
 
         if (!isInterrupt)
             _castedComponent.ExitInteract();

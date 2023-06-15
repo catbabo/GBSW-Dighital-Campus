@@ -156,16 +156,6 @@ public class VRController : MonoBehaviour
 
     private void ExitCasting()
     {
-        if (_targetType == Define.CatingType.Button)
-        {
-            _button.OnPointerExit(null);
-            _button = null;
-        }
-
-        if (_targetType == Define.CatingType.InputField)
-        {
-            _inputField = null;
-        }
 
         if (_targetType == Define.CatingType.Tool)
         {
@@ -189,18 +179,6 @@ public class VRController : MonoBehaviour
         if (_castedComponent == null)
             return;
 
-        if (_targetType == Define.CatingType.Button)
-        {
-            _button = _castedComponent.Button;
-            _button.onClick.Invoke();
-        }
-
-        if (_targetType == Define.CatingType.InputField)
-        {
-            _inputField = _castedComponent.InputField;
-            _inputField.ActivateInputField();
-        }
-
         if (_targetType == Define.CatingType.Tool)
         {
             Debug.Log("Interact");
@@ -220,16 +198,6 @@ public class VRController : MonoBehaviour
     {
         if (_castedComponent == null)
             return;
-
-        if (_targetType == Define.CatingType.Button)
-        {
-            _button = null;
-        }
-
-        if (_targetType == Define.CatingType.InputField)
-        {
-            _inputField = null;
-        }
 
         if (_targetType == Define.CatingType.Tool)
         {

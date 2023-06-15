@@ -7,12 +7,7 @@ public class Define : MonoBehaviour
 {
     public enum CatingType
     {
-        Tool,
-        Button,
-        InputField,
-        Text,
-        Image,
-        Scrollbar
+        Tool
     }
 
 
