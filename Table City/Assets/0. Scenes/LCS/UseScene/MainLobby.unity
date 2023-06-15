@@ -528,7 +528,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1322232607}
         m_TargetAssemblyTypeName: LobbyManager, Assembly-CSharp
-        m_MethodName: Button_CreateOrJoin
+        m_MethodName: Button_PointB
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2118,7 +2118,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1322232607}
         m_TargetAssemblyTypeName: LobbyManager, Assembly-CSharp
-        m_MethodName: Button_CreateOrJoin
+        m_MethodName: Button_PointA
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
