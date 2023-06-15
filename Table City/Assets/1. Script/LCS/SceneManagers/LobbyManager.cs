@@ -36,6 +36,16 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 	public TMP_Text _Text_Popup_Subject;
 	#endregion
 
+	#region ButtonObj
+	// 캔슬 버튼
+	public GameObject _CancelButton;
+
+	// 포인트 선택 버튼
+	public GameObject _PointButton;
+	#endregion
+
+	private bool _SelectedA = false, _SelectedB = false;
+
 	private void Start()
 	{
 		InitWindow();
@@ -62,9 +72,9 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 	// 메인 화면의 JOIN버튼과 연결되어 있음
 	public void Button_CreateOrJoin()
 	{
-		if(_Input_RoomCode.text.Length <= 0 || _Input_NickName.text.Length <= 0)
+		if (_Input_RoomCode.text.Length <= 0 || _Input_NickName.text.Length <= 0)
 		{
-			SetPopup(PopupState.Warning,"Nothing Enter");
+			SetPopup(PopupState.Warning, "Nothing Enter");
 			return;
 		}
 
@@ -85,8 +95,21 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 	// 팝업창의 Cancel버튼과 연결되어 있음
 	public void Button_Cancel()
 	{
-		if(_PopupState == PopupState.Wait) { NetworkManager.Net.LeaveRoom(); }
+		if (_PopupState == PopupState.Wait) { NetworkManager.Net.LeaveRoom(); }
 		_Window_Popup.SetActive(false);
+	}
+
+	// 생성할 포인트를 선택하는 함수
+	// 메인 화면의 A, B 버튼에 연결되어 있음
+	public void Button_PointA()
+	{
+		NetworkManager.Net.SetPlayerSpawnPoint(true);
+		GameObject.Find("PlayerPrefab").GetComponent<PhotonView>().RPC("PointA", RpcTarget.All);
+	}
+	public void Button_PointB()
+	{
+		NetworkManager.Net.SetPlayerSpawnPoint(false);
+		GameObject.Find("PlayerPrefab").GetComponent<PhotonView>().RPC("PointA", RpcTarget.All);
 	}
 	#endregion
 
@@ -103,6 +126,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 	private void SetPopup(PopupState _state, string _subjectText = null)
 	{
 		_Window_Popup.SetActive(true);
+		_PointButton.SetActive(false);
 
 		_PopupState = _state;
 		_Text_Popup_Title.text = _state.ToString();
@@ -123,17 +147,58 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 		{
 			if (PhotonNetwork.CurrentRoom.PlayerCount == PhotonNetwork.CurrentRoom.MaxPlayers)
 			{
-				PhotonNetwork.LoadLevel("PlayRoom");
+				OnPointButton();
 			}
 		}
+	}
+
+	private void OnPointButton()
+	{
+		_CancelButton.SetActive(false);
+		_PointButton.SetActive(true);
+	}
+
+	private void OffPointButton()
+	{
+		_CancelButton.SetActive(false);
+		_PointButton.SetActive(true);
 	}
 
 	// 플레이어가 방에서 나가면 실행
 	public override void OnPlayerLeftRoom(Player otherPlayer)
 	{
 		print(otherPlayer.NickName + " 나감.");
-
+		OffPointButton();
 		NetworkManager.Net.SetJoinRoomPlayerCount(_Text_Popup_Subject);
 	}
 
+	
+	// 플레이어가 선택한 버튼 제거
+	[PunRPC]
+	private void PointA()
+	{
+		if (_SelectedA && _SelectedB)
+		{
+			PhotonNetwork.LoadLevel("PlayRoom");
+		}
+		else
+		{
+			_SelectedA = true;
+			_PointButton.transform.Find("Button_PointA").gameObject.SetActive(false);
+		}
+	}
+
+	[PunRPC]
+	private void PointB()
+	{
+		if (_SelectedA && _SelectedB)
+		{
+			PhotonNetwork.LoadLevel("PlayRoom");
+		}
+		else
+		{
+			_SelectedB = true;
+			_PointButton.transform.Find("Button_PointB").gameObject.SetActive(false);
+		}
+	}
 }

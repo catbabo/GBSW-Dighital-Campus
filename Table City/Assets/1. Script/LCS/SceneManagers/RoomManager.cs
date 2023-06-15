@@ -21,9 +21,9 @@ public class RoomManager : MonoBehaviour
 	// 3. 1번과 2번을 합친 원하는 위치를 정하고 스타트 자원을 원하는 위치에서 시작 ( 하지만 자원 채집과 공장의 위치는 고정이기 때문에 불가능 할것이라 판단 )
 
 	// 방 주인의 캐릭터 소환 위치
-	public Transform MasterPoint { get; private set; }
+	public Transform _PlayerPointA { get; private set; }
 	// 방 손님의 캐릭터 소환 위치
-	public Transform CommonPoint { get; private set; }
+	public Transform _PlayerPointB { get; private set; }
 	#endregion
 
 	private void Start()
@@ -35,8 +35,8 @@ public class RoomManager : MonoBehaviour
 	private void SetSapwnPoint()
 	{
 		Transform spawnPoint = GameObject.Find("SpawnPoint").transform;
-		MasterPoint = spawnPoint.Find("MasterPoint");
-		CommonPoint = spawnPoint.Find("CommonPoint");
+		_PlayerPointA = spawnPoint.Find("Point_A").Find("Player");
+		_PlayerPointB = spawnPoint.Find("Point_B").Find("Player");
 
 		NetworkManager.Net.SpawnPlayer();
 	}

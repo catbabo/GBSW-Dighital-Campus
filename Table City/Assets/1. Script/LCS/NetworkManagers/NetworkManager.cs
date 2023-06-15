@@ -36,6 +36,9 @@ public class NetworkManager : MonoBehaviourPunCallbacks
 	// 닉네임
 	public string _nickName { get; private set; } = "Admin";
 
+	// 스폰 포인트
+	private bool _PointA;
+
 	private void Update()
 	{
 		DevelopMode();
@@ -119,18 +122,15 @@ public class NetworkManager : MonoBehaviourPunCallbacks
 
 	#region Spawn
 	// 오브젝트 소환 ( 오브젝트 이름 (Resources 에서 소환함), 소환될 위치, 마스터 서버에서 소환될 위치(소환 위치가 상관 없다면 안적어도 됨))
-	public void SpawnObject(string objectName, Transform CommonPoint, Transform MarsterPoint = null)
+	public void SpawnObject(string _objectName, Transform _point)
 	{
-		if(MarsterPoint == null) { MarsterPoint = CommonPoint; }
-		GameObject _object = PhotonNetwork.Instantiate(objectName,
-							 PhotonNetwork.IsMasterClient ? MarsterPoint.position : CommonPoint.position, 
-							 PhotonNetwork.IsMasterClient ? MarsterPoint.rotation : CommonPoint.rotation);
+		GameObject _object = PhotonNetwork.Instantiate(_objectName, _point.position, _point.rotation);
 	}
 
 	// 플레이어 소환
 	public void SpawnPlayer()
 	{
-		SpawnObject("0. Player/PlayerPrefab", RoomManager.room.CommonPoint, RoomManager.room.MasterPoint);
+		SpawnObject("0. Player/PlayerPrefab", _PointA ? RoomManager.room._PlayerPointA : RoomManager.room._PlayerPointB);
 	}
 	#endregion
 
@@ -150,6 +150,12 @@ public class NetworkManager : MonoBehaviourPunCallbacks
 		print("서버 연결 해제");
 	}
 	#endregion
+
+	// 플레이어 소환 위치 셋
+	public void SetPlayerSpawnPoint(bool _point)
+	{
+		_PointA = _point;
+	}
 
 	// 방에 들어온 플레이어의 수를 리턴
 	public void SetJoinRoomPlayerCount(TMP_Text _text) => _text.text = "Player : " + PhotonNetwork.CurrentRoom.PlayerCount + " / " + PhotonNetwork.CurrentRoom.MaxPlayers;
