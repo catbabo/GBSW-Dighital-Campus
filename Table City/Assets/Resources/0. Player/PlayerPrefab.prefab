@@ -5552,7 +5552,6 @@ GameObject:
   - component: {fileID: 6292460650664255921}
   - component: {fileID: 6292460650660831633}
   - component: {fileID: 6292460650661831505}
-  - component: {fileID: 6292460650664255920}
   m_Layer: 9
   m_Name: Male Head
   m_TagString: Untagged
@@ -5626,22 +5625,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &6292460650664255920
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6292460650663837073}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SynchronizePosition: 1
-  m_SynchronizeRotation: 1
-  m_SynchronizeScale: 0
-  m_UseLocal: 1
 --- !u!1 &6342772364451346126
 GameObject:
   m_ObjectHideFlags: 0
@@ -6422,8 +6405,6 @@ MonoBehaviour:
   OwnershipTransfer: 0
   observableSearch: 2
   ObservedComponents:
-  - {fileID: 6292460650664255920}
-  - {fileID: 0}
   - {fileID: 0}
   sceneViewId: 0
   InstantiationId: 0
