@@ -1535,37 +1535,6 @@ SkinnedMeshRenderer:
     m_Center: {x: 0.00616638, y: -0.029108923, z: -0.018820617}
     m_Extent: {x: 0.033926036, y: 0.042694185, z: 0.05639166}
   m_DirtyAABB: 0
---- !u!1 &2375727166531143969
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2285688080095755701}
-  m_Layer: 0
-  m_Name: ToolGrabPoint
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2285688080095755701
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2375727166531143969}
-  m_LocalRotation: {x: -0.12278767, y: -0.6963643, z: -0.2988363, w: -0.6408564}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 8, y: 8, z: 8}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 7420519295609346400}
-  m_RootOrder: 8
-  m_LocalEulerAnglesHint: {x: 60, y: 90, z: 0}
 --- !u!1 &2717904952873021638
 GameObject:
   m_ObjectHideFlags: 0
@@ -2207,8 +2176,6 @@ GameObject:
   - component: {fileID: 2898266861808950759}
   - component: {fileID: 2898266861814728265}
   - component: {fileID: 2898266861814728264}
-  - component: {fileID: 279776019492710762}
-  - component: {fileID: 6941617709216189009}
   m_Layer: 8
   m_Name: OVRControllerPrefab_Right
   m_TagString: Untagged
@@ -2236,7 +2203,6 @@ Transform:
   - {fileID: 7069868611938363142}
   - {fileID: 1541538219347830749}
   - {fileID: 3508624349853801280}
-  - {fileID: 8509826909219429707}
   m_Father: {fileID: 7539349292267176319}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2360,68 +2326,6 @@ LineRenderer:
     generateLightingData: 0
   m_UseWorldSpace: 1
   m_Loop: 0
---- !u!114 &279776019492710762
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2898266861809326483}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ef80a8c6cbd595941b6ab80c1eb1143b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _isRight: 1
-  _laser: {fileID: 0}
-  _laserColor: {r: 0, g: 0, b: 0, a: 0}
---- !u!114 &6941617709216189009
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2898266861809326483}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SynchronizePosition: 1
-  m_SynchronizeRotation: 1
-  m_SynchronizeScale: 0
-  m_UseLocal: 1
---- !u!1 &3097416813874071894
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 8509826909219429707}
-  m_Layer: 0
-  m_Name: ToolGrabPoint
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &8509826909219429707
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3097416813874071894}
-  m_LocalRotation: {x: -0.12278767, y: -0.6963643, z: -0.2988363, w: -0.6408564}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 8, y: 8, z: 8}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 2898266861808950759}
-  m_RootOrder: 8
-  m_LocalEulerAnglesHint: {x: 60, y: 90, z: 0}
 --- !u!1 &3233431332219535265
 GameObject:
   m_ObjectHideFlags: 0
@@ -5648,7 +5552,6 @@ GameObject:
   - component: {fileID: 6292460650664255921}
   - component: {fileID: 6292460650660831633}
   - component: {fileID: 6292460650661831505}
-  - component: {fileID: 8088358451451066091}
   m_Layer: 9
   m_Name: Male Head
   m_TagString: Untagged
@@ -5722,22 +5625,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &8088358451451066091
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6292460650663837073}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SynchronizePosition: 1
-  m_SynchronizeRotation: 1
-  m_SynchronizeScale: 0
-  m_UseLocal: 1
 --- !u!1 &6342772364451346126
 GameObject:
   m_ObjectHideFlags: 0
@@ -6312,8 +6199,6 @@ GameObject:
   - component: {fileID: 7420519295609346400}
   - component: {fileID: 7420519295598346958}
   - component: {fileID: 7420519295609527575}
-  - component: {fileID: 6314076044675112489}
-  - component: {fileID: 6944001519912284699}
   m_Layer: 8
   m_Name: OVRControllerPrefab_Left
   m_TagString: Untagged
@@ -6341,7 +6226,6 @@ Transform:
   - {fileID: 3233431332220019585}
   - {fileID: 6604221501085901658}
   - {fileID: 9111749481287704519}
-  - {fileID: 2285688080095755701}
   m_Father: {fileID: 7539349292267176319}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -6465,37 +6349,6 @@ LineRenderer:
     generateLightingData: 0
   m_UseWorldSpace: 1
   m_Loop: 0
---- !u!114 &6314076044675112489
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7420519295609527572}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ef80a8c6cbd595941b6ab80c1eb1143b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _isRight: 0
-  _laser: {fileID: 0}
-  _laserColor: {r: 0, g: 0, b: 0, a: 0}
---- !u!114 &6944001519912284699
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7420519295609527572}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SynchronizePosition: 1
-  m_SynchronizeRotation: 1
-  m_SynchronizeScale: 0
-  m_UseLocal: 1
 --- !u!1 &7539349290533047851
 GameObject:
   m_ObjectHideFlags: 0
@@ -6551,7 +6404,8 @@ MonoBehaviour:
   Synchronization: 3
   OwnershipTransfer: 0
   observableSearch: 2
-  ObservedComponents: []
+  ObservedComponents:
+  - {fileID: 0}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -6603,7 +6457,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7539349292267176319}
-  - component: {fileID: 2458473033552662419}
   m_Layer: 8
   m_Name: Models
   m_TagString: Untagged
@@ -6629,18 +6482,6 @@ Transform:
   m_Father: {fileID: 7539349290533047850}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2458473033552662419
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7539349292267176316}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2e35186a396deb14988061dcc0a030f0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &7544370971426064302
 GameObject:
   m_ObjectHideFlags: 0

@@ -39,6 +39,15 @@ public class VRController : MonoBehaviour
     private RaycastHit _hit;
     private Transform _hitTransform;
 
+    private Transform _visual;
+    private bool _isInit;
+
+    public void Init(Transform visual)
+    {
+        _visual = visual;
+        _isInit = true;
+    }
+
     private void Start()
     {
         SetLaser();
@@ -94,6 +103,12 @@ public class VRController : MonoBehaviour
 
     private void Update()
     {
+        if (!_isInit)
+            return;
+
+        transform.rotation = _visual.rotation;
+        transform.position = _visual.position;
+
         ControllerCycle();
     }
 
