@@ -225,6 +225,7 @@ GameObject:
   m_Component:
   - component: {fileID: 203630216593474446}
   - component: {fileID: 203630216583703676}
+  - component: {fileID: 715036958479893531}
   m_Layer: 8
   m_Name: OculusTouchForQuest2RightModel
   m_TagString: Untagged
@@ -270,6 +271,22 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &715036958479893531
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 203630216593055662}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
 --- !u!1 &203630216593055664
 GameObject:
   m_ObjectHideFlags: 0
@@ -1576,6 +1593,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2736380913206417922}
   - component: {fileID: 2736380913197069810}
+  - component: {fileID: 4794847655671673315}
   m_Layer: 8
   m_Name: OculusTouchForQuest2LeftModel
   m_TagString: Untagged
@@ -1621,6 +1639,22 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &4794847655671673315
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2736380913206445602}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
 --- !u!1 &2736380913206445604
 GameObject:
   m_ObjectHideFlags: 0
@@ -2176,7 +2210,6 @@ GameObject:
   - component: {fileID: 2898266861808950759}
   - component: {fileID: 2898266861814728265}
   - component: {fileID: 2898266861814728264}
-  - component: {fileID: 2898266861814728267}
   m_Layer: 8
   m_Name: OVRControllerPrefab_Right
   m_TagString: Untagged
@@ -2327,22 +2360,6 @@ LineRenderer:
     generateLightingData: 0
   m_UseWorldSpace: 1
   m_Loop: 0
---- !u!114 &2898266861814728267
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2898266861809326483}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SynchronizePosition: 1
-  m_SynchronizeRotation: 1
-  m_SynchronizeScale: 0
-  m_UseLocal: 1
 --- !u!1 &3233431332219535265
 GameObject:
   m_ObjectHideFlags: 0
@@ -6233,7 +6250,6 @@ GameObject:
   - component: {fileID: 7420519295609346400}
   - component: {fileID: 7420519295598346958}
   - component: {fileID: 7420519295609527575}
-  - component: {fileID: 7420519295609527574}
   m_Layer: 8
   m_Name: OVRControllerPrefab_Left
   m_TagString: Untagged
@@ -6384,22 +6400,6 @@ LineRenderer:
     generateLightingData: 0
   m_UseWorldSpace: 1
   m_Loop: 0
---- !u!114 &7420519295609527574
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7420519295609527572}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SynchronizePosition: 1
-  m_SynchronizeRotation: 1
-  m_SynchronizeScale: 0
-  m_UseLocal: 1
 --- !u!1 &7539349290533047851
 GameObject:
   m_ObjectHideFlags: 0
@@ -6456,9 +6456,9 @@ MonoBehaviour:
   OwnershipTransfer: 0
   observableSearch: 2
   ObservedComponents:
-  - {fileID: 7420519295609527574}
-  - {fileID: 2898266861814728267}
   - {fileID: 6292460650664255920}
+  - {fileID: 4794847655671673315}
+  - {fileID: 715036958479893531}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
