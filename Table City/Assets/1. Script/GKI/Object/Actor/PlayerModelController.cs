@@ -14,7 +14,7 @@ public class PlayerModelController : MonoBehaviour
     public void InitHead(Transform target)
     {
         _headPivot = target;
-        _head = transform.Find("Male Head");
+        _head = transform.Find("HeadPivot");
         _isInitHead = true;
     }
 
