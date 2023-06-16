@@ -142,13 +142,11 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 
 		NetworkManager.Net.SetJoinRoomPlayerCount(_Text_Popup_Subject);
 
-		// 방 최대 인원까지 플레이어가 들어왔다면 스폰 포인트를 선택하는 버튼을 띄운다.
-		if (PhotonNetwork.CurrentRoom.PlayerCount == PhotonNetwork.CurrentRoom.MaxPlayers)
-		{
-			OnPointButton(true);
-		}
+		_pv.RPC("JoinPlayer", RpcTarget.All);
+
 	}
 
+	// 스폰 포인트 선택 버튼 띄우기
 	private void OnPointButton(bool _on)
 	{
 		_PointButton.SetActive(_on);
@@ -163,7 +161,16 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 		NetworkManager.Net.SetJoinRoomPlayerCount(_Text_Popup_Subject);
 	}
 
-	
+	// 방 최대 인원까지 플레이어가 들어왔다면 스폰 포인트를 선택하는 버튼을 띄운다.
+	[PunRPC]
+	private void JoinPlayer()
+	{
+		if (PhotonNetwork.CurrentRoom.PlayerCount == PhotonNetwork.CurrentRoom.MaxPlayers)
+		{
+			OnPointButton(true);
+		}
+	}
+
 	// 플레이어가 선택한 버튼 제거
 	[PunRPC]
 	private void SelectPoint(bool _A)
