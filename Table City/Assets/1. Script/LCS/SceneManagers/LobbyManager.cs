@@ -44,10 +44,15 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 	public GameObject _PointButton;
 	#endregion
 
+	// 포톤 뷰
+	private PhotonView _pv;
+
+	// 선택한 스폰 포인트
 	private bool _SelectedA = false, _SelectedB = false;
 
 	private void Start()
 	{
+		_pv = gameObject.GetComponent<PhotonView>();
 		InitWindow();
 	}
 
@@ -101,15 +106,10 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 
 	// 생성할 포인트를 선택하는 함수
 	// 메인 화면의 A, B 버튼에 연결되어 있음
-	public void Button_PointA()
+	public void Button_Point(bool _A)
 	{
-		NetworkManager.Net.SetPlayerSpawnPoint(true);
-		GameObject.Find("PlayerPrefab").GetComponent<PhotonView>().RPC("PointA", RpcTarget.All);
-	}
-	public void Button_PointB()
-	{
-		NetworkManager.Net.SetPlayerSpawnPoint(false);
-		GameObject.Find("PlayerPrefab").GetComponent<PhotonView>().RPC("PointA", RpcTarget.All);
+		NetworkManager.Net.SetPlayerSpawnPoint(_A);
+		_pv.RPC("SelectPoint", RpcTarget.All, _A);
 	}
 	#endregion
 
@@ -142,14 +142,8 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 
 		NetworkManager.Net.SetJoinRoomPlayerCount(_Text_Popup_Subject);
 
-		// 방 최대 인원까지 플레이어가 들어왔다면 마스터 클라이언트에서 게임을 진행할 씬으로 이동시킨다.
-		if (PhotonNetwork.IsMasterClient)
-		{
-			if (PhotonNetwork.CurrentRoom.PlayerCount == PhotonNetwork.CurrentRoom.MaxPlayers)
-			{
-				OnPointButton();
-			}
-		}
+		// 방 최대 인원까지 플레이어가 들어왔다면 스폰 포인트를 선택하는 버튼을 띄운다.
+		OnPointButton();
 	}
 
 	private void OnPointButton()
@@ -175,30 +169,31 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 	
 	// 플레이어가 선택한 버튼 제거
 	[PunRPC]
-	private void PointA()
+	private void SelectPoint(bool _A)
 	{
 		if (_SelectedA && _SelectedB)
 		{
-			PhotonNetwork.LoadLevel("PlayRoom");
-		}
-		else
-		{
-			_SelectedA = true;
-			_PointButton.transform.Find("Button_PointA").gameObject.SetActive(false);
-		}
-	}
 
-	[PunRPC]
-	private void PointB()
-	{
-		if (_SelectedA && _SelectedB)
-		{
-			PhotonNetwork.LoadLevel("PlayRoom");
+			if (PhotonNetwork.IsMasterClient)
+			{
+				if (PhotonNetwork.CurrentRoom.PlayerCount == PhotonNetwork.CurrentRoom.MaxPlayers)
+				{
+					PhotonNetwork.LoadLevel("PlayRoom");
+				}
+			}
 		}
 		else
 		{
-			_SelectedB = true;
-			_PointButton.transform.Find("Button_PointB").gameObject.SetActive(false);
+			if (_A)
+			{
+				_SelectedA = true;
+				_PointButton.transform.Find("Button_PointA").gameObject.SetActive(false);
+			}
+			else
+			{
+				_SelectedB = true;
+				_PointButton.transform.Find("Button_PointB").gameObject.SetActive(false);
+			}
 		}
 	}
 }

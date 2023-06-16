@@ -528,8 +528,8 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1322232607}
         m_TargetAssemblyTypeName: LobbyManager, Assembly-CSharp
-        m_MethodName: Button_PointB
-        m_Mode: 1
+        m_MethodName: Button_Point
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -2118,15 +2118,15 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1322232607}
         m_TargetAssemblyTypeName: LobbyManager, Assembly-CSharp
-        m_MethodName: Button_PointA
-        m_Mode: 1
+        m_MethodName: Button_Point
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 0
+          m_BoolArgument: 1
         m_CallState: 2
 --- !u!114 &1055858991
 MonoBehaviour:
@@ -2473,6 +2473,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1322232606}
   - component: {fileID: 1322232607}
+  - component: {fileID: 1322232608}
   m_Layer: 0
   m_Name: '@LobbyManager'
   m_TagString: Untagged
@@ -2516,6 +2517,28 @@ MonoBehaviour:
   _Text_Popup_Subject: {fileID: 1121262715}
   _CancelButton: {fileID: 1514081070}
   _PointButton: {fileID: 1047609590}
+--- !u!114 &1322232608
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1322232605}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 2
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &1379822648
 GameObject:
   m_ObjectHideFlags: 0
