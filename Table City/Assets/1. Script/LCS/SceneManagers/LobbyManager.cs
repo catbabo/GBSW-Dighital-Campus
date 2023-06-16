@@ -143,26 +143,23 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 		NetworkManager.Net.SetJoinRoomPlayerCount(_Text_Popup_Subject);
 
 		// 방 최대 인원까지 플레이어가 들어왔다면 스폰 포인트를 선택하는 버튼을 띄운다.
-		OnPointButton();
+		if (PhotonNetwork.CurrentRoom.PlayerCount == PhotonNetwork.CurrentRoom.MaxPlayers)
+		{
+			OnPointButton(true);
+		}
 	}
 
-	private void OnPointButton()
+	private void OnPointButton(bool _on)
 	{
-		_CancelButton.SetActive(false);
-		_PointButton.SetActive(true);
-	}
-
-	private void OffPointButton()
-	{
-		_CancelButton.SetActive(false);
-		_PointButton.SetActive(true);
+		_PointButton.SetActive(_on);
+		_CancelButton.SetActive(!_on);
 	}
 
 	// 플레이어가 방에서 나가면 실행
 	public override void OnPlayerLeftRoom(Player otherPlayer)
 	{
 		print(otherPlayer.NickName + " 나감.");
-		OffPointButton();
+		OnPointButton(false);
 		NetworkManager.Net.SetJoinRoomPlayerCount(_Text_Popup_Subject);
 	}
 
