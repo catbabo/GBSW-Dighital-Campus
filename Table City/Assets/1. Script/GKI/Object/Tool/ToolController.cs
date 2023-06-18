@@ -1,3 +1,4 @@
+using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,6 +9,7 @@ public class ToolController : ObjectBase
     private Transform _grapPoint;
     private Vector3 _originPos;
     private Quaternion _originRot;
+    private bool _isMine;
 
     private void Start()
     {
@@ -20,10 +22,17 @@ public class ToolController : ObjectBase
         _type = Define.CatingType.Tool;
         _originPos = transform.position;
         _originRot = transform.rotation;
+
+        PhotonView pv = null;
+        pv = GetComponent<PhotonView>();
+        _isMine = (pv != null);
     }
 
     public override void Interact(VRController interactedHand, Transform target)
     {
+        if (!_isMine)
+            return;
+
         if(_isInteracting)
         {
             _interactedHand.Interrupt();
@@ -37,6 +46,9 @@ public class ToolController : ObjectBase
 
     public override void ExitInteract()
     {
+        if (!_isMine)
+            return;
+
         _isGrab = false;
         transform.position = _originPos;
         transform.rotation = _originRot;
