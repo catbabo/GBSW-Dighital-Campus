@@ -3385,6 +3385,7 @@ GameObject:
   - component: {fileID: 2053176541435941870}
   - component: {fileID: 6432170294346500547}
   - component: {fileID: 8517954687060143720}
+  - component: {fileID: 8634750426835585815}
   m_Layer: 0
   m_Name: OVRControllerVisual
   m_TagString: Untagged
@@ -3534,8 +3535,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _isRight: 1
+  _isTesting: 0
   _laser: {fileID: 0}
   _laserColor: {r: 0, g: 0, b: 0, a: 0}
+--- !u!114 &8634750426835585815
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1578140098538958522}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &2232542365210386402
 GameObject:
   m_ObjectHideFlags: 0
@@ -4114,6 +4138,7 @@ GameObject:
   - component: {fileID: 5961663708788086633}
   - component: {fileID: 5961663708788086635}
   - component: {fileID: 3360413603250766702}
+  - component: {fileID: 1109871325109253187}
   m_Layer: 0
   m_Name: OVRControllerVisual
   m_TagString: Untagged
@@ -4263,8 +4288,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _isRight: 0
+  _isTesting: 0
   _laser: {fileID: 0}
   _laserColor: {r: 0, g: 0, b: 0, a: 0}
+--- !u!114 &1109871325109253187
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6567623401465473597}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &6880230554587296911
 GameObject:
   m_ObjectHideFlags: 0
