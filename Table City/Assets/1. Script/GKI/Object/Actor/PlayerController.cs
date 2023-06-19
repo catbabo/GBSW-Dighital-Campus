@@ -4,6 +4,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+using PN = Photon.Pun.PhotonNetwork;
+
 public class PlayerController : MonoBehaviour
 {
     private PhotonView _pv;
@@ -33,9 +35,9 @@ public class PlayerController : MonoBehaviour
 
     private void InitializeOVRSystem()
     {
-        //GameObject _ovrSource = Resources.Load<GameObject>("0. Player/OVR_Systems");
-        //_ovrRoot = Instantiate<GameObject>(_ovrSource, transform);
-        _ovrRoot = Photon.Pun.PhotonNetwork.Instantiate("0. Player/OVR_Systems", transform.position, Quaternion.identity);
+        GameObject _ovrSource = Resources.Load<GameObject>("0. Player/OVR_Systems");
+        _ovrRoot = Instantiate<GameObject>(_ovrSource, transform);
+        //_ovrRoot = PN.Instantiate("0. Player/OVR_Systems", transform.position, Quaternion.identity);
         _ovrRoot.name = "OVR_Systems";
         _ovrRoot.transform.localPosition = Vector3.zero;
         _ovrRoot.transform.localRotation = Quaternion.identity;

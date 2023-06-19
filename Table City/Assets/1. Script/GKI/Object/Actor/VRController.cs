@@ -39,15 +39,11 @@ public class VRController : MonoBehaviour
     private float _rayLength = 100f;
     private RaycastHit _hit;
     private Transform _hitTransform;
-    private bool _isMine;
 
     private void Start()
     {
         if (_isTesting)
             return;
-
-        PhotonView pv = gameObject.GetComponent<PhotonView>();
-        _isMine = (pv != null);
 
         SetLaser();
         SetButton();
@@ -102,7 +98,7 @@ public class VRController : MonoBehaviour
 
     private void Update()
     {
-        if (_isTesting || !_isMine)
+        if (_isTesting)
             return;
 
         ControllerCycle();
