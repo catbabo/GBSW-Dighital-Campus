@@ -94,6 +94,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 	{
 		print("방 입장 성공!");
 		SetPopup(PopupState.Wait);
+		_pv.RPC("JoinPlayer", RpcTarget.All);
 	}
 
 	// 플레이어를 기다리는 중이라면 Disconnect 아니라면 팝업창 종료

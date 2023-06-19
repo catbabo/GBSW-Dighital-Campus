@@ -44,6 +44,9 @@ MonoBehaviour:
   - RespawnSpaceship
   - PointA
   - PointB
+  - SelectPoint
+  - MaxPlayer
+  - JoinPlayer
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1
