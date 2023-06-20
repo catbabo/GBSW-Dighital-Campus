@@ -5,8 +5,9 @@ using UnityEngine.UI;
 
 public class ObjectBase : MonoBehaviour
 {
+    protected bool _isInteracting;
     public Define.CatingType _type;
-    protected Transform _interactedHand;
+    protected VRController _interactedHand;
 
     public Button Button
     {
@@ -39,8 +40,8 @@ public class ObjectBase : MonoBehaviour
 
     public virtual void Init() { }
 
-    public virtual void Interact(Transform interactedHand) { }
-    public virtual void Interact(Transform interactedHand, Transform target) { }
+    public virtual void Interact(VRController interactedHand) { }
+    public virtual void Interact(VRController interactedHand, Transform target) { }
 
     public virtual void ExitInteract() { }
 }

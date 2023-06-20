@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using Photon.Pun;
 
 public class VRController : MonoBehaviour
 {
@@ -11,7 +12,7 @@ public class VRController : MonoBehaviour
     //[SerializeField]
     //private Transform _lController, _rController;
     [SerializeField]
-    private bool _isRight;
+    private bool _isRight, _isTesting;
 
     private Transform _toolGrabPoint;
     private bool _isGrab;
@@ -39,17 +40,11 @@ public class VRController : MonoBehaviour
     private RaycastHit _hit;
     private Transform _hitTransform;
 
-    private Transform _visual;
-    private bool _isInit;
-
-    public void Init(Transform visual)
-    {
-        _visual = visual;
-        _isInit = true;
-    }
-
     private void Start()
     {
+        if (_isTesting)
+            return;
+
         SetLaser();
         SetButton();
     }
@@ -103,11 +98,8 @@ public class VRController : MonoBehaviour
 
     private void Update()
     {
-        if (!_isInit)
+        if (_isTesting)
             return;
-
-        transform.rotation = _visual.rotation;
-        transform.position = _visual.position;
 
         ControllerCycle();
     }
@@ -165,16 +157,6 @@ public class VRController : MonoBehaviour
 
     private void ExitCasting()
     {
-        if (_targetType == Define.CatingType.Button)
-        {
-            _button.OnPointerExit(null);
-            _button = null;
-        }
-
-        if (_targetType == Define.CatingType.InputField)
-        {
-            _inputField = null;
-        }
 
         if (_targetType == Define.CatingType.Tool)
         {
@@ -198,22 +180,10 @@ public class VRController : MonoBehaviour
         if (_castedComponent == null)
             return;
 
-        if (_targetType == Define.CatingType.Button)
-        {
-            _button = _castedComponent.Button;
-            _button.onClick.Invoke();
-        }
-
-        if (_targetType == Define.CatingType.InputField)
-        {
-            _inputField = _castedComponent.InputField;
-            _inputField.ActivateInputField();
-        }
-
         if (_targetType == Define.CatingType.Tool)
         {
             Debug.Log("Interact");
-            _castedComponent.Interact(transform, _toolGrabPoint);
+            _castedComponent.Interact(this, _toolGrabPoint);
             _isGrab = true;
             LaserEnable(false);
         }
@@ -225,30 +195,25 @@ public class VRController : MonoBehaviour
         SetLaserColor(Color.cyan);
     }
 
-    public void ExitInteract()
+    public void ExitInteract(bool isInterrupt = false)
     {
         if (_castedComponent == null)
             return;
 
-        if (_targetType == Define.CatingType.Button)
-        {
-            _button = _castedComponent.Button;
-            _button.OnPointerExit(null);
-            _button = null;
-        }
-
-        if (_targetType == Define.CatingType.InputField)
-        {
-            _inputField = null;
-        }
-
         if (_targetType == Define.CatingType.Tool)
         {
-            Debug.Log("Exit Interact");
-            _castedComponent.ExitInteract();
             _isGrab = false;
             LaserEnable(true);
         }
+
+        if(!isInterrupt)
+            _castedComponent.ExitInteract();
+
         _castedObject = null;
+    }
+
+    public void Interrupt()
+    {
+        ExitInteract(true);
     }
 }
