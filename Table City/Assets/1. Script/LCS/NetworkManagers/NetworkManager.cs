@@ -59,7 +59,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
 	private void Update()
 	{
 		// D, M을 동시에 누르면 개발자모드 사용 또는 해제
-		if(Input.GetKeyDown(KeyCode.D) && Input.GetKeyDown(KeyCode.M)) { _onDevelopMode = !_onDevelopMode; }
+		if(Input.GetKey(KeyCode.D) && Input.GetKeyDown(KeyCode.M)) { _onDevelopMode = !_onDevelopMode; print("개발자 모드 : " + _onDevelopMode); }
 		if (_onDevelopMode) { DevelopMode(); }
 	}
 
