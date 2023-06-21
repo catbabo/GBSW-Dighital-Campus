@@ -26,7 +26,8 @@ Transform:
   m_GameObject: {fileID: 5171912539814726831}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 15.022193, y: 15.022193, z: 15.022193}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2023001519278604926}
   - {fileID: 8511836107430904070}
@@ -102,6 +103,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2220073418438071575, guid: 2f8839643c244cd4eae5eb7c326312e8, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 0de74cacf6310c64ca1b6862ba4b219c, type: 2}
     m_RemovedComponents:
     - {fileID: 3763078625510500098, guid: 2f8839643c244cd4eae5eb7c326312e8, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 2f8839643c244cd4eae5eb7c326312e8, type: 3}
@@ -161,6 +166,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 831b5bed982bee9459f5502d93b6dbe7, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 579080bda9f89ee42a5447d6d997e266, type: 2}
     - target: {fileID: 919132149155446097, guid: 831b5bed982bee9459f5502d93b6dbe7, type: 3}
       propertyPath: m_Name
       value: SandPileBag

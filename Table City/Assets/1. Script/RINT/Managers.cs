@@ -13,7 +13,7 @@ public class Managers : MonoBehaviour
     {
         if(system == null)
         {
-            system = gameObject.AddComponent<GameManager>();
+            system = gameObject.GetComponent<GameManager>();
 
             GameObject soundObject = EmptyInstantiate("SoundManager");
             sound = soundObject.AddComponent<SoundManager>();
