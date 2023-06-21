@@ -11796,6 +11796,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player_Workbench
       objectReference: {fileID: 0}
+    - target: {fileID: 9051716955400520980, guid: d6304c7e9946e4e4484b5dd3939acae5, type: 3}
+      propertyPath: sceneViewId
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d6304c7e9946e4e4484b5dd3939acae5, type: 3}
 --- !u!4 &5969892614676254267 stripped
