@@ -347,6 +347,7 @@ MonoBehaviour:
   observableSearch: 2
   ObservedComponents:
   - {fileID: -1382060554796422945}
+  - {fileID: 4391608918155142285}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -393,7 +394,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1394571958877527390}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.92, y: -2.938, z: -7.77}
+  m_LocalPosition: {x: -3.92, y: -2.938, z: -8.32}
   m_LocalScale: {x: 1.35, y: 1.5, z: 4.5}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -981,7 +982,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2388607416864112967}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.178, y: -3.11, z: -6.09}
+  m_LocalPosition: {x: 0.178, y: -3.11, z: -6.64}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1117,7 +1118,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2920524379731429322}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4.398, y: -2.685, z: -7.78}
+  m_LocalPosition: {x: 4.398, y: -2.685, z: -8.33}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2850,7 +2851,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7971650563760146211}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.9200003, y: -2.193, z: -8.92}
+  m_LocalPosition: {x: -3.9200003, y: -2.193, z: -9.47}
   m_LocalScale: {x: 2.1931999, y: 2.1931999, z: 2.1931999}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3574,7 +3575,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1688097557442115492, guid: a1f6f44a684c28a4a9fe79f3cb3afade, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -7.35
+      value: -7.9
       objectReference: {fileID: 0}
     - target: {fileID: 1688097557442115492, guid: a1f6f44a684c28a4a9fe79f3cb3afade, type: 3}
       propertyPath: m_LocalRotation.w
@@ -3606,6 +3607,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a1f6f44a684c28a4a9fe79f3cb3afade, type: 3}
+--- !u!114 &4391608918155142285 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5855306538029869132, guid: a1f6f44a684c28a4a9fe79f3cb3afade, type: 3}
+  m_PrefabInstance: {fileID: 7903847364054076609}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &8853312181850307429 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1688097557442115492, guid: a1f6f44a684c28a4a9fe79f3cb3afade, type: 3}
