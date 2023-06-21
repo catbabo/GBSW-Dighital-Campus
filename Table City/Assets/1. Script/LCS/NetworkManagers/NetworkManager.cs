@@ -9,6 +9,10 @@ using Photon.Realtime;
 
 public class NetworkManager : MonoBehaviourPunCallbacks
 {
+
+	// 게임 버전
+	private string _gameVersion = "1";
+
 	#region Singleton
 	public static NetworkManager Net = null;
 	private void Awake()
@@ -27,33 +31,39 @@ public class NetworkManager : MonoBehaviourPunCallbacks
 	}
 	#endregion
 
-	// 게임 버전
-	private string _gameVersion = "1";
-
-	// 방 이름
+	#region PlayerServerInfo
+	// 들어갈 방 이름
 	public string _roomCode { get; private set; } = "12345";
 
 	// 닉네임
 	public string _nickName { get; private set; } = "Admin";
 
-	// 스폰 포인트
-	private bool _PointA;
+	// 플레이어가 A 포인트에 생성될 여부
+	// true : 플레이어 A 포인트에서 소환 , false : 플레이어 B 포인트에서 소환
+	private bool _pointA;
+	#endregion
 
-	private void Update()
-	{
-		DevelopMode();
-	}
+	// 개발자모드 사용 여부
+	// true : 개발자모드 사용 , false : 개발자모드 해제
+	private bool _onDevelopMode = false;
 
 	// 네트워크 세팅 초기화
 	private void InitNetworkSetting()
 	{
-		PhotonNetwork.GameVersion = this._gameVersion;
-		PhotonNetwork.SendRate = 60;
-		PhotonNetwork.SerializationRate = 30;
-		PhotonNetwork.AutomaticallySyncScene = true;
+		PhotonNetwork.GameVersion = this._gameVersion; // 게임 버전 설정 ( 버전이 같은 사람끼리만 매칭이 가능함 )
+		PhotonNetwork.SendRate = 60; // 초당 패키지를 전송하는 횟수
+		PhotonNetwork.SerializationRate = 30; // 초당 OnPhotonSerialize를 실행하는 횟수
+		PhotonNetwork.AutomaticallySyncScene = true; // PhotonNetwork.LoadLevel을 사용하였을 때 모든 참가자를 동일한 레벨로 이동하게 하는지의 여부
 	}
 
-	#region SetInfo
+	private void Update()
+	{
+		// D, M을 동시에 누르면 개발자모드 사용 또는 해제
+		if(Input.GetKeyDown(KeyCode.D) && Input.GetKeyDown(KeyCode.M)) { _onDevelopMode = !_onDevelopMode; }
+		if (_onDevelopMode) { DevelopMode(); }
+	}
+
+	#region SetPlayerServerInfo
 	// 플레이어 닉네임 설정
 	public void SetNickName(string _name) => _nickName = _name;
 
@@ -75,7 +85,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
 	#endregion
 
 	#region Lobby
-	// 로비에 접속하기.
+	// 로비 접속
 	public void JoinLobby()
 	{
 		PhotonNetwork.JoinLobby();
@@ -91,7 +101,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
 	#endregion
 
 	#region Room
-	// 방 입장 또는 생성 ( 방 이름, 입장 가능 인원수)
+	// 방 입장 방이 없으면 생성 ( 방 이름, 입장 가능 인원수)
 	public void JoinOrCreate(string _name, int _maxPlayer)
 				=> PhotonNetwork.JoinOrCreateRoom(_name, new RoomOptions { MaxPlayers = _maxPlayer }, null); // ( 방 이름, 방 옵션, 로비 타입 )
 
@@ -121,7 +131,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
 	#endregion
 
 	#region Spawn
-	// 오브젝트 소환 ( 오브젝트 이름 (Resources 에서 소환함), 소환될 위치, 마스터 서버에서 소환될 위치(소환 위치가 상관 없다면 안적어도 됨))
+	// 오브젝트 소환 ( 오브젝트 파일 위치 (Resources 에서 소환함), 소환될 위치, 마스터 서버에서 소환될 위치(소환 위치가 상관 없다면 안적어도 됨))
 	public void SpawnObject(string _objectName, Transform _point)
 	{
 		GameObject _object = PhotonNetwork.Instantiate(_objectName, _point.position, _point.rotation);
@@ -130,7 +140,8 @@ public class NetworkManager : MonoBehaviourPunCallbacks
 	// 플레이어 소환
 	public void SpawnPlayer()
 	{
-		SpawnObject("0. Player/PlayerPrefab", _PointA ? RoomManager.room._PlayerPointA : RoomManager.room._PlayerPointB);
+		SpawnObject("0. Player/Player_Prefab", _pointA ? RoomManager.room._PlayerPointA : RoomManager.room._PlayerPointB);
+		SpawnObject("0. Player/Player_Workbench", _pointA ? RoomManager.room._WorkbenchPointA : RoomManager.room._WorkbenchPointB);
 	}
 	#endregion
 
@@ -151,16 +162,15 @@ public class NetworkManager : MonoBehaviourPunCallbacks
 	}
 	#endregion
 
-	// 플레이어 소환 위치 셋
-	public void SetPlayerSpawnPoint(bool _point)
-	{
-		_PointA = _point;
-	}
+	// 플레이어가 선택한 위치 저장
+	public void SetPlayerSpawnPoint(bool _point) => _pointA = _point;
 
 	// 방에 들어온 플레이어의 수를 리턴
-	public void SetJoinRoomPlayerCount(TMP_Text _text) => _text.text = "Player : " + PhotonNetwork.CurrentRoom.PlayerCount + " / " + PhotonNetwork.CurrentRoom.MaxPlayers;
+	// public void SetJoinRoomPlayerCount(TMP_Text _text) => _text.text = "Player : " + PhotonNetwork.CurrentRoom.PlayerCount + " / " + PhotonNetwork.CurrentRoom.MaxPlayers;
 
-	// 서버 정보
+	// 서버 정보 출력
+	// 방에 들어가 있다면 방 이름, 방 인원수, 방 최대 인원수, 방에 있는 플레이어 목록 출력
+	// 그렇지 않으면 접속한 인원 수, 방 개수, 모든 방에 있는 인원 수, 로비에 있는지의 여부, 연결이 됐는지의 여부
 	public void Info()
 	{
 		if (PhotonNetwork.InRoom)
@@ -184,25 +194,29 @@ public class NetworkManager : MonoBehaviourPunCallbacks
 	}
 
 	// 개발자 모드
+	// 대부분 앞자리를 따와서 제작함
+	// 키코드 : 'C'onnect, lo'B'by, 'I'nfo, 'L'eave , 'J'oin, 'D'isconnect
 	private void DevelopMode()
 	{
-		// M을 누르면 마스터 서버로 입장
-		if (Input.GetKeyDown(KeyCode.M)) Connect();
 
 		// B를 누르면 로비 입장
 		if (Input.GetKeyDown(KeyCode.B)) JoinLobby();
 
+		// C를 누르면 마스터 서버로 입장
+		if (Input.GetKeyDown(KeyCode.C)) Connect();
+
+		// D를 누르면 서버 연결 해제
+		if (Input.GetKeyDown(KeyCode.D)) DisConnect();
+
 		// I를 누르면 서버 정보 호출
 		if (Input.GetKeyDown(KeyCode.I)) Info();
+
+		// J을 누르면 방 입장
+		if (Input.GetKeyDown(KeyCode.J)) JoinOrCreate(_roomCode, 2);
 
 		// L을 누르면 방 떠나기
 		if (Input.GetKeyDown(KeyCode.L)) LeaveRoom();
 
-		// R을 누르면 방 입장
-		if (Input.GetKeyDown(KeyCode.J)) JoinOrCreate(_roomCode, 2);
-
-		// D를 누르면 서버 연결 해제
-		if (Input.GetKeyDown(KeyCode.D)) DisConnect();
 	}
 
 }

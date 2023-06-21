@@ -20,7 +20,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 	public GameObject _Window_Popup;
 	#endregion
 
-	#region Input
+	#region InputField
 	// 방 코드
 	public TMP_InputField _Input_RoomCode;
 
@@ -36,7 +36,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 	public TMP_Text _Text_Popup_Subject;
 	#endregion
 
-	#region ButtonObj
+	#region Object_UI
 	// 캔슬 버튼
 	public GameObject _CancelButton;
 
@@ -131,7 +131,9 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 
 		_PopupState = _state;
 		_Text_Popup_Title.text = _state.ToString();
-		if (_state == PopupState.Wait) { NetworkManager.Net.SetJoinRoomPlayerCount(_Text_Popup_Subject); }
+		
+		// 플레이어가 현재 몇명 들어와 있는지 출력
+		if (_state == PopupState.Wait) { SetJoinRoomPlayerCount(_Text_Popup_Subject); }
 		else { _Text_Popup_Subject.text = _subjectText; }
 	}
 	#endregion
@@ -141,13 +143,16 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 	{
 		print(newPlayer.NickName + " 참가.");
 
-		NetworkManager.Net.SetJoinRoomPlayerCount(_Text_Popup_Subject);
+		SetJoinRoomPlayerCount(_Text_Popup_Subject);
 
 		_pv.RPC("JoinPlayer", RpcTarget.All);
 
 	}
 
-	// 스폰 포인트 선택 버튼 띄우기
+	// 플레이어가 현재 몇명 들어와 있는지 출력 ( 출력할 텍스트 )
+	private void SetJoinRoomPlayerCount(TMP_Text _text) => _text.text = "Player : " + PhotonNetwork.CurrentRoom.PlayerCount + " / " + PhotonNetwork.CurrentRoom.MaxPlayers;
+
+	// 스폰 포인트 선택 버튼을 띄움
 	private void OnPointButton(bool _on)
 	{
 		_PointButton.SetActive(_on);
@@ -159,7 +164,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 	{
 		print(otherPlayer.NickName + " 나감.");
 		OnPointButton(false);
-		NetworkManager.Net.SetJoinRoomPlayerCount(_Text_Popup_Subject);
+		SetJoinRoomPlayerCount(_Text_Popup_Subject);
 	}
 
 	// 방 최대 인원까지 플레이어가 들어왔다면 스폰 포인트를 선택하는 버튼을 띄운다.
@@ -172,7 +177,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 		}
 	}
 
-	// 플레이어가 선택한 버튼 제거
+	// 플레이어가 선택한 버튼 제거 선택이 완료 되었다면 플레이 룸으로 이동
 	[PunRPC]
 	private void SelectPoint(bool _A)
 	{

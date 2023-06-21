@@ -9,15 +9,18 @@ public class Pick : MonoBehaviour
     {
         instantiate = Managers.instantiate;
     }
+
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.transform.CompareTag("Stone"))
         {
-            instantiate.UsePoolingObject(prefabType.effect + "Explosion", collision.contacts[0].point, Quaternion.identity);
+            RoomManager.room.SpawnOBJ(prefabType.effect, "Explosion", collision.contacts[0].point, Quaternion.identity);
         }
         else
         {
 
         }
     }
+
+
 }

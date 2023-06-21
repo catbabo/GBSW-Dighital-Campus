@@ -84,7 +84,7 @@ public class PrefabManager : MonoBehaviour
         addObject.SetActive(false);
     }
 }
-enum prefabType
+public enum prefabType
 {
     building,
     effect,

@@ -1280,7 +1280,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1374461931545386492}
   m_Layer: 0
-  m_Name: Player_EnvironmentsOld
+  m_Name: Player_WorkbenchOld
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
