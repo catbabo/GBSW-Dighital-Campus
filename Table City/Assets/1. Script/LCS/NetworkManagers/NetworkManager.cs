@@ -43,11 +43,10 @@ public class NetworkManager : MonoBehaviourPunCallbacks
 	private bool _pointA;
 	#endregion
 
-	// 개발자모드 사용 여부
-	// true : 개발자모드 사용 , false : 개발자모드 해제
+	/// <summary>개발자모드 사용 여부 (true : 개발자모드 사용 , false : 개발자모드 해제)</summary>
 	private bool _onDevelopMode = false;
 
-	// 네트워크 세팅 초기화
+	/// <summary>네트워크 세팅 초기화</summary>
 	private void InitNetworkSetting()
 	{
 		PhotonNetwork.GameVersion = this._gameVersion; // 게임 버전 설정 ( 버전이 같은 사람끼리만 매칭이 가능함 )
@@ -175,21 +174,21 @@ public class NetworkManager : MonoBehaviourPunCallbacks
 	{
 		if (PhotonNetwork.InRoom)
 		{
-			print("현재 방 이름 : " + PhotonNetwork.CurrentRoom.Name);
-			print("현재 방 인원수 : " + PhotonNetwork.CurrentRoom.PlayerCount);
-			print("현재 방 최대인원수 : " + PhotonNetwork.CurrentRoom.MaxPlayers);
+			Debug.Log("현재 방 이름 : " + PhotonNetwork.CurrentRoom.Name);
+			Debug.Log("현재 방 인원수 : " + PhotonNetwork.CurrentRoom.PlayerCount);
+			Debug.Log("현재 방 최대인원수 : " + PhotonNetwork.CurrentRoom.MaxPlayers);
 
 			string playerStr = "방에 있는 플레이어 목록 : ";
 			for (int i = 0; i < PhotonNetwork.PlayerList.Length; i++) playerStr += PhotonNetwork.PlayerList[i].NickName + ", ";
-			print(playerStr);
+			Debug.Log(playerStr);
 		}
 		else
 		{
-			print("접속한 인원 수 : " + PhotonNetwork.CountOfPlayers);
-			print("방 개수 : " + PhotonNetwork.CountOfRooms);
-			print("모든 방에 있는 인원 수 : " + PhotonNetwork.CountOfPlayersInRooms);
-			print("로비에 있는지? : " + PhotonNetwork.InLobby);
-			print("연결됐는지? : " + PhotonNetwork.IsConnected);
+			Debug.Log("접속한 인원 수 : " + PhotonNetwork.CountOfPlayers);
+			Debug.Log("방 개수 : " + PhotonNetwork.CountOfRooms);
+			Debug.Log("모든 방에 있는 인원 수 : " + PhotonNetwork.CountOfPlayersInRooms);
+			Debug.Log("로비에 있는지? : " + PhotonNetwork.InLobby);
+			Debug.Log("연결됐는지? : " + PhotonNetwork.IsConnected);
 		}
 	}
 

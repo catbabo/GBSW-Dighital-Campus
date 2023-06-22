@@ -11,29 +11,29 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 
 	#region Window
 	// 타이틀 화면 ( 게임 제목 및 게임 시작 버튼 )
-	public GameObject _Window_Title;
+	[SerializeField] private GameObject _Window_Title;
 
 	// 메인 화면 ( 방 이름과 닉네임 설정 및 서버 입장 )
-	public GameObject _Window_Main;
+	[SerializeField] private GameObject _Window_Main;
 
 	// 방이나 닉네임이 적혀 있지 않으면 나오는 팝업
-	public GameObject _Window_Popup;
+	[SerializeField] private GameObject _Window_Popup;
 	#endregion
 
 	#region InputField
 	// 방 코드
-	public TMP_InputField _Input_RoomCode;
+	[SerializeField] private TMP_InputField _Input_RoomCode;
 
 	// 닉네임
-	public TMP_InputField _Input_NickName;
+	[SerializeField] private TMP_InputField _Input_NickName;
 	#endregion
 
 	#region Text
 	// 팝업창 제목 텍스트
-	public TMP_Text _Text_Popup_Title;
+	[SerializeField] private TMP_Text _Text_Popup_Title;
 
 	// 팝업창 내용 텍스트
-	public TMP_Text _Text_Popup_Subject;
+	[SerializeField] private TMP_Text _Text_Popup_Subject;
 	#endregion
 
 	#region Object_UI
@@ -110,6 +110,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 	public void Button_Point(bool _A)
 	{
 		NetworkManager.Net.SetPlayerSpawnPoint(_A);
+
 		_pv.RPC("SelectPoint", RpcTarget.All, _A);
 	}
 	#endregion
@@ -131,7 +132,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 
 		_PopupState = _state;
 		_Text_Popup_Title.text = _state.ToString();
-		
+
 		// 플레이어가 현재 몇명 들어와 있는지 출력
 		if (_state == PopupState.Wait) { SetJoinRoomPlayerCount(_Text_Popup_Subject); }
 		else { _Text_Popup_Subject.text = _subjectText; }
@@ -181,28 +182,25 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 	[PunRPC]
 	private void SelectPoint(bool _A)
 	{
+		if(_A)
+			{
+			_SelectedA = true;
+			_PointButton.transform.Find("Button_PointA").gameObject.SetActive(false);
+		}
+		else
+		{
+			_SelectedB = true;
+			_PointButton.transform.Find("Button_PointB").gameObject.SetActive(false);
+		}
+
 		if (_SelectedA && _SelectedB)
 		{
-
 			if (PhotonNetwork.IsMasterClient)
 			{
 				if (PhotonNetwork.CurrentRoom.PlayerCount == PhotonNetwork.CurrentRoom.MaxPlayers)
 				{
 					PhotonNetwork.LoadLevel("PlayRoom");
 				}
-			}
-		}
-		else
-		{
-			if (_A)
-			{
-				_SelectedA = true;
-				_PointButton.transform.Find("Button_PointA").gameObject.SetActive(false);
-			}
-			else
-			{
-				_SelectedB = true;
-				_PointButton.transform.Find("Button_PointB").gameObject.SetActive(false);
 			}
 		}
 	}
