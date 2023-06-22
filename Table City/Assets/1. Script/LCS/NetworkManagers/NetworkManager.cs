@@ -157,19 +157,18 @@ public class NetworkManager : MonoBehaviourPunCallbacks
 	// 서버 연결 해제시 실행
 	public override void OnDisconnected(DisconnectCause cause)
 	{
-		print("서버 연결 해제");
+		Debug.Log("서버 연결 해제");
 	}
 	#endregion
 
 	// 플레이어가 선택한 위치 저장
 	public void SetPlayerSpawnPoint(bool _point) => _pointA = _point;
 
-	// 방에 들어온 플레이어의 수를 리턴
-	// public void SetJoinRoomPlayerCount(TMP_Text _text) => _text.text = "Player : " + PhotonNetwork.CurrentRoom.PlayerCount + " / " + PhotonNetwork.CurrentRoom.MaxPlayers;
-
-	// 서버 정보 출력
-	// 방에 들어가 있다면 방 이름, 방 인원수, 방 최대 인원수, 방에 있는 플레이어 목록 출력
-	// 그렇지 않으면 접속한 인원 수, 방 개수, 모든 방에 있는 인원 수, 로비에 있는지의 여부, 연결이 됐는지의 여부
+	/// <summary>
+	/// 서버 정보 출력
+	/// 방에 들어가 있다면 방 이름, 방 인원수, 방 최대 인원수, 방에 있는 플레이어 목록 출력
+	/// 그렇지 않으면 접속한 인원 수, 방 개수, 모든 방에 있는 인원 수, 로비에 있는지의 여부, 연결이 됐는지의 여부
+	/// </summary>
 	public void Info()
 	{
 		if (PhotonNetwork.InRoom)
