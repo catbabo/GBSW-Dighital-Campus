@@ -10,25 +10,9 @@ public class ResourceController : GrabableObject
 
     private void Start()
     {
-<<<<<<< HEAD
-        Init();
-    }
-
-    public override void Init()
-    {
-        _isInteracting = false;
-        _type = Define.CatingType.Tool;
-        _originPos = transform.position;
-        _originRot = transform.rotation;
-
-        PhotonView pv = null;
-        pv = GetComponent<PhotonView>();
-        _isMine = (pv.IsMine);
-=======
         _type = Define.CastingType.Resource;
         gameObject.SetActive(true);
         base.Init();
->>>>>>> Resource_Grab_BeforeFix
     }
 
     public override void Interact(VRController interactedHand, Transform target)
