@@ -318,6 +318,11 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!1 &39782273 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1000011865009160, guid: 696732de140f6a64291366fdc2d850d3, type: 3}
+  m_PrefabInstance: {fileID: 1693759088}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &42397085
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -782,6 +787,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 93427210}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &103202741 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1221677503145140, guid: 6645295e18a7c4bcc80908a5d90c05de, type: 3}
+  m_PrefabInstance: {fileID: 377666466}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &123667094
 GameObject:
   m_ObjectHideFlags: 0
@@ -1483,6 +1493,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4225718213830926, guid: 6bc63aeb4e2f97d4785d53f5c282d318, type: 3}
   m_PrefabInstance: {fileID: 265541616}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &265541618 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1621237971383888, guid: 6bc63aeb4e2f97d4785d53f5c282d318, type: 3}
+  m_PrefabInstance: {fileID: 265541616}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &266598718
 GameObject:
   m_ObjectHideFlags: 0
@@ -1830,11 +1845,6 @@ Transform:
   m_Father: {fileID: 995212666}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &348278591 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8595770793079695469, guid: b25b5a54dfb3245ffa7d23aedc8d48f4, type: 3}
-  m_PrefabInstance: {fileID: 2035860876}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &359788465
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2217,6 +2227,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1976634535830027181, guid: f7229d5ee763d4b88a732b7d7f693609, type: 3}
   m_PrefabInstance: {fileID: 403296143}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &403296145 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1163540655089819927, guid: f7229d5ee763d4b88a732b7d7f693609, type: 3}
+  m_PrefabInstance: {fileID: 403296143}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &413278204
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2496,6 +2511,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2050611746827518082, guid: cf6aa2531e29c408ea6a5ae5622f6a71, type: 3}
   m_PrefabInstance: {fileID: 459754339}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &459754341 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1675035770107566648, guid: cf6aa2531e29c408ea6a5ae5622f6a71, type: 3}
+  m_PrefabInstance: {fileID: 459754339}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &462980501
 GameObject:
   m_ObjectHideFlags: 0
@@ -2622,6 +2642,11 @@ PrefabInstance:
 --- !u!4 &469134754 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2295779402989067037, guid: 7c1f118e978224916a59a41b9192c5d5, type: 3}
+  m_PrefabInstance: {fileID: 469134753}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &469134755 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6798150672535756767, guid: 7c1f118e978224916a59a41b9192c5d5, type: 3}
   m_PrefabInstance: {fileID: 469134753}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &482147621
@@ -3566,11 +3591,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4229047162145290, guid: aa121c04ed3405d4f852c86b60af1537, type: 3}
   m_PrefabInstance: {fileID: 972170217}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &619911376 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 978380377839105330, guid: aea578b9a3d284ce58c8578a797d51ac, type: 3}
-  m_PrefabInstance: {fileID: 851509551}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &624362543
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3946,6 +3966,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1000010040357754, guid: 72346286358246146b9df53f3567f12a, type: 3}
   m_PrefabInstance: {fileID: 1774783825}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &673311677 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1000012993495128, guid: b03cd913c2c6d844ab1ac7cfe27898ad, type: 3}
+  m_PrefabInstance: {fileID: 1743224310}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &675512879 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2302913671698849439, guid: b40e3f0e2c2ca433c925de5e84655761, type: 3}
@@ -4298,6 +4323,11 @@ PrefabInstance:
 --- !u!4 &721921193 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4784071149247170029, guid: d3789360117454923b10f7dc5b19bf98, type: 3}
+  m_PrefabInstance: {fileID: 721921192}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &721921194 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 260044590087904873, guid: d3789360117454923b10f7dc5b19bf98, type: 3}
   m_PrefabInstance: {fileID: 721921192}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &727284411
@@ -4782,6 +4812,11 @@ PrefabInstance:
 --- !u!4 &793504495 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5492281120091574412, guid: df1c1346fff2842b8b9bee334b4193fe, type: 3}
+  m_PrefabInstance: {fileID: 793504494}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &793504496 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4869328704594913514, guid: df1c1346fff2842b8b9bee334b4193fe, type: 3}
   m_PrefabInstance: {fileID: 793504494}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &806680387
@@ -5269,6 +5304,11 @@ PrefabInstance:
 --- !u!4 &851509552 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 493205085573066632, guid: aea578b9a3d284ce58c8578a797d51ac, type: 3}
+  m_PrefabInstance: {fileID: 851509551}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &851509553 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 978380377839105330, guid: aea578b9a3d284ce58c8578a797d51ac, type: 3}
   m_PrefabInstance: {fileID: 851509551}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &857886756
@@ -6517,6 +6557,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d836b24472f564f629d8cae908c35681, type: 3}
+--- !u!1 &976252718 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1904329721490756, guid: d836b24472f564f629d8cae908c35681, type: 3}
+  m_PrefabInstance: {fileID: 974374881}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &995212665
 GameObject:
   m_ObjectHideFlags: 0
@@ -6846,6 +6891,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 437104218315447782, guid: 88e475bd413aaf540a412bfdba8a7e8a, type: 3}
   m_PrefabInstance: {fileID: 1027871948}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1027871950 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 962423783119128412, guid: 88e475bd413aaf540a412bfdba8a7e8a, type: 3}
+  m_PrefabInstance: {fileID: 1027871948}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1030449623
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7090,6 +7140,11 @@ PrefabInstance:
 --- !u!4 &1075855504 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5348238049911199870, guid: 4b0fb1376f86d42088eeaf31b5164847, type: 3}
+  m_PrefabInstance: {fileID: 1075855503}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1075855505 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3053041411685728750, guid: 4b0fb1376f86d42088eeaf31b5164847, type: 3}
   m_PrefabInstance: {fileID: 1075855503}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1088022102
@@ -7909,6 +7964,11 @@ PrefabInstance:
 --- !u!4 &1147926366 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9039776670749885438, guid: 5836dadd7aa484dffa2b80a521755054, type: 3}
+  m_PrefabInstance: {fileID: 1147926365}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1147926367 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8518677786667866436, guid: 5836dadd7aa484dffa2b80a521755054, type: 3}
   m_PrefabInstance: {fileID: 1147926365}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1148059130
@@ -9387,348 +9447,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!1 &1382735276
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1382735277}
-  - component: {fileID: 1382735278}
-  - component: {fileID: 1382735279}
-  m_Layer: 0
-  m_Name: '@GameManager'
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1382735277
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1382735276}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -5.1582837, y: 0.8778033, z: -9.4029665}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1382735278
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1382735276}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa193f60d910ce54896d241ac1ac55a7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1382735279
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1382735276}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5cfc80e1f78badc4d851c1d51d3725a5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  asset:
-    <wood>k__BackingField: 0
-    <stone>k__BackingField: 0
-    <steel>k__BackingField: 0
-    <cloth>k__BackingField: 0
-    <coal>k__BackingField: 0
-    <electricity>k__BackingField: 0
-    <glass>k__BackingField: 0
-    <rubber>k__BackingField: 0
-    <uranium>k__BackingField: 0
-    <semiconductor>k__BackingField: 0
-    <mithril>k__BackingField: 0
-    <floatingStone>k__BackingField: 0
-  factory:
-  - <name>k__BackingField: "\uB098\uBB34 \uACF5\uC7A5"
-    <model>k__BackingField: {fileID: 619911376}
-    <lv>k__BackingField: 0
-    upGrade:
-    - <wood>k__BackingField: 0
-      <stone>k__BackingField: 0
-      <steel>k__BackingField: 0
-      <cloth>k__BackingField: 0
-      <coal>k__BackingField: 0
-      <electricity>k__BackingField: 0
-      <glass>k__BackingField: 0
-      <rubber>k__BackingField: 0
-      <uranium>k__BackingField: 0
-      <semiconductor>k__BackingField: 0
-      <mithril>k__BackingField: 0
-      <floatingStone>k__BackingField: 0
-    - <wood>k__BackingField: 0
-      <stone>k__BackingField: 0
-      <steel>k__BackingField: 0
-      <cloth>k__BackingField: 0
-      <coal>k__BackingField: 0
-      <electricity>k__BackingField: 0
-      <glass>k__BackingField: 0
-      <rubber>k__BackingField: 0
-      <uranium>k__BackingField: 0
-      <semiconductor>k__BackingField: 0
-      <mithril>k__BackingField: 0
-      <floatingStone>k__BackingField: 0
-    - <wood>k__BackingField: 0
-      <stone>k__BackingField: 0
-      <steel>k__BackingField: 0
-      <cloth>k__BackingField: 0
-      <coal>k__BackingField: 0
-      <electricity>k__BackingField: 0
-      <glass>k__BackingField: 0
-      <rubber>k__BackingField: 0
-      <uranium>k__BackingField: 0
-      <semiconductor>k__BackingField: 0
-      <mithril>k__BackingField: 0
-      <floatingStone>k__BackingField: 0
-    - <wood>k__BackingField: 0
-      <stone>k__BackingField: 0
-      <steel>k__BackingField: 0
-      <cloth>k__BackingField: 0
-      <coal>k__BackingField: 0
-      <electricity>k__BackingField: 0
-      <glass>k__BackingField: 0
-      <rubber>k__BackingField: 0
-      <uranium>k__BackingField: 0
-      <semiconductor>k__BackingField: 0
-      <mithril>k__BackingField: 0
-      <floatingStone>k__BackingField: 0
-    - <wood>k__BackingField: 0
-      <stone>k__BackingField: 0
-      <steel>k__BackingField: 0
-      <cloth>k__BackingField: 0
-      <coal>k__BackingField: 0
-      <electricity>k__BackingField: 0
-      <glass>k__BackingField: 0
-      <rubber>k__BackingField: 0
-      <uranium>k__BackingField: 0
-      <semiconductor>k__BackingField: 0
-      <mithril>k__BackingField: 0
-      <floatingStone>k__BackingField: 0
-    - <wood>k__BackingField: 0
-      <stone>k__BackingField: 0
-      <steel>k__BackingField: 0
-      <cloth>k__BackingField: 0
-      <coal>k__BackingField: 0
-      <electricity>k__BackingField: 0
-      <glass>k__BackingField: 0
-      <rubber>k__BackingField: 0
-      <uranium>k__BackingField: 0
-      <semiconductor>k__BackingField: 0
-      <mithril>k__BackingField: 0
-      <floatingStone>k__BackingField: 0
-    - <wood>k__BackingField: 0
-      <stone>k__BackingField: 0
-      <steel>k__BackingField: 0
-      <cloth>k__BackingField: 0
-      <coal>k__BackingField: 0
-      <electricity>k__BackingField: 0
-      <glass>k__BackingField: 0
-      <rubber>k__BackingField: 0
-      <uranium>k__BackingField: 0
-      <semiconductor>k__BackingField: 0
-      <mithril>k__BackingField: 0
-      <floatingStone>k__BackingField: 0
-    - <wood>k__BackingField: 0
-      <stone>k__BackingField: 0
-      <steel>k__BackingField: 0
-      <cloth>k__BackingField: 0
-      <coal>k__BackingField: 0
-      <electricity>k__BackingField: 0
-      <glass>k__BackingField: 0
-      <rubber>k__BackingField: 0
-      <uranium>k__BackingField: 0
-      <semiconductor>k__BackingField: 0
-      <mithril>k__BackingField: 0
-      <floatingStone>k__BackingField: 0
-    - <wood>k__BackingField: 0
-      <stone>k__BackingField: 0
-      <steel>k__BackingField: 0
-      <cloth>k__BackingField: 0
-      <coal>k__BackingField: 0
-      <electricity>k__BackingField: 0
-      <glass>k__BackingField: 0
-      <rubber>k__BackingField: 0
-      <uranium>k__BackingField: 0
-      <semiconductor>k__BackingField: 0
-      <mithril>k__BackingField: 0
-      <floatingStone>k__BackingField: 0
-    <createAsset>k__BackingField: 0
-  - <name>k__BackingField: "\uB3CC \uACF5\uC7A5"
-    <model>k__BackingField: {fileID: 348278591}
-    <lv>k__BackingField: 0
-    upGrade:
-    - <wood>k__BackingField: 0
-      <stone>k__BackingField: 0
-      <steel>k__BackingField: 0
-      <cloth>k__BackingField: 0
-      <coal>k__BackingField: 0
-      <electricity>k__BackingField: 0
-      <glass>k__BackingField: 0
-      <rubber>k__BackingField: 0
-      <uranium>k__BackingField: 0
-      <semiconductor>k__BackingField: 0
-      <mithril>k__BackingField: 0
-      <floatingStone>k__BackingField: 0
-    - <wood>k__BackingField: 0
-      <stone>k__BackingField: 0
-      <steel>k__BackingField: 0
-      <cloth>k__BackingField: 0
-      <coal>k__BackingField: 0
-      <electricity>k__BackingField: 0
-      <glass>k__BackingField: 0
-      <rubber>k__BackingField: 0
-      <uranium>k__BackingField: 0
-      <semiconductor>k__BackingField: 0
-      <mithril>k__BackingField: 0
-      <floatingStone>k__BackingField: 0
-    - <wood>k__BackingField: 0
-      <stone>k__BackingField: 0
-      <steel>k__BackingField: 0
-      <cloth>k__BackingField: 0
-      <coal>k__BackingField: 0
-      <electricity>k__BackingField: 0
-      <glass>k__BackingField: 0
-      <rubber>k__BackingField: 0
-      <uranium>k__BackingField: 0
-      <semiconductor>k__BackingField: 0
-      <mithril>k__BackingField: 0
-      <floatingStone>k__BackingField: 0
-    - <wood>k__BackingField: 0
-      <stone>k__BackingField: 0
-      <steel>k__BackingField: 0
-      <cloth>k__BackingField: 0
-      <coal>k__BackingField: 0
-      <electricity>k__BackingField: 0
-      <glass>k__BackingField: 0
-      <rubber>k__BackingField: 0
-      <uranium>k__BackingField: 0
-      <semiconductor>k__BackingField: 0
-      <mithril>k__BackingField: 0
-      <floatingStone>k__BackingField: 0
-    - <wood>k__BackingField: 0
-      <stone>k__BackingField: 0
-      <steel>k__BackingField: 0
-      <cloth>k__BackingField: 0
-      <coal>k__BackingField: 0
-      <electricity>k__BackingField: 0
-      <glass>k__BackingField: 0
-      <rubber>k__BackingField: 0
-      <uranium>k__BackingField: 0
-      <semiconductor>k__BackingField: 0
-      <mithril>k__BackingField: 0
-      <floatingStone>k__BackingField: 0
-    - <wood>k__BackingField: 0
-      <stone>k__BackingField: 0
-      <steel>k__BackingField: 0
-      <cloth>k__BackingField: 0
-      <coal>k__BackingField: 0
-      <electricity>k__BackingField: 0
-      <glass>k__BackingField: 0
-      <rubber>k__BackingField: 0
-      <uranium>k__BackingField: 0
-      <semiconductor>k__BackingField: 0
-      <mithril>k__BackingField: 0
-      <floatingStone>k__BackingField: 0
-    - <wood>k__BackingField: 0
-      <stone>k__BackingField: 0
-      <steel>k__BackingField: 0
-      <cloth>k__BackingField: 0
-      <coal>k__BackingField: 0
-      <electricity>k__BackingField: 0
-      <glass>k__BackingField: 0
-      <rubber>k__BackingField: 0
-      <uranium>k__BackingField: 0
-      <semiconductor>k__BackingField: 0
-      <mithril>k__BackingField: 0
-      <floatingStone>k__BackingField: 0
-    - <wood>k__BackingField: 0
-      <stone>k__BackingField: 0
-      <steel>k__BackingField: 0
-      <cloth>k__BackingField: 0
-      <coal>k__BackingField: 0
-      <electricity>k__BackingField: 0
-      <glass>k__BackingField: 0
-      <rubber>k__BackingField: 0
-      <uranium>k__BackingField: 0
-      <semiconductor>k__BackingField: 0
-      <mithril>k__BackingField: 0
-      <floatingStone>k__BackingField: 0
-    - <wood>k__BackingField: 0
-      <stone>k__BackingField: 0
-      <steel>k__BackingField: 0
-      <cloth>k__BackingField: 0
-      <coal>k__BackingField: 0
-      <electricity>k__BackingField: 0
-      <glass>k__BackingField: 0
-      <rubber>k__BackingField: 0
-      <uranium>k__BackingField: 0
-      <semiconductor>k__BackingField: 0
-      <mithril>k__BackingField: 0
-      <floatingStone>k__BackingField: 0
-    <createAsset>k__BackingField: 1
-  anime:
-  - <name>k__BackingField: 
-    <ending>k__BackingField: 0
-    <group>k__BackingField: {fileID: 0}
-    data:
-    - <bundle>k__BackingField: {fileID: 0}
-      <model>k__BackingField: []
-      <Influence>k__BackingField: 
-      condition:
-      - <wood>k__BackingField: 0
-        <stone>k__BackingField: 0
-        <steel>k__BackingField: 0
-        <cloth>k__BackingField: 0
-        <coal>k__BackingField: 0
-        <electricity>k__BackingField: 0
-        <glass>k__BackingField: 0
-        <rubber>k__BackingField: 0
-        <uranium>k__BackingField: 0
-        <semiconductor>k__BackingField: 0
-        <mithril>k__BackingField: 0
-        <floatingStone>k__BackingField: 0
-      - <wood>k__BackingField: 0
-        <stone>k__BackingField: 0
-        <steel>k__BackingField: 0
-        <cloth>k__BackingField: 0
-        <coal>k__BackingField: 0
-        <electricity>k__BackingField: 0
-        <glass>k__BackingField: 0
-        <rubber>k__BackingField: 0
-        <uranium>k__BackingField: 0
-        <semiconductor>k__BackingField: 0
-        <mithril>k__BackingField: 0
-        <floatingStone>k__BackingField: 0
-      - <wood>k__BackingField: 0
-        <stone>k__BackingField: 0
-        <steel>k__BackingField: 0
-        <cloth>k__BackingField: 0
-        <coal>k__BackingField: 0
-        <electricity>k__BackingField: 0
-        <glass>k__BackingField: 0
-        <rubber>k__BackingField: 0
-        <uranium>k__BackingField: 0
-        <semiconductor>k__BackingField: 0
-        <mithril>k__BackingField: 0
-        <floatingStone>k__BackingField: 0
 --- !u!1001 &1385470187
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10215,6 +9933,11 @@ PrefabInstance:
 --- !u!4 &1468112257 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6453171815156728186, guid: 120012027f0354c7d9b1725050e20a67, type: 3}
+  m_PrefabInstance: {fileID: 1468112256}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1468112258 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4126847544175479654, guid: 120012027f0354c7d9b1725050e20a67, type: 3}
   m_PrefabInstance: {fileID: 1468112256}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1470220738
@@ -14941,6 +14664,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5378926377584434426, guid: b25b5a54dfb3245ffa7d23aedc8d48f4, type: 3}
   m_PrefabInstance: {fileID: 2035860876}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2035860878 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8595770793079695469, guid: b25b5a54dfb3245ffa7d23aedc8d48f4, type: 3}
+  m_PrefabInstance: {fileID: 2035860876}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2040567323
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16232,6 +15960,883 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 47a4905e1a8ddcc458c04f73782b1863, type: 3}
+--- !u!1001 &4993613575224668473
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4993613574451457172, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993613574451457172, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -5.1582837
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993613574451457172, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.8778033
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993613574451457172, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -9.4029665
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993613574451457172, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993613574451457172, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993613574451457172, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993613574451457172, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993613574451457172, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993613574451457172, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993613574451457172, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993613574451457173, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: m_Name
+      value: '@GameManager'
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.size
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[1].data.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[2].data.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[3].data.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[4].data.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[5].data.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[6].data.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[7].data.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[8].data.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[9].data.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[10].data.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[11].data.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[1].<name>k__BackingField
+      value: Yellow3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[2].<name>k__BackingField
+      value: Yellow1 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[3].<name>k__BackingField
+      value: PurpleArea2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[4].<name>k__BackingField
+      value: PurpleArea3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[5].<name>k__BackingField
+      value: Yellow4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[6].<name>k__BackingField
+      value: GreenArea1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[7].<name>k__BackingField
+      value: GreenArea3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[8].<name>k__BackingField
+      value: GreenArea2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[9].<name>k__BackingField
+      value: RedArea2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[0].<group>k__BackingField
+      value: 
+      objectReference: {fileID: 1580308792}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[10].<name>k__BackingField
+      value: RedArea3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[11].<name>k__BackingField
+      value: PurpleArea3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[1].<group>k__BackingField
+      value: 
+      objectReference: {fileID: 999277729}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[2].<group>k__BackingField
+      value: 
+      objectReference: {fileID: 995212665}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[3].<group>k__BackingField
+      value: 
+      objectReference: {fileID: 514531946}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[4].<group>k__BackingField
+      value: 
+      objectReference: {fileID: 1133828601}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[5].<group>k__BackingField
+      value: 
+      objectReference: {fileID: 400318611}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[6].<group>k__BackingField
+      value: 
+      objectReference: {fileID: 829264368}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[7].<group>k__BackingField
+      value: 
+      objectReference: {fileID: 1929131378}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[8].<group>k__BackingField
+      value: 
+      objectReference: {fileID: 1665964791}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[9].<group>k__BackingField
+      value: 
+      objectReference: {fileID: 740529522}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[10].<group>k__BackingField
+      value: 
+      objectReference: {fileID: 2063151471}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[11].<group>k__BackingField
+      value: 
+      objectReference: {fileID: 2050263944800938482}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[1].<ending>k__BackingField
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[2].<ending>k__BackingField
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[3].<ending>k__BackingField
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[4].<ending>k__BackingField
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[5].<ending>k__BackingField
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[6].<ending>k__BackingField
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[7].<ending>k__BackingField
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[8].<ending>k__BackingField
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[9].<ending>k__BackingField
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[10].<ending>k__BackingField
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[11].<ending>k__BackingField
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: viewFactory.Array.data[0].<model>k__BackingField
+      value: 
+      objectReference: {fileID: 851509553}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: viewFactory.Array.data[1].<model>k__BackingField
+      value: 
+      objectReference: {fileID: 2035860878}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: viewFactory.Array.data[2].<model>k__BackingField
+      value: 
+      objectReference: {fileID: 459754341}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: viewFactory.Array.data[3].<model>k__BackingField
+      value: 
+      objectReference: {fileID: 1027871950}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: viewFactory.Array.data[4].<model>k__BackingField
+      value: 
+      objectReference: {fileID: 1468112258}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: viewFactory.Array.data[5].<model>k__BackingField
+      value: 
+      objectReference: {fileID: 1147926367}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: viewFactory.Array.data[6].<model>k__BackingField
+      value: 
+      objectReference: {fileID: 1075855505}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: viewFactory.Array.data[7].<model>k__BackingField
+      value: 
+      objectReference: {fileID: 793504496}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: viewFactory.Array.data[8].<model>k__BackingField
+      value: 
+      objectReference: {fileID: 265541618}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: viewFactory.Array.data[9].<model>k__BackingField
+      value: 
+      objectReference: {fileID: 721921194}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: viewFactory.Array.data[10].<model>k__BackingField
+      value: 
+      objectReference: {fileID: 403296145}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: viewFactory.Array.data[11].<model>k__BackingField
+      value: 
+      objectReference: {fileID: 469134755}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[0].data.Array.data[0].condition.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[1].data.Array.data[0].condition.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[2].data.Array.data[0].condition.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[3].data.Array.data[0].condition.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[4].data.Array.data[0].condition.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[5].data.Array.data[0].condition.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[6].data.Array.data[0].condition.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[7].data.Array.data[0].condition.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[8].data.Array.data[0].condition.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[9].data.Array.data[0].condition.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[10].data.Array.data[0].condition.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[11].data.Array.data[0].condition.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[0].data.Array.data[0].<bundle>k__BackingField
+      value: 
+      objectReference: {fileID: 462980501}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[1].data.Array.data[0].<bundle>k__BackingField
+      value: 
+      objectReference: {fileID: 709997862}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[2].data.Array.data[0].<bundle>k__BackingField
+      value: 
+      objectReference: {fileID: 339387891}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[3].data.Array.data[0].<bundle>k__BackingField
+      value: 
+      objectReference: {fileID: 127205286}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[4].data.Array.data[0].<bundle>k__BackingField
+      value: 
+      objectReference: {fileID: 1807111131}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[5].data.Array.data[0].<bundle>k__BackingField
+      value: 
+      objectReference: {fileID: 504753588}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[6].data.Array.data[0].<bundle>k__BackingField
+      value: 
+      objectReference: {fileID: 1684193322}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[7].data.Array.data[0].<bundle>k__BackingField
+      value: 
+      objectReference: {fileID: 6257296}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[8].data.Array.data[0].<bundle>k__BackingField
+      value: 
+      objectReference: {fileID: 1794258200}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[9].data.Array.data[0].<bundle>k__BackingField
+      value: 
+      objectReference: {fileID: 923294662}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[10].data.Array.data[0].<bundle>k__BackingField
+      value: 
+      objectReference: {fileID: 1834343869}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[11].data.Array.data[0].<bundle>k__BackingField
+      value: 
+      objectReference: {fileID: 2050263943218366477}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: viewFactory.Array.data[0].upGrade.Array.data[0].<wood>k__BackingField
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: viewFactory.Array.data[0].upGrade.Array.data[1].<wood>k__BackingField
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[1].data.Array.data[0].<model>k__BackingField.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[2].data.Array.data[0].<model>k__BackingField.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[3].data.Array.data[0].<model>k__BackingField.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[4].data.Array.data[0].<model>k__BackingField.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[5].data.Array.data[0].<model>k__BackingField.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[6].data.Array.data[0].<model>k__BackingField.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[7].data.Array.data[0].<model>k__BackingField.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[8].data.Array.data[0].<model>k__BackingField.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[9].data.Array.data[0].<model>k__BackingField.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[10].data.Array.data[0].<model>k__BackingField.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[11].data.Array.data[0].<model>k__BackingField.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[0].data.Array.data[0].<model>k__BackingField.Array.data[0]
+      value: 
+      objectReference: {fileID: 671756405}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[0].data.Array.data[0].<model>k__BackingField.Array.data[1]
+      value: 
+      objectReference: {fileID: 1366520615}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[0].data.Array.data[0].<model>k__BackingField.Array.data[2]
+      value: 
+      objectReference: {fileID: 1883033296}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[1].data.Array.data[0].<model>k__BackingField.Array.data[0]
+      value: 
+      objectReference: {fileID: 32382110}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[1].data.Array.data[0].<model>k__BackingField.Array.data[1]
+      value: 
+      objectReference: {fileID: 1378657918}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[1].data.Array.data[0].<model>k__BackingField.Array.data[2]
+      value: 
+      objectReference: {fileID: 1209015907}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[2].data.Array.data[0].<model>k__BackingField.Array.data[0]
+      value: 
+      objectReference: {fileID: 87941615}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[2].data.Array.data[0].<model>k__BackingField.Array.data[1]
+      value: 
+      objectReference: {fileID: 123667094}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[2].data.Array.data[0].<model>k__BackingField.Array.data[2]
+      value: 
+      objectReference: {fileID: 1421496337}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[2].data.Array.data[0].<model>k__BackingField.Array.data[3]
+      value: 
+      objectReference: {fileID: 540948528}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[3].data.Array.data[0].<model>k__BackingField.Array.data[0]
+      value: 
+      objectReference: {fileID: 1886516953}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[3].data.Array.data[0].<model>k__BackingField.Array.data[1]
+      value: 
+      objectReference: {fileID: 771406342}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[3].data.Array.data[0].<model>k__BackingField.Array.data[2]
+      value: 
+      objectReference: {fileID: 614352607}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[3].data.Array.data[0].<model>k__BackingField.Array.data[3]
+      value: 
+      objectReference: {fileID: 540948528}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[4].data.Array.data[0].<model>k__BackingField.Array.data[0]
+      value: 
+      objectReference: {fileID: 675512879}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[4].data.Array.data[0].<model>k__BackingField.Array.data[1]
+      value: 
+      objectReference: {fileID: 600535715}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[4].data.Array.data[0].<model>k__BackingField.Array.data[2]
+      value: 
+      objectReference: {fileID: 17617172}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[5].data.Array.data[0].<model>k__BackingField.Array.data[0]
+      value: 
+      objectReference: {fileID: 387935737}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[5].data.Array.data[0].<model>k__BackingField.Array.data[1]
+      value: 
+      objectReference: {fileID: 193942986}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[5].data.Array.data[0].<model>k__BackingField.Array.data[2]
+      value: 
+      objectReference: {fileID: 299039500}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[6].data.Array.data[0].<model>k__BackingField.Array.data[0]
+      value: 
+      objectReference: {fileID: 1684193322}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[7].data.Array.data[0].<model>k__BackingField.Array.data[0]
+      value: 
+      objectReference: {fileID: 39782273}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[7].data.Array.data[0].<model>k__BackingField.Array.data[1]
+      value: 
+      objectReference: {fileID: 1368708068}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[7].data.Array.data[0].<model>k__BackingField.Array.data[2]
+      value: 
+      objectReference: {fileID: 907249968}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[7].data.Array.data[0].<model>k__BackingField.Array.data[3]
+      value: 
+      objectReference: {fileID: 1890294237}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[8].data.Array.data[0].<model>k__BackingField.Array.data[0]
+      value: 
+      objectReference: {fileID: 976252718}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[8].data.Array.data[0].<model>k__BackingField.Array.data[1]
+      value: 
+      objectReference: {fileID: 673311677}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[8].data.Array.data[0].<model>k__BackingField.Array.data[2]
+      value: 
+      objectReference: {fileID: 103202741}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[9].data.Array.data[0].<model>k__BackingField.Array.data[0]
+      value: 
+      objectReference: {fileID: 538924453}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[9].data.Array.data[0].<model>k__BackingField.Array.data[1]
+      value: 
+      objectReference: {fileID: 2126412368}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[9].data.Array.data[0].<model>k__BackingField.Array.data[2]
+      value: 
+      objectReference: {fileID: 62216151}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[10].data.Array.data[0].<model>k__BackingField.Array.data[0]
+      value: 
+      objectReference: {fileID: 1758078625}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[10].data.Array.data[0].<model>k__BackingField.Array.data[1]
+      value: 
+      objectReference: {fileID: 727284411}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[10].data.Array.data[0].<model>k__BackingField.Array.data[2]
+      value: 
+      objectReference: {fileID: 280391190}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[11].data.Array.data[0].<model>k__BackingField.Array.data[0]
+      value: 
+      objectReference: {fileID: 1701707637}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[11].data.Array.data[0].<model>k__BackingField.Array.data[1]
+      value: 
+      objectReference: {fileID: 656111429}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[11].data.Array.data[0].<model>k__BackingField.Array.data[2]
+      value: 
+      objectReference: {fileID: 224495934}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[1].data.Array.data[0].<Influence>k__BackingField.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[2].data.Array.data[0].<Influence>k__BackingField.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[3].data.Array.data[0].<Influence>k__BackingField.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[4].data.Array.data[0].<Influence>k__BackingField.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[5].data.Array.data[0].<Influence>k__BackingField.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[6].data.Array.data[0].<Influence>k__BackingField.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[7].data.Array.data[0].<Influence>k__BackingField.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[8].data.Array.data[0].<Influence>k__BackingField.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[9].data.Array.data[0].<Influence>k__BackingField.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[10].data.Array.data[0].<Influence>k__BackingField.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[11].data.Array.data[0].<Influence>k__BackingField.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[1].data.Array.data[0].<Influence>k__BackingField.Array.data[0]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[1].data.Array.data[0].<Influence>k__BackingField.Array.data[1]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[1].data.Array.data[0].<Influence>k__BackingField.Array.data[2]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[2].data.Array.data[0].<Influence>k__BackingField.Array.data[0]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[2].data.Array.data[0].<Influence>k__BackingField.Array.data[1]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[2].data.Array.data[0].<Influence>k__BackingField.Array.data[2]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[2].data.Array.data[0].<Influence>k__BackingField.Array.data[3]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[3].data.Array.data[0].<Influence>k__BackingField.Array.data[0]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[3].data.Array.data[0].<Influence>k__BackingField.Array.data[1]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[3].data.Array.data[0].<Influence>k__BackingField.Array.data[2]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[3].data.Array.data[0].<Influence>k__BackingField.Array.data[3]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[4].data.Array.data[0].<Influence>k__BackingField.Array.data[0]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[4].data.Array.data[0].<Influence>k__BackingField.Array.data[1]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[4].data.Array.data[0].<Influence>k__BackingField.Array.data[2]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[5].data.Array.data[0].<Influence>k__BackingField.Array.data[0]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[5].data.Array.data[0].<Influence>k__BackingField.Array.data[1]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[5].data.Array.data[0].<Influence>k__BackingField.Array.data[2]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[6].data.Array.data[0].<Influence>k__BackingField.Array.data[0]
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[7].data.Array.data[0].<Influence>k__BackingField.Array.data[0]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[7].data.Array.data[0].<Influence>k__BackingField.Array.data[1]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[7].data.Array.data[0].<Influence>k__BackingField.Array.data[2]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[7].data.Array.data[0].<Influence>k__BackingField.Array.data[3]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[8].data.Array.data[0].<Influence>k__BackingField.Array.data[0]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[8].data.Array.data[0].<Influence>k__BackingField.Array.data[1]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[8].data.Array.data[0].<Influence>k__BackingField.Array.data[2]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[9].data.Array.data[0].<Influence>k__BackingField.Array.data[0]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[9].data.Array.data[0].<Influence>k__BackingField.Array.data[1]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[9].data.Array.data[0].<Influence>k__BackingField.Array.data[2]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[10].data.Array.data[0].<Influence>k__BackingField.Array.data[0]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[10].data.Array.data[0].<Influence>k__BackingField.Array.data[1]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[10].data.Array.data[0].<Influence>k__BackingField.Array.data[2]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[11].data.Array.data[0].<Influence>k__BackingField.Array.data[0]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[11].data.Array.data[0].<Influence>k__BackingField.Array.data[1]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[11].data.Array.data[0].<Influence>k__BackingField.Array.data[2]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[0].data.Array.data[0].condition.Array.data[0].<wood>k__BackingField
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[0].data.Array.data[0].condition.Array.data[1].<wood>k__BackingField
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[0].data.Array.data[0].condition.Array.data[2].<wood>k__BackingField
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[1].data.Array.data[0].condition.Array.data[0].<coal>k__BackingField
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[1].data.Array.data[0].condition.Array.data[0].<wood>k__BackingField
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[1].data.Array.data[0].condition.Array.data[1].<coal>k__BackingField
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[1].data.Array.data[0].condition.Array.data[1].<wood>k__BackingField
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[1].data.Array.data[0].condition.Array.data[2].<coal>k__BackingField
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[1].data.Array.data[0].condition.Array.data[2].<wood>k__BackingField
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[2].data.Array.data[0].condition.Array.data[0].<wood>k__BackingField
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[2].data.Array.data[0].condition.Array.data[1].<wood>k__BackingField
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[2].data.Array.data[0].condition.Array.data[2].<wood>k__BackingField
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[0].data.Array.data[0].condition.Array.data[0].<steel>k__BackingField
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[0].data.Array.data[0].condition.Array.data[0].<stone>k__BackingField
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[0].data.Array.data[0].condition.Array.data[1].<cloth>k__BackingField
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[0].data.Array.data[0].condition.Array.data[1].<steel>k__BackingField
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[0].data.Array.data[0].condition.Array.data[1].<stone>k__BackingField
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[0].data.Array.data[0].condition.Array.data[2].<stone>k__BackingField
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[1].data.Array.data[0].condition.Array.data[0].<cloth>k__BackingField
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[1].data.Array.data[0].condition.Array.data[0].<glass>k__BackingField
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[1].data.Array.data[0].condition.Array.data[0].<steel>k__BackingField
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[1].data.Array.data[0].condition.Array.data[0].<stone>k__BackingField
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[1].data.Array.data[0].condition.Array.data[1].<steel>k__BackingField
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[1].data.Array.data[0].condition.Array.data[2].<cloth>k__BackingField
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[1].data.Array.data[0].condition.Array.data[2].<stone>k__BackingField
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[0].data.Array.data[0].condition.Array.data[1].<rubber>k__BackingField
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[0].data.Array.data[0].condition.Array.data[2].<electricity>k__BackingField
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[1].data.Array.data[0].condition.Array.data[0].<electricity>k__BackingField
+      value: 2
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
 --- !u!33 &5441474587088132529
 MeshFilter:
   m_ObjectHideFlags: 0

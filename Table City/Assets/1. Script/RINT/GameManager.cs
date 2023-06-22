@@ -22,12 +22,12 @@ public class GameManager : MonoBehaviour
 
     [Header("자원")]
     public Asset asset;
-    [Header("공장")]
-    public Factory[] factory;
+    [Header("공장 정보 입력 용도")]
+    public Factory[] viewFactory;
     [Header("연출")]
     public AnimeBundle[] anime;
 
-    public Dictionary<AssetData, FactoyData> factoyScript = new Dictionary<AssetData, FactoyData>();
+    public Dictionary<AssetData, FactoyData> factoryScript = new Dictionary<AssetData, FactoyData>();
 
     private void Awake()
     {
@@ -35,15 +35,76 @@ public class GameManager : MonoBehaviour
     }
     private void SetFactory()
     {
-        foreach(Factory i in factory)
+        foreach(Factory i in viewFactory)
         {
             FactoyData script = i.model.AddComponent<FactoyData>();
-            factoyScript.Add(i.createAsset, script);
+            factoryScript.Add(i.createAsset, script);
             script.data = i;
 
         }
+        foreach (AnimeBundle j in anime)
+        {
+            foreach (Anime k in j.data)
+            {
+                for (int a = 0; a < k.condition.Length; a++)
+                {
+                    k.model[a].SetActive(false);
+                }
+            }
+        }
+    }
+    public Dictionary<AssetData, int> factoryLv = new Dictionary<AssetData, int>();
+
+    public void SetFactoryItem(AssetData dataType, Asset count)
+    {
+        factoryScript[dataType].SetFactoryItem(count);
+
+        foreach (FactoyData i in factoryScript.Values)
+        {
+            if (factoryLv.ContainsKey(i.data.createAsset))
+                factoryLv[i.data.createAsset] = i.data.lv;
+            else
+                factoryLv.Add(i.data.createAsset, i.data.lv);
+        }
+
+        foreach(AnimeBundle j in anime)
+        {
+            foreach (Anime k in j.data)
+            {
+                for (int a =0; a < k.condition.Length; a++)
+                {
+                    if (k.model[a].activeSelf == true||k.bundle.activeSelf == false )continue;
+                    Asset condition = k.condition[a];
+
+                    if (!condition.InputWorthMoreThanThis(AssetData.wood, factoryLv[AssetData.wood]))continue;
+                    else if (!condition.InputWorthMoreThanThis(AssetData.uranium, factoryLv[AssetData.uranium])) continue;
+                    else if (!condition.InputWorthMoreThanThis(AssetData.stone, factoryLv[AssetData.stone])) continue;
+                    else if (!condition.InputWorthMoreThanThis(AssetData.steel, factoryLv[AssetData.steel])) continue;
+                    else if (!condition.InputWorthMoreThanThis(AssetData.semiconductor, factoryLv[AssetData.semiconductor])) continue;
+                    else if (!condition.InputWorthMoreThanThis(AssetData.rubber, factoryLv[AssetData.rubber])) continue;
+                    else if (!condition.InputWorthMoreThanThis(AssetData.mithril, factoryLv[AssetData.mithril])) continue;
+                    else if (!condition.InputWorthMoreThanThis(AssetData.glass, factoryLv[AssetData.glass])) continue;
+                    else if (!condition.InputWorthMoreThanThis(AssetData.floatingStone, factoryLv[AssetData.floatingStone])) continue;
+                    else if (!condition.InputWorthMoreThanThis(AssetData.electricity, factoryLv[AssetData.electricity] )) continue;
+                    else if (!condition.InputWorthMoreThanThis(AssetData.cloth, factoryLv[AssetData.cloth] )) continue;
+                    else if (!condition.InputWorthMoreThanThis(AssetData.coal, factoryLv[AssetData.coal] )) continue;
+
+
+                    k.model[a].SetActive(true);
+                }
+            }
+        }
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Asset plus = new Asset();
+            plus.wood += 1;
+            SetFactoryItem(AssetData.wood, plus);
+        }
+    }
 }
 [System.Serializable]
 public struct Asset
@@ -91,7 +152,7 @@ public struct Asset
         }
         
     }
-    public bool DataCheck(AssetData data, int count)
+    public bool ThisWorthMoreThanInput(AssetData data, int count)
     {
         switch (data)
         {
@@ -108,6 +169,25 @@ public struct Asset
             case AssetData.mithril: return mithril >= count ? true : false;
             case AssetData.floatingStone: return floatingStone >= count ? true : false;
             default : Debug.LogError("데이터 값이 틀림"); return false;
+        }
+    }
+    public bool InputWorthMoreThanThis(AssetData data, int count)
+    {
+        switch (data)
+        {
+            case AssetData.wood: return wood <= count ? true : false;
+            case AssetData.stone: return stone <= count ? true : false;
+            case AssetData.steel: return steel <= count ? true : false;
+            case AssetData.cloth: return cloth <= count ? true : false;
+            case AssetData.coal: return coal <= count ? true : false;
+            case AssetData.electricity: return electricity <= count ? true : false;
+            case AssetData.glass: return glass <= count ? true : false;
+            case AssetData.rubber: return rubber <= count ? true : false;
+            case AssetData.uranium: return uranium <= count ? true : false;
+            case AssetData.semiconductor: return semiconductor <= count ? true : false;
+            case AssetData.mithril: return mithril <= count ? true : false;
+            case AssetData.floatingStone: return floatingStone <= count ? true : false;
+            default: Debug.LogError("데이터 값이 틀림"); return false;
         }
     }
 
@@ -152,21 +232,21 @@ public struct AnimeBundle
     public GameObject group { get; set; }
 
     public Anime[] data;
+    
+}
+[System.Serializable]
+public struct Anime
+{
+    [field: SerializeField]
+    public GameObject bundle { get; set; }
 
-    [System.Serializable]
-    public struct Anime
-    {
-        [field: SerializeField]
-        public GameObject bundle { get; set; }
+    [field: SerializeField]
+    public GameObject[] model { get; set; }
 
-        [field: SerializeField]
-        public GameObject[] model { get; set; }
+    [field: SerializeField]
+    public int[] Influence { get; set; }
 
-        [field: SerializeField]
-        public int[] Influence { get; set; }
-
-        public Asset[] condition;
-    }
+    public Asset[] condition;
 }
 
 [System.Serializable]
