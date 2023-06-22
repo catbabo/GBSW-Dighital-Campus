@@ -23,11 +23,14 @@ public class PlayerModelController : MonoBehaviour
 
     public void SetControllerParent(Transform left, Transform right)
     {
-        _leftHelper.transform.parent = left;
-        _rightHelper.transform.parent = right;
+        //_leftHelper.transform.parent = left;
+        //_rightHelper.transform.parent = right;
 
-        _leftHelper.transform.localRotation = Quaternion.identity;
-        _rightHelper.transform.localRotation = Quaternion.identity;
+        //_leftHelper.transform.localRotation = Quaternion.identity;
+        //_rightHelper.transform.localRotation = Quaternion.identity;
+
+        _leftHelper.transform.GetComponent<VRController>().SetFollowObject(left);
+        _rightHelper.transform.GetComponent<VRController>().SetFollowObject(right);
     }
 
     public OVRControllerHelper[] GetControllerHelper()

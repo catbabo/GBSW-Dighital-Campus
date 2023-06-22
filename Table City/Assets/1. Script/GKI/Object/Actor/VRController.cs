@@ -8,15 +8,11 @@ using Photon.Pun;
 public class VRController : MonoBehaviour
 {
     #region Elements
-    //private Define.HandInfo LController, RController, _nowController;
-    //[SerializeField]
-    //private Transform _lController, _rController;
     [SerializeField]
     private bool _isRight, _isTesting;
 
     private Transform _toolGrabPoint;
     private bool _isGrab;
-    private bool _isTouch;
 
     public LineRenderer _laser;
     public Color _laserColor;
@@ -29,9 +25,8 @@ public class VRController : MonoBehaviour
 
     private Define.CatingType _targetType;
 
-    private Button _button;
-
-    private InputField _inputField;
+    private Transform _followTarget;
+    private bool _isFollowInit;
     #endregion
 
     private Vector3 _origin;
@@ -102,6 +97,18 @@ public class VRController : MonoBehaviour
             return;
 
         ControllerCycle();
+
+        if (_isFollowInit)
+        {
+            transform.position = _followTarget.position;
+            transform.rotation = _followTarget.rotation;
+        }
+    }
+
+    public void SetFollowObject(Transform target)
+    {
+        _isFollowInit = true;
+        _followTarget = target;
     }
 
     private void ControllerCycle()
