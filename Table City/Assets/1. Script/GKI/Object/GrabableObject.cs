@@ -19,7 +19,7 @@ public class GrabableObject : ObjectBase
 
         PhotonView pv = null;
         pv = GetComponent<PhotonView>();
-        _isMine = (pv != null);
+        _isMine = (pv.IsMine);
     }
 
     public override void Interact(VRController interactedHand, Transform target)
