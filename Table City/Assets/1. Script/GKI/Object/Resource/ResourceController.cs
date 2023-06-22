@@ -3,17 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ResourceController : ObjectBase
+public class ResourceController : GrabableObject
 {
-
-    private bool _isGrab;
-    private Transform _grapPoint;
-    private Vector3 _originPos;
-    private Quaternion _originRot;
-    private bool _isMine;
+    [SerializeField]
+    private Define.ResourseType _resourceType;
 
     private void Start()
     {
+<<<<<<< HEAD
         Init();
     }
 
@@ -27,33 +24,35 @@ public class ResourceController : ObjectBase
         PhotonView pv = null;
         pv = GetComponent<PhotonView>();
         _isMine = (pv.IsMine);
+=======
+        _type = Define.CastingType.Resource;
+        gameObject.SetActive(true);
+        base.Init();
+>>>>>>> Resource_Grab_BeforeFix
     }
 
     public override void Interact(VRController interactedHand, Transform target)
     {
-        if (!_isMine)
-            return;
-
-        if (_isInteracting)
-        {
-            _interactedHand.Interrupt();
-        }
-
-        _interactedHand = interactedHand;
-        _grapPoint = target;
-        _isGrab = true;
-        _isInteracting = true;
+        gameObject.SetActive(true);
+        base.Interact(interactedHand, target);
     }
 
     public override void ExitInteract()
     {
-        if (!_isMine)
-            return;
-
-        _isGrab = false;
+        base.ExitInteract();
+        gameObject.SetActive(false);
         transform.position = _originPos;
         transform.rotation = _originRot;
-        _isInteracting = false;
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+
     }
 
     private void Update()

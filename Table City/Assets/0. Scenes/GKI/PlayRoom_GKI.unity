@@ -5192,6 +5192,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2030636449}
     m_Modifications:
+    - target: {fileID: 247326361887680659, guid: d6304c7e9946e4e4484b5dd3939acae5, type: 3}
+      propertyPath: sceneViewId
+      value: 14
+      objectReference: {fileID: 0}
     - target: {fileID: 1374461931545386492, guid: d6304c7e9946e4e4484b5dd3939acae5, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -5252,6 +5256,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player_Workbench (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 2039203410482716220, guid: d6304c7e9946e4e4484b5dd3939acae5, type: 3}
+      propertyPath: sceneViewId
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 3093046241136813858, guid: d6304c7e9946e4e4484b5dd3939acae5, type: 3}
+      propertyPath: sceneViewId
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 3593831610603148257, guid: d6304c7e9946e4e4484b5dd3939acae5, type: 3}
+      propertyPath: sceneViewId
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 5921677493872861096, guid: d6304c7e9946e4e4484b5dd3939acae5, type: 3}
+      propertyPath: sceneViewId
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 6624702383906694578, guid: d6304c7e9946e4e4484b5dd3939acae5, type: 3}
+      propertyPath: sceneViewId
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 9051716955400520980, guid: d6304c7e9946e4e4484b5dd3939acae5, type: 3}
       propertyPath: sceneViewId
       value: 3
@@ -5264,6 +5288,10 @@ PrefabInstance:
       propertyPath: ObservedComponents.Array.data[1]
       value: 
       objectReference: {fileID: 1040381307}
+    - target: {fileID: 9188801090338454632, guid: d6304c7e9946e4e4484b5dd3939acae5, type: 3}
+      propertyPath: sceneViewId
+      value: 17
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d6304c7e9946e4e4484b5dd3939acae5, type: 3}
 --- !u!4 &1040381306 stripped
@@ -15953,6 +15981,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2030636449}
     m_Modifications:
+    - target: {fileID: 247326361887680659, guid: d6304c7e9946e4e4484b5dd3939acae5, type: 3}
+      propertyPath: sceneViewId
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 1374461931545386492, guid: d6304c7e9946e4e4484b5dd3939acae5, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -16001,9 +16033,33 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player_Workbench
       objectReference: {fileID: 0}
-    - target: {fileID: 9051716955400520980, guid: d6304c7e9946e4e4484b5dd3939acae5, type: 3}
+    - target: {fileID: 2039203410482716220, guid: d6304c7e9946e4e4484b5dd3939acae5, type: 3}
       propertyPath: sceneViewId
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3093046241136813858, guid: d6304c7e9946e4e4484b5dd3939acae5, type: 3}
+      propertyPath: sceneViewId
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3593831610603148257, guid: d6304c7e9946e4e4484b5dd3939acae5, type: 3}
+      propertyPath: sceneViewId
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5921677493872861096, guid: d6304c7e9946e4e4484b5dd3939acae5, type: 3}
+      propertyPath: sceneViewId
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6624702383906694578, guid: d6304c7e9946e4e4484b5dd3939acae5, type: 3}
+      propertyPath: sceneViewId
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 9051716955400520980, guid: d6304c7e9946e4e4484b5dd3939acae5, type: 3}
+      propertyPath: sceneViewId
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 9188801090338454632, guid: d6304c7e9946e4e4484b5dd3939acae5, type: 3}
+      propertyPath: sceneViewId
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d6304c7e9946e4e4484b5dd3939acae5, type: 3}

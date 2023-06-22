@@ -23,7 +23,7 @@ public class VRController : MonoBehaviour
 
     private ObjectBase _castedComponent;
 
-    private Define.CatingType _targetType;
+    private Define.CastingType _targetType;
 
     private Transform _followTarget;
     private bool _isFollowInit;
@@ -165,7 +165,7 @@ public class VRController : MonoBehaviour
     private void ExitCasting()
     {
 
-        if (_targetType == Define.CatingType.Tool)
+        if (_targetType == Define.CastingType.Tool)
         {
             Debug.Log("Exit");
         }
@@ -187,7 +187,7 @@ public class VRController : MonoBehaviour
         if (_castedComponent == null)
             return;
 
-        if (_targetType == Define.CatingType.Tool)
+        if (_targetType == Define.CastingType.Tool)
         {
             Debug.Log("Interact");
             _castedComponent.Interact(this, _toolGrabPoint);
@@ -207,7 +207,7 @@ public class VRController : MonoBehaviour
         if (_castedComponent == null)
             return;
 
-        if (_targetType == Define.CatingType.Tool)
+        if (_targetType == Define.CastingType.Tool)
         {
             _isGrab = false;
             LaserEnable(true);

@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class ObjectBase : MonoBehaviour
 {
     protected bool _isInteracting;
-    public Define.CatingType _type;
+    public Define.CastingType _type;
     protected VRController _interactedHand;
 
     public virtual void Init() { }
