@@ -46,11 +46,11 @@ public class RoomManager : MonoBehaviourPunCallbacks
 	{
 		Transform spawnPoint = GameObject.Find("#SpawnPoint").transform;
 
-		_PlayerPointA = spawnPoint.Find("Spawn_Player").Find("PointA");
-		_PlayerPointB = spawnPoint.Find("Spawn_Player").Find("PointB");
+		_PlayerPointA = spawnPoint.Find("Spawn_Player").Find("Point_A");
+		_PlayerPointB = spawnPoint.Find("Spawn_Player").Find("Point_B");
 
-		_WorkbenchPointA = spawnPoint.Find("Spawn_Workbench").Find("PointA");
-		_WorkbenchPointB = spawnPoint.Find("Spawn_Workbench").Find("PointB");
+		_WorkbenchPointA = spawnPoint.Find("Spawn_Workbench").Find("Point_A");
+		_WorkbenchPointB = spawnPoint.Find("Spawn_Workbench").Find("Point_B");
 
 		NetworkManager.Net.SpawnPlayer();
 	}
