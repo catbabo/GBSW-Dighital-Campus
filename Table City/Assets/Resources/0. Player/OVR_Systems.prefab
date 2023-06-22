@@ -3146,6 +3146,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6432170294346500545}
   - component: {fileID: 2053176541435941870}
+  - component: {fileID: 8540193422642214465}
   m_Layer: 0
   m_Name: OVRControllerVisual
   m_TagString: Untagged
@@ -3182,6 +3183,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _controller: {fileID: 5058510328880482003}
   _ovrControllerHelper: {fileID: 0}
+--- !u!114 &8540193422642214465
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1578140098538958522}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
 --- !u!1 &2232542365210386402
 GameObject:
   m_ObjectHideFlags: 0
@@ -3727,6 +3744,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1693886089598946630}
   - component: {fileID: 5961663708788086633}
+  - component: {fileID: 2769481709685580057}
   m_Layer: 0
   m_Name: OVRControllerVisual
   m_TagString: Untagged
@@ -3763,6 +3781,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _controller: {fileID: 2179839781513113349}
   _ovrControllerHelper: {fileID: 0}
+--- !u!114 &2769481709685580057
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6567623401465473597}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
 --- !u!1 &6880230554587296911
 GameObject:
   m_ObjectHideFlags: 0
@@ -3881,6 +3915,7 @@ GameObject:
   - component: {fileID: 6880505097970596029}
   - component: {fileID: 6880505097970596023}
   - component: {fileID: 6839496939300204531}
+  - component: {fileID: 1569432441506263043}
   m_Layer: 0
   m_Name: OVR_Systems
   m_TagString: Untagged
@@ -4004,6 +4039,33 @@ MonoBehaviour:
   resetHmdPoseByMiddleMouseButton: 1
   activateKeys: 3201000031010000
   pitchKeys: 3401000033010000
+--- !u!114 &1569432441506263043
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6880505097963523411}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents:
+  - {fileID: 4068716524051459524}
+  - {fileID: 5312170806101320920}
+  - {fileID: 5534932310495417516}
+  - {fileID: 2769481709685580057}
+  - {fileID: 8540193422642214465}
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &6880505097963523413
 GameObject:
   m_ObjectHideFlags: 0
@@ -4015,6 +4077,7 @@ GameObject:
   - component: {fileID: 6880505097963884917}
   - component: {fileID: 6880505097958937431}
   - component: {fileID: 6880505097965526703}
+  - component: {fileID: 4068716524051459524}
   m_Layer: 0
   m_Name: CenterEyeAnchor
   m_TagString: MainCamera
@@ -4088,6 +4151,22 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
+--- !u!114 &4068716524051459524
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6880505097963523413}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
 --- !u!1 &6880505097963523415
 GameObject:
   m_ObjectHideFlags: 0
