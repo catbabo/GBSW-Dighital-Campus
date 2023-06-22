@@ -13,7 +13,7 @@ public class PlayerWithoutVR : MonoBehaviour
 
     private ObjectBase _castedComponent;
 
-    private Define.CatingType _targetType;
+    private Define.CastingType _targetType;
 
     private Ray _ray;
     #endregion
@@ -77,7 +77,7 @@ public class PlayerWithoutVR : MonoBehaviour
     private void ExitCasting()
     {
 
-        if (_targetType == Define.CatingType.Tool)
+        if (_targetType == Define.CastingType.Tool)
         {
             Debug.Log("Exit");
         }
@@ -97,7 +97,7 @@ public class PlayerWithoutVR : MonoBehaviour
         if (_castedComponent == null)
             return;
 
-        if (_targetType == Define.CatingType.Tool)
+        if (_targetType == Define.CastingType.Tool)
         {
             Debug.Log("Interact");
         }

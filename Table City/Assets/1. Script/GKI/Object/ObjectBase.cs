@@ -6,37 +6,8 @@ using UnityEngine.UI;
 public class ObjectBase : MonoBehaviour
 {
     protected bool _isInteracting;
-    public Define.CatingType _type;
+    public Define.CastingType _type;
     protected VRController _interactedHand;
-
-    public Button Button
-    {
-        get
-        {
-            if (_button == null)
-            {
-                _button = GetComponent<Button>();
-            }
-            return _button;
-        }
-        private set { }
-    }
-    private Button _button;
-
-
-    public InputField InputField
-    {
-        get
-        {
-            if (_inputField == null)
-            {
-                _inputField = GetComponent<InputField>();
-            }
-            return _inputField;
-        }
-        private set { }
-    }
-    private InputField _inputField;
 
     public virtual void Init() { }
 
