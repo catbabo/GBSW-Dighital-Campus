@@ -10,11 +10,11 @@ public class NetworkPlayer : MonoBehaviourPunCallbacks
 {
 
 	// 플레이어의 포톤 뷰
-	public PhotonView _PV;
+	[SerializeField] private PhotonView _PV;
 	// 플레이어의 닉네임 텍스트
-	public TMP_Text _NickNameTMP;
+	[SerializeField] private TMP_Text _NickNameTMP;
 	// 플레이어의 머리 오브젝트
-	public GameObject _PlayerHead;
+	[SerializeField] private GameObject _PlayerHead;
 
 	private void Start()
 	{

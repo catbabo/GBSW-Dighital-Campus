@@ -3915,7 +3915,6 @@ GameObject:
   - component: {fileID: 6880505097970596029}
   - component: {fileID: 6880505097970596023}
   - component: {fileID: 6839496939300204531}
-  - component: {fileID: 1569432441506263043}
   m_Layer: 0
   m_Name: OVR_Systems
   m_TagString: Untagged
@@ -4039,33 +4038,6 @@ MonoBehaviour:
   resetHmdPoseByMiddleMouseButton: 1
   activateKeys: 3201000031010000
   pitchKeys: 3401000033010000
---- !u!114 &1569432441506263043
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6880505097963523411}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ObservedComponentsFoldoutOpen: 1
-  Group: 0
-  prefixField: -1
-  Synchronization: 3
-  OwnershipTransfer: 0
-  observableSearch: 2
-  ObservedComponents:
-  - {fileID: 4068716524051459524}
-  - {fileID: 5312170806101320920}
-  - {fileID: 5534932310495417516}
-  - {fileID: 2769481709685580057}
-  - {fileID: 8540193422642214465}
-  sceneViewId: 0
-  InstantiationId: 0
-  isRuntimeInstantiated: 0
 --- !u!1 &6880505097963523413
 GameObject:
   m_ObjectHideFlags: 0
