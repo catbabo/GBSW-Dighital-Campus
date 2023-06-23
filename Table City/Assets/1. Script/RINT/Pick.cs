@@ -14,7 +14,7 @@ public class Pick : MonoBehaviour
     {
         if (collision.transform.CompareTag("Stone"))
         {
-            RoomManager.room.SpawnOBJ(prefabType.effect, "Explosion", collision.contacts[0].point, Quaternion.identity);
+            RoomManager.room.SyncSpawnObejct(prefabType.effect, "Explosion", collision.contacts[0].point, Quaternion.identity);
         }
         else
         {

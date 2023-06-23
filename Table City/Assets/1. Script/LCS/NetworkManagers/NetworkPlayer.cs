@@ -9,11 +9,11 @@ using TMPro;
 public class NetworkPlayer : MonoBehaviourPunCallbacks
 {
 
-	// 플레이어의 포톤 뷰
+	/// <summary> 포톤 뷰 </summary>
 	[SerializeField] private PhotonView _PV;
-	// 플레이어의 닉네임 텍스트
+	/// <summary> 플레이어 닉네임 텍스트 </summary>
 	[SerializeField] private TMP_Text _NickNameTMP;
-	// 플레이어의 머리 오브젝트
+	/// <summary> 플레이어의 머리 오브젝트 </summary>
 	[SerializeField] private GameObject _PlayerHead;
 
 	private void Start()
@@ -22,9 +22,9 @@ public class NetworkPlayer : MonoBehaviourPunCallbacks
 		SetHeadLayer();
 	}
 
-	// 플레이어의 닉네임 텍스트에 닉네임 넣기
+	/// <summary> 플레이어 닉네임 텍스트에 플레이어 닉네임 적용 </summary>
 	private void SetNick() => _NickNameTMP.text = _PV.IsMine ? PhotonNetwork.NickName : _PV.Owner.NickName;
 
-	// 플레이어의 머리 오브젝트의 레이어 바꾸기
+	/// <summary> 플레이어의 머리 오브젝트 레이어 변경 </summary>
 	private void SetHeadLayer() => _PlayerHead.layer = _PV.IsMine ? LayerMask.NameToLayer("Head_IsMine") : LayerMask.NameToLayer("Head");
 }

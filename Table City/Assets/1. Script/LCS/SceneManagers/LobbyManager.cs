@@ -10,44 +10,44 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 {
 
 	#region Window
-	// 타이틀 화면 ( 게임 제목 및 게임 시작 버튼 )
+	/// <summary> 타이틀 화면 창 </summary>
 	[SerializeField] private GameObject _Window_Title;
 
-	// 메인 화면 ( 방 이름과 닉네임 설정 및 서버 입장 )
+	/// <summary> 메인 화면 창 </summary>
 	[SerializeField] private GameObject _Window_Main;
 
-	// 방이나 닉네임이 적혀 있지 않으면 나오는 팝업
+	/// <summary> 팝업 창 </summary>
 	[SerializeField] private GameObject _Window_Popup;
 	#endregion
 
 	#region InputField
-	// 방 코드
+	/// <summary> 방 코드 입력 필드 </summary>
 	[SerializeField] private TMP_InputField _Input_RoomCode;
 
-	// 닉네임
+	/// <summary> 플레이어 닉네임 임력 필드 </summary>
 	[SerializeField] private TMP_InputField _Input_NickName;
 	#endregion
 
 	#region Text
-	// 팝업창 제목 텍스트
-	[SerializeField] private TMP_Text _Text_Popup_Title;
+	/// <summary> 팝업창 헤더 텍스트 </summary>
+	[SerializeField] private TMP_Text _Text_Popup_Header;
 
-	// 팝업창 내용 텍스트
+	/// <summary> 팝업창 내용 텍스트 </summary>
 	[SerializeField] private TMP_Text _Text_Popup_Subject;
 	#endregion
 
 	#region Object_UI
-	// 캔슬 버튼
+	/// <summary> 취소 버튼 오브젝트 </summary>
 	public GameObject _CancelButton;
 
-	// 포인트 선택 버튼
+	/// <summary> 포인트 선택 버튼 오브젝트 </summary>
 	public GameObject _PointButton;
 	#endregion
 
-	// 포톤 뷰
+	/// <summary> 포톤 뷰 </summary>
 	private PhotonView _pv;
 
-	// 선택한 스폰 포인트
+	/// <summary> 플레이어가 포인트 선택을 했는지의 여부 </summary>
 	private bool _SelectedA = false, _SelectedB = false;
 
 	private void Start()
@@ -56,7 +56,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 		InitWindow();
 	}
 
-	// UI 창 초기화
+	/// <summary> UI 창 초기화 </summary>
 	private void InitWindow()
 	{
 		_Window_Title.SetActive(true);
@@ -64,8 +64,10 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 	}
 
 	#region Button
-	// 타이틀 화면에서 메인 화면으로 이동 및 마스터 서버 연결
-	// 타이틀 화면의 START버튼과 연결되어 있음
+	/// <summary>
+	/// 타이틀 화면에서 메인 화면으로 이동 및 마스터 서버 연결
+	/// '타이틀 화면의 START버튼과 연결되어 있음'
+	/// </summary>
 	public void Button_Start()
 	{
 		NetworkManager.Net.Connect();
@@ -73,8 +75,10 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 		_Window_Main.SetActive(true);
 	}
 
-	// 방 이름과 닉네임을 NetworkManager에 전달하고 방을 입장하거나 생성
-	// 메인 화면의 JOIN버튼과 연결되어 있음
+	/// <summary>
+	/// 방 이름과 닉네임을 NetworkManager에 전달하고 방을 입장하거나 생성
+	/// '메인 화면의 JOIN버튼과 연결되어 있음
+	/// </summary>
 	public void Button_CreateOrJoin()
 	{
 		if (_Input_RoomCode.text.Length <= 0 || _Input_NickName.text.Length <= 0)
@@ -97,16 +101,21 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 		_pv.RPC("JoinPlayer", RpcTarget.All);
 	}
 
-	// 플레이어를 기다리는 중이라면 Disconnect 아니라면 팝업창 종료
-	// 팝업창의 Cancel버튼과 연결되어 있음
+	/// <summary>
+	/// 팝업창 종료 다른 플레이어를 기다리는 중이라면 Discnnect 후 종료
+	/// '팝업창의 Cancel버튼과 연결되어 있음
+	/// </summary>
 	public void Button_Cancel()
 	{
 		if (_PopupState == PopupState.Wait) { NetworkManager.Net.LeaveRoom(); }
 		_Window_Popup.SetActive(false);
 	}
 
-	// 생성할 포인트를 선택하는 함수
-	// 메인 화면의 A, B 버튼에 연결되어 있음
+	/// <summary>
+	/// 선택한 위치를 네트워크 매니저에 저장
+	/// 메인 화면의 A, B 버튼에 연결되어 있음
+	/// </summary>
+	/// <param name="_A">true : 포인트 A 선택, false : 포인트 B 선택</param>
 	public void Button_Point(bool _A)
 	{
 		NetworkManager.Net.SetPlayerSpawnPoint(_A);
@@ -116,26 +125,32 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 	#endregion
 
 	#region Popup
-	// 팝업의 상태
+	/// <summary> 팝업창의 상태 </summary>
 	private PopupState _PopupState;
+
+	/// <summary> 팝업 상태의 enum </summary>
 	private enum PopupState
 	{
+		/// <summary> 플레이어를 기다리는 상태 </summary>
 		Wait,
+		/// <summary> 위험을 경고하는 상태 </summary>
 		Warning,
 	}
 
-	// 팝업 텍스트 세팅 ( 팝업 상태, 팝업 제목, 팝업 내용 )
+	/// <summary> 팝업 텍스트 변경 </summary>
+	/// <param name="_state">팝업 상태</param>
+	/// <param name="_subjectText">팝업 내용</param>
 	private void SetPopup(PopupState _state, string _subjectText = null)
 	{
 		_Window_Popup.SetActive(true);
 		_PointButton.SetActive(false);
 
 		_PopupState = _state;
-		_Text_Popup_Title.text = _state.ToString();
+		_Text_Popup_Header.text = _state.ToString();
 
 		// 플레이어가 현재 몇명 들어와 있는지 출력
-		if (_state == PopupState.Wait) { SetJoinRoomPlayerCount(_Text_Popup_Subject); }
-		else { _Text_Popup_Subject.text = _subjectText; }
+		if (_subjectText != null) { _Text_Popup_Subject.text = _subjectText; }
+		else if (_state == PopupState.Wait) { SetJoinRoomPlayerCount(); }
 	}
 	#endregion
 
@@ -144,16 +159,17 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 	{
 		print(newPlayer.NickName + " 참가.");
 
-		SetJoinRoomPlayerCount(_Text_Popup_Subject);
+		SetJoinRoomPlayerCount();
 
 		_pv.RPC("JoinPlayer", RpcTarget.All);
 
 	}
 
-	// 플레이어가 현재 몇명 들어와 있는지 출력 ( 출력할 텍스트 )
-	private void SetJoinRoomPlayerCount(TMP_Text _text) => _text.text = "Player : " + PhotonNetwork.CurrentRoom.PlayerCount + " / " + PhotonNetwork.CurrentRoom.MaxPlayers;
+	/// <summary> 플레이어가 방에 현재 몇명 들어와 있는지 출력 </summary>
+	private void SetJoinRoomPlayerCount() => SetPopup(PopupState.Wait, "Player : " + PhotonNetwork.CurrentRoom.PlayerCount + " / " + PhotonNetwork.CurrentRoom.MaxPlayers);
 
-	// 스폰 포인트 선택 버튼을 띄움
+	/// <summary> 캔슬과 포인트 선택 버튼을 교체 </summary>
+	/// <param name="_on">true : 포인트 선택 버튼으로 교체, false : 캔슬 버튼으로 교체</param>
 	private void OnPointButton(bool _on)
 	{
 		_PointButton.SetActive(_on);
@@ -163,12 +179,12 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 	// 플레이어가 방에서 나가면 실행
 	public override void OnPlayerLeftRoom(Player otherPlayer)
 	{
-		print(otherPlayer.NickName + " 나감.");
+		Debug.Log(otherPlayer.NickName + " 나감.");
 		OnPointButton(false);
-		SetJoinRoomPlayerCount(_Text_Popup_Subject);
+		SetJoinRoomPlayerCount();
 	}
 
-	// 방 최대 인원까지 플레이어가 들어왔다면 스폰 포인트를 선택하는 버튼을 띄운다.
+	/// <summary> 방에 플레이어가 최대로 들어왔다면 캔슬 버튼을 포인트 선택 버튼으로 교체 </summary>
 	[PunRPC]
 	private void JoinPlayer()
 	{
@@ -176,21 +192,30 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 		{
 			OnPointButton(true);
 		}
+		else
+		{
+			OnPointButton(false);
+		}
 	}
 
-	// 플레이어가 선택한 버튼 제거 선택이 완료 되었다면 플레이 룸으로 이동
 	[PunRPC]
+	/// <summary> 플레이어가 포인트를 선택하면 선택지 제거 모두 선택이 완료 되었다면 게임을 플레이할 씬으로 이동 </summary>
+	/// <param name="_A">true : 포인트 A 선택, false : 포인트 B 선택</param>
 	private void SelectPoint(bool _A)
 	{
 		if(_A)
 			{
 			_SelectedA = true;
 			_PointButton.transform.Find("Button_PointA").gameObject.SetActive(false);
+			SetPopup(PopupState.Wait, "You");
+			if (_pv.IsMine) _PointButton.transform.Find("Button_Protector").gameObject.SetActive(true);
 		}
 		else
 		{
 			_SelectedB = true;
 			_PointButton.transform.Find("Button_PointB").gameObject.SetActive(false);
+			SetPopup(PopupState.Wait, "You");
+			if (_pv.IsMine) _PointButton.transform.Find("Button_Protector").gameObject.SetActive(true);
 		}
 
 		if (_SelectedA && _SelectedB)

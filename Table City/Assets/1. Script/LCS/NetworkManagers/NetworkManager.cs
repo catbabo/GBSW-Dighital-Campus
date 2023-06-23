@@ -10,7 +10,7 @@ using Photon.Realtime;
 public class NetworkManager : MonoBehaviourPunCallbacks
 {
 
-	// 게임 버전
+	/// <summary> 게임 버전 </summary>
 	private string _gameVersion = "1";
 
 	#region Singleton
@@ -32,21 +32,28 @@ public class NetworkManager : MonoBehaviourPunCallbacks
 	#endregion
 
 	#region PlayerServerInfo
-	// 들어갈 방 이름
+	/// <summary> 들어갈 방의 이름 </summary>
 	public string _roomCode { get; private set; } = "12345";
-
-	// 닉네임
+	
+	/// <summary> 플레이어의 닉네임 </summary>
 	public string _nickName { get; private set; } = "Admin";
 
-	// 플레이어가 A 포인트에 생성될 여부
-	// true : 플레이어 A 포인트에서 소환 , false : 플레이어 B 포인트에서 소환
+	/// <summary>
+	/// 플레이어가 A 포인트에 생성될 여부
+	/// true : 플레이어 A 포인트에서 소환
+	/// false : 플레이어 B 포인트에서 소환
+	/// </summary>
 	private bool _pointA;
 	#endregion
 
-	/// <summary>개발자모드 사용 여부 (true : 개발자모드 사용 , false : 개발자모드 해제)</summary>
+	/// <summary>
+	/// 개발자모드 사용 여부
+	/// true : 개발자모드 사용
+	/// false : 개발자모드 해제
+	/// </summary>
 	private bool _onDevelopMode = false;
 
-	/// <summary>네트워크 세팅 초기화</summary>
+	/// <summary>네트워크 셋팅 초기화</summary>
 	private void InitNetworkSetting()
 	{
 		PhotonNetwork.GameVersion = this._gameVersion; // 게임 버전 설정 ( 버전이 같은 사람끼리만 매칭이 가능함 )
@@ -63,10 +70,12 @@ public class NetworkManager : MonoBehaviourPunCallbacks
 	}
 
 	#region SetPlayerServerInfo
-	// 플레이어 닉네임 설정
+	/// <summary> 플레이어 닉네임 설정 ( string 사용할 닉네임 ) </summary>
+	/// <param name="_code">사용할 닉네임</param>
 	public void SetNickName(string _name) => _nickName = _name;
 
-	// 입장할 방 이름 설정
+	/// <summary> 입장할 방 코드 설정 </summary>
+	/// <param name="_code">방 코드</param>
 	public void SetRoomCode(string _code) => _roomCode = _code;
 	#endregion
 
@@ -84,7 +93,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
 	#endregion
 
 	#region Lobby
-	// 로비 접속
+	/// <summary> 로비 접속 </summary>
 	public void JoinLobby()
 	{
 		PhotonNetwork.JoinLobby();
@@ -100,23 +109,25 @@ public class NetworkManager : MonoBehaviourPunCallbacks
 	#endregion
 
 	#region Room
-	// 방 입장 방이 없으면 생성 ( 방 이름, 입장 가능 인원수)
-	public void JoinOrCreate(string _name, int _maxPlayer)
-				=> PhotonNetwork.JoinOrCreateRoom(_name, new RoomOptions { MaxPlayers = _maxPlayer }, null); // ( 방 이름, 방 옵션, 로비 타입 )
+	/// <summary> 방 입장 방이 없으면 생성 </summary>
+	/// <param name="_code">방 코드</param>
+	/// <param name="_maxPlayer">입장 가능 인원 수</param>
+	public void JoinOrCreate(string _code, int _maxPlayer)
+				=> PhotonNetwork.JoinOrCreateRoom(_code, new RoomOptions { MaxPlayers = _maxPlayer }, null); // ( 방 이름, 방 옵션, 로비 타입 )
 
 	// 방이 만들어지면 실행
 	public override void OnCreatedRoom()
 	{
-		print("방 만들기 완료.");
+		Debug.Log("방 만들기 완료.");
 	}
 
 	// 만들어진 방에 들어가면 실행
 	public override void OnJoinedRoom()
 	{
-		print("방 입장 성공!");
+		Debug.Log("방 입장 성공!");
 	}
 
-	// 방 퇴장
+	/// <summary> 방 퇴장 </summary>
 	public void LeaveRoom()
 	{
 		PhotonNetwork.LeaveRoom();
@@ -130,13 +141,15 @@ public class NetworkManager : MonoBehaviourPunCallbacks
 	#endregion
 
 	#region Spawn
-	// 오브젝트 소환 ( 오브젝트 파일 위치 (Resources 에서 소환함), 소환될 위치, 마스터 서버에서 소환될 위치(소환 위치가 상관 없다면 안적어도 됨))
+	/// <summary> 오브젝트 소환 </summary>
+	/// <param name="_objectName">소환할 오브젝트 파일 위치 (Resources 에서 소환)</param>
+	/// <param name="_point">소환될 위치</param>
 	public void SpawnObject(string _objectName, Transform _point)
 	{
 		GameObject _object = PhotonNetwork.Instantiate(_objectName, _point.position, _point.rotation);
 	}
 
-	// 플레이어 소환
+	/// <summary> 플레이어 소환 </summary>
 	public void SpawnPlayer()
 	{
 		SpawnObject("0. Player/Player_Prefab", _pointA ? RoomManager.room._PlayerPointA : RoomManager.room._PlayerPointB);
@@ -158,10 +171,12 @@ public class NetworkManager : MonoBehaviourPunCallbacks
 	public override void OnDisconnected(DisconnectCause cause)
 	{
 		Debug.Log("서버 연결 해제");
+		Debug.Log(cause);
 	}
 	#endregion
 
-	// 플레이어가 선택한 위치 저장
+	/// <summary> 플레이어가 선택한 위치 저장 </summary>
+	/// <param name="_point">true : 포인트 A 선택, false : 포인트 B 선택</param>
 	public void SetPlayerSpawnPoint(bool _point) => _pointA = _point;
 
 	/// <summary>
@@ -191,9 +206,11 @@ public class NetworkManager : MonoBehaviourPunCallbacks
 		}
 	}
 
-	// 개발자 모드
-	// 대부분 앞자리를 따와서 제작함
-	// 키코드 : 'C'onnect, lo'B'by, 'I'nfo, 'L'eave , 'J'oin, 'D'isconnect
+	/// <summary>
+	/// 개발자 모드
+	/// 대부분 단어의 앞자리를 따왔음
+	/// keycode : 'C'onnect, lo'B'by, 'I'nfo, 'L'eave, 'J'oin, 'D'isconnect
+	/// </summary>
 	private void DevelopMode()
 	{
 
