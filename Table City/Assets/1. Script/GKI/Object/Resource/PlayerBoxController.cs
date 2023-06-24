@@ -13,19 +13,6 @@ public class PlayerBoxController : ObjectBase
     private string _sourceParentPath = "ResourceItems/", _sourcePath;
     private GameObject _resourcePrefab, _resourceInstant;
 
-    /*
-     * 자원 상호 작용
-     * 
-     * 1. 상자에서 자원을 꺼낸다.
-     *   ㄴ  주체: 상자
-     * 2. 자원 박스에 넣는다.
-     *   ㄴ  주체: 자원 상자
-     * 2-1. 다시 상자에 넣는다
-     *   ㄴ  주체: 자원
-     * 2-2. 공중에 놓는다.
-     *   ㄴ  주체: 자원
-     * 
-     */
 
     private void Start()
     {
@@ -53,7 +40,6 @@ public class PlayerBoxController : ObjectBase
                 if(Managers.system.asset.wood > 0)
                 {
                     _sourcePath = _sourceParentPath + "Wood";
-
                 }
                 break;
         }
