@@ -19,4 +19,20 @@ public class Define : MonoBehaviour
         Uranium, Semiconductor,
         Missrill, FlyStone
     }
+
+    /// <summary> 팝업 상태의 enum </summary>
+    public enum PopupState
+    {
+        /// <summary> 플레이어를 기다리는 상태 </summary>
+        Wait,
+        /// <summary> 위험을 경고하는 상태 </summary>
+        Warning,
+    }
+
+    public enum prefabType
+    {
+        building,
+        effect,
+        other
+    }
 }

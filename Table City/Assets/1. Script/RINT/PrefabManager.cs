@@ -15,9 +15,9 @@ public class PrefabManager : MonoBehaviour
     {
         if (prefab.Count == 0)
         {
-            ResourceLoad(prefab, prefabType.building, "2.Prefab/0.Build");
-            ResourceLoad(prefab, prefabType.effect, "2.Prefab/1.Effect");
-            ResourceLoad(prefab, prefabType.other, "2.Prefab/3.Other");
+            ResourceLoad(prefab, Define.prefabType.building, "2.Prefab/0.Build");
+            ResourceLoad(prefab, Define.prefabType.effect, "2.Prefab/1.Effect");
+            ResourceLoad(prefab, Define.prefabType.other, "2.Prefab/3.Other");
         }
 
         poolingParent = new GameObject("Pooling").transform;
@@ -25,14 +25,14 @@ public class PrefabManager : MonoBehaviour
         poolingObject = new Dictionary<string, Queue<GameObject>>();
     }
 
-    private void ResourceLoad(Dictionary<string, GameObject> dictionary,prefabType type,string filePath)
+    private void ResourceLoad(Dictionary<string, GameObject> dictionary, Define.prefabType type, string filePath)
     {
 
         GameObject[] gameObject = Resources.LoadAll<GameObject>(filePath);
 
         foreach (GameObject oneGameObject in gameObject)
         {
-            dictionary.Add(type+oneGameObject.name, oneGameObject);
+            dictionary.Add(type + oneGameObject.name, oneGameObject);
         }
     }
     /*오브젝트 풀링*/
@@ -83,10 +83,4 @@ public class PrefabManager : MonoBehaviour
         poolingObject[addObject.name].Enqueue(addObject);
         addObject.SetActive(false);
     }
-}
-public enum prefabType
-{
-    building,
-    effect,
-    other
 }

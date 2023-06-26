@@ -71,9 +71,9 @@ public class RoomManager : MonoBehaviourPunCallbacks
 	/// <param name="_objName">소환할 오브젝트의 이름</param>
 	/// <param name="_spawnPoint">소환할 오브젝트의 위치</param>
 	/// <param name="_spawnAngle">소환할 오브잭트의 각도</param>
-	public void SyncSpawnObejct(prefabType _type, string _objName, Vector3 _spawnPoint, Quaternion _spawnAngle)
+	public void SyncSpawnObejct(Define.prefabType _type, string _objName, Vector3 _spawnPoint, Quaternion _spawnAngle)
 	{
-		if(prefabType.effect == _type)
+		if(Define.prefabType.effect == _type)
 		{
 			_pv.RPC("SpawnEffect", RpcTarget.All,_objName, _spawnPoint, _spawnAngle);
 		}
@@ -86,6 +86,6 @@ public class RoomManager : MonoBehaviourPunCallbacks
 	[PunRPC]
 	private void SpawnEffect(string _objName, Vector3 _spawnPoint, Quaternion _spawnAngle)
 	{
-		Managers.instantiate.UsePoolingObject(prefabType.effect + _objName, _spawnPoint, _spawnAngle);
+		Managers.instantiate.UsePoolingObject(Define.prefabType.effect + _objName, _spawnPoint, _spawnAngle);
 	}
 }
