@@ -35,4 +35,30 @@ public class Define : MonoBehaviour
         effect,
         other
     }
+
+    public enum AssetData
+    {
+        wood,
+        stone,
+        steel,
+        cloth,
+        coal,
+        electricity,
+        glass,
+        rubber,
+        uranium,
+        semiconductor,
+        mithril,
+        floatingStone
+    }
+
+    public enum Ending
+    {
+        floatingIsland,
+        future,
+        space,
+        Destruction,
+        normal
+    }
+
 }

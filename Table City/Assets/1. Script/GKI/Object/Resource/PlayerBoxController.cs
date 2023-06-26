@@ -49,9 +49,11 @@ public class PlayerBoxController : ObjectBase
         switch (_resourseType)
         {
             case Define.ResourseType.Wood:
+                /*
                 if(Managers.system.asset.wood > 0)
                 {
                 }
+                */
                 break;
         }
 
