@@ -209,10 +209,16 @@ public class VRController : MonoBehaviour
         if (_castedComponent == null)
             return;
 
-        if (_targetType == Define.CastingType.Tool)
+        switch(_targetType)
         {
-            _isGrab = false;
-            LaserEnable(true);
+            case Define.CastingType.Tool:
+            case Define.CastingType.PlayerBox:
+            case Define.CastingType.Resource:
+            {
+                _isGrab = false;
+                LaserEnable(true);
+                break;
+            }
         }
 
         if(!isInterrupt)
@@ -226,11 +232,11 @@ public class VRController : MonoBehaviour
         ExitInteract(true);
     }
 
-    public void ImplusiveGrab(Transform target)
+    public void ImplusiveGrab<T>(Transform target) where T : ObjectBase
     {
         ExitInteract();
         _castedObject = target;
-        _castedComponent = _castedObject.GetComponent<ObjectBase>();
+        _castedComponent = _castedObject.GetComponent<T>();
         _targetType = _castedComponent._type;
         _isGrab = true;
         _castedComponent.Interact(this, _toolGrabPoint);

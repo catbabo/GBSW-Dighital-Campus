@@ -2,6 +2,7 @@ using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 public class PlayerBoxController : ObjectBase
 {
@@ -14,8 +15,9 @@ public class PlayerBoxController : ObjectBase
     private string _sourceParentPath = "ResourceItems/", _sourcePath;
     private Define.ResourceObject[] _resourceInstant = new Define.ResourceObject[2];
 
-    private string[] _resourceNameA = { "Wood", "Steel", "Cloth", "Glass", "Uranium", "Mithril" };
-    private string[] _resourceNameB = { "Stone", "Coal", "Electricity", "Rubber", "Semiconductor", "FloatingStone" };
+    private string[] _resourceName = { "Wood", "Stone", "Steel", "Cloth", "Coal", "Electricity",
+        "Glass", "Rubber", "Uranium", "Semiconductor",  "Mithril","FloatingStone" };
+
 
     private void Start()
     {
@@ -33,7 +35,7 @@ public class PlayerBoxController : ObjectBase
 
         if (_isMine)
         {
-            bool isPlayerATeam = NetworkManager.Net.IsPlayerTeamA();
+            /*bool isPlayerATeam = NetworkManager.Net.IsPlayerTeamA();
             if (isPlayerATeam)
             {
                 _sourcePath = _sourceParentPath + _resourceNameA[(int)_resourseType];
@@ -41,18 +43,14 @@ public class PlayerBoxController : ObjectBase
             else
             {
                 _sourcePath = _sourceParentPath + _resourceNameB[(int)_resourseType];
-            }
+            }*/
+            _sourcePath = _sourceParentPath + _resourceName[(int)_resourseType];
             GameObject _resourcePrefab = Resources.Load<GameObject>(_sourcePath);
 
             _resourceInstant[0].gameObject = Instantiate(_resourcePrefab, transform.position, Quaternion.identity);
-            _resourceInstant[0].transform.localPosition = Vector3.zero;
-            _resourceInstant[0].transform.localRotation = Quaternion.identity;
-            _resourceInstant[0].gameObject.SetActive(false);
-
+            _resourceInstant[0].Init(transform, _resourseType);
             _resourceInstant[1].gameObject = Instantiate(_resourcePrefab, transform.position, Quaternion.identity);
-            _resourceInstant[1].transform.localPosition = Vector3.zero;
-            _resourceInstant[1].transform.localRotation = Quaternion.identity;
-            _resourceInstant[1].gameObject.SetActive(false);
+            _resourceInstant[1].Init(transform, _resourseType);
         }
     }
 
@@ -61,8 +59,8 @@ public class PlayerBoxController : ObjectBase
         if (!_isMine)
             return;
 
-        if (Managers.system.asset[(int)_resourseType] <= 0)
-            return;
+        /*if (Managers.system.asset[(int)_resourseType] <= 0)
+            return;*/
 
         if (!_resourceInstant[0].IsGrab())
         {

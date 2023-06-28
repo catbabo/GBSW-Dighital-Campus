@@ -11,6 +11,11 @@ public class ResourceController : GrabableObject
     private Transform _inputBox;
     private int _count;
 
+    public void SetResourceType(Define.AssetData type)
+    {
+        _resourceType = type;
+    }
+
     private void Start()
     {
         _type = Define.CastingType.Resource;

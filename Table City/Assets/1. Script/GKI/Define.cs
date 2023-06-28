@@ -55,13 +55,27 @@ public class Define : MonoBehaviour
     {
         public GameObject gameObject;
         public Transform transform;
+        public ResourceController resource;
         public bool _isGrab;
+
+        public void Init(Transform target, AssetData type)
+        {            
+            transform = gameObject.transform;
+            transform.SetParent(target);
+            transform.localPosition = Vector3.zero;
+            transform.localRotation = Quaternion.identity;
+            
+            resource = gameObject.GetComponent<ResourceController>();
+            resource.SetResourceType(type);
+
+            gameObject.SetActive(false);
+        }
 
         public void Grab(VRController hand, Transform target)
         {
-            if(!_isGrab)
+            if (!_isGrab)
             {
-                hand.ImplusiveGrab(transform);
+                hand.ImplusiveGrab<ResourceController>(transform);
             }
         }
 
