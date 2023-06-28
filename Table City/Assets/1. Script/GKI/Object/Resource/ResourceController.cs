@@ -30,11 +30,11 @@ public class ResourceController : GrabableObject
 
     public override void ExitInteract()
     {
+        base.ExitInteract();
         if(_isOnInputBox)
         {
             _inputBox.GetComponent<InputBoxController>().OnDropResource(_resourceType, _count);
         }
-        base.ExitInteract();
         gameObject.SetActive(false);
         transform.position = _originPos;
         transform.rotation = _originRot;
@@ -45,6 +45,7 @@ public class ResourceController : GrabableObject
         if(other.CompareTag("InputBox"))
         {
             _isOnInputBox = true;
+            _inputBox = other.transform;
         }
     }
 
@@ -52,7 +53,6 @@ public class ResourceController : GrabableObject
     {
         if (other.CompareTag("InputBox"))
         {
-            _inputBox = other.transform;
             _isOnInputBox = false;
         }
     }

@@ -2330,7 +2330,7 @@ MonoBehaviour:
   observableSearch: 2
   ObservedComponents:
   - {fileID: -1382060554796422945}
-  sceneViewId: 18
+  sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
 --- !u!114 &-1382060554796422945
@@ -3497,7 +3497,7 @@ MonoBehaviour:
   OwnershipTransfer: 0
   observableSearch: 2
   ObservedComponents: []
-  sceneViewId: 2
+  sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
 --- !u!1 &1993948985295498719
@@ -4034,7 +4034,7 @@ MonoBehaviour:
   OwnershipTransfer: 0
   observableSearch: 2
   ObservedComponents: []
-  sceneViewId: 10
+  sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
 --- !u!1 &3457745984441208915
@@ -4346,7 +4346,7 @@ MonoBehaviour:
   OwnershipTransfer: 0
   observableSearch: 2
   ObservedComponents: []
-  sceneViewId: 9
+  sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
 --- !u!1 &4342745132173952431
@@ -4764,7 +4764,7 @@ MonoBehaviour:
   OwnershipTransfer: 0
   observableSearch: 2
   ObservedComponents: []
-  sceneViewId: 8
+  sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
 --- !u!1 &5288061128590653959
@@ -5137,7 +5137,7 @@ MonoBehaviour:
   OwnershipTransfer: 0
   observableSearch: 2
   ObservedComponents: []
-  sceneViewId: 5
+  sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
 --- !u!1 &6977997227583375742
@@ -5357,7 +5357,7 @@ MonoBehaviour:
   OwnershipTransfer: 0
   observableSearch: 2
   ObservedComponents: []
-  sceneViewId: 7
+  sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
 --- !u!1 &7141746304768042004
@@ -5702,7 +5702,7 @@ MonoBehaviour:
   OwnershipTransfer: 0
   observableSearch: 2
   ObservedComponents: []
-  sceneViewId: 6
+  sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
 --- !u!1 &7550343831280383765
@@ -8117,7 +8117,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -2738396345095812903, guid: 84be243225486e342979df3b610e8400, type: 3}
       propertyPath: sceneViewId
-      value: 25
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 289484125902725263, guid: 84be243225486e342979df3b610e8400, type: 3}
       propertyPath: m_Name
@@ -8196,7 +8196,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -2738396345095812903, guid: 84be243225486e342979df3b610e8400, type: 3}
       propertyPath: sceneViewId
-      value: 29
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 289484125902725263, guid: 84be243225486e342979df3b610e8400, type: 3}
       propertyPath: m_Name
@@ -8275,7 +8275,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -2738396345095812903, guid: 84be243225486e342979df3b610e8400, type: 3}
       propertyPath: sceneViewId
-      value: 28
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 289484125902725263, guid: 84be243225486e342979df3b610e8400, type: 3}
       propertyPath: m_Name
@@ -8354,7 +8354,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -2738396345095812903, guid: 84be243225486e342979df3b610e8400, type: 3}
       propertyPath: sceneViewId
-      value: 26
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 289484125902725263, guid: 84be243225486e342979df3b610e8400, type: 3}
       propertyPath: m_Name
@@ -8433,7 +8433,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -2738396345095812903, guid: 84be243225486e342979df3b610e8400, type: 3}
       propertyPath: sceneViewId
-      value: 27
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 289484125902725263, guid: 84be243225486e342979df3b610e8400, type: 3}
       propertyPath: m_Name
@@ -8560,7 +8560,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7368757034047066643, guid: a1f6f44a684c28a4a9fe79f3cb3afade, type: 3}
       propertyPath: sceneViewId
-      value: 4
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a1f6f44a684c28a4a9fe79f3cb3afade, type: 3}

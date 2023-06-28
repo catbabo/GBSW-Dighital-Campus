@@ -110,6 +110,7 @@ GameObject:
   - component: {fileID: 8100775787569229052}
   - component: {fileID: 2813451802842816715}
   - component: {fileID: 3882488433587508078}
+  - component: {fileID: 6522799320050519874}
   m_Layer: 0
   m_Name: Cloth
   m_TagString: Untagged
@@ -126,7 +127,7 @@ Transform:
   m_GameObject: {fileID: 3788421274086134810}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 766309094814757569}
@@ -165,7 +166,8 @@ MonoBehaviour:
   Synchronization: 3
   OwnershipTransfer: 0
   observableSearch: 2
-  ObservedComponents: []
+  ObservedComponents:
+  - {fileID: 3882488433587508078}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -185,3 +187,16 @@ MonoBehaviour:
   m_SynchronizeRotation: 1
   m_SynchronizeScale: 0
   m_UseLocal: 1
+--- !u!65 &6522799320050519874
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3788421274086134810}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.5, y: 0.5, z: 0.5}
+  m_Center: {x: 0, y: 0, z: 0}

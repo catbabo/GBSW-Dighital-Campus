@@ -2,7 +2,6 @@ using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEngine.GraphicsBuffer;
 
 public class PlayerBoxController : ObjectBase
 {
@@ -47,9 +46,11 @@ public class PlayerBoxController : ObjectBase
             _sourcePath = _sourceParentPath + _resourceName[(int)_resourseType];
             GameObject _resourcePrefab = Resources.Load<GameObject>(_sourcePath);
 
+            //_resourceInstant[0].gameObject = Photon.Pun.PhotonNetwork.Instantiate(_sourcePath, transform.position, Quaternion.identity);
             _resourceInstant[0].gameObject = Instantiate(_resourcePrefab, transform.position, Quaternion.identity);
             _resourceInstant[0].Init(transform, _resourseType);
             _resourceInstant[1].gameObject = Instantiate(_resourcePrefab, transform.position, Quaternion.identity);
+            //_resourceInstant[1].gameObject = Photon.Pun.PhotonNetwork.Instantiate(_sourcePath, transform.position, Quaternion.identity);
             _resourceInstant[1].Init(transform, _resourseType);
         }
     }
