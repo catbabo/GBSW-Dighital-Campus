@@ -10,16 +10,6 @@ public class Define : MonoBehaviour
         Tool, Resource, InputBox, PlayerBox
     }
 
-    public enum ResourseType
-    {
-        Wood, Stone,
-        Iron, Coal,
-        Paper, Bettery,
-        Glass, Rubber,
-        Uranium, Semiconductor,
-        Missrill, FlyStone
-    }
-
     /// <summary> ÆË¾÷ »óÅÂÀÇ enum </summary>
     public enum PopupState
     {
@@ -59,6 +49,26 @@ public class Define : MonoBehaviour
         space,
         Destruction,
         normal
+    }
+
+    public struct ResourceObject
+    {
+        public GameObject gameObject;
+        public Transform transform;
+        public bool _isGrab;
+
+        public void Grab(VRController hand, Transform target)
+        {
+            if(!_isGrab)
+            {
+                hand.ImplusiveGrab(transform);
+            }
+        }
+
+        public bool IsGrab()
+        {
+            return _isGrab;
+        }
     }
 
 }

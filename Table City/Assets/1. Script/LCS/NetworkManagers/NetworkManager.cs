@@ -234,4 +234,8 @@ public class NetworkManager : MonoBehaviourPunCallbacks
 
 	}
 
+	public bool IsPlayerTeamA()
+	{
+		return _pointA;
+	}
 }

@@ -157,17 +157,14 @@ public class VRController : MonoBehaviour
         if (_hitTransform.TryGetComponent(out _castedComponent))
         {
             _targetType = _castedComponent._type;
-            Debug.Log(_castedComponent._type);
         }
         _castedObject = _hitTransform;
     }
 
     private void ExitCasting()
     {
-
         if (_targetType == Define.CastingType.Tool)
         {
-            Debug.Log("Exit");
         }
         _castedObject = null;
     }
@@ -187,12 +184,17 @@ public class VRController : MonoBehaviour
         if (_castedComponent == null)
             return;
 
-        if (_targetType == Define.CastingType.Tool)
+
+        switch(_targetType)
         {
-            Debug.Log("Interact");
-            _castedComponent.Interact(this, _toolGrabPoint);
-            _isGrab = true;
-            LaserEnable(false);
+            case Define.CastingType.Tool:
+            case Define.CastingType.PlayerBox:
+            {
+                _castedComponent.Interact(this, _toolGrabPoint);
+                _isGrab = true;
+                LaserEnable(false);
+                break;
+            }
         }
     }
 
@@ -222,5 +224,15 @@ public class VRController : MonoBehaviour
     public void Interrupt()
     {
         ExitInteract(true);
+    }
+
+    public void ImplusiveGrab(Transform target)
+    {
+        ExitInteract();
+        _castedObject = target;
+        _castedComponent = _castedObject.GetComponent<ObjectBase>();
+        _targetType = _castedComponent._type;
+        _isGrab = true;
+        _castedComponent.Interact(this, _toolGrabPoint);
     }
 }
