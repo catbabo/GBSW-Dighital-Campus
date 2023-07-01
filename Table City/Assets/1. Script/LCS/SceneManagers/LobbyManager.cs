@@ -243,8 +243,10 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 			{
 				if (_Selected)
 				{
+					_Object_PointButton.transform.Find("Button_PointB").GetComponent<Button>().interactable = false;
 					_Image_Select_PointA.sprite = _Sprite_Check;
 					_Image_Select_PointA.color = Color.green;
+					_Selected = false;
 				}
 				else
 				{
@@ -262,8 +264,10 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 			{
 				if (_Selected)
 				{
+					_Object_PointButton.transform.Find("Button_PointA").GetComponent<Button>().interactable = false;
 					_Image_Select_PointB.sprite = _Sprite_Check;
 					_Image_Select_PointB.color = Color.green;
+					_Selected = false;
 				}
 				else
 				{

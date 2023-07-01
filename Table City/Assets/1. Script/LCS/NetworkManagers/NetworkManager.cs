@@ -33,10 +33,10 @@ public class NetworkManager : MonoBehaviourPunCallbacks
 
 	#region PlayerServerInfo
 	/// <summary> 들어갈 방의 이름 </summary>
-	public string _roomCode { get; private set; } = "12345";
+	public string _roomCode { get; private set; }
 	
 	/// <summary> 플레이어의 닉네임 </summary>
-	public string _nickName { get; private set; } = "Admin";
+	public string _nickName { get; private set; }
 
 	/// <summary>
 	/// 플레이어가 A 포인트에 생성될 여부
