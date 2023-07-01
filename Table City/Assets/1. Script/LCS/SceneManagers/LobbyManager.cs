@@ -103,7 +103,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 	{
 		if (_Input_RoomCode.text.Length <= 0 || _Input_NickName.text.Length <= 0)
 		{
-			SetPopup(Define.PopupState.Warning, "Nothing Enter");
+			SetPopup(Define.PopupState.Warning, "Warning", "Nothing Enter");
 			return;
 		}
 
@@ -117,7 +117,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 	public override void OnJoinedRoom()
 	{
 		print("방 입장 성공!");
-		SetPopup(Define.PopupState.Wait, "Wait for Player");
+		SetPopup(Define.PopupState.Wait, "Wait for Player", "Player : 0 / 2");
 		_pv.RPC("JoinPlayer", RpcTarget.All);
 	}
 
@@ -155,19 +155,20 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 	/// <summary> 팝업 텍스트 변경 </summary>
 	/// <param name="_state">팝업 상태</param>
 	/// <param name="_subjectText">팝업 내용</param>
-	private void SetPopup(Define.PopupState _state, string _headerText, string _subjectText = null)
+	private void SetPopup(Define.PopupState _state, string _headerText, string _subjectText)
 	{
 		_Window_Popup.SetActive(true);
 		_PopupState = _state;
 
 		_Text_Popup_Header.text = _headerText;
-		_Text_Popup_Subject.text = _subjectText;
+
+		// 대기중이라면 플레이어가 현재 몇명 들어와 있는지 출력
+		if (_state == Define.PopupState.Wait) { _Text_Popup_Subject.text = SetJoinRoomPlayerCount(); }
+		else { _Text_Popup_Subject.text = _subjectText; }
 
 		// 플레이어가 모두 들어오면 시작지점 선택 버튼 등장
 		OnPointButton(_state == Define.PopupState.MaxPlayer);
-
-		// 대기중이라면 플레이어가 현재 몇명 들어와 있는지 출력
-		if (_state == Define.PopupState.Wait && _subjectText == null) { SetJoinRoomPlayerCount(); }
+		
 	}
 	#endregion
 
@@ -182,7 +183,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 	}
 
 	/// <summary> 플레이어가 방에 현재 몇명 들어와 있는지 출력 </summary>
-	private void SetJoinRoomPlayerCount() => SetPopup(Define.PopupState.Wait, "Player : " + PhotonNetwork.CurrentRoom.PlayerCount + " / " + PhotonNetwork.CurrentRoom.MaxPlayers);
+	private string SetJoinRoomPlayerCount() { return "Player : " + PhotonNetwork.CurrentRoom.PlayerCount + " / " + PhotonNetwork.CurrentRoom.MaxPlayers; }
 
 	/// <summary> 캔슬과 포인트 선택 버튼을 교체 </summary>
 	/// <param name="_on">true : 포인트 선택 버튼으로 교체, false : 캔슬 버튼으로 교체</param>
@@ -208,7 +209,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 		_Selected = false;
 		_Selected_PointA = false;
 		_Selected_PointB = false;
-		SetPopup(Define.PopupState.Wait, "Wait For Player");
+		SetPopup(Define.PopupState.Wait, "Wait for Player", "Player : 0 / 2");
 	}
 
 	/// <summary> 방에 플레이어가 최대로 들어왔다면 캔슬 버튼을 포인트 선택 버튼으로 교체 </summary>
