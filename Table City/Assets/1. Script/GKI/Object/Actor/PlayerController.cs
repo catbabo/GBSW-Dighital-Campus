@@ -47,7 +47,6 @@ public class PlayerController : MonoBehaviour
     private void GetModel()
     {
         _models = transform.Find("Models");
-        _models.gameObject.AddComponent<PlayerModelController>();
         _modelController = _models.GetComponent<PlayerModelController>();
     }
 
@@ -69,7 +68,7 @@ public class PlayerController : MonoBehaviour
     private void InitHead()
     {
         _headPivot = _ovrRoot.transform.Find("TrackingSpace").Find("CenterEyeAnchor");
-        _modelController.InitHead(_headPivot);
+        _modelController.InitHead(_headPivot, _pv.IsMine);
     }
 
     private void GetControllerHelper()
