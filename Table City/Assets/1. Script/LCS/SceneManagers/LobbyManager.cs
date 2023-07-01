@@ -81,6 +81,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 	{
 		_Window_Title.SetActive(true);
 		_Window_Main.SetActive(false);
+		_Window_Popup.SetActive(false);
 	}
 
 	#region Button

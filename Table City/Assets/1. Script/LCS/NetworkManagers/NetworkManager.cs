@@ -141,19 +141,21 @@ public class NetworkManager : MonoBehaviourPunCallbacks
 	#endregion
 
 	#region Spawn
-	/// <summary> 오브젝트 소환 </summary>
+	/// <summary> 오브젝트 소환 및 소환한 오브젝트 리턴 </summary>
 	/// <param name="_objectName">소환할 오브젝트 파일 위치 (Resources 에서 소환)</param>
 	/// <param name="_point">소환될 위치</param>
-	public void SpawnObject(string _objectName, Transform _point)
+	public GameObject SpawnObject(string _objectName, Transform _point)
 	{
-		GameObject _object = PhotonNetwork.Instantiate(_objectName, _point.position, _point.rotation);
+		return PhotonNetwork.Instantiate(_objectName, _point.position, _point.rotation);
 	}
 
 	/// <summary> 플레이어 소환 </summary>
 	public void SpawnPlayer()
 	{
-		SpawnObject("0. Player/Player_Prefab", _pointA ? RoomManager.room._PlayerPointA : RoomManager.room._PlayerPointB);
-		SpawnObject("0. Player/Player_Workbench", _pointA ? RoomManager.room._WorkbenchPointA : RoomManager.room._WorkbenchPointB);
+		GameObject player = SpawnObject("0. Player/Player_Prefab", _pointA ? RoomManager.room._PlayerPointA : RoomManager.room._PlayerPointB);
+		player.name += PhotonNetwork.NickName;
+		GameObject workbench = SpawnObject("0. Player/Player_Workbench", _pointA ? RoomManager.room._WorkbenchPointA : RoomManager.room._WorkbenchPointB);
+		workbench.name += PhotonNetwork.NickName;
 	}
 	#endregion
 
