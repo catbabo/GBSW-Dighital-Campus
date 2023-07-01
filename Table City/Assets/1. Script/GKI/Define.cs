@@ -25,6 +25,8 @@ public class Define : MonoBehaviour
     {
         /// <summary> 플레이어를 기다리는 상태 </summary>
         Wait,
+        /// <summary> 플레이어가 모두 들어온 상태  </summary>
+        MaxPlayer,
         /// <summary> 위험을 경고하는 상태 </summary>
         Warning,
     }

@@ -36,19 +36,39 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 	[SerializeField] private TMP_Text _Text_Popup_Subject;
 	#endregion
 
+	#region Image
+	/// <summary> A 포인트 선택 이미지 </summary>
+	[SerializeField] private Image _Image_Select_PointA;
+
+	/// <summary> B 포인트 선택 이미지 </summary>
+	[SerializeField] private Image _Image_Select_PointB;
+	#endregion
+
 	#region Object_UI
 	/// <summary> 취소 버튼 오브젝트 </summary>
-	public GameObject _CancelButton;
+	[SerializeField] private GameObject _Object_CancelButton;
 
 	/// <summary> 포인트 선택 버튼 오브젝트 </summary>
-	public GameObject _PointButton;
+	[SerializeField] private GameObject _Object_PointButton;
+
+
+	#endregion
+
+	#region Sprite
+	/// <summary> 포인트 선택 스프라이트 </summary>
+	[SerializeField] private Sprite _Sprite_Check;
+
+	/// <summary> 포인트 선택 불가 스프라이트 </summary>
+	[SerializeField] private Sprite _Sprite_X;
 	#endregion
 
 	/// <summary> 포톤 뷰 </summary>
 	private PhotonView _pv;
 
+	/// <summary> 플레이어가 선택을 했는지의 여부 </summary>
+	private bool _Selected = false;
 	/// <summary> 플레이어가 포인트 선택을 했는지의 여부 </summary>
-	private bool _SelectedA = false, _SelectedB = false;
+	private bool _Selected_PointA = false, _Selected_PointB = false;
 
 	private void Start()
 	{
@@ -97,7 +117,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 	public override void OnJoinedRoom()
 	{
 		print("방 입장 성공!");
-		SetPopup(Define.PopupState.Wait);
+		SetPopup(Define.PopupState.Wait, "Wait for Player");
 		_pv.RPC("JoinPlayer", RpcTarget.All);
 	}
 
@@ -118,6 +138,10 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 	/// <param name="_A">true : 포인트 A 선택, false : 포인트 B 선택</param>
 	public void Button_Point(bool _A)
 	{
+		_Selected = true;
+
+		SetPopup(Define.PopupState.MaxPlayer, "Choose your tools", "You choice : " + (_A ? "Wood" : "Stone"));
+
 		NetworkManager.Net.SetPlayerSpawnPoint(_A);
 
 		_pv.RPC("SelectPoint", RpcTarget.All, _A);
@@ -131,29 +155,30 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 	/// <summary> 팝업 텍스트 변경 </summary>
 	/// <param name="_state">팝업 상태</param>
 	/// <param name="_subjectText">팝업 내용</param>
-	private void SetPopup(Define.PopupState _state, string _subjectText = null)
+	private void SetPopup(Define.PopupState _state, string _headerText, string _subjectText = null)
 	{
 		_Window_Popup.SetActive(true);
-		_PointButton.SetActive(false);
-
 		_PopupState = _state;
-		_Text_Popup_Header.text = _state.ToString();
 
-		// 플레이어가 현재 몇명 들어와 있는지 출력
-		if (_subjectText != null) { _Text_Popup_Subject.text = _subjectText; }
-		else if (_state == Define.PopupState.Wait) { SetJoinRoomPlayerCount(); }
+		_Text_Popup_Header.text = _headerText;
+		_Text_Popup_Subject.text = _subjectText;
+
+		// 플레이어가 모두 들어오면 시작지점 선택 버튼 등장
+		OnPointButton(_state == Define.PopupState.MaxPlayer);
+
+		// 대기중이라면 플레이어가 현재 몇명 들어와 있는지 출력
+		if (_state == Define.PopupState.Wait && _subjectText == null) { SetJoinRoomPlayerCount(); }
 	}
 	#endregion
 
 	// 플레이어가 방에 들어오면 실행
 	public override void OnPlayerEnteredRoom(Player newPlayer)
 	{
-		print(newPlayer.NickName + " 참가.");
+		Debug.Log(newPlayer.NickName + " 참가.");
 
 		SetJoinRoomPlayerCount();
 
 		_pv.RPC("JoinPlayer", RpcTarget.All);
-
 	}
 
 	/// <summary> 플레이어가 방에 현재 몇명 들어와 있는지 출력 </summary>
@@ -163,16 +188,27 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 	/// <param name="_on">true : 포인트 선택 버튼으로 교체, false : 캔슬 버튼으로 교체</param>
 	private void OnPointButton(bool _on)
 	{
-		_PointButton.SetActive(_on);
-		_CancelButton.SetActive(!_on);
+		_Object_PointButton.SetActive(_on);
+		_Object_CancelButton.SetActive(!_on);
 	}
 
 	// 플레이어가 방에서 나가면 실행
 	public override void OnPlayerLeftRoom(Player otherPlayer)
 	{
 		Debug.Log(otherPlayer.NickName + " 나감.");
-		OnPointButton(false);
+		InitSelectPoint();
 		SetJoinRoomPlayerCount();
+	}
+
+	/// <summary> 선택한 시작지점 초기화 </summary>
+	private void InitSelectPoint()
+	{
+		_Image_Select_PointA.gameObject.SetActive(false);
+		_Image_Select_PointB.gameObject.SetActive(false);
+		_Selected = false;
+		_Selected_PointA = false;
+		_Selected_PointB = false;
+		SetPopup(Define.PopupState.Wait, "Wait For Player");
 	}
 
 	/// <summary> 방에 플레이어가 최대로 들어왔다면 캔슬 버튼을 포인트 선택 버튼으로 교체 </summary>
@@ -181,10 +217,12 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 	{
 		if (PhotonNetwork.CurrentRoom.PlayerCount == PhotonNetwork.CurrentRoom.MaxPlayers)
 		{
+			SetPopup(Define.PopupState.MaxPlayer, "Choose your tools", "You choice : ");
 			OnPointButton(true);
 		}
 		else
 		{
+			InitSelectPoint();
 			OnPointButton(false);
 		}
 	}
@@ -195,21 +233,45 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 	private void SelectPoint(bool _A)
 	{
 		if(_A)
+		{
+			_Selected_PointA = true;
+			_Object_PointButton.transform.Find("Button_PointA").GetComponent<Button>().interactable = false;
+			_Image_Select_PointA.gameObject.SetActive(true);
+			if (_pv.IsMine)
 			{
-			_SelectedA = true;
-			_PointButton.transform.Find("Button_PointA").gameObject.SetActive(false);
-			SetPopup(Define.PopupState.Wait, "You");
-			if (_pv.IsMine) _PointButton.transform.Find("Button_Protector").gameObject.SetActive(true);
+				if (_Selected)
+				{
+					_Image_Select_PointA.sprite = _Sprite_Check;
+					_Image_Select_PointA.color = Color.green;
+				}
+				else
+				{
+					_Image_Select_PointA.sprite = _Sprite_X;
+					_Image_Select_PointA.color = Color.red;
+				}
+			}
 		}
 		else
 		{
-			_SelectedB = true;
-			_PointButton.transform.Find("Button_PointB").gameObject.SetActive(false);
-			SetPopup(Define.PopupState.Wait, "You");
-			if (_pv.IsMine) _PointButton.transform.Find("Button_Protector").gameObject.SetActive(true);
+			_Selected_PointB = true;
+			_Object_PointButton.transform.Find("Button_PointB").GetComponent<Button>().interactable = false;
+			_Image_Select_PointB.gameObject.SetActive(true);
+			if (_pv.IsMine)
+			{
+				if (_Selected)
+				{
+					_Image_Select_PointB.sprite = _Sprite_Check;
+					_Image_Select_PointB.color = Color.green;
+				}
+				else
+				{
+					_Image_Select_PointB.sprite = _Sprite_X;
+					_Image_Select_PointB.color = Color.red;
+				}
+			}
 		}
 
-		if (_SelectedA && _SelectedB)
+		if (_Selected_PointA && _Selected_PointB)
 		{
 			if (PhotonNetwork.IsMasterClient)
 			{

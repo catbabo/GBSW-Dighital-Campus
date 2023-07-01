@@ -1142,7 +1142,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -1184,7 +1184,43 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 1
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -9007,8 +9043,8 @@ TextureImporter:
       icon_search_24_Filled: 21300162
       icon_guardian-off_24_Filled: 21300448
       icon_oculus-remote_24_Filled: 21300122
-      icon_standing_24_Filled: 21300558
       icon_video-capture_24_Filled: 21300402
+      icon_standing_24_Filled: 21300558
       icon_uppercase-arrow_24_Filled: 21300302
       icon_party-invite-cancel_24_Filled: 21300424
       icon_volume-mid_24_Filled: 21300562
@@ -9019,8 +9055,8 @@ TextureImporter:
       icon_google-cast-three_24_Filled: 21300250
       icon_gallery-reconnect_24_Filled: 21300542
       icon_airplane-mode_24_Filled: 21300170
-      icon_gear-vr-controller_24_Filled: 21300012
       icon_voice-assistant_24_Filled: 21300498
+      icon_gear-vr-controller_24_Filled: 21300012
       icon_image_24_Filled: 21300286
       icon_mobile-keyboard_24_Filled: 21300358
       icon_pass-through_24_Filled: 21300584
@@ -9090,12 +9126,12 @@ TextureImporter:
       icon_google-cast-off_24_Filled: 21300182
       icon_thumbs-up_24_Filled: 21300334
       icon_send_24_Filled: 21300230
-      icon_apps_24_Filled: 21300204
       icon_gpu_24_Filled: 21300352
+      icon_apps_24_Filled: 21300204
+      icon_question_24_Filled: 21300618
       icon_bt-b_24_Filled: 21300502
       icon_resize-horizontal_24_Filled: 21300364
       icon_clothing_24_Filled: 21300666
-      icon_question_24_Filled: 21300618
       icon_controller-mid-high_24_Filled: 21300602
       icon_phone_24_Filled: 21300124
       icon_cell-signal-empty_24_Filled: 21300174
@@ -9109,13 +9145,13 @@ TextureImporter:
       icon_stop-circle_24_Filled: 21300096
       icon_pacific-controller_24_Filled: 21300292
       icon_screen-brightness-low_24_Filled: 21300652
-      icon_controller-empty_24_Filled: 21300474
       icon_table_24_Filled: 21300716
-      icon_width-medium_24_Filled: 21300730
+      icon_controller-empty_24_Filled: 21300474
       icon_set-ceiling_24_Filled: 21300298
-      icon_gift_24_Filled: 21300046
-      icon_images-360_24_Filled: 21300354
       icon_computer_24_Filled: 21300410
+      icon_images-360_24_Filled: 21300354
+      icon_width-medium_24_Filled: 21300730
+      icon_gift_24_Filled: 21300046
       icon_bt-y_24_Filled: 21300630
       icon_remove-circle_24_Filled: 21300160
       icon_controller-mid_24_Filled: 21300570
@@ -9274,10 +9310,10 @@ TextureImporter:
       icon_email_24_Filled: 21300380
       icon_google-cast-one_24_Filled: 21300216
       icon_unknown-controller_24_Filled: 21300098
-      icon_play-next-circle_24_Filled: 21300328
       icon_lock_24_Filled: 21300452
-      icon_battery-alt-charge_24_Filled: 21300596
       icon_physicalfeatures_24_Filled: 21300696
+      icon_play-next-circle_24_Filled: 21300328
+      icon_battery-alt-charge_24_Filled: 21300596
       icon_media-360-3d_24_Filled: 21300018
       icon_resize-horizontal-down_24_Filled: 21300396
       icon_keyboard-space_24_Filled: 21300686
