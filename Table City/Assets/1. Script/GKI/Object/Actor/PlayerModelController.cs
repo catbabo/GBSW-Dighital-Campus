@@ -5,17 +5,28 @@ using UnityEngine;
 
 public class PlayerModelController : MonoBehaviour
 {
-    private Transform _head;
+    private bool _isHeadInit;
+    private Transform _head, _headPivot;
 
     private OVRControllerHelper _leftHelper, _rightHelper;
 
     public void InitHead(Transform target)
     {
         _head = transform.Find("Male Head");
-        _head.parent = target;
+        _headPivot = target;
+        _isHeadInit = true;
     }
 
-    public void InitControllerHelper()
+	private void Update()
+    {
+        if (!_isHeadInit)
+            return;
+
+        _head.transform.position = _headPivot.transform.position;
+        _head.transform.rotation = _headPivot.transform.rotation;
+    }
+
+	public void InitControllerHelper()
     {
         _leftHelper = transform.Find("OVRControllerPrefab_Left").GetComponent<OVRControllerHelper>();
         _rightHelper = transform.Find("OVRControllerPrefab_Right").GetComponent<OVRControllerHelper>();
