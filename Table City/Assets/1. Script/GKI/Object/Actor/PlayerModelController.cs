@@ -5,22 +5,21 @@ using UnityEngine;
 
 public class PlayerModelController : MonoBehaviour
 {
-    private bool _isHeadInit, _IsMine;
+    private bool _isHeadInit;
     private Transform _head, _headPivot;
 
     private OVRControllerHelper _leftHelper, _rightHelper;
 
-    public void InitHead(Transform target, bool mine)
+    public void InitHead(Transform target)
     {
         _head = transform.Find("Male Head");
         _headPivot = target;
         _isHeadInit = true;
-        _IsMine = mine;
     }
 
 	private void Update()
     {
-        if (!_isHeadInit && _IsMine)
+        if (!_isHeadInit)
             return;
 
         _head.position = _headPivot.position;

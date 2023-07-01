@@ -68,7 +68,7 @@ public class PlayerController : MonoBehaviour
     private void InitHead()
     {
         _headPivot = _ovrRoot.transform.Find("TrackingSpace").Find("CenterEyeAnchor");
-        _modelController.InitHead(_headPivot, _pv.IsMine);
+        _modelController.InitHead(_headPivot);
     }
 
     private void GetControllerHelper()
