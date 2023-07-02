@@ -32,6 +32,9 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         SetFactory();
+
+        for(int i = 0; i< anime.Length; i++)
+            anime[i].SetData();
     }
     private void SetFactory()
     {
@@ -53,6 +56,7 @@ public class GameManager : MonoBehaviour
             }
         }
     }
+
     public Dictionary<Define.AssetData, int> factoryLv = new Dictionary<Define.AssetData, int>();
 
     public void SetFactoryItem(Define.AssetData factoryType, Define.AssetData itemType, int count)
@@ -87,29 +91,35 @@ public struct AnimeBundle
 
     public Anime[] data;
     
+    public void SetData()
+    {
+        for (int i = 0; i < data.Length; i++)
+        {
+            data[i].condition = new int[data[i].model.Length, 12];
+            data[i].Influence = new int[data[i].model.Length];
+            /*
+            for (int j = 0; j < data.Length; j++)
+            {
+                data[i].condition = new int[data[i].model.Length, 12];
+            }
+            */
+        }
+    }
+    
 }
+
 [System.Serializable]
 public struct Anime
 {
     [field: SerializeField]
-    public GameObject bundle { get; set; }
+    public GameObject bundle { get; set; } // 영역 그룹
 
     [field: SerializeField]
-    public GameObject[] model { get; set; }
+    public GameObject[] model { get; set; } // 소환 모델
 
-    [field: SerializeField]
-    public int[] Influence { get; set; }
+    public int[] Influence { get; set; } // 영향력
 
-    public int[] condition { get; set; }
-
-    Anime(int param=0)
-    {
-        this.condition = new int[100];
-        this.bundle = null;
-        this.model = null;
-        this.Influence = null;
-    }
-
+    public int[,] condition { get; set; }  // 조건
 }
 
 [System.Serializable]
