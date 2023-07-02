@@ -8559,32 +8559,11 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7368757034047066643, guid: a1f6f44a684c28a4a9fe79f3cb3afade, type: 3}
-<<<<<<< HEAD
-      propertyPath: ObservedComponents.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7368757034047066643, guid: a1f6f44a684c28a4a9fe79f3cb3afade, type: 3}
-      propertyPath: ObservedComponents.Array.data[0]
-      value: 
-      objectReference: {fileID: 4391608918155142285}
-=======
       propertyPath: sceneViewId
       value: 0
       objectReference: {fileID: 0}
->>>>>>> origin/Resource_Grab3
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a1f6f44a684c28a4a9fe79f3cb3afade, type: 3}
---- !u!114 &4391608918155142285 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5855306538029869132, guid: a1f6f44a684c28a4a9fe79f3cb3afade, type: 3}
-  m_PrefabInstance: {fileID: 7903847364054076609}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &8853312181850307429 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1688097557442115492, guid: a1f6f44a684c28a4a9fe79f3cb3afade, type: 3}
