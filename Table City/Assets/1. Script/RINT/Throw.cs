@@ -41,7 +41,7 @@ public class Throw : MonoBehaviour
 
     void Arrived()
     {
-        Debug.Log("µµÂø");
+        //Debug.Log("µµÂø");
     }
 
     Quaternion LookAt3D(Vector3 forward)
