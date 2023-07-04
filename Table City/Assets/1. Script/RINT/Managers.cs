@@ -24,7 +24,6 @@ public class Managers : MonoBehaviour
             GameObject instantiateObject = EmptyInstantiate("PrefabMangaer");
             instantiate = instantiateObject.AddComponent<PrefabManager>();
 
-            DontDestroyOnLoad(this.gameObject);
         }
         else
         {

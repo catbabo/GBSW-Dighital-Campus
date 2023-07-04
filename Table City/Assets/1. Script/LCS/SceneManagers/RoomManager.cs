@@ -66,10 +66,11 @@ public class RoomManager : MonoBehaviourPunCallbacks
 	{
 		Debug.Log(otherPlayer.NickName + " 나감.");
 		NetworkManager.Net.LeaveRoom();
+		NetworkManager.Net.SetForceOut(true);
 		PhotonNetwork.LoadLevel("MainLobby");
 	}
 
-	/// <summary> 오브젝트 소환 </summary>
+	/// <summary> 오브젝트 소환 동기화 </summary>
 	/// <param name="_type">소환할 오브젝트의 타입</param>
 	/// <param name="_objName">소환할 오브젝트의 이름</param>
 	/// <param name="_spawnPoint">소환할 오브젝트의 위치</param>
@@ -81,7 +82,21 @@ public class RoomManager : MonoBehaviourPunCallbacks
 			_pv.RPC("SpawnEffect", RpcTarget.All,_objName, _spawnPoint, _spawnAngle);
 		}
 	}
-	
+
+	/// <summary> 아이템 데이터 동기화 </summary>
+	/// <param name="_inputBoxController">이동할 데이터가 들어가 있는 박스 컨트롤러</param>
+	/// <param name="_factoryType">데이터를 이동할 공장 타입</param>
+	public void SyncItemData(InputBoxController _inputBoxController, Define.AssetData _factoryType)
+	{
+		_pv.RPC("SetItemData", RpcTarget.All, _inputBoxController, _factoryType);
+	}
+
+	/// <summary> 트럭 오브젝트 받아오기 </summary>
+	public GameObject GetTruck()
+	{
+		return _Truck;
+	}
+
 	/// <summary> 이펙트 동기화 </summary>
 	/// <param name="_objName">생성할 오브젝트 이름</param>
 	/// <param name="_spawnPoint">생성할 오브젝트 위치</param>
@@ -94,8 +109,13 @@ public class RoomManager : MonoBehaviourPunCallbacks
 			_Truck = _object;
 	}
 
-	public GameObject GetTruck()
-    {
-		return _Truck;
-    }
+	/// <summary> 아이템 데이터 동기화 </summary>
+	/// <param name="_inputBoxController">이동할 데이터가 들어가 있는 박스 컨트롤러</param>
+	/// <param name="_factoryType">데이터를 이동할 공장 타입</param>
+	[PunRPC]
+	private void SetItemData(InputBoxController _inputBoxController, Define.AssetData _factoryType)
+	{
+		_inputBoxController.SendItem(_factoryType);
+	}
+	
 }

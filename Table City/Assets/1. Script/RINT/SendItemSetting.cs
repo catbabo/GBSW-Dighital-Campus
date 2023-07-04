@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using UnityEngine.UI;
+using Photon.Pun;
 using TMPro;
 
 public class SendItemSetting : MonoBehaviour
@@ -14,9 +15,17 @@ public class SendItemSetting : MonoBehaviour
     private InputBoxController inputBoxController;
     [SerializeField]
     private TextMeshProUGUI valueText;
+
+    [SerializeField] private PhotonView _pv;
     // Start is called before the first frame update
     void Start()
     {
+        if (!_pv.IsMine)
+		{
+            gameObject.SetActive(false);
+            return;
+        }
+
         GameObject ui = Resources.Load<GameObject>("2.Prefab/2.UI/SendPanel");
 
         foreach (Define.AssetData i in Enum.GetValues(typeof(Define.AssetData)))

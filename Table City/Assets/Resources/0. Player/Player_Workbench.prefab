@@ -8781,6 +8781,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1345735198242890792, guid: b1f1eb166b8764c4292e02d25d72f476, type: 3}
+      propertyPath: _pv
+      value: 
+      objectReference: {fileID: 9051716955400520980}
+    - target: {fileID: 1345735198242890792, guid: b1f1eb166b8764c4292e02d25d72f476, type: 3}
       propertyPath: inputBoxController
       value: 
       objectReference: {fileID: 7854033954145765447}

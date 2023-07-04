@@ -53,6 +53,13 @@ public class NetworkManager : MonoBehaviourPunCallbacks
 	/// </summary>
 	private bool _onDevelopMode = false;
 
+	/// <summary>
+	/// 강제로 방에서 나와졌는지의 여부
+	///  true : 강제로 나와졌음
+	///  false : 강제로 나오지 않음
+	/// </summary>
+	public bool _forceOut { get; private set; } = false;
+
 	/// <summary>네트워크 셋팅 초기화</summary>
 	private void InitNetworkSetting()
 	{
@@ -62,12 +69,14 @@ public class NetworkManager : MonoBehaviourPunCallbacks
 		PhotonNetwork.AutomaticallySyncScene = true; // PhotonNetwork.LoadLevel을 사용하였을 때 모든 참가자를 동일한 레벨로 이동하게 하는지의 여부
 	}
 
+	/* 개발자 모드
 	private void Update()
 	{
 		// D, M을 동시에 누르면 개발자모드 사용 또는 해제
 		if(Input.GetKey(KeyCode.D) && Input.GetKeyDown(KeyCode.M)) { _onDevelopMode = !_onDevelopMode; print("개발자 모드 : " + _onDevelopMode); }
-		if (_onDevelopMode) { DevelopMode(); }
+		 if (_onDevelopMode) { DevelopMode(); }
 	}
+	*/
 
 	#region SetPlayerServerInfo
 	/// <summary> 플레이어 닉네임 설정 ( string 사용할 닉네임 ) </summary>
@@ -181,6 +190,10 @@ public class NetworkManager : MonoBehaviourPunCallbacks
 	/// <param name="_point">true : 포인트 A 선택, false : 포인트 B 선택</param>
 	public void SetPlayerSpawnPoint(bool _point) => _pointA = _point;
 
+	/// <summary> 강제성의 여부 저장 </summary>
+	/// <param name="_force"> 방을 나갈 때 강제성의 여부 </param>
+	public void SetForceOut(bool _force) => _forceOut = _force;
+
 	/// <summary>
 	/// 서버 정보 출력
 	/// 방에 들어가 있다면 방 이름, 방 인원수, 방 최대 인원수, 방에 있는 플레이어 목록 출력
@@ -213,6 +226,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
 	/// 대부분 단어의 앞자리를 따왔음
 	/// keycode : 'C'onnect, lo'B'by, 'I'nfo, 'L'eave, 'J'oin, 'D'isconnect
 	/// </summary>
+	/*
 	private void DevelopMode()
 	{
 
@@ -235,6 +249,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
 		if (Input.GetKeyDown(KeyCode.L)) LeaveRoom();
 
 	}
+	*/
 
 	public bool IsPlayerTeamA()
 	{

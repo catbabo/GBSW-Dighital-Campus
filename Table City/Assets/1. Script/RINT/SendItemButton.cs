@@ -21,6 +21,6 @@ public class SendItemButton : MonoBehaviour
 
     public void SendItemPlay()
     {
-        inputBoxController.SendItem(type);
+        RoomManager.room.SyncItemData(inputBoxController, type);
     }
 }

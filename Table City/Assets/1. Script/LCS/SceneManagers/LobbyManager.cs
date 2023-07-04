@@ -73,7 +73,12 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 	private void Start()
 	{
 		_pv = gameObject.GetComponent<PhotonView>();
-		InitWindow();
+		if (NetworkManager.Net._forceOut)
+		{
+			SetPopup(Define.PopupState.Warning, "Warning", "Your partner is out.");
+			NetworkManager.Net.SetForceOut(false);
+		}
+		else { InitWindow(); }
 	}
 
 	/// <summary> UI 창 초기화 </summary>
@@ -155,6 +160,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 
 	/// <summary> 팝업 텍스트 변경 </summary>
 	/// <param name="_state">팝업 상태</param>
+	/// <param name="_headerText">팝업 제목</param>
 	/// <param name="_subjectText">팝업 내용</param>
 	private void SetPopup(Define.PopupState _state, string _headerText, string _subjectText)
 	{
@@ -234,6 +240,9 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 	/// <param name="_A">true : 포인트 A 선택, false : 포인트 B 선택</param>
 	private void SelectPoint(bool _A)
 	{
+		Debug.LogError(_A);
+		Debug.LogError(_Selected);
+
 		if(_A)
 		{
 			_Selected_PointA = true;
