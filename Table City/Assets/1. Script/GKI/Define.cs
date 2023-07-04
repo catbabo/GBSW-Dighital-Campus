@@ -52,6 +52,11 @@ public class Define : MonoBehaviour
         Destruction,
         normal
     }
+    public enum Point
+    {
+        Left,
+        Right
+    }
 
     public struct ResourceObject
     {

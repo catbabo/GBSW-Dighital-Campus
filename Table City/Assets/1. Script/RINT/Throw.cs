@@ -2,13 +2,17 @@ using UnityEngine;
 
 public class Throw : MonoBehaviour
 {
-    public Transform m_Target;
-    public float m_Speed = 10;
-    public float m_HeightArc = 1;
+    public Transform m_Target { private get; set; }
+
+    [SerializeField]
+    private GameObject fx,model;
+    [SerializeField]
+    private float m_Speed = 10;
+    [SerializeField]
+    private float m_HeightArc = 1;
     private Vector3 m_StartPosition;
     private bool m_IsStart;
-
-    void Start()
+    private void Start()
     {
         m_StartPosition = transform.position;
     }
@@ -41,7 +45,14 @@ public class Throw : MonoBehaviour
 
     void Arrived()
     {
-        //Debug.Log("µµÂø");
+        fx.SetActive(true);
+        model.SetActive(false);
+        Managers.system.ActionTimer(2,()=>
+        {
+            model.SetActive(true);
+            fx.SetActive(false); 
+            Managers.instantiate.AddPooling(gameObject); 
+        });
     }
 
     Quaternion LookAt3D(Vector3 forward)

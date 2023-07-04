@@ -4,12 +4,15 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using Photon.Pun;
+using UnityEngine.EventSystems;
 
 public class VRController : MonoBehaviour
 {
     #region Elements
+    [field:SerializeField]
+    public bool _isRight { get; set; }
     [SerializeField]
-    private bool _isRight, _isTesting;
+    private bool _isTesting;
 
     private Transform _toolGrabPoint;
     private bool _isGrab;
@@ -34,7 +37,7 @@ public class VRController : MonoBehaviour
     private float _rayLength = 100f;
     private RaycastHit _hit;
     private Transform _hitTransform;
-
+    private GameObject cursorVisual;
     private void Start()
     {
         if (_isTesting)
@@ -70,8 +73,19 @@ public class VRController : MonoBehaviour
 
     public void DrawLaser(Vector3 destnation)
     {
+        if(cursorVisual == null)
+            cursorVisual = GameObject.FindWithTag("UIHelpers").transform.Find("Cursor").gameObject;
+
         _laser.SetPosition(0, transform.position);
-        _laser.SetPosition(1, destnation);
+
+        if (cursorVisual != null && cursorVisual.activeSelf == false)
+        {
+            _laser.SetPosition(1, destnation);
+        }
+        else
+        {
+            _laser.SetPosition(1, cursorVisual.transform.position);
+        }
     }
 
     public void LaserEnable(bool enable)
@@ -129,6 +143,7 @@ public class VRController : MonoBehaviour
         {
             _hitTransform = _hit.transform;
             DrawLaser(_hit.point);
+
             ObjectCasting();
         }
         else

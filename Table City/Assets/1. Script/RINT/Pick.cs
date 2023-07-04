@@ -16,10 +16,6 @@ public class Pick : MonoBehaviour
         {
             RoomManager.room.SyncSpawnObejct(Define.prefabType.effect, "Explosion", collision.contacts[0].point, Quaternion.identity);
         }
-        else
-        {
-
-        }
     }
 
 

@@ -10,6 +10,7 @@ public class ResourceController : GrabableObject
     private bool _isOnInputBox;
     private Transform _inputBox;
     private int _count;
+    private Define.Point handPos;
 
     public void SetResourceType(Define.AssetData type)
     {
@@ -25,6 +26,15 @@ public class ResourceController : GrabableObject
     public override void Interact(VRController interactedHand, Transform target)
     {
         gameObject.SetActive(true);
+
+        if (interactedHand._isRight)
+            handPos = Define.Point.Right;
+        else
+            handPos = Define.Point.Left;
+
+
+        _count = 1;
+        Managers.system.countText[(int)handPos] = _count.ToString();
         base.Interact(interactedHand, target);
     }
 
@@ -33,8 +43,21 @@ public class ResourceController : GrabableObject
         base.ExitInteract();
         if(_isOnInputBox)
         {
+            //아이템 이동
             _inputBox.GetComponent<InputBoxController>().OnDropResource(_resourceType, _count);
+            //초기화
+            _count = 0;
         }
+        else
+        {
+            //데이터 원상 복귀
+            Managers.system.asset[(int)_resourceType] += _count;
+            _count = 0;
+        }
+        //메시지 안 보이게 하기
+        Managers.system.countText[(int)handPos] = "";
+
+
         gameObject.SetActive(false);
         transform.position = _originPos;
         transform.rotation = _originRot;
@@ -57,6 +80,7 @@ public class ResourceController : GrabableObject
         }
     }
 
+    float deleyTime = 1;
     private void Update()
     {
         if (_isGrab)
@@ -64,5 +88,35 @@ public class ResourceController : GrabableObject
             transform.position = _grapPoint.position;
             transform.rotation = _grapPoint.rotation;
         }
+
+        deleyTime += Time.deltaTime;
+        if(deleyTime > 0.1f)
+        {
+            float inputStick = OVRInput.Get(OVRInput.Axis2D.PrimaryThumbstick).y;
+
+            if (inputStick > 0.5f)
+            {
+                if(Managers.system.asset[(int)_resourceType] > 0)
+                {
+                    Managers.system.asset[(int)_resourceType]--;
+                    _count++;
+                    //갯수 증가 단 조건
+                    deleyTime = 0;
+                    Managers.system.countText[(int)handPos] = _count.ToString();
+                }
+            }
+            else if (inputStick < -0.5f)
+            {
+                if (_count > 0)
+                {
+                    Managers.system.asset[(int)_resourceType]++;
+                    _count--;
+                    //갯수 감소 단 조건
+                    deleyTime = 0;
+                    Managers.system.countText[(int)handPos] = _count.ToString();
+                }
+            }
+        }
+        
     }
 }

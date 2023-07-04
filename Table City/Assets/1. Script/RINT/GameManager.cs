@@ -7,7 +7,10 @@ public class GameManager : MonoBehaviour
 {
 
     [field: SerializeField, Header("자원")]
-    private int[] asset { get; set; } = new int[12];
+    public int[] asset { get; set; } = new int[12];
+
+    public string[] countText { get; set; } = new string[2];
+
     [Header("공장 정보 입력 용도")]
     public Factory[] viewFactory;
     [Header("연출")]
@@ -34,12 +37,8 @@ public class GameManager : MonoBehaviour
     #endregion
 
 
-    public Define.AssetData checl;
-    private void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.Space))
-            InputFactoryItem(checl, Define.AssetData.wood, 10);
-    }
+            //InputFactoryItem(checl, Define.AssetData.wood, 10);
+    
     private void Awake()
     {
         SetFactory();
@@ -217,8 +216,10 @@ public class GameManager : MonoBehaviour
     {
         //아이템 증가
         factoryScript[factoryType].asset[(int)itemType] += count;
+
+
         //업그레이드 정보 확인
-        for(int i = factoryScript[factoryType].data.lv; i < factoryScript[factoryType].data.maxLv; i++)
+        for (int i = factoryScript[factoryType].data.lv; i < factoryScript[factoryType].data.maxLv; i++)
         {
             bool checkLvUp = true;
             for (int j = 0; j < 12; j++)

@@ -38,6 +38,9 @@ public class RoomManager : MonoBehaviourPunCallbacks
 	/// <summary> Æ÷Åæ ºä </summary>
 	private PhotonView _pv;
 
+	/// <summary> Æ®·° ¿ÀºêÁ§Æ® </summary>
+	private GameObject _Truck;
+
 	private void Start()
 	{
 		_pv = gameObject.GetComponent<PhotonView>();
@@ -86,6 +89,13 @@ public class RoomManager : MonoBehaviourPunCallbacks
 	[PunRPC]
 	private void SpawnEffect(string _objName, Vector3 _spawnPoint, Quaternion _spawnAngle)
 	{
-		Managers.instantiate.UsePoolingObject(Define.prefabType.effect + _objName, _spawnPoint, _spawnAngle);
+		GameObject _object = Managers.instantiate.UsePoolingObject(Define.prefabType.effect + _objName, _spawnPoint, _spawnAngle);
+		if (_objName == "truck")
+			_Truck = _object;
 	}
+
+	public GameObject GetTruck()
+    {
+		return _Truck;
+    }
 }

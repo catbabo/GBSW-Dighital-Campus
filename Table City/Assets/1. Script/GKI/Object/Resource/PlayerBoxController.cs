@@ -6,8 +6,7 @@ using UnityEngine;
 public class PlayerBoxController : ObjectBase
 {
     private bool _isMine;
-    [SerializeField]
-    private GameObject _resource;
+    private GameObject _viewItem;
     [SerializeField]
     private Define.AssetData _resourseType;
 
@@ -17,6 +16,17 @@ public class PlayerBoxController : ObjectBase
     private string[] _resourceName = { "Wood", "Stone", "Steel", "Cloth", "Coal", "Electricity",
         "Glass", "Rubber", "Uranium", "Semiconductor",  "Mithril","FloatingStone" };
 
+    private void Awake()
+    {
+        _viewItem = transform.GetChild(0).gameObject;
+    }
+    private void Update()
+    {
+        if (Managers.system.asset[(int)_resourseType] < 1)
+            _viewItem.SetActive(false);
+        else
+            _viewItem.SetActive(true);
+    }
 
     private void Start()
     {
@@ -60,8 +70,10 @@ public class PlayerBoxController : ObjectBase
         if (!_isMine)
             return;
 
-        /*if (Managers.system.asset[(int)_resourseType] <= 0)
-            return;*/
+        if (Managers.system.asset[(int)_resourseType] <= 0)
+            return;
+
+        Managers.system.asset[(int)_resourseType]--; //°¨¼Ò
 
         if (!_resourceInstant[0].IsGrab())
         {
