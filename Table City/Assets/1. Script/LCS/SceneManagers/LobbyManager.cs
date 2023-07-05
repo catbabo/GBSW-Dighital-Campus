@@ -196,6 +196,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 	/// <param name="_on">true : 포인트 선택 버튼으로 교체, false : 캔슬 버튼으로 교체</param>
 	private void OnPointButton(bool _on)
 	{
+		InitSelectPoint();
 		_Object_PointButton.SetActive(_on);
 		_Object_CancelButton.SetActive(!_on);
 	}
@@ -204,7 +205,6 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 	public override void OnPlayerLeftRoom(Player otherPlayer)
 	{
 		Debug.Log(otherPlayer.NickName + " 나감.");
-		InitSelectPoint();
 		SetJoinRoomPlayerCount();
 	}
 
@@ -213,6 +213,8 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 	{
 		_Image_Select_PointA.gameObject.SetActive(false);
 		_Image_Select_PointB.gameObject.SetActive(false);
+		_Object_PointButton.transform.Find("Button_PointA").GetComponent<Button>().interactable = true;
+		_Object_PointButton.transform.Find("Button_PointB").GetComponent<Button>().interactable = true;
 		_Selected = false;
 		_Selected_PointA = false;
 		_Selected_PointB = false;
@@ -230,7 +232,6 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 		}
 		else
 		{
-			InitSelectPoint();
 			OnPointButton(false);
 		}
 	}
@@ -242,6 +243,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 	{
 		if (_Selected)
 		{
+			Debug.LogError("your Select " + (_A ? "PointA" : "Pointb"));
 			_Object_PointButton.transform.Find("Button_PointA").GetComponent<Button>().interactable = false;
 			_Object_PointButton.transform.Find("Button_PointB").GetComponent<Button>().interactable = false;
 			if (_A)
@@ -261,6 +263,8 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 		}
 		else
 		{
+			Debug.LogError("partnor Select " + (_A ? "PointA" : "Pointb"));
+
 			if (_A)
 			{
 				_Object_PointButton.transform.Find("Button_PointA").GetComponent<Button>().interactable = false;
@@ -279,7 +283,6 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 
 		if (_Selected_PointA && _Selected_PointB)
 		{
-			_Selected = false;
 			if (PhotonNetwork.IsMasterClient)
 			{
 				if (PhotonNetwork.CurrentRoom.PlayerCount == PhotonNetwork.CurrentRoom.MaxPlayers)
