@@ -2,7 +2,8 @@ using UnityEngine;
 
 public class Throw : MonoBehaviour
 {
-    public Transform m_Target { private get; set; }
+    [field:SerializeField]
+    public Transform m_Target { get; set; }
 
     [SerializeField]
     private GameObject fx,model;
@@ -11,7 +12,6 @@ public class Throw : MonoBehaviour
     [SerializeField]
     private float m_HeightArc = 1;
     private Vector3 m_StartPosition;
-    private bool m_IsStart;
     private void Start()
     {
         m_StartPosition = transform.position;
@@ -19,28 +19,20 @@ public class Throw : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            m_IsStart = true;
-        }
+        float x0 = m_StartPosition.x;
+        float x1 = m_Target.position.x;
+        float distance = x1 - x0;
+        float nextX = Mathf.MoveTowards(transform.position.x, x1, m_Speed * Time.deltaTime);
+        float baseY = Mathf.Lerp(m_StartPosition.y, m_Target.position.y, (nextX - x0) / distance);
+        float arc = m_HeightArc * (nextX - x0) * (nextX - x1) / (-0.25f * distance * distance);
+        float zOffset = (m_Target.position.z - m_StartPosition.z) * (nextX - x0) / distance;
+        Vector3 nextPosition = new Vector3(nextX, baseY + arc, m_StartPosition.z + zOffset);
 
-        if (m_IsStart)
-        {
-            float x0 = m_StartPosition.x;
-            float x1 = m_Target.position.x;
-            float distance = x1 - x0;
-            float nextX = Mathf.MoveTowards(transform.position.x, x1, m_Speed * Time.deltaTime);
-            float baseY = Mathf.Lerp(m_StartPosition.y, m_Target.position.y, (nextX - x0) / distance);
-            float arc = m_HeightArc * (nextX - x0) * (nextX - x1) / (-0.25f * distance * distance);
-            float zOffset = (m_Target.position.z - m_StartPosition.z) * (nextX - x0) / distance;
-            Vector3 nextPosition = new Vector3(nextX, baseY + arc, m_StartPosition.z + zOffset);
+        transform.rotation = LookAt3D(nextPosition - transform.position);
+        transform.position = nextPosition;
 
-            transform.rotation = LookAt3D(nextPosition - transform.position);
-            transform.position = nextPosition;
-
-            if (nextPosition == m_Target.position)
-                Arrived();
-        }
+        if (nextPosition == m_Target.position)
+            Arrived();
     }
 
     void Arrived()
