@@ -73,11 +73,13 @@ public class VRController : MonoBehaviour
 
     public void DrawLaser(Vector3 destnation)
     {
-        if(cursorVisual == null)
-            cursorVisual = GameObject.FindWithTag("UIHelpers").transform.Find("Cursor").gameObject;
+        //if(cursorVisual == null)
+            //cursorVisual = GameObject.FindWithTag("UIHelpers").transform.Find("Cursor").gameObject;
 
         _laser.SetPosition(0, transform.position);
+        _laser.SetPosition(1, destnation);
 
+        /*
         if (cursorVisual != null && cursorVisual.activeSelf == false)
         {
             _laser.SetPosition(1, destnation);
@@ -86,6 +88,7 @@ public class VRController : MonoBehaviour
         {
             _laser.SetPosition(1, cursorVisual.transform.position);
         }
+        */
     }
 
     public void LaserEnable(bool enable)
