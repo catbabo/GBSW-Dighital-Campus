@@ -26,11 +26,11 @@ public class WorkbenchController : MonoBehaviour
     {
         if(_isWoopdSide)
         {
-            _firstSourcePath = "Wood";
+            _firstSourcePath += "Wood";
         }
         else
         {
-            _firstSourcePath = "Stone";
+            _firstSourcePath += "Stone";
         }
 
         Photon.Pun.PhotonNetwork.Instantiate(_firstSourcePath, Vector3.zero, Quaternion.identity);
@@ -68,13 +68,13 @@ public class WorkbenchController : MonoBehaviour
         GameObject _resourcePrefab;
         for (int resourceIndex = 0; resourceIndex < 6; resourceIndex++)
         {
-            box = root.Find($"Crate{resourceIndex + 1}");
+            box = root.Find($"Crate{resourceIndex + 1 }");
 
-            _sourcePath = _sourceInBoxPath + _resourceName[resourceIndex];
+            _sourcePath = _sourceInBoxPath + _resourceName[resourceIndex + startIndex];
             _resourcePrefab = Photon.Pun.PhotonNetwork.Instantiate(_sourcePath, box.position, Quaternion.identity);
             _resourcePrefab.transform.SetParent(box);
 
-            box.GetComponent<PlayerBoxController>().Init(_resourcePrefab, _isMine, (Define.AssetData)resourceIndex);
+            box.GetComponent<PlayerBoxController>().Init(_resourcePrefab, _isMine, (Define.AssetData)(resourceIndex + startIndex));
         }
     }
 }
