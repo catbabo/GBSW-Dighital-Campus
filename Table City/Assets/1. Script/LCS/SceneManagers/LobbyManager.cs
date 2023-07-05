@@ -264,12 +264,14 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 			if (_A)
 			{
 				_Object_PointButton.transform.Find("Button_PointA").GetComponent<Button>().interactable = false;
+				_Image_Select_PointA.gameObject.SetActive(true);
 				_Image_Select_PointA.sprite = _Sprite_X;
 				_Image_Select_PointA.color = Color.red;
 			}
 			else
 			{
 				_Object_PointButton.transform.Find("Button_PointB").GetComponent<Button>().interactable = false;
+				_Image_Select_PointB.gameObject.SetActive(true);
 				_Image_Select_PointB.sprite = _Sprite_X;
 				_Image_Select_PointB.color = Color.red;
 			}
