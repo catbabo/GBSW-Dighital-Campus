@@ -260,6 +260,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 				_Image_Select_PointB.sprite = _Sprite_Check;
 				_Image_Select_PointB.color = Color.green;
 			}
+			_Selected = false;
 		}
 		else
 		{
