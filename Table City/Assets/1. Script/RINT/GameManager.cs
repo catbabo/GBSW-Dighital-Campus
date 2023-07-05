@@ -6,6 +6,9 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
 
+    [field: SerializeField, Header("엔딩 진행도")]
+    public int[] endingValues { get; set; } = new int[4];
+
     [field: SerializeField, Header("자원")]
     public int[] asset { get; set; } = new int[12];
 
@@ -37,8 +40,6 @@ public class GameManager : MonoBehaviour
     #endregion
 
 
-            //InputFactoryItem(checl, Define.AssetData.wood, 10);
-    
     private void Awake()
     {
         SetFactory();
@@ -142,8 +143,16 @@ public class GameManager : MonoBehaviour
                     if(on == true)
                     {
                         if (k-1 != -1 && j.data[k].bundle.activeSelf == true)
-                            j.data[k-1].bundle.SetActive(false);//번들 삭제 연출 부분
-                        j.data[k].model[a].SetActive(true);
+                        {
+                            j.data[k - 1].bundle.GetComponent<Animator>().SetBool("Start", true);
+                            ActionTimer(4, () => j.data[k - 1].bundle.SetActive(false));
+                        }
+
+                        if(j.data[k].model[a].activeSelf == false)
+                        {
+                            endingValues[(int)j.ending] = j.data[k].Influence[a];
+                            j.data[k].model[a].SetActive(true);
+                        }
                     }
                 }
             }
@@ -200,7 +209,7 @@ public class GameManager : MonoBehaviour
                         = int.Parse(csvLineSet["부유석"].ToString());
 
                 }
-            } 
+            }
             //스크립트 넣기
             FactoyData script = viewFactory[i].model.AddComponent<FactoyData>();
             factoryScript.Add(viewFactory[i].createAsset, script);
