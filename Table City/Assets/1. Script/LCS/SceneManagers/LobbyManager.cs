@@ -196,7 +196,6 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 	/// <param name="_on">true : 포인트 선택 버튼으로 교체, false : 캔슬 버튼으로 교체</param>
 	private void OnPointButton(bool _on)
 	{
-		if (_on) InitSelectPoint();
 		_Object_PointButton.SetActive(_on);
 		_Object_CancelButton.SetActive(!_on);
 	}
@@ -218,7 +217,6 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 		_Selected = false;
 		_Selected_PointA = false;
 		_Selected_PointB = false;
-		SetPopup(Define.PopupState.Wait, "Wait for Player", "Player : 0 / 2");
 	}
 
 	/// <summary> 방에 플레이어가 최대로 들어왔다면 캔슬 버튼을 포인트 선택 버튼으로 교체 </summary>
@@ -227,6 +225,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 	{
 		if (PhotonNetwork.CurrentRoom.PlayerCount == PhotonNetwork.CurrentRoom.MaxPlayers)
 		{
+			InitSelectPoint();
 			SetPopup(Define.PopupState.MaxPlayer, "Choose your tools", "You choice : ");
 			OnPointButton(true);
 		}
@@ -264,10 +263,11 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 		}
 		else
 		{
-			Debug.LogError("partnor Select " + (_A ? "PointA" : "Pointb"));
+			Debug.LogError("partnor Select " + (_A ? "PointA" : "PointB"));
 
 			if (_A)
 			{
+				_Selected_PointA = true;
 				_Object_PointButton.transform.Find("Button_PointA").GetComponent<Button>().interactable = false;
 				_Image_Select_PointA.gameObject.SetActive(true);
 				_Image_Select_PointA.sprite = _Sprite_X;
@@ -275,6 +275,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 			}
 			else
 			{
+				_Selected_PointB = true;
 				_Object_PointButton.transform.Find("Button_PointB").GetComponent<Button>().interactable = false;
 				_Image_Select_PointB.gameObject.SetActive(true);
 				_Image_Select_PointB.sprite = _Sprite_X;
