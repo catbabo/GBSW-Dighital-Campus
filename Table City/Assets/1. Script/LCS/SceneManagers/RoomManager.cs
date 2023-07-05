@@ -42,7 +42,7 @@ public class RoomManager : MonoBehaviourPunCallbacks
 	private InputBoxController _inputBoxController;
 
 	/// <summary> 트럭 이동할 위치 </summary>
-	public Transform _targetTrans { get; private set; }
+	public Vector3 _targetPos { get; private set; }
 
 	private void Start()
 	{
@@ -73,7 +73,7 @@ public class RoomManager : MonoBehaviourPunCallbacks
 		PhotonNetwork.LoadLevel("MainLobby");
 	}
 
-	/// <summary> 오브젝트 소환 동기화 </summary>
+	/// <summary> 오브젝트 소환 동기화 실행 </summary>
 	/// <param name="_type">소환할 오브젝트의 타입</param>
 	/// <param name="_objName">소환할 오브젝트의 이름</param>
 	/// <param name="_spawnPoint">소환할 오브젝트의 위치</param>
@@ -86,8 +86,8 @@ public class RoomManager : MonoBehaviourPunCallbacks
 		}
 	}
 
-	/// <summary> 아이템 데이터 동기화 </summary>
-	/// <param name="_inputBoxController">이동할 데이터가 들어가 있는 박스 컨트롤러</param>
+	/// <summary> 아이템 데이터 동기화 실행 </summary>
+	/// <param name="_inputBoxC">이동할 데이터가 들어가 있는 박스 컨트롤러</param>
 	/// <param name="_factoryType">데이터를 이동할 공장 타입</param>
 	public void SyncItemData(InputBoxController _inputBoxC, Define.AssetData _factoryType)
 	{
@@ -95,9 +95,13 @@ public class RoomManager : MonoBehaviourPunCallbacks
 		_pv.RPC("SetItemData", RpcTarget.All, _factoryType);
 	}
 
-	public void SyncTransform(Transform _trans) { _pv.RPC("SetTargetTransform", RpcTarget.All, _trans); }
+	/// <summary> 트럭이 이동할 공장 위치 동기화 실행 </summary>
+	/// <param name="_pos">공장의 position</param>
+	public void SyncTargetPosition(Vector3 _pos) { _pv.RPC("SetTargetPosition", RpcTarget.All, _pos); }
 
-	public Transform GetTargetTransform() { return _targetTrans; }
+	/// <summary> 공장 포지션 받아오기 </summary>
+	/// <returns>공장의 position</returns>
+	public Vector3 GetTargetPosition() { return _targetPos; }
 
 	/// <summary> 이펙트 동기화 </summary>
 	/// <param name="_objName">생성할 오브젝트 이름</param>
@@ -111,7 +115,9 @@ public class RoomManager : MonoBehaviourPunCallbacks
 	[PunRPC]
 	private void SetItemData(Define.AssetData _factoryType) { _inputBoxController.SendItem(_factoryType); }
 
+	/// <summary> 트럭이 이동할 공장 위치 동기화 </summary>
+	/// <param name="_pos">공장 position</param>
 	[PunRPC]
-	private void SetTargetTransform(Transform _trans) { _targetTrans = _trans; }
+	private void SetTargetPosition(Vector3 _pos) { _targetPos = _pos; }
 	
 }

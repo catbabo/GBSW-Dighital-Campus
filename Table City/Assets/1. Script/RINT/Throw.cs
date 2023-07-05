@@ -15,7 +15,7 @@ public class Throw : MonoBehaviour
     private Vector3 m_StartPosition;
     private void Start()
     {
-        m_Target = RoomManager.room.GetTargetTransform();
+        m_Target.position = RoomManager.room.GetTargetPosition();
         m_StartPosition = transform.position;
     }
 

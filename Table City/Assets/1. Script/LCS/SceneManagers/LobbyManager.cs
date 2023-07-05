@@ -242,7 +242,6 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 	{
 		if (_Selected)
 		{
-			Debug.LogError("your Select " + (_A ? "PointA" : "Pointb"));
 			_Object_PointButton.transform.Find("Button_PointA").GetComponent<Button>().interactable = false;
 			_Object_PointButton.transform.Find("Button_PointB").GetComponent<Button>().interactable = false;
 			if (_A)
@@ -263,8 +262,6 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 		}
 		else
 		{
-			Debug.LogError("partnor Select " + (_A ? "PointA" : "PointB"));
-
 			if (_A)
 			{
 				_Selected_PointA = true;
