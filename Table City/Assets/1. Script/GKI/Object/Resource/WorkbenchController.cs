@@ -30,7 +30,7 @@ public class WorkbenchController : MonoBehaviour
         }
         else
         {
-            _firstSourcePath = "Steel";
+            _firstSourcePath = "Stone";
         }
 
         Photon.Pun.PhotonNetwork.Instantiate(_firstSourcePath, Vector3.zero, Quaternion.identity);
