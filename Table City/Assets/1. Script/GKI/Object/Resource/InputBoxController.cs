@@ -10,6 +10,7 @@ public class InputBoxController : MonoBehaviour
     private GameObject sendUI;
 
     public Define.AssetData sendFactory { get; set; }
+
     public void Init()
     {
 
@@ -39,6 +40,6 @@ public class InputBoxController : MonoBehaviour
 
         //ø¨√‚
         RoomManager.room.SyncSpawnObejct(Define.prefabType.effect, "truck", transform.position, Quaternion.identity);
-        RoomManager.room.GetTruck().GetComponent<Throw>().m_Target = Managers.system.factoryScript[sendFactory].transform;
+        RoomManager.room.SyncTransform(Managers.system.factoryScript[sendFactory].transform);
     }
 }

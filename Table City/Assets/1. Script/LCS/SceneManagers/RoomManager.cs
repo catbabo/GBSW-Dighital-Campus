@@ -38,11 +38,11 @@ public class RoomManager : MonoBehaviourPunCallbacks
 	/// <summary> 포톤 뷰 </summary>
 	private PhotonView _pv;
 
-	/// <summary> 트럭 오브젝트 </summary>
-	private GameObject _Truck;
-
 	/// <summary> 박스 컨트롤러 </summary>
 	private InputBoxController _inputBoxController;
+
+	/// <summary> 트럭 이동할 위치 </summary>
+	public Transform _targetTrans { get; private set; }
 
 	private void Start()
 	{
@@ -95,30 +95,23 @@ public class RoomManager : MonoBehaviourPunCallbacks
 		_pv.RPC("SetItemData", RpcTarget.All, _factoryType);
 	}
 
-	/// <summary> 트럭 오브젝트 받아오기 </summary>
-	public GameObject GetTruck()
-	{
-		return _Truck;
-	}
+	public void SyncTransform(Transform _trans) { _pv.RPC("SetTargetTransform", RpcTarget.All, _trans); }
+
+	public Transform GetTargetTransform() { return _targetTrans; }
 
 	/// <summary> 이펙트 동기화 </summary>
 	/// <param name="_objName">생성할 오브젝트 이름</param>
 	/// <param name="_spawnPoint">생성할 오브젝트 위치</param>
 	/// <param name="_spawnAngle">생성할 오브젝트 각도</param>
 	[PunRPC]
-	private void SpawnEffect(string _objName, Vector3 _spawnPoint, Quaternion _spawnAngle)
-	{
-		GameObject _object = Managers.instantiate.UsePoolingObject(Define.prefabType.effect + _objName, _spawnPoint, _spawnAngle);
-		if (_objName == "truck")
-			_Truck = _object;
-	}
+	private void SpawnEffect(string _objName, Vector3 _spawnPoint, Quaternion _spawnAngle) { GameObject _object = Managers.instantiate.UsePoolingObject(Define.prefabType.effect + _objName, _spawnPoint, _spawnAngle); }
 
 	/// <summary> 아이템 데이터 동기화 </summary>
 	/// <param name="_factoryType">데이터를 이동할 공장 타입</param>
 	[PunRPC]
-	private void SetItemData(Define.AssetData _factoryType)
-	{
-		_inputBoxController.SendItem(_factoryType);
-	}
+	private void SetItemData(Define.AssetData _factoryType) { _inputBoxController.SendItem(_factoryType); }
+
+	[PunRPC]
+	private void SetTargetTransform(Transform _trans) { _targetTrans = _trans; }
 	
 }

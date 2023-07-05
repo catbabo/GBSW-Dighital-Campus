@@ -1,4 +1,5 @@
 using UnityEngine;
+using Photon.Pun;
 
 public class Throw : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class Throw : MonoBehaviour
     private Vector3 m_StartPosition;
     private void Start()
     {
+        m_Target = RoomManager.room.GetTargetTransform();
         m_StartPosition = transform.position;
     }
 

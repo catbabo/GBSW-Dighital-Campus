@@ -240,42 +240,38 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 	/// <param name="_A">true : 포인트 A 선택, false : 포인트 B 선택</param>
 	private void SelectPoint(bool _A)
 	{
-
-		if(_A)
+		if (_Selected)
 		{
-			_Selected_PointA = true;
 			_Object_PointButton.transform.Find("Button_PointA").GetComponent<Button>().interactable = false;
-			_Image_Select_PointA.gameObject.SetActive(true);
-			if (_Selected)
+			_Object_PointButton.transform.Find("Button_PointB").GetComponent<Button>().interactable = false;
+			if (_A)
 			{
-				_Object_PointButton.transform.Find("Button_PointB").GetComponent<Button>().interactable = false;
+				_Selected_PointA = true;
+				_Image_Select_PointA.gameObject.SetActive(true);
 				_Image_Select_PointA.sprite = _Sprite_Check;
 				_Image_Select_PointA.color = Color.green;
 			}
 			else
 			{
-				_Image_Select_PointA.sprite = _Sprite_X;
-				_Image_Select_PointA.color = Color.red;
+				_Selected_PointB = true;
+				_Image_Select_PointB.gameObject.SetActive(true);
+				_Image_Select_PointB.sprite = _Sprite_Check;
+				_Image_Select_PointB.color = Color.green;
 			}
 		}
 		else
 		{
-			_Selected_PointB = true;
-			_Object_PointButton.transform.Find("Button_PointB").GetComponent<Button>().interactable = false;
-			_Image_Select_PointB.gameObject.SetActive(true);
-			if (_pv.IsMine)
+			if (_A)
 			{
-				if (_Selected)
-				{
-					_Object_PointButton.transform.Find("Button_PointA").GetComponent<Button>().interactable = false;
-					_Image_Select_PointB.sprite = _Sprite_Check;
-					_Image_Select_PointB.color = Color.green;
-				}
-				else
-				{
-					_Image_Select_PointB.sprite = _Sprite_X;
-					_Image_Select_PointB.color = Color.red;
-				}
+				_Object_PointButton.transform.Find("Button_PointA").GetComponent<Button>().interactable = false;
+				_Image_Select_PointA.sprite = _Sprite_X;
+				_Image_Select_PointA.color = Color.red;
+			}
+			else
+			{
+				_Object_PointButton.transform.Find("Button_PointB").GetComponent<Button>().interactable = false;
+				_Image_Select_PointB.sprite = _Sprite_X;
+				_Image_Select_PointB.color = Color.red;
 			}
 		}
 
