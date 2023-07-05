@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class PlayerBoxController : ObjectBase
 {
-    private bool _isMine;
+    private bool _isMine, _isInit;
     private GameObject _viewItem, _resourcePrefab;
     public Define.AssetData _resourseType;
 
@@ -20,15 +20,13 @@ public class PlayerBoxController : ObjectBase
 
     private void Update()
     {
+        if (!_isInit)
+            return;
+
         if (Managers.system.asset[(int)_resourseType] < 1)
             _viewItem.SetActive(false);
         else
             _viewItem.SetActive(true);
-    }
-
-    private void Start()
-    {
-        Init();
     }
 
     public void Init(GameObject viewItem, bool isMine, Define.AssetData type)
@@ -53,6 +51,8 @@ public class PlayerBoxController : ObjectBase
         _resourceInstant[1].gameObject = Instantiate(_resourcePrefab, transform.position, Quaternion.identity);
         //_resourceInstant[1].gameObject = Photon.Pun.PhotonNetwork.Instantiate(_sourcePath, transform.position, Quaternion.identity);
         _resourceInstant[1].Init(transform, _resourseType);
+
+        _isInit = true;
     }
 
     public override void Interact(VRController interactedHand, Transform target)
