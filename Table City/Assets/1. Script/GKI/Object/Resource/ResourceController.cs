@@ -92,7 +92,8 @@ public class ResourceController : GrabableObject
         deleyTime += Time.deltaTime;
         if(deleyTime > 0.1f)
         {
-            float inputStick = OVRInput.Get(OVRInput.Axis2D.PrimaryThumbstick).y;
+            float inputStick = 0;
+            inputStick = OVRInput.Get(_interactedHand._thumbStick).y;
 
             if (inputStick > 0.5f)
             {
