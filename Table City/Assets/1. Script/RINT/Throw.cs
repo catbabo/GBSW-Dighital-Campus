@@ -3,8 +3,7 @@ using Photon.Pun;
 
 public class Throw : MonoBehaviour
 {
-    [field:SerializeField]
-    public Transform m_Target { get; set; }
+    private Vector3 m_TargetPosition { get; set; }
 
     [SerializeField]
     private GameObject fx,model;
@@ -13,27 +12,28 @@ public class Throw : MonoBehaviour
     [SerializeField]
     private float m_HeightArc = 1;
     private Vector3 m_StartPosition;
+
     private void Start()
     {
-        m_Target.position = RoomManager.room.GetTargetPosition();
+        m_TargetPosition = RoomManager.room.GetTargetPosition();
         m_StartPosition = transform.position;
     }
 
     void Update()
     {
         float x0 = m_StartPosition.x;
-        float x1 = m_Target.position.x;
+        float x1 = m_TargetPosition.x;
         float distance = x1 - x0;
         float nextX = Mathf.MoveTowards(transform.position.x, x1, m_Speed * Time.deltaTime);
-        float baseY = Mathf.Lerp(m_StartPosition.y, m_Target.position.y, (nextX - x0) / distance);
+        float baseY = Mathf.Lerp(m_StartPosition.y, m_TargetPosition.y, (nextX - x0) / distance);
         float arc = m_HeightArc * (nextX - x0) * (nextX - x1) / (-0.25f * distance * distance);
-        float zOffset = (m_Target.position.z - m_StartPosition.z) * (nextX - x0) / distance;
+        float zOffset = (m_TargetPosition.z - m_StartPosition.z) * (nextX - x0) / distance;
         Vector3 nextPosition = new Vector3(nextX, baseY + arc, m_StartPosition.z + zOffset);
 
         transform.rotation = LookAt3D(nextPosition - transform.position);
         transform.position = nextPosition;
 
-        if (nextPosition == m_Target.position)
+        if (nextPosition == m_TargetPosition)
             Arrived();
     }
 

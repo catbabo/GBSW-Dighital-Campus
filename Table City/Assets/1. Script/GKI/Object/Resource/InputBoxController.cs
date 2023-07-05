@@ -39,7 +39,7 @@ public class InputBoxController : MonoBehaviour
         }
 
         //ø¨√‚
-        RoomManager.room.SyncSpawnObejct(Define.prefabType.effect, "truck", transform.position, Quaternion.identity);
         RoomManager.room.SyncTargetPosition(Managers.system.factoryScript[sendFactory].transform.position);
+        RoomManager.room.SyncSpawnObejct(Define.prefabType.effect, "truck", transform.position, Quaternion.identity);
     }
 }

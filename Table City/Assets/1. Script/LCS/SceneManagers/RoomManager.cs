@@ -42,7 +42,7 @@ public class RoomManager : MonoBehaviourPunCallbacks
 	private InputBoxController _inputBoxController;
 
 	/// <summary> 트럭 이동할 위치 </summary>
-	public Vector3 _targetPos { get; private set; }
+	private Vector3 _targetPos;
 
 	private void Start()
 	{
