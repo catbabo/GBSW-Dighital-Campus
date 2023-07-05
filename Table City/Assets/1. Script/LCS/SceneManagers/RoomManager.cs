@@ -68,11 +68,11 @@ public class RoomManager : MonoBehaviourPunCallbacks
 	/// <param name="_objName">소환할 오브젝트의 이름</param>
 	/// <param name="_spawnPoint">소환할 오브젝트의 위치</param>
 	/// <param name="_spawnAngle">소환할 오브잭트의 각도</param>
-	public void SyncSpawnObejct(Define.prefabType _type, string _objName, Vector3 _spawnPoint, Quaternion _spawnAngle)
+	public void SyncSpawnObejct(Define.prefabType _type, string _objName, Vector3 _spawnPoint, Quaternion _spawnAngle, Define.AssetData _assetType)
 	{
 		if(Define.prefabType.effect == _type)
 		{
-			_pv.RPC("SpawnEffect", RpcTarget.All,_objName, _spawnPoint, _spawnAngle);
+			_pv.RPC("SpawnEffect", RpcTarget.All,_objName, _spawnPoint, _spawnAngle, _assetType);
 		}
 	}
 	#endregion
@@ -84,10 +84,10 @@ public class RoomManager : MonoBehaviourPunCallbacks
 	/// <param name="_spawnAngle">생성할 오브젝트 각도</param>
 	/// <param name="_factroyNum">목표 공장 번호</param>
 	[PunRPC]
-	private void SpawnEffect(string _objName, Vector3 _spawnPoint, Quaternion _spawnAngle, int _factroyNum = -1)
+	private void SpawnEffect(string _objName, Vector3 _spawnPoint, Quaternion _spawnAngle, Define.AssetData _assetType)
 	{ 
 		GameObject _object = Managers.instantiate.UsePoolingObject(Define.prefabType.effect + _objName, _spawnPoint, _spawnAngle);
-		if(_objName == "truck") { _object.GetComponent<Throw>().SetTargetPosition(AssetManager._asset.GetTargetPosition(_factroyNum)); }
+		if(_objName == "truck") { _object.GetComponent<Throw>().SetTargetPosition(AssetManager._asset.GetTargetPosition((int)_assetType)); }
 	}
 	#endregion
 }

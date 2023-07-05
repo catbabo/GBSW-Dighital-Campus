@@ -37,6 +37,6 @@ public class InputBoxController : MonoBehaviour
         AssetManager._asset.SyncFactroyData(factoryType);
 
         //ø¨√‚
-        RoomManager.room.SyncSpawnObejct(Define.prefabType.effect, "truck", transform.position, Quaternion.identity);
+        RoomManager.room.SyncSpawnObejct(Define.prefabType.effect, "truck", transform.position, Quaternion.identity, factoryType);
     }
 }
