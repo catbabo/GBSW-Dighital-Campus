@@ -13,18 +13,13 @@ public class SendItemSetting : MonoBehaviour
 
     [SerializeField]
     private InputBoxController inputBoxController;
+
     [SerializeField]
     private TextMeshProUGUI valueText;
-
-    [SerializeField] private PhotonView _pv;
-    // Start is called before the first frame update
+    
     void Start()
     {
-        if (!_pv.IsMine)
-		{
-            gameObject.SetActive(false);
-            return;
-        }
+        if (!inputBoxController._pv_workBench.IsMine) gameObject.SetActive(false);
 
         GameObject ui = Resources.Load<GameObject>("2.Prefab/2.UI/SendPanel");
 
@@ -40,7 +35,9 @@ public class SendItemSetting : MonoBehaviour
     }
     private void Update()
     {
-        string viewText = "";
+        if (!inputBoxController._pv_workBench.IsMine) return;
+
+            string viewText = "";
         int count = 0;
         foreach (Define.AssetData i in Enum.GetValues(typeof(Define.AssetData)))
         {

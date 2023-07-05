@@ -51,6 +51,8 @@ MonoBehaviour:
   - SetItemData
   - SetTargetTransform
   - SetTargetPosition
+  - AddFactoryItem
+  - InputFactoryAssets
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1

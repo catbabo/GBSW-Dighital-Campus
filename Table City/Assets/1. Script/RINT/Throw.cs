@@ -15,7 +15,6 @@ public class Throw : MonoBehaviour
 
     private void Start()
     {
-        m_TargetPosition = RoomManager.room.GetTargetPosition();
         m_StartPosition = transform.position;
     }
 
@@ -36,6 +35,10 @@ public class Throw : MonoBehaviour
         if (nextPosition == m_TargetPosition)
             Arrived();
     }
+
+    /// <summary> 트럭이 이동할 목표지점 설정 </summary>
+    /// <param name="_pos">목표 Position</param>
+    public void SetTargetPosition(Vector3 _pos) => m_TargetPosition = _pos;
 
     void Arrived()
     {

@@ -12,14 +12,11 @@ public class SendItemButton : MonoBehaviour
 
     [field: SerializeField]
     public Define.AssetData type {private get; set; }
-    [SerializeField]
 
+    [SerializeField]
     private TextMeshProUGUI valueText;
 
     public InputBoxController inputBoxController;
 
-    public void SendItemPlay()
-    {
-        RoomManager.room.SyncItemData(inputBoxController, type);
-    }
+    public void SendItemPlay() => inputBoxController.SendItem(type);
 }
