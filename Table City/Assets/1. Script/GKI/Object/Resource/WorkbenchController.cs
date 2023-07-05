@@ -33,7 +33,14 @@ public class WorkbenchController : MonoBehaviour
             _firstSourcePath += "Stone";
         }
 
-        Photon.Pun.PhotonNetwork.Instantiate(_firstSourcePath, Vector3.zero, Quaternion.identity);
+        Transform firstResourceRoot = transform.Find("FirstResource");
+
+        GameObject firstObject = Photon.Pun.PhotonNetwork.Instantiate(_firstSourcePath, Vector3.zero, Quaternion.identity);
+        firstObject.transform.SetParent(firstResourceRoot);
+        firstObject.transform.localPosition = Vector3.zero;
+        firstObject.transform.localRotation = Quaternion.identity;
+        firstObject.transform.localScale = Vector3.one;
+
     }
 
     private void Init()
@@ -72,7 +79,11 @@ public class WorkbenchController : MonoBehaviour
 
             _sourcePath = _sourceInBoxPath + _resourceName[resourceIndex + startIndex];
             _resourcePrefab = Photon.Pun.PhotonNetwork.Instantiate(_sourcePath, box.position, Quaternion.identity);
+
             _resourcePrefab.transform.SetParent(box);
+            _resourcePrefab.transform.localPosition = Vector3.zero;
+            _resourcePrefab.transform.localRotation = Quaternion.identity;
+            _resourcePrefab.transform.localScale = Vector3.one;
 
             box.GetComponent<PlayerBoxController>().Init(_resourcePrefab, _isMine, (Define.AssetData)(resourceIndex + startIndex));
         }
