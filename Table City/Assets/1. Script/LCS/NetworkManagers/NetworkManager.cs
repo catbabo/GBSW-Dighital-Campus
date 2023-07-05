@@ -163,7 +163,16 @@ public class NetworkManager : MonoBehaviourPunCallbacks
 	{
 		GameObject player = SpawnObject("0. Player/Player_Prefab", _pointA ? RoomManager.room._PlayerPointA : RoomManager.room._PlayerPointB);
 		player.name += PhotonNetwork.NickName;
-		GameObject workbench = SpawnObject("0. Player/Player_Workbench", _pointA ? RoomManager.room._WorkbenchPointA : RoomManager.room._WorkbenchPointB);
+		GameObject workbench = null;
+		if(_pointA)
+		{
+			workbench = SpawnObject("0. Player/PlayerA_Workbench", RoomManager.room._WorkbenchPointA);
+        }
+		else
+        {
+            workbench = SpawnObject("0. Player/PlayerB_Workbench", RoomManager.room._WorkbenchPointB);
+        }
+		
 		workbench.name += PhotonNetwork.NickName;
 	}
 	#endregion
