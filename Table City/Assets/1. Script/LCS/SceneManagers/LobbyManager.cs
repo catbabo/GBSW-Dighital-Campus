@@ -196,7 +196,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 	/// <param name="_on">true : 포인트 선택 버튼으로 교체, false : 캔슬 버튼으로 교체</param>
 	private void OnPointButton(bool _on)
 	{
-		InitSelectPoint();
+		if (_on) InitSelectPoint();
 		_Object_PointButton.SetActive(_on);
 		_Object_CancelButton.SetActive(!_on);
 	}
@@ -211,10 +211,10 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 	/// <summary> 선택한 시작지점 초기화 </summary>
 	private void InitSelectPoint()
 	{
-		_Image_Select_PointA.gameObject.SetActive(false);
-		_Image_Select_PointB.gameObject.SetActive(false);
 		_Object_PointButton.transform.Find("Button_PointA").GetComponent<Button>().interactable = true;
 		_Object_PointButton.transform.Find("Button_PointB").GetComponent<Button>().interactable = true;
+		_Image_Select_PointA.gameObject.SetActive(false);
+		_Image_Select_PointB.gameObject.SetActive(false);
 		_Selected = false;
 		_Selected_PointA = false;
 		_Selected_PointB = false;
