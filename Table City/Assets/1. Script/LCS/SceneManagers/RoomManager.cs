@@ -99,6 +99,11 @@ public class RoomManager : MonoBehaviourPunCallbacks
 	/// <param name="_pos">공장의 position</param>
 	public void SyncTargetPosition(Vector3 _pos) { _pv.RPC("SetTargetPosition", RpcTarget.All, _pos); }
 
+	/// <summary> 공장 아이템 동기화 실행 </summary>
+	/// <param name="_factoryType">공장 타입</param>
+	/// <param name="i">값</param>
+	public void SyncFactoryItem(Define.AssetData _factoryType, Define.AssetData i) { _pv.RPC("AddFactoryItem", RpcTarget.All, _factoryType, i); }
+
 	/// <summary> 공장 포지션 받아오기 </summary>
 	/// <returns>공장의 position</returns>
 	public Vector3 GetTargetPosition() { return _targetPos; }
@@ -119,5 +124,14 @@ public class RoomManager : MonoBehaviourPunCallbacks
 	/// <param name="_pos">공장 position</param>
 	[PunRPC]
 	private void SetTargetPosition(Vector3 _pos) { _targetPos = _pos; }
+
+	/// <summary> 공장 아이템 동기화 </summary>
+	/// <param name="_factoryType">공장 타입</param>
+	/// <param name="i">값</param>
+	[PunRPC]
+	private void AddFactoryItem(Define.AssetData _factoryType, Define.AssetData i)
+	{
+		Managers.system.InputFactoryItem(_factoryType, i, _inputBoxController.asset[(int)i]);
+	}
 	
 }

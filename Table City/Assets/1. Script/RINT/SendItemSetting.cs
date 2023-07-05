@@ -16,9 +16,16 @@ public class SendItemSetting : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI valueText;
 
+    [SerializeField] private PhotonView _pv;
     // Start is called before the first frame update
     void Start()
     {
+        if (!_pv.IsMine)
+		{
+            gameObject.SetActive(false);
+            return;
+        }
+
         GameObject ui = Resources.Load<GameObject>("2.Prefab/2.UI/SendPanel");
 
         foreach (Define.AssetData i in Enum.GetValues(typeof(Define.AssetData)))

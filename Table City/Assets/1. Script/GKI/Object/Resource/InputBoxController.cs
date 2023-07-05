@@ -34,7 +34,7 @@ public class InputBoxController : MonoBehaviour
         //아이템 전송
         foreach (Define.AssetData i in Enum.GetValues(typeof(Define.AssetData)))
         {
-            Managers.system.InputFactoryItem(factoryType, i, asset[(int)i]);
+            RoomManager.room.SyncFactoryItem(factoryType, i);
             asset[(int)i] = 0;
         }
 
