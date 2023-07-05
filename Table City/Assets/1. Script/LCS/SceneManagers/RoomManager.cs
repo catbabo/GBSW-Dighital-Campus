@@ -41,6 +41,9 @@ public class RoomManager : MonoBehaviourPunCallbacks
 	/// <summary> 트럭 오브젝트 </summary>
 	private GameObject _Truck;
 
+	/// <summary> 박스 컨트롤러 </summary>
+	private InputBoxController _inputBoxController;
+
 	private void Start()
 	{
 		_pv = gameObject.GetComponent<PhotonView>();
@@ -86,9 +89,10 @@ public class RoomManager : MonoBehaviourPunCallbacks
 	/// <summary> 아이템 데이터 동기화 </summary>
 	/// <param name="_inputBoxController">이동할 데이터가 들어가 있는 박스 컨트롤러</param>
 	/// <param name="_factoryType">데이터를 이동할 공장 타입</param>
-	public void SyncItemData(InputBoxController _inputBoxController, Define.AssetData _factoryType)
+	public void SyncItemData(InputBoxController _inputBoxC, Define.AssetData _factoryType)
 	{
-		_pv.RPC("SetItemData", RpcTarget.All, _inputBoxController, _factoryType);
+		_inputBoxController = _inputBoxC;
+		_pv.RPC("SetItemData", RpcTarget.All, _factoryType);
 	}
 
 	/// <summary> 트럭 오브젝트 받아오기 </summary>
@@ -110,10 +114,9 @@ public class RoomManager : MonoBehaviourPunCallbacks
 	}
 
 	/// <summary> 아이템 데이터 동기화 </summary>
-	/// <param name="_inputBoxController">이동할 데이터가 들어가 있는 박스 컨트롤러</param>
 	/// <param name="_factoryType">데이터를 이동할 공장 타입</param>
 	[PunRPC]
-	private void SetItemData(InputBoxController _inputBoxController, Define.AssetData _factoryType)
+	private void SetItemData(Define.AssetData _factoryType)
 	{
 		_inputBoxController.SendItem(_factoryType);
 	}

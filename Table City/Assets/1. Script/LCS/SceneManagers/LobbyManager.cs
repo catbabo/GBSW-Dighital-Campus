@@ -144,11 +144,11 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 	/// <param name="_A">true : 포인트 A 선택, false : 포인트 B 선택</param>
 	public void Button_Point(bool _A)
 	{
-		_Selected = true;
-
 		SetPopup(Define.PopupState.MaxPlayer, "Choose your tools", "You choice : " + (_A ? "Wood" : "Stone"));
 
 		NetworkManager.Net.SetPlayerSpawnPoint(_A);
+
+		_Selected = true;
 
 		_pv.RPC("SelectPoint", RpcTarget.All, _A);
 	}
@@ -240,28 +240,22 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 	/// <param name="_A">true : 포인트 A 선택, false : 포인트 B 선택</param>
 	private void SelectPoint(bool _A)
 	{
-		Debug.LogError(_A);
-		Debug.LogError(_Selected);
 
 		if(_A)
 		{
 			_Selected_PointA = true;
 			_Object_PointButton.transform.Find("Button_PointA").GetComponent<Button>().interactable = false;
 			_Image_Select_PointA.gameObject.SetActive(true);
-			if (_pv.IsMine)
+			if (_Selected)
 			{
-				if (_Selected)
-				{
-					_Object_PointButton.transform.Find("Button_PointB").GetComponent<Button>().interactable = false;
-					_Image_Select_PointA.sprite = _Sprite_Check;
-					_Image_Select_PointA.color = Color.green;
-					_Selected = false;
-				}
-				else
-				{
-					_Image_Select_PointA.sprite = _Sprite_X;
-					_Image_Select_PointA.color = Color.red;
-				}
+				_Object_PointButton.transform.Find("Button_PointB").GetComponent<Button>().interactable = false;
+				_Image_Select_PointA.sprite = _Sprite_Check;
+				_Image_Select_PointA.color = Color.green;
+			}
+			else
+			{
+				_Image_Select_PointA.sprite = _Sprite_X;
+				_Image_Select_PointA.color = Color.red;
 			}
 		}
 		else
@@ -276,7 +270,6 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 					_Object_PointButton.transform.Find("Button_PointA").GetComponent<Button>().interactable = false;
 					_Image_Select_PointB.sprite = _Sprite_Check;
 					_Image_Select_PointB.color = Color.green;
-					_Selected = false;
 				}
 				else
 				{
@@ -288,6 +281,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 
 		if (_Selected_PointA && _Selected_PointB)
 		{
+			_Selected = false;
 			if (PhotonNetwork.IsMasterClient)
 			{
 				if (PhotonNetwork.CurrentRoom.PlayerCount == PhotonNetwork.CurrentRoom.MaxPlayers)

@@ -3365,7 +3365,6 @@ GameObject:
   - component: {fileID: 3337790439997578878}
   - component: {fileID: 3928197897423831443}
   - component: {fileID: 7854033954145765447}
-  - component: {fileID: 2039203410482716220}
   m_Layer: 0
   m_Name: InputBox
   m_TagString: InputBox
@@ -3480,28 +3479,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sendUI: {fileID: 5904730604504233633}
---- !u!114 &2039203410482716220
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1906118742518330137}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ObservedComponentsFoldoutOpen: 1
-  Group: 0
-  prefixField: -1
-  Synchronization: 3
-  OwnershipTransfer: 0
-  observableSearch: 2
-  ObservedComponents: []
-  sceneViewId: 0
-  InstantiationId: 0
-  isRuntimeInstantiated: 0
 --- !u!1 &1993948985295498719
 GameObject:
   m_ObjectHideFlags: 0
@@ -3915,7 +3892,7 @@ GameObject:
   - component: {fileID: 3290500062924718648}
   - component: {fileID: 3990224674423359722}
   - component: {fileID: 5969892614676254278}
-  - component: {fileID: 9188801090338454632}
+  - component: {fileID: 2334033072660736702}
   m_Layer: 0
   m_Name: Crate
   m_TagString: Untagged
@@ -4016,7 +3993,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _type: 3
   _resourseType: 8
---- !u!114 &9188801090338454632
+--- !u!114 &2334033072660736702
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4226,7 +4203,7 @@ GameObject:
   - component: {fileID: 9209955678088201479}
   - component: {fileID: 4233442831131668468}
   - component: {fileID: 5969892614676254277}
-  - component: {fileID: 3093046241136813858}
+  - component: {fileID: 1564510162239916459}
   m_Layer: 0
   m_Name: Crate (1)
   m_TagString: Untagged
@@ -4327,7 +4304,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _type: 3
   _resourseType: 10
---- !u!114 &3093046241136813858
+--- !u!114 &1564510162239916459
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4643,7 +4620,7 @@ GameObject:
   - component: {fileID: 6768569387069088149}
   - component: {fileID: 1702970212884666820}
   - component: {fileID: 5969892614676254276}
-  - component: {fileID: 3593831610603148257}
+  - component: {fileID: 1341031391986971909}
   m_Layer: 0
   m_Name: Crate (2)
   m_TagString: Untagged
@@ -4744,7 +4721,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _type: 3
   _resourseType: 6
---- !u!114 &3593831610603148257
+--- !u!114 &1341031391986971909
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5245,7 +5222,7 @@ GameObject:
   - component: {fileID: 6251542751652736765}
   - component: {fileID: 4952193148614484580}
   - component: {fileID: 686240142}
-  - component: {fileID: 6624702383906694578}
+  - component: {fileID: 5568068375829141869}
   m_Layer: 0
   m_Name: Crate (5)
   m_TagString: Untagged
@@ -5346,7 +5323,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _type: 3
   _resourseType: 0
---- !u!114 &6624702383906694578
+--- !u!114 &5568068375829141869
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5464,7 +5441,7 @@ GameObject:
   - component: {fileID: 1181472907921123845}
   - component: {fileID: 4259077124900386728}
   - component: {fileID: 5969892614676254275}
-  - component: {fileID: 247326361887680659}
+  - component: {fileID: 1088650999690554313}
   m_Layer: 0
   m_Name: Crate (3)
   m_TagString: Untagged
@@ -5565,7 +5542,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _type: 3
   _resourseType: 3
---- !u!114 &247326361887680659
+--- !u!114 &1088650999690554313
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5808,7 +5785,7 @@ GameObject:
   - component: {fileID: 2870621230691351087}
   - component: {fileID: 1857862775357911154}
   - component: {fileID: 5969892614676254274}
-  - component: {fileID: 5921677493872861096}
+  - component: {fileID: 641433068168454206}
   m_Layer: 0
   m_Name: Crate (4)
   m_TagString: Untagged
@@ -5909,7 +5886,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _type: 3
   _resourseType: 2
---- !u!114 &5921677493872861096
+--- !u!114 &641433068168454206
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

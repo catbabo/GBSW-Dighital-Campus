@@ -16,8 +16,7 @@ public class SendItemButton : MonoBehaviour
 
     private TextMeshProUGUI valueText;
 
-
-    public InputBoxController inputBoxController { private get; set; }
+    public InputBoxController inputBoxController;
 
     public void SendItemPlay()
     {
