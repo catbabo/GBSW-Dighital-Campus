@@ -158,6 +158,7 @@ public class GameManager : MonoBehaviour
             }
         }
     }
+
     // 공장 초기 설정
     private void SetFactory()
     {
@@ -219,7 +220,6 @@ public class GameManager : MonoBehaviour
 
     }
 
-
     //공장에 아이템 넣기
     public void InputFactoryItem(Define.AssetData factoryType, Define.AssetData itemType, int count)
     {
@@ -251,7 +251,7 @@ public class GameManager : MonoBehaviour
 
 
     }
-
+    
 }
 
 

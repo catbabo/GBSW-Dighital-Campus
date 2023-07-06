@@ -41,8 +41,8 @@ public class FactoyData : MonoBehaviour
         if (timer < (float)(data.maxLv + 1 - data.lv )/ 2 )return;
 
         animator.SetTrigger("GetAsset");
-        //찬솔이가 데이터 연결
-        Managers.system.asset[(int)data.createAsset] += 1;
+
+        AssetManager._asset.SyncFactroyCreateAsset(data, 1);
 
         Managers.instantiate.UsePoolingObject(Define.prefabType.effect+data.createAsset.ToString(),transform.position,Quaternion.identity);
         timer = 0;

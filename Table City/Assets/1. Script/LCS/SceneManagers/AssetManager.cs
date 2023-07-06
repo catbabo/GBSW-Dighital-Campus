@@ -52,10 +52,20 @@ public class AssetManager : MonoBehaviourPunCallbacks
 	/// <param name="_pos">공장의 position</param>
 	public void SyncTargetPosition(Vector3 _pos) { _pv.RPC("SetTargetPosition", RpcTarget.All, _pos); }
 
+	/// <summary> 공장에 들어간 자원 동기화 </summary>
+	/// <param name="_factoryType">데이터를 동기화 할 공장</param>
 	public void SyncFactroyData(Define.AssetData _factoryType)
 	{ 
-		_pv.RPC("InputFactoryAssets", RpcTarget.All, _factoryType, _Assets);
+		_pv.RPC("InputFactoryAssetData", RpcTarget.All, _factoryType, _Assets);
 		_Assets = new int[12];
+	}
+
+	/// <summary> 공장에서 생성한 자원 동기화  </summary>
+	/// <param name="_data">공장 데이터</param>
+	/// <param name="_createCount">공장에서 생성한 개수</param>
+	public void SyncFactroyCreateAsset(Factory _data, int _createCount)
+	{
+		_pv.RPC("OutputFactroyAssetData", RpcTarget.All, _data, _createCount);
 	}
 	#endregion
 
@@ -64,12 +74,22 @@ public class AssetManager : MonoBehaviourPunCallbacks
 	/// <param name="_factoryType">자원을 이동시킬 공장</param>
 	/// <param name="_Assets">저장된 자원</param>
 	[PunRPC]
-	private void InputFactoryAssets(Define.AssetData _factoryType, int[] _Assets)
+	private void InputFactoryAssetData(Define.AssetData _factoryType, int[] _Assets)
 	{
 		foreach (Define.AssetData _assetData in _Assets)
 		{
+			Debug.Log("Add " + _Assets[(int)_assetData]);
 			Managers.system.InputFactoryItem(_factoryType, _assetData, _Assets[(int)_assetData]);
 		}
+	}
+
+	/// <summary> 공장에서 생성한 자원들 저장 </summary>
+	/// <param name="_data">공장 데이터</param>
+	/// <param name="_createCount">공장에서 생성한 자원 개수</param>
+	[PunRPC]
+	private void OutputFactoryAssetData(Factory _data, int _createCount)
+	{
+		Managers.system.asset[(int)_data.createAsset] += _createCount;
 	}
 	#endregion
 
