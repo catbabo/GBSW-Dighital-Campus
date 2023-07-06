@@ -18,7 +18,7 @@ public class Pick : MonoBehaviour
         }
         if (collision.transform.CompareTag("Wood"))
         {
-            RoomManager.room.SyncSpawnObejct(Define.prefabType.effect, "Explosion", collision.contacts[0].point, Quaternion.identity);
+            RoomManager.room.SyncSpawnObejct(Define.prefabType.effect, "Explosion", collision.contacts[0].point, Quaternion.identity, Define.AssetData.wood);
         }
     }
 

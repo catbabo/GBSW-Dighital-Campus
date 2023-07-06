@@ -158,20 +158,14 @@ public class NetworkManager : MonoBehaviourPunCallbacks
 		return PhotonNetwork.Instantiate(_objectName, _point.position, _point.rotation);
 	}
 
-	/// <summary> 플레이어 소환 </summary>
+	/// <summary> 플레이어 및 작업대 소환 </summary>
 	public void SpawnPlayer()
 	{
 		GameObject player = SpawnObject("0. Player/Player_Prefab", _pointA ? RoomManager.room._PlayerPointA : RoomManager.room._PlayerPointB);
 		player.name += PhotonNetwork.NickName;
 		GameObject workbench = null;
-		if(_pointA)
-		{
-			workbench = SpawnObject("0. Player/PlayerA_Workbench", RoomManager.room._WorkbenchPointA);
-        }
-		else
-        {
-            workbench = SpawnObject("0. Player/PlayerB_Workbench", RoomManager.room._WorkbenchPointB);
-        }
+		if(_pointA)	{ workbench = SpawnObject("0. Player/PlayerA_Workbench", RoomManager.room._WorkbenchPointA); }
+		else { workbench = SpawnObject("0. Player/PlayerB_Workbench", RoomManager.room._WorkbenchPointB); }
 		
 		workbench.name += PhotonNetwork.NickName;
 	}
