@@ -37,7 +37,7 @@ public class SendItemSetting : MonoBehaviour
     {
         if (!inputBoxController._pv_workBench.IsMine) return;
 
-            string viewText = "";
+        string viewText = "";
         int count = 0;
         foreach (Define.AssetData i in Enum.GetValues(typeof(Define.AssetData)))
         {
