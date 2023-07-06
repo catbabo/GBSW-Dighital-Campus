@@ -13,9 +13,19 @@ public class Throw : MonoBehaviour
     private float m_HeightArc = 1;
     private Vector3 m_StartPosition;
 
+    [SerializeField]
+    private Define.AssetData itemType;
+
+    [SerializeField]
+    private bool itemShot = false;
+
     private void Start()
     {
         m_StartPosition = transform.position;
+
+        if (itemShot == true) 
+            m_TargetPosition = Managers.system._workbenchPoints[(int)itemType];
+
     }
 
     void Update()

@@ -23,7 +23,7 @@ public class GameManager : MonoBehaviour
     [field: SerializeField, Header("레벨 변경 상황")]
     private int[] factoryLvCheck = new int[12]; // 레벨 변경 상황 확인 용도
 
-    public Vector3[] _workbenchPoints = new Vector3[6];
+    public Vector3[] _workbenchPoints { get; private set; } =  new Vector3[6];
 
     #region 타이머
     public void ActionTimer(float time, int repeatCount, Action action, bool actionFirst) => StartCoroutine(ActionTimerCoroutine(time, repeatCount, action, actionFirst));
