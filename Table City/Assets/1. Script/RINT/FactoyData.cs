@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 public class FactoyData : MonoBehaviour
 {
@@ -42,7 +43,7 @@ public class FactoyData : MonoBehaviour
 
         animator.SetTrigger("GetAsset");
 
-        AssetManager._asset.SyncFactroyCreateAsset(data, 1);
+        if(PhotonNetwork.IsMasterClient) AssetManager._asset.SyncFactroyCreateAsset(data, 1);
 
         Managers.instantiate.UsePoolingObject(Define.prefabType.effect+data.createAsset.ToString(),transform.position,Quaternion.identity);
         timer = 0;
