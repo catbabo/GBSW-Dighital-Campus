@@ -31,16 +31,16 @@ public class Define : MonoBehaviour
     public enum AssetData
     {
         wood,
-        stone,
-        steel,
-        cloth,
-        coal,
-        electricity,
-        glass,
         rubber,
+        coal,
+        glass,
         uranium,
-        semiconductor,
         mithril,
+        stone,
+        cloth,
+        steel,
+        electricity,
+        semiconductor,
         floatingStone
     }
 

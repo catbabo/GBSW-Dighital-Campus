@@ -2677,6 +2677,7 @@ MonoBehaviour:
   _isTesting: 0
   _laser: {fileID: 0}
   _laserColor: {r: 0, g: 0, b: 0, a: 0}
+  _thumbStick: 0
 --- !u!114 &6941617709216189009
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7018,6 +7019,7 @@ MonoBehaviour:
   _isTesting: 0
   _laser: {fileID: 0}
   _laserColor: {r: 0, g: 0, b: 0, a: 0}
+  _thumbStick: 0
 --- !u!114 &6944001519912284699
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -17,7 +17,7 @@ public class InputBoxController : MonoBehaviour
 
 	private void Update()
     {
-        if(OVRInput.GetDown(OVRInput.Button.Two) && _pv_workBench.IsMine)
+        if(OVRInput.GetDown(OVRInput.Button.Two) || OVRInput.GetDown(OVRInput.Button.Four) && _pv_workBench.IsMine)
         {
             sendUI.SetActive(!sendUI.activeSelf);
         }
@@ -27,7 +27,7 @@ public class InputBoxController : MonoBehaviour
 
     public void SendItem(Define.AssetData factoryType)
     {
-        //¾ÆÀÌÅÛ Àü¼Û
+        //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         foreach (Define.AssetData _assetData in Enum.GetValues(typeof(Define.AssetData)))
         {
             AssetManager._asset.SetAssetData(_assetData, asset[(int)_assetData]);
@@ -36,7 +36,7 @@ public class InputBoxController : MonoBehaviour
         
         AssetManager._asset.SyncFactroyData(factoryType);
 
-        //¿¬Ãâ
+        //ï¿½ï¿½ï¿½ï¿½
         RoomManager.room.SyncSpawnObejct(Define.prefabType.effect, "truck", transform.position, Quaternion.identity, factoryType);
     }
 }

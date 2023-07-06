@@ -68,6 +68,8 @@ public class LaserPointer : OVRCursor
     private void Awake()
     {
         lineRenderer = GetComponent<LineRenderer>();
+        lineRenderer.startWidth = 0.7f;
+        lineRenderer.endWidth = 0.7f;
     }
 
     private void Start()

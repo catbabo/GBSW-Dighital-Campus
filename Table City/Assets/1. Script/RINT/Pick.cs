@@ -16,6 +16,10 @@ public class Pick : MonoBehaviour
         {
             RoomManager.room.SyncSpawnObejct(Define.prefabType.effect, "Explosion", collision.contacts[0].point, Quaternion.identity, Define.AssetData.stone);
         }
+        if (collision.transform.CompareTag("Wood"))
+        {
+            RoomManager.room.SyncSpawnObejct(Define.prefabType.effect, "Explosion", collision.contacts[0].point, Quaternion.identity);
+        }
     }
 
 

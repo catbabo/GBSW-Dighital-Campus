@@ -21,6 +21,7 @@ public class VRController : MonoBehaviour
     public Color _laserColor;
 
     private OVRInput.RawButton _triggerButton;
+    public OVRInput.Axis2D _thumbStick;
 
     private Transform _castedObject;
 
@@ -34,7 +35,7 @@ public class VRController : MonoBehaviour
 
     private Vector3 _origin;
     private Vector3 _dir;
-    private float _rayLength = 100f;
+    private float _rayLength = 20f;
     private RaycastHit _hit;
     private Transform _hitTransform;
     private GameObject cursorVisual;
@@ -58,8 +59,8 @@ public class VRController : MonoBehaviour
 
         _laser.material = material;
         _laser.positionCount = 2;
-        _laser.startWidth = 0.01f;
-        _laser.endWidth = 0.01f;
+        _laser.startWidth = 0.07f;
+        _laser.endWidth = 0.07f;
 
         _toolGrabPoint = transform.Find("ToolGrabPoint");
     }
@@ -73,11 +74,13 @@ public class VRController : MonoBehaviour
 
     public void DrawLaser(Vector3 destnation)
     {
-        if(cursorVisual == null)
-            cursorVisual = GameObject.FindWithTag("UIHelpers").transform.Find("Cursor").gameObject;
+        //if(cursorVisual == null)
+            //cursorVisual = GameObject.FindWithTag("UIHelpers").transform.Find("Cursor").gameObject;
 
         _laser.SetPosition(0, transform.position);
+        _laser.SetPosition(1, destnation);
 
+        /*
         if (cursorVisual != null && cursorVisual.activeSelf == false)
         {
             _laser.SetPosition(1, destnation);
@@ -86,6 +89,7 @@ public class VRController : MonoBehaviour
         {
             _laser.SetPosition(1, cursorVisual.transform.position);
         }
+        */
     }
 
     public void LaserEnable(bool enable)
@@ -98,10 +102,12 @@ public class VRController : MonoBehaviour
         if (_isRight)
         {
             _triggerButton = OVRInput.RawButton.RIndexTrigger;
+            _thumbStick = OVRInput.Axis2D.SecondaryThumbstick;
         }
         else
         {
             _triggerButton = OVRInput.RawButton.LIndexTrigger;
+            _thumbStick = OVRInput.Axis2D.PrimaryThumbstick;
         }
     }
 
