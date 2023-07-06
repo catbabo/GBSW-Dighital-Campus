@@ -252,9 +252,6 @@ public class GameManager : MonoBehaviour
 
 
     }
-<<<<<<< HEAD
-    
-=======
 
     public void SetWorkbechPoint(int index, Vector3 pos)
     {
@@ -263,13 +260,12 @@ public class GameManager : MonoBehaviour
     public Vector3 GetWorkbechPoint(Define.AssetData type)
     {
         int index = (int)type;
-        if(index >= 6)
+        if (index >= 6)
         {
             index -= 6;
         }
         return _workbenchPoints[index];
     }
->>>>>>> origin/Rint_End_UPDATE_UPDATE_UPDATE
 }
 
 
