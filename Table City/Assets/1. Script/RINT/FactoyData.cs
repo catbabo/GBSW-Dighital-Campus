@@ -43,7 +43,7 @@ public class FactoyData : MonoBehaviour
 
         animator.SetTrigger("GetAsset");
 
-        if(PhotonNetwork.IsMasterClient) AssetManager._asset.SyncFactroyCreateAsset(data, 1);
+        if(PhotonNetwork.IsMasterClient) AssetManager._asset.SyncFactroyCreateAsset(data.createAsset, 1);
 
         Managers.instantiate.UsePoolingObject(Define.prefabType.effect+data.createAsset.ToString(),transform.position,Quaternion.identity);
         timer = 0;

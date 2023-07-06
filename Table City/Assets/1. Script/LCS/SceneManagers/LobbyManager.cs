@@ -122,7 +122,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 	// 방 입장시 실행
 	public override void OnJoinedRoom()
 	{
-		print("방 입장 성공!");
+		Debug.Log("방 입장 성공!");
 		SetPopup(Define.PopupState.Wait, "Wait for Player", "Player : 0 / 2");
 		_pv.RPC("JoinPlayer", RpcTarget.All);
 	}

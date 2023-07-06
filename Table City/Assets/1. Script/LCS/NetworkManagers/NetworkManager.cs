@@ -69,14 +69,12 @@ public class NetworkManager : MonoBehaviourPunCallbacks
 		PhotonNetwork.AutomaticallySyncScene = true; // PhotonNetwork.LoadLevel을 사용하였을 때 모든 참가자를 동일한 레벨로 이동하게 하는지의 여부
 	}
 
-	/* 개발자 모드
 	private void Update()
 	{
 		// D, M을 동시에 누르면 개발자모드 사용 또는 해제
 		if(Input.GetKey(KeyCode.D) && Input.GetKeyDown(KeyCode.M)) { _onDevelopMode = !_onDevelopMode; print("개발자 모드 : " + _onDevelopMode); }
 		 if (_onDevelopMode) { DevelopMode(); }
 	}
-	*/
 
 	#region SetPlayerServerInfo
 	/// <summary> 플레이어 닉네임 설정 ( string 사용할 닉네임 ) </summary>
@@ -153,21 +151,22 @@ public class NetworkManager : MonoBehaviourPunCallbacks
 	/// <summary> 오브젝트 소환 및 소환한 오브젝트 리턴 </summary>
 	/// <param name="_objectName">소환할 오브젝트 파일 위치 (Resources 에서 소환)</param>
 	/// <param name="_point">소환될 위치</param>
-	public GameObject SpawnObject(string _objectName, Transform _point)
+	public GameObject SpawnObject(string _objectName, Transform _point = null)
 	{
-		return PhotonNetwork.Instantiate(_objectName, _point.position, _point.rotation);
+		if (_point == null) return PhotonNetwork.Instantiate(_objectName, Vector3.zero, Quaternion.identity);
+		else return PhotonNetwork.Instantiate(_objectName, _point.position, _point.rotation);
 	}
 
 	/// <summary> 플레이어 및 작업대 소환 </summary>
 	public void SpawnPlayer()
 	{
 		GameObject player = SpawnObject("0. Player/Player_Prefab", _pointA ? RoomManager.room._PlayerPointA : RoomManager.room._PlayerPointB);
-		player.name += PhotonNetwork.NickName;
-		GameObject workbench = null;
+		//player.name = "Player_" + PhotonNetwork.NickName.ToString();
+		
+		GameObject workbench;
 		if(_pointA)	{ workbench = SpawnObject("0. Player/PlayerA_Workbench", RoomManager.room._WorkbenchPointA); }
 		else { workbench = SpawnObject("0. Player/PlayerB_Workbench", RoomManager.room._WorkbenchPointB); }
-		
-		workbench.name += PhotonNetwork.NickName;
+		//workbench.name = "Player_WorkBench_" + PhotonNetwork.NickName.ToString();
 	}
 	#endregion
 
@@ -229,7 +228,6 @@ public class NetworkManager : MonoBehaviourPunCallbacks
 	/// 대부분 단어의 앞자리를 따왔음
 	/// keycode : 'C'onnect, lo'B'by, 'I'nfo, 'L'eave, 'J'oin, 'D'isconnect
 	/// </summary>
-	/*
 	private void DevelopMode()
 	{
 
@@ -251,8 +249,19 @@ public class NetworkManager : MonoBehaviourPunCallbacks
 		// L을 누르면 방 떠나기
 		if (Input.GetKeyDown(KeyCode.L)) LeaveRoom();
 
+		// S를 누르면 기본 셋팅
+		if (Input.GetKeyDown(KeyCode.S)) EnterRoomSolo();
+
+		// T를 누르면 혼자서 입장
+		if(Input.GetKeyDown(KeyCode.T)) PhotonNetwork.LoadLevel("PlayRoom");
 	}
-	*/
+
+	private void EnterRoomSolo()
+	{
+		SetNickName("admin");
+		SetRoomCode("DevelopRoom");
+		SetPlayerSpawnPoint(true);
+	}
 
 	public bool IsPlayerTeamA()
 	{

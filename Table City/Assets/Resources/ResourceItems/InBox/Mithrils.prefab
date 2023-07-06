@@ -486,7 +486,7 @@ GameObject:
   - component: {fileID: 2178056130581854714}
   - component: {fileID: 3111742552686323458}
   m_Layer: 0
-  m_Name: Mithrills
+  m_Name: Mithrils
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -8,7 +8,7 @@ public class WorkbenchController : MonoBehaviour
     [SerializeField]
     private bool _isWoopdSide;
     private string _firstSourcePath = "ResourceItems/FirstSource/";
-    private bool _isMine;
+    private PhotonView pv;
 
     private string
         _sourceInBoxPath = "ResourceItems/InBox/",
@@ -35,7 +35,7 @@ public class WorkbenchController : MonoBehaviour
 
         Transform firstResourceRoot = transform.Find("FirstResource");
 
-        GameObject firstObject = Photon.Pun.PhotonNetwork.Instantiate(_firstSourcePath, Vector3.zero, Quaternion.identity);
+        GameObject firstObject = NetworkManager.Net.SpawnObject(_firstSourcePath);
         firstObject.transform.SetParent(firstResourceRoot);
         firstObject.transform.localPosition = Vector3.zero;
         firstObject.transform.localRotation = Quaternion.identity;
@@ -45,11 +45,9 @@ public class WorkbenchController : MonoBehaviour
 
     private void Init()
     {
-        PhotonView pv = null;
-        pv = GetComponent<PhotonView>();
-        _isMine = (pv.IsMine);
+        pv = gameObject.GetComponent<PhotonView>();
 
-        if (_isMine)
+        if (pv.IsMine)
         {
             SetFirstResources();
 
@@ -79,14 +77,14 @@ public class WorkbenchController : MonoBehaviour
             Managers.system.SetWorkbechPoint(resourceIndex, box.position);
 
             _sourcePath = _sourceInBoxPath + _resourceName[resourceIndex + startIndex];
-            _resourcePrefab = Photon.Pun.PhotonNetwork.Instantiate(_sourcePath, box.position, Quaternion.identity);
+            _resourcePrefab = NetworkManager.Net.SpawnObject(_sourcePath, box);
 
             _resourcePrefab.transform.SetParent(box);
             _resourcePrefab.transform.localPosition = Vector3.zero;
             _resourcePrefab.transform.localRotation = Quaternion.identity;
             _resourcePrefab.transform.localScale = Vector3.one;
 
-            box.GetComponent<PlayerBoxController>().Init(_resourcePrefab, _isMine, (Define.AssetData)(resourceIndex + startIndex));
+            box.GetComponent<PlayerBoxController>().Init(_resourcePrefab, pv.IsMine, (Define.AssetData)(resourceIndex + startIndex));
         }
     }
 }

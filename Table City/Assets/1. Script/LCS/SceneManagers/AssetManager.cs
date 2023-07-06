@@ -63,9 +63,9 @@ public class AssetManager : MonoBehaviourPunCallbacks
 	/// <summary> 공장에서 생성한 자원 동기화  </summary>
 	/// <param name="_data">공장 데이터</param>
 	/// <param name="_createCount">공장에서 생성한 개수</param>
-	public void SyncFactroyCreateAsset(Factory _data, int _createCount)
+	public void SyncFactroyCreateAsset(Define.AssetData _data, int _createCount)
 	{
-		_pv.RPC("OutputFactroyAssetData", RpcTarget.All, _data.createAsset, _createCount);
+		_pv.RPC("OutputFactoryAssetData", RpcTarget.All, _data, _createCount);
 	}
 	#endregion
 
