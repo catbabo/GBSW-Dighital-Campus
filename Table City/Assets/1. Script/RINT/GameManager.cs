@@ -23,6 +23,7 @@ public class GameManager : MonoBehaviour
     [field: SerializeField, Header("레벨 변경 상황")]
     private int[] factoryLvCheck = new int[12]; // 레벨 변경 상황 확인 용도
 
+    public Vector3[] _workbenchPoints = new Vector3[6];
 
     #region 타이머
     public void ActionTimer(float time, int repeatCount, Action action, bool actionFirst) => StartCoroutine(ActionTimerCoroutine(time, repeatCount, action, actionFirst));
@@ -252,6 +253,19 @@ public class GameManager : MonoBehaviour
 
     }
 
+    public void SetWorkbechPoint(int index, Vector3 pos)
+    {
+        _workbenchPoints[index] = pos;
+    }
+    public Vector3 GetWorkbechPoint(Define.AssetData type)
+    {
+        int index = (int)type;
+        if(index >= 6)
+        {
+            index -= 6;
+        }
+        return _workbenchPoints[index];
+    }
 }
 
 

@@ -76,6 +76,7 @@ public class WorkbenchController : MonoBehaviour
         for (int resourceIndex = 0; resourceIndex < 6; resourceIndex++)
         {
             box = root.Find($"Crate{resourceIndex + 1 }");
+            Managers.system.SetWorkbechPoint(resourceIndex, box.position);
 
             _sourcePath = _sourceInBoxPath + _resourceName[resourceIndex + startIndex];
             _resourcePrefab = Photon.Pun.PhotonNetwork.Instantiate(_sourcePath, box.position, Quaternion.identity);
