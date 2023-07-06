@@ -49,8 +49,7 @@ public class Define : MonoBehaviour
         floatingIsland,
         future,
         space,
-        Destruction,
-        normal
+        Destruction
     }
     public enum Point
     {

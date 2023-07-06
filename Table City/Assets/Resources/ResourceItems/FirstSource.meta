@@ -1,6 +1,10 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Table City/Assets/Resources/ResourceItems/FirstSource.meta
 guid: 348b3a8ab43ac8c4fb067573e52554e3
 folderAsset: yes
+========
+guid: 5866b1c12e4acbd43b63c64db5fc6914
+>>>>>>>> origin/Rint_End_UPDATE_UPDATE:Table City/Assets/0. Scenes/UseScene/PlayRoom 1.unity.meta
 DefaultImporter:
   externalObjects: {}
   userData: 
