@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22bde404bd1e28b41bba8ea18c3ef00c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fx: {fileID: 0}
+  fx: {fileID: 2706049008048771256}
   model: {fileID: 0}
   m_Speed: 10
   m_HeightArc: 1
@@ -223,6 +223,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5cd5599e01f32bd418f20a3b9eac1c57, type: 3}
+--- !u!1 &2706049008048771256 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 182542, guid: 5cd5599e01f32bd418f20a3b9eac1c57, type: 3}
+  m_PrefabInstance: {fileID: 2706049008048626102}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2706049008048933316 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 479346, guid: 5cd5599e01f32bd418f20a3b9eac1c57, type: 3}

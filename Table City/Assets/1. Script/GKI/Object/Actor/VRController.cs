@@ -154,7 +154,7 @@ public class VRController : MonoBehaviour
         }
         else
         {
-            DrawLaser(transform.forward * _rayLength);
+            DrawLaser(_dir.normalized * _rayLength);
 
             if (_castedObject != null)
             {

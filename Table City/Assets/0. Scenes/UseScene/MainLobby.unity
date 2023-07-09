@@ -8664,6 +8664,7 @@ MonoBehaviour:
   _isTesting: 0
   _laser: {fileID: 0}
   _laserColor: {r: 0, g: 0, b: 0, a: 0}
+  _thumbStick: 0
 --- !u!4 &335625126221460058
 Transform:
   m_ObjectHideFlags: 0
@@ -13997,6 +13998,7 @@ MonoBehaviour:
   _isTesting: 0
   _laser: {fileID: 0}
   _laserColor: {r: 0, g: 0, b: 0, a: 0}
+  _thumbStick: 0
 --- !u!4 &6350486819315192847
 Transform:
   m_ObjectHideFlags: 0

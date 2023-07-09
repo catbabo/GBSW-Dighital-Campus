@@ -26,6 +26,9 @@ public class Throw : MonoBehaviour
         if (itemShot == true) 
             m_TargetPosition = Managers.system._workbenchPoints[(int)itemType];
 
+        fx = transform.GetChild(1).gameObject;
+        model = transform.GetChild(0).gameObject;
+
     }
 
     void Update()
