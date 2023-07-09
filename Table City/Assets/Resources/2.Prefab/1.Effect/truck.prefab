@@ -49,11 +49,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22bde404bd1e28b41bba8ea18c3ef00c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Target: {fileID: 0}
-  fx: {fileID: 4633432288210340872}
-  model: {fileID: 9055798541595462182}
+  <m_TargetPosition>k__BackingField: {x: 0, y: 0, z: 0}
   m_Speed: 1
   m_HeightArc: 3
+  itemType: 0
+  itemShot: 0
 --- !u!114 &7164461550251571916
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -963,10 +963,5 @@ PrefabInstance:
 --- !u!4 &4630891519891847360 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4405705417748808, guid: bee9b8c06e722064aa95e6f6bad79162, type: 3}
-  m_PrefabInstance: {fileID: 4632970065999645064}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &4633432288210340872 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1934760418411904, guid: bee9b8c06e722064aa95e6f6bad79162, type: 3}
   m_PrefabInstance: {fileID: 4632970065999645064}
   m_PrefabAsset: {fileID: 0}

@@ -3,10 +3,9 @@ using Photon.Pun;
 
 public class Throw : MonoBehaviour
 {
+    [field:SerializeField]
     private Vector3 m_TargetPosition { get; set; }
 
-    [SerializeField]
-    private GameObject fx,model;
     [SerializeField]
     private float m_Speed = 10;
     [SerializeField]
@@ -26,8 +25,6 @@ public class Throw : MonoBehaviour
         if (itemShot == true) 
             m_TargetPosition = Managers.system._workbenchPoints[(int)itemType];
 
-        fx = transform.GetChild(1).gameObject;
-        model = transform.GetChild(0).gameObject;
 
     }
 
@@ -55,14 +52,10 @@ public class Throw : MonoBehaviour
 
     void Arrived()
     {
-        fx.SetActive(true);
-        model.SetActive(false);
-        Managers.system.ActionTimer(2,()=>
-        {
-            model.SetActive(true);
-            fx.SetActive(false); 
-            Managers.instantiate.AddPooling(gameObject); 
-        });
+        Debug.Log("µµÂø");
+
+        Managers.instantiate.AddPooling(gameObject);
+
     }
 
     Quaternion LookAt3D(Vector3 forward)
