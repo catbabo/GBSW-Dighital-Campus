@@ -8,7 +8,7 @@ public class InputBoxController : MonoBehaviour
 {
     [field:SerializeField]
     public PhotonView _pv_workBench { get; set; }
-
+    [field:SerializeField]
     public int[] asset { get; set; } = new int[12];
 
     [SerializeField] private GameObject sendUI;
@@ -27,9 +27,14 @@ public class InputBoxController : MonoBehaviour
 
     public void SendItem(Define.AssetData factoryType)
     {
+        bool sendItemCheck = false;
         //������ ����
         foreach (Define.AssetData _assetData in Enum.GetValues(typeof(Define.AssetData)))
         {
+            if (asset[(int)_assetData] != 0)
+                sendItemCheck = true;
+
+
             AssetManager._asset.SetAssetData(_assetData, asset[(int)_assetData]);
             asset[(int)_assetData] = 0;
         }
@@ -37,6 +42,8 @@ public class InputBoxController : MonoBehaviour
         AssetManager._asset.SyncFactroyData(factoryType);
 
         //����
-        RoomManager.room.SyncSpawnObejct(Define.prefabType.effect, "truck", transform.position, Quaternion.identity, factoryType);
+        if(sendItemCheck == true)
+            RoomManager.room.SyncSpawnObejct(Define.prefabType.effect, "truck", transform.position, Quaternion.identity, factoryType);
+        
     }
 }

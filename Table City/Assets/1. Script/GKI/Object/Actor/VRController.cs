@@ -59,8 +59,8 @@ public class VRController : MonoBehaviour
 
         _laser.material = material;
         _laser.positionCount = 2;
-        _laser.startWidth = 0.07f;
-        _laser.endWidth = 0.07f;
+        _laser.startWidth = 0.02f;
+        _laser.endWidth = 0.02f;
 
         _toolGrabPoint = transform.Find("ToolGrabPoint");
     }
@@ -77,8 +77,12 @@ public class VRController : MonoBehaviour
         //if(cursorVisual == null)
             //cursorVisual = GameObject.FindWithTag("UIHelpers").transform.Find("Cursor").gameObject;
 
-        _laser.SetPosition(0, transform.position);
-        _laser.SetPosition(1, destnation);
+        if (_isRight == false)
+        {
+            _laser.SetPosition(1, destnation);
+            _laser.SetPosition(0, transform.position);
+        }
+
 
         /*
         if (cursorVisual != null && cursorVisual.activeSelf == false)

@@ -41,18 +41,61 @@ public class SendItemSetting : MonoBehaviour
         int count = 0;
         foreach (Define.AssetData i in Enum.GetValues(typeof(Define.AssetData)))
         {
-            if (count == 2)
+            if (inputBoxController.asset[(int)i] != 0)
             {
-                count = 0;
-                if (inputBoxController.asset[(int)i] != 0)
-                    viewText += "\n" + i.ToString() + " " + inputBoxController.asset[(int)i] + " / ";
+                if (count == 2)
+                {
+                    count = 1;
+                    viewText += "\n";
+                }
+                else
+                {
+                    count++;
+                }
+                string itemName = "없음";
+                switch(i)
+                {
+                    case Define.AssetData.wood:
+                        itemName = "나무";
+                        break;
+                    case Define.AssetData.rubber:
+                        itemName = "고무";
+                        break;
+                    case Define.AssetData.coal:
+                        itemName = "석탄";
+                        break;
+                    case Define.AssetData.cloth:
+                        itemName = "천";
+                        break;
+                    case Define.AssetData.electricity:
+                        itemName = "전기";
+                        break;
+                    case Define.AssetData.floatingStone:
+                        itemName = "부유석";
+                        break;
+                    case Define.AssetData.glass:
+                        itemName = "유리";
+                        break;
+                    case Define.AssetData.mithril:
+                        itemName = "미스릴";
+                        break;
+                    case Define.AssetData.semiconductor:
+                        itemName = "반도체";
+                        break;
+                    case Define.AssetData.steel:
+                        itemName = "철";
+                        break;
+                    case Define.AssetData.uranium:
+                        itemName = "우라늄";
+                        break;
+                    case Define.AssetData.stone:
+                        itemName = "돌";
+                        break;
+
+                }
+                viewText += "<color=#0000ff>" + itemName + " : </color>" + inputBoxController.asset[(int)i] + "  ";
             }
-            else
-            {
-                count++;
-                if (inputBoxController.asset[(int)i] != 0)
-                    viewText += i.ToString() + " " + inputBoxController.asset[(int)i] + " / ";
-            }
+
         }
         valueText.text = viewText;
     }
