@@ -14,11 +14,11 @@ public class Pick : MonoBehaviour
     {
         if (collision.transform.CompareTag("Stone"))
         {
-            RoomManager.room.SyncSpawnObejct(Define.prefabType.effect, "Explosion", collision.contacts[0].point, Quaternion.identity, Define.AssetData.stone);
+            RoomManager.room.SyncSpawnObejct(Define.prefabType.effect, "ExplosionWood", collision.contacts[0].point, Quaternion.identity, Define.AssetData.stone);
         }
         if (collision.transform.CompareTag("Wood"))
         {
-            RoomManager.room.SyncSpawnObejct(Define.prefabType.effect, "Explosion", collision.contacts[0].point, Quaternion.identity, Define.AssetData.wood);
+            RoomManager.room.SyncSpawnObejct(Define.prefabType.effect, "ExplosionStone", collision.contacts[0].point, Quaternion.identity, Define.AssetData.wood);
         }
     }
 
