@@ -77,7 +77,7 @@ public class VRController : MonoBehaviour
         //if(cursorVisual == null)
             //cursorVisual = GameObject.FindWithTag("UIHelpers").transform.Find("Cursor").gameObject;
 
-        if (_isRight == false)
+        /*if (_isRight == false)
         {
             _laser.SetPosition(0, transform.position);
             _laser.SetPosition(1, destnation);
@@ -87,17 +87,6 @@ public class VRController : MonoBehaviour
             //버그로 인한 가리기
             _laser.SetPosition(0, transform.position);
             _laser.SetPosition(1, transform.position);
-        }
-
-
-        /*
-        if (cursorVisual != null && cursorVisual.activeSelf == false)
-        {
-            _laser.SetPosition(1, destnation);
-        }
-        else
-        {
-            _laser.SetPosition(1, cursorVisual.transform.position);
         }
         */
     }
