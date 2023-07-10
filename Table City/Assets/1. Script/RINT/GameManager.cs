@@ -116,6 +116,7 @@ public class GameManager : MonoBehaviour
                 for (int a = 0; a < k.model.Length; a++)
                 {
                     k.model[a].SetActive(false);
+                    Debug.Log("2");
                 }
             }
         }
@@ -297,7 +298,9 @@ public struct AnimeBundle
 
     public void SetData(int[] csvLine)
     {
-        if(data[csvLine[0] - 1].Influence.Length == 0)
+        Debug.Log(data[csvLine[0] - 1].Influence.Length);
+        Debug.Log(data[csvLine[0] - 1]);
+        if (data[csvLine[0] - 1].Influence.Length == 0)
         {
             data[csvLine[0]-1].Influence = new int[data[csvLine[0] - 1].model.Length];
             data[csvLine[0]-1].condition = new int[data[csvLine[0] - 1].model.Length, 12];
