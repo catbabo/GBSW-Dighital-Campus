@@ -37,14 +37,14 @@ public class HandedInputSelector : MonoBehaviour
 
     void Update()
     {
-        if (OVRInput.GetActiveController() == OVRInput.Controller.LTouch)
+        /*if (OVRInput.GetActiveController() == OVRInput.Controller.LTouch)
         {
             SetActiveController(OVRInput.Controller.LTouch);
         }
         else
         {
             SetActiveController(OVRInput.Controller.RTouch);
-        }
+        }*/
     }
 
     void SetActiveController(OVRInput.Controller c)
@@ -58,7 +58,7 @@ public class HandedInputSelector : MonoBehaviour
         {
             t = m_CameraRig.rightHandAnchor;
         }
-
         m_InputModule.rayTransform = t;
+
     }
 }

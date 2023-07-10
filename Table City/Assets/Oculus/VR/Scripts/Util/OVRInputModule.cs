@@ -30,11 +30,16 @@ namespace UnityEngine.EventSystems
     {
         [Tooltip("Object which points with Z axis. E.g. CentreEyeAnchor from OVRCameraRig")]
         public Transform rayTransform;
+        public Transform rightController, leftController;
 
-        public OVRCursor m_Cursor;
+        public OVRCursor m_Cursor, m_CursorL, m_CursorR;
 
         [Tooltip("Gamepad button to act as gaze click")]
         public OVRInput.Button joyPadClickButton = OVRInput.Button.One;
+
+        private OVRInput.RawButton rHandClickButton = OVRInput.RawButton.RIndexTrigger;
+        private OVRInput.RawButton lHandClickButton = OVRInput.RawButton.LIndexTrigger;
+        private OVRInput.RawButton ClickButton;
 
         [Tooltip("Keyboard button to act as gaze click")]
         public KeyCode gazeClickKey = KeyCode.Space;
@@ -504,7 +509,8 @@ namespace UnityEngine.EventSystems
                     SendSubmitEventToSelectedObject();
             }
 
-            ProcessMouseEvent(GetGazePointerData());
+            ProcessMouseEvent(GetGazePointerData(true));
+            ProcessMouseEvent(GetGazePointerData(false));
 #if !UNITY_ANDROID
             ProcessMouseEvent(GetCanvasPointerData());
 #endif
@@ -629,21 +635,30 @@ namespace UnityEngine.EventSystems
         /// State for a pointer controlled by a world space ray. E.g. gaze pointer
         /// </summary>
         /// <returns></returns>
-        virtual protected MouseState GetGazePointerData()
+        virtual protected MouseState GetGazePointerData(bool isRight)
         {
-            // Get the OVRRayPointerEventData reference
+            if(isRight)
+            {
+                rayTransform = rightController;
+                m_Cursor = m_CursorR;
+                ClickButton = rHandClickButton;
+            }
+            else
+            {
+                rayTransform = leftController;
+                m_Cursor = m_CursorL;
+                ClickButton = lHandClickButton;
+            }
+
             OVRPointerEventData leftData;
             GetPointerData(kMouseLeftId, out leftData, true);
             leftData.Reset();
 
-            //Now set the world space ray. This ray is what the user uses to point at UI elements
             leftData.worldSpaceRay = new Ray(rayTransform.position, rayTransform.forward);
             leftData.scrollDelta = GetExtraScrollDelta();
 
-            //Populate some default values
             leftData.button = PointerEventData.InputButton.Left;
             leftData.useDragThreshold = true;
-            // Perform raycast to find intersections with world
             eventSystem.RaycastAll(leftData, m_RaycastResultCache);
             var raycast = FindFirstRaycast(m_RaycastResultCache);
             leftData.pointerCurrentRaycast = raycast;
@@ -652,26 +667,19 @@ namespace UnityEngine.EventSystems
             m_Cursor.SetCursorRay(rayTransform);
 
             OVRRaycaster ovrRaycaster = raycast.module as OVRRaycaster;
-            // We're only interested in intersections from OVRRaycasters
             if (ovrRaycaster)
             {
-                // The Unity UI system expects event data to have a screen position
-                // so even though this raycast came from a world space ray we must get a screen
-                // space position for the camera attached to this raycaster for compatability
                 leftData.position = ovrRaycaster.GetScreenPosition(raycast);
 
-                // Find the world position and normal the Graphic the ray intersected
                 RectTransform graphicRect = raycast.gameObject.GetComponent<RectTransform>();
                 if (graphicRect != null)
                 {
-                    // Set are gaze indicator with this world position and normal
                     Vector3 worldPos = raycast.worldPosition;
                     Vector3 normal = GetRectTransformNormal(graphicRect);
                     m_Cursor.SetCursorStartDest(rayTransform.position, worldPos, normal);
                 }
             }
 
-            // Now process physical raycast intersections
             OVRPhysicsRaycaster physicsRaycaster = raycast.module as OVRPhysicsRaycaster;
             if (physicsRaycaster)
             {
@@ -679,8 +687,6 @@ namespace UnityEngine.EventSystems
 
                 if (performSphereCastForGazepointer)
                 {
-                    // Here we cast a sphere into the scene rather than a ray. This gives a more accurate depth
-                    // for positioning a circular gaze pointer
                     List<RaycastResult> results = new List<RaycastResult>();
                     physicsRaycaster.Spherecast(leftData, results, m_SpherecastRadius);
                     if (results.Count > 0 && results[0].distance < raycast.distance)
@@ -694,9 +700,6 @@ namespace UnityEngine.EventSystems
                 m_Cursor.SetCursorStartDest(rayTransform.position, position, raycast.worldNormal);
             }
 
-            // Stick default data values in right and middle slots for compatability
-
-            // copy the apropriate data into right and middle slots
             OVRPointerEventData rightData;
             GetPointerData(kMouseRightId, out rightData, true);
             CopyFromTo(leftData, rightData);
@@ -904,9 +907,10 @@ namespace UnityEngine.EventSystems
         {
             //todo: enable for Unity Input System
 #if ENABLE_LEGACY_INPUT_MANAGER
-            var pressed = Input.GetKeyDown(gazeClickKey) || OVRInput.GetDown(joyPadClickButton);
-            var released = Input.GetKeyUp(gazeClickKey) || OVRInput.GetUp(joyPadClickButton);
-
+            //var pressed = Input.GetKeyDown(gazeClickKey) || OVRInput.GetDown(joyPadClickButton);
+            //var released = Input.GetKeyUp(gazeClickKey) || OVRInput.GetUp(joyPadClickButton);
+            var pressed = Input.GetKeyDown(gazeClickKey) || OVRInput.GetDown(ClickButton);
+            var released = Input.GetKeyUp(gazeClickKey) || OVRInput.GetUp(ClickButton);
 #if UNITY_ANDROID && !UNITY_EDITOR
             pressed |= Input.GetMouseButtonDown(0);
             released |= Input.GetMouseButtonUp(0);
