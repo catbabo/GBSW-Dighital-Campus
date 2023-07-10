@@ -89,7 +89,7 @@ GameObject:
   - component: {fileID: 5855306538029869132}
   - component: {fileID: 7368757034047066643}
   m_Layer: 0
-  m_Name: PlayerTool
+  m_Name: PlayerATool
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -172,7 +172,8 @@ MonoBehaviour:
   Synchronization: 3
   OwnershipTransfer: 0
   observableSearch: 2
-  ObservedComponents: []
+  ObservedComponents:
+  - {fileID: 5855306538029869132}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
