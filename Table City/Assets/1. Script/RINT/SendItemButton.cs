@@ -75,15 +75,18 @@ public class SendItemButton : MonoBehaviour
 
             }
 
-            viewText += "<color=#A4A4A4>" + itemName + " : </color>" +
-            (
-                Managers.system.factoryScript[type].data.upgrade
-                [
-                    Managers.system.factoryScript[type].data.lv, (int)_assetData
-                ]
-                - inputBoxController.asset[(int)_assetData]
+            if(Managers.system.factoryScript[type].data.lv  != Managers.system.factoryScript[type].data.maxLv)
+            {
+                viewText += "<color=#A4A4A4>" + itemName + " : </color>" +
+                (
+                    Managers.system.factoryScript[type].data.upgrade
+                    [
+                        Managers.system.factoryScript[type].data.lv, (int)_assetData
+                    ]
+                    - inputBoxController.asset[(int)_assetData]
 
-            ) + "\n";
+                ) + "\n";
+            }
 
             if (count > 6)
                 valueText[1].text = viewText;

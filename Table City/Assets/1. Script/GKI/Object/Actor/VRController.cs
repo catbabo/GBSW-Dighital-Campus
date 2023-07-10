@@ -79,8 +79,14 @@ public class VRController : MonoBehaviour
 
         if (_isRight == false)
         {
-            _laser.SetPosition(1, destnation);
             _laser.SetPosition(0, transform.position);
+            _laser.SetPosition(1, destnation);
+        }
+        else
+        {
+            //버그로 인한 가리기
+            _laser.SetPosition(0, transform.position);
+            _laser.SetPosition(1, transform.position);
         }
 
 
