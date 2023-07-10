@@ -154,6 +154,7 @@ public class GameManager : MonoBehaviour
                         {
                             endingValues[(int)j.ending] = j.data[k].Influence[a];
                             j.data[k].model[a].SetActive(true);
+                            endingValues[(int)j.ending] += j.data[k].Influence[k];
                         }
                     }
                 }
@@ -320,7 +321,6 @@ public struct Anime
     [field: SerializeField]
     public GameObject[] model { get; set; } // 소환 모델
 
-    [field: SerializeField]
     public int[] Influence { get; set; } // 영향력
 
     public int[,] condition { get; set; }  // 조건

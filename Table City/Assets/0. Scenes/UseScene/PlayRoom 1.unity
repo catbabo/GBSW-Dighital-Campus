@@ -531,7 +531,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &16361719
 Transform:
   m_ObjectHideFlags: 0
@@ -5765,7 +5765,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &49604455
 Transform:
   m_ObjectHideFlags: 0
@@ -6095,7 +6095,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &70770670
 Transform:
   m_ObjectHideFlags: 0
@@ -6251,7 +6251,7 @@ Transform:
   - {fileID: 1883081250}
   - {fileID: 1060148201}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &80135484
 PrefabInstance:
@@ -6665,7 +6665,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &93622457
 Transform:
   m_ObjectHideFlags: 0
@@ -7054,7 +7054,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &111380970
 PrefabInstance:
@@ -7203,7 +7203,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &118301357
 Transform:
   m_ObjectHideFlags: 0
@@ -7655,7 +7655,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &142017065
 Transform:
   m_ObjectHideFlags: 0
@@ -7687,7 +7687,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &155236695
 Transform:
   m_ObjectHideFlags: 0
@@ -7844,7 +7844,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &157429417
 Transform:
   m_ObjectHideFlags: 0
@@ -13154,7 +13154,7 @@ GameObject:
   - component: {fileID: 182239536}
   - component: {fileID: 182239535}
   m_Layer: 0
-  m_Name: Yellow1 (1)
+  m_Name: Yellow1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13309,7 +13309,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &199209092
 Transform:
   m_ObjectHideFlags: 0
@@ -13562,7 +13562,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1374461931545386492, guid: d756c18b4bd807b4d8546d2cc0c4b353, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 1374461931545386492, guid: d756c18b4bd807b4d8546d2cc0c4b353, type: 3}
       propertyPath: m_LocalPosition.x
@@ -13607,6 +13607,10 @@ PrefabInstance:
     - target: {fileID: 1374461931545386493, guid: d756c18b4bd807b4d8546d2cc0c4b353, type: 3}
       propertyPath: m_Name
       value: PlayerB_Workbench
+      objectReference: {fileID: 0}
+    - target: {fileID: 1434298750714248611, guid: d756c18b4bd807b4d8546d2cc0c4b353, type: 3}
+      propertyPath: sceneViewId
+      value: 28
       objectReference: {fileID: 0}
     - target: {fileID: 4640797932024166183, guid: d756c18b4bd807b4d8546d2cc0c4b353, type: 3}
       propertyPath: m_SizeDelta.y
@@ -14088,7 +14092,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &221431590
 Transform:
   m_ObjectHideFlags: 0
@@ -14398,7 +14402,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &229480815
 Transform:
   m_ObjectHideFlags: 0
@@ -14513,7 +14517,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &238526773
 Transform:
   m_ObjectHideFlags: 0
@@ -14966,6 +14970,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 4716163479698940, guid: 3983b5f38b6be2149b2d4fea9b17f167, type: 3}
   m_PrefabInstance: {fileID: 270065317}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &276630867 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4837502545233270673, guid: 9ccff1af55850d644bc7aad86a8f01ca, type: 3}
+  m_PrefabInstance: {fileID: 1258425894}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &277375526
 PrefabInstance:
@@ -15584,7 +15593,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &294622591
 Transform:
   m_ObjectHideFlags: 0
@@ -15672,7 +15681,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &296074528
 Transform:
   m_ObjectHideFlags: 0
@@ -15838,7 +15847,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &297820954
 Transform:
   m_ObjectHideFlags: 0
@@ -16081,7 +16090,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &309225037
 Transform:
   m_ObjectHideFlags: 0
@@ -16862,7 +16871,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &325204365
 Transform:
   m_ObjectHideFlags: 0
@@ -17697,6 +17706,10 @@ PrefabInstance:
       propertyPath: sceneViewId
       value: 25
       objectReference: {fileID: 0}
+    - target: {fileID: 6314981230208522680, guid: d6304c7e9946e4e4484b5dd3939acae5, type: 3}
+      propertyPath: sceneViewId
+      value: 27
+      objectReference: {fileID: 0}
     - target: {fileID: 6624702383906694578, guid: d6304c7e9946e4e4484b5dd3939acae5, type: 3}
       propertyPath: sceneViewId
       value: 26
@@ -17758,7 +17771,7 @@ Transform:
   - {fileID: 1286389757}
   - {fileID: 1170734495}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &372763951
 PrefabInstance:
@@ -17917,6 +17930,10 @@ PrefabInstance:
     - target: {fileID: 1000012993495128, guid: b03cd913c2c6d844ab1ac7cfe27898ad, type: 3}
       propertyPath: m_Name
       value: shack
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000012993495128, guid: b03cd913c2c6d844ab1ac7cfe27898ad, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4000012624605082, guid: b03cd913c2c6d844ab1ac7cfe27898ad, type: 3}
       propertyPath: m_RootOrder
@@ -18423,7 +18440,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &404898409
 Transform:
   m_ObjectHideFlags: 0
@@ -18864,7 +18881,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &421089287
 PrefabInstance:
@@ -23755,7 +23772,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &432368830
 Transform:
   m_ObjectHideFlags: 0
@@ -23845,7 +23862,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &439847836
 Transform:
   m_ObjectHideFlags: 0
@@ -24640,7 +24657,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &459842617
 Transform:
   m_ObjectHideFlags: 0
@@ -29676,7 +29693,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &472992553
 Transform:
   m_ObjectHideFlags: 0
@@ -29745,7 +29762,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &481411878
 Transform:
   m_ObjectHideFlags: 0
@@ -30368,7 +30385,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &502231178
 Transform:
   m_ObjectHideFlags: 0
@@ -30457,7 +30474,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &506312890
 Transform:
   m_ObjectHideFlags: 0
@@ -30520,7 +30537,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &511263006
 Transform:
   m_ObjectHideFlags: 0
@@ -31053,7 +31070,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &535319293
 Transform:
   m_ObjectHideFlags: 0
@@ -35934,7 +35951,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &546184781
 Transform:
   m_ObjectHideFlags: 0
@@ -35995,7 +36012,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &547094527
 Transform:
   m_ObjectHideFlags: 0
@@ -36244,7 +36261,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &560033316
 GameObject:
@@ -36461,7 +36478,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &574184286
 Transform:
   m_ObjectHideFlags: 0
@@ -37663,7 +37680,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &621568574
 Transform:
   m_ObjectHideFlags: 0
@@ -43672,7 +43689,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &667489592
 Transform:
   m_ObjectHideFlags: 0
@@ -44357,7 +44374,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &678835528
 Transform:
   m_ObjectHideFlags: 0
@@ -44697,7 +44714,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &707608174
 Transform:
   m_ObjectHideFlags: 0
@@ -49499,7 +49516,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &716291470
 Transform:
   m_ObjectHideFlags: 0
@@ -60037,7 +60054,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &764647224
 Transform:
   m_ObjectHideFlags: 0
@@ -60095,7 +60112,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &770212525
 Transform:
   m_ObjectHideFlags: 0
@@ -60206,6 +60223,10 @@ PrefabInstance:
     - target: {fileID: 2302913671698849439, guid: b40e3f0e2c2ca433c925de5e84655761, type: 3}
       propertyPath: m_Name
       value: furnitures
+      objectReference: {fileID: 0}
+    - target: {fileID: 2302913671698849439, guid: b40e3f0e2c2ca433c925de5e84655761, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b40e3f0e2c2ca433c925de5e84655761, type: 3}
@@ -66194,7 +66215,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &807757240
 Transform:
   m_ObjectHideFlags: 0
@@ -66247,7 +66268,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &811722046
 Transform:
   m_ObjectHideFlags: 0
@@ -66279,7 +66300,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &812475595
 Transform:
   m_ObjectHideFlags: 0
@@ -66468,7 +66489,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &821647760
 Transform:
   m_ObjectHideFlags: 0
@@ -66501,7 +66522,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &822462019
 Transform:
   m_ObjectHideFlags: 0
@@ -66556,7 +66577,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &827938387
 Transform:
   m_ObjectHideFlags: 0
@@ -66749,7 +66770,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &834281770
 Transform:
   m_ObjectHideFlags: 0
@@ -67237,7 +67258,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &844531593
 Transform:
   m_ObjectHideFlags: 0
@@ -68292,7 +68313,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &916156669
 Transform:
   m_ObjectHideFlags: 0
@@ -68495,6 +68516,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 922587386}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &928935130 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1210025198125800, guid: 8ef2b3c6efa424b66bcb71743d6ee286, type: 3}
+  m_PrefabInstance: {fileID: 1203356833}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &930804185
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -68516,7 +68542,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1374461931545386492, guid: d6304c7e9946e4e4484b5dd3939acae5, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1374461931545386492, guid: d6304c7e9946e4e4484b5dd3939acae5, type: 3}
       propertyPath: m_LocalPosition.x
@@ -68597,6 +68623,10 @@ PrefabInstance:
     - target: {fileID: 4640797933797195536, guid: d6304c7e9946e4e4484b5dd3939acae5, type: 3}
       propertyPath: m_SizeDelta.x
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6314981230208522680, guid: d6304c7e9946e4e4484b5dd3939acae5, type: 3}
+      propertyPath: sceneViewId
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 8591070305172278681, guid: d6304c7e9946e4e4484b5dd3939acae5, type: 3}
       propertyPath: sceneViewId
@@ -68807,7 +68837,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &942850254
 Transform:
   m_ObjectHideFlags: 0
@@ -70314,7 +70344,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1036043496
 Transform:
   m_ObjectHideFlags: 0
@@ -70933,7 +70963,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1046647646
 Transform:
   m_ObjectHideFlags: 0
@@ -71366,7 +71396,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1075834582
 Transform:
   m_ObjectHideFlags: 0
@@ -72546,7 +72576,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1114684545
 Transform:
   m_ObjectHideFlags: 0
@@ -72596,6 +72626,10 @@ PrefabInstance:
     - target: {fileID: 1904329721490756, guid: d836b24472f564f629d8cae908c35681, type: 3}
       propertyPath: m_Name
       value: dryer-outside (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1904329721490756, guid: d836b24472f564f629d8cae908c35681, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4039895979119368, guid: d836b24472f564f629d8cae908c35681, type: 3}
       propertyPath: m_LocalPosition.x
@@ -72731,7 +72765,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1125006297
 Transform:
   m_ObjectHideFlags: 0
@@ -72925,7 +72959,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1130889036
 Transform:
   m_ObjectHideFlags: 0
@@ -72958,7 +72992,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1132085361
 Transform:
   m_ObjectHideFlags: 0
@@ -73487,7 +73521,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1162557647
 Transform:
   m_ObjectHideFlags: 0
@@ -74519,7 +74553,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1210025198125800, guid: 8ef2b3c6efa424b66bcb71743d6ee286, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4452260860647370, guid: 8ef2b3c6efa424b66bcb71743d6ee286, type: 3}
       propertyPath: m_RootOrder
@@ -74661,7 +74695,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1209189575
 Transform:
   m_ObjectHideFlags: 0
@@ -74716,7 +74750,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1209375156
 Transform:
   m_ObjectHideFlags: 0
@@ -74945,7 +74979,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1227865435
 PrefabInstance:
@@ -75430,7 +75464,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1248616000
 Transform:
   m_ObjectHideFlags: 0
@@ -80404,6 +80438,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: scifi-motorbike
       objectReference: {fileID: 0}
+    - target: {fileID: 4837502545233270673, guid: 9ccff1af55850d644bc7aad86a8f01ca, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5217862463271013675, guid: 9ccff1af55850d644bc7aad86a8f01ca, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -80729,7 +80767,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1265970410
 Transform:
   m_ObjectHideFlags: 0
@@ -81339,7 +81377,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1286113182
 Transform:
   m_ObjectHideFlags: 0
@@ -81984,7 +82022,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1317985265
 Transform:
   m_ObjectHideFlags: 0
@@ -82728,7 +82766,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1339775474
 Transform:
   m_ObjectHideFlags: 0
@@ -83018,7 +83056,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1350948897
 Transform:
   m_ObjectHideFlags: 0
@@ -83238,7 +83276,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1376041826
 Transform:
   m_ObjectHideFlags: 0
@@ -83953,7 +83991,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1410794794
 Transform:
   m_ObjectHideFlags: 0
@@ -85247,7 +85285,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1420179994
 Transform:
   m_ObjectHideFlags: 0
@@ -85457,7 +85495,7 @@ GameObject:
   - component: {fileID: 1430964049}
   - component: {fileID: 1430964048}
   m_Layer: 0
-  m_Name: Yellow4
+  m_Name: Yellow2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -85546,7 +85584,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1431346441
 Transform:
   m_ObjectHideFlags: 0
@@ -85995,7 +86033,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1444236590
 Transform:
   m_ObjectHideFlags: 0
@@ -90884,7 +90922,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1451772909
 Transform:
   m_ObjectHideFlags: 0
@@ -91122,7 +91160,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1467052527
 Transform:
   m_ObjectHideFlags: 0
@@ -91424,7 +91462,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1502363541
 Transform:
   m_ObjectHideFlags: 0
@@ -91456,7 +91494,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1502580098
 Transform:
   m_ObjectHideFlags: 0
@@ -91592,7 +91630,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1509173052
 Transform:
   m_ObjectHideFlags: 0
@@ -92265,7 +92303,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1538585732
 Transform:
   m_ObjectHideFlags: 0
@@ -92614,7 +92652,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1549513559
 Transform:
   m_ObjectHideFlags: 0
@@ -92666,7 +92704,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1554041645
 Transform:
   m_ObjectHideFlags: 0
@@ -93685,6 +93723,10 @@ PrefabInstance:
       propertyPath: sceneViewId
       value: 34
       objectReference: {fileID: 0}
+    - target: {fileID: 6314981230208522680, guid: d6304c7e9946e4e4484b5dd3939acae5, type: 3}
+      propertyPath: sceneViewId
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 6376169439287646728, guid: d6304c7e9946e4e4484b5dd3939acae5, type: 3}
       propertyPath: sceneViewId
       value: 1
@@ -93816,7 +93858,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1610241582
 Transform:
   m_ObjectHideFlags: 0
@@ -94216,7 +94258,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1000010040357754, guid: 72346286358246146b9df53f3567f12a, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4000012454230398, guid: 72346286358246146b9df53f3567f12a, type: 3}
       propertyPath: m_RootOrder
@@ -94923,7 +94965,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1669071103
 Transform:
   m_ObjectHideFlags: 0
@@ -95105,7 +95147,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1684079091
 GameObject:
@@ -95287,7 +95329,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1691214790
 Transform:
   m_ObjectHideFlags: 0
@@ -95320,7 +95362,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1700916791
 Transform:
   m_ObjectHideFlags: 0
@@ -96210,7 +96252,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1745422294
 Transform:
   m_ObjectHideFlags: 0
@@ -96502,7 +96544,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1760178127
 Transform:
   m_ObjectHideFlags: 0
@@ -96645,7 +96687,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1791567094
 Transform:
   m_ObjectHideFlags: 0
@@ -96678,7 +96720,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1791896341
 Transform:
   m_ObjectHideFlags: 0
@@ -97023,7 +97065,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1802319554
 Transform:
   m_ObjectHideFlags: 0
@@ -97414,7 +97456,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1822596048
 Transform:
   m_ObjectHideFlags: 0
@@ -97607,7 +97649,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1833792229
 Transform:
   m_ObjectHideFlags: 0
@@ -97660,7 +97702,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1836981247
 Transform:
   m_ObjectHideFlags: 0
@@ -98004,7 +98046,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1845170404
 Transform:
   m_ObjectHideFlags: 0
@@ -98487,7 +98529,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1874760650
 Transform:
   m_ObjectHideFlags: 0
@@ -98858,7 +98900,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1892147847
 Transform:
   m_ObjectHideFlags: 0
@@ -99209,7 +99251,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1908680531
 Transform:
   m_ObjectHideFlags: 0
@@ -99310,7 +99352,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1919240696
 Transform:
   m_ObjectHideFlags: 0
@@ -99342,7 +99384,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1922357872
 Transform:
   m_ObjectHideFlags: 0
@@ -104374,7 +104416,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1940679280
 Transform:
   m_ObjectHideFlags: 0
@@ -104970,7 +105012,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1968244440
 Transform:
   m_ObjectHideFlags: 0
@@ -105239,7 +105281,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1973483368
 Transform:
   m_ObjectHideFlags: 0
@@ -105294,7 +105336,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1977003334
 Transform:
   m_ObjectHideFlags: 0
@@ -105377,6 +105419,10 @@ PrefabInstance:
     - target: {fileID: 5748239282056698098, guid: 03a9b460f5732406b895c52d4537abe3, type: 3}
       propertyPath: m_Name
       value: box with bottles
+      objectReference: {fileID: 0}
+    - target: {fileID: 5748239282056698098, guid: 03a9b460f5732406b895c52d4537abe3, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6108329546065393959, guid: 03a9b460f5732406b895c52d4537abe3, type: 3}
       propertyPath: m_CastShadows
@@ -105670,7 +105716,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1980749000
 Transform:
   m_ObjectHideFlags: 0
@@ -105726,7 +105772,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1982457229
 Transform:
   m_ObjectHideFlags: 0
@@ -106198,7 +106244,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1998735575
 Transform:
   m_ObjectHideFlags: 0
@@ -106253,7 +106299,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2004830825
 Transform:
   m_ObjectHideFlags: 0
@@ -106311,7 +106357,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2014251153
 Transform:
   m_ObjectHideFlags: 0
@@ -106474,7 +106520,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2021685706
 Transform:
   m_ObjectHideFlags: 0
@@ -107025,7 +107071,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4993613574451457172, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4993613574451457172, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
       propertyPath: m_LocalPosition.x
@@ -107077,7 +107123,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
       propertyPath: anime.Array.size
-      value: 1
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
       propertyPath: <asset>k__BackingField.Array.size
@@ -107093,43 +107139,43 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
       propertyPath: anime.Array.data[2].data.Array.size
-      value: 0
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
       propertyPath: anime.Array.data[3].data.Array.size
-      value: 0
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
       propertyPath: anime.Array.data[4].data.Array.size
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
       propertyPath: anime.Array.data[5].data.Array.size
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
       propertyPath: anime.Array.data[6].data.Array.size
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
       propertyPath: anime.Array.data[7].data.Array.size
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
       propertyPath: anime.Array.data[8].data.Array.size
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
       propertyPath: anime.Array.data[9].data.Array.size
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
       propertyPath: anime.Array.data[10].data.Array.size
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
       propertyPath: anime.Array.data[11].data.Array.size
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
       propertyPath: anime.Array.data[0].<name>k__BackingField
@@ -107141,11 +107187,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
       propertyPath: anime.Array.data[2].<name>k__BackingField
-      value: RedArea1
+      value: Yellow1
       objectReference: {fileID: 0}
     - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
       propertyPath: anime.Array.data[3].<name>k__BackingField
-      value: RedArea1
+      value: PurpleArea2
       objectReference: {fileID: 0}
     - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
       propertyPath: anime.Array.data[4].<name>k__BackingField
@@ -107153,7 +107199,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
       propertyPath: anime.Array.data[5].<name>k__BackingField
-      value: Yellow4
+      value: Yellow2
       objectReference: {fileID: 0}
     - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
       propertyPath: anime.Array.data[6].<name>k__BackingField
@@ -107190,11 +107236,11 @@ PrefabInstance:
     - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
       propertyPath: anime.Array.data[2].<group>k__BackingField
       value: 
-      objectReference: {fileID: 1445500082}
+      objectReference: {fileID: 182239533}
     - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
       propertyPath: anime.Array.data[3].<group>k__BackingField
       value: 
-      objectReference: {fileID: 1445500082}
+      objectReference: {fileID: 347813923}
     - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
       propertyPath: anime.Array.data[4].<group>k__BackingField
       value: 
@@ -107249,11 +107295,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
       propertyPath: anime.Array.data[2].<ending>k__BackingField
-      value: 0
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
       propertyPath: anime.Array.data[3].<ending>k__BackingField
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
       propertyPath: anime.Array.data[4].<ending>k__BackingField
@@ -107285,7 +107331,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
       propertyPath: anime.Array.data[11].<ending>k__BackingField
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
       propertyPath: viewFactory.Array.data[2].<name>k__BackingField
@@ -107524,41 +107570,121 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1739411892}
     - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[2].data.Array.data[1].<bundle>k__BackingField
+      value: 
+      objectReference: {fileID: 6370755}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[2].data.Array.data[2].<bundle>k__BackingField
+      value: 
+      objectReference: {fileID: 132024756}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
       propertyPath: anime.Array.data[3].data.Array.data[0].<bundle>k__BackingField
       value: 
       objectReference: {fileID: 822462018}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[3].data.Array.data[1].<bundle>k__BackingField
+      value: 
+      objectReference: {fileID: 459842616}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[3].data.Array.data[2].<bundle>k__BackingField
+      value: 
+      objectReference: {fileID: 678835527}
     - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
       propertyPath: anime.Array.data[4].data.Array.data[0].<bundle>k__BackingField
       value: 
       objectReference: {fileID: 1998735574}
     - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[4].data.Array.data[1].<bundle>k__BackingField
+      value: 
+      objectReference: {fileID: 1980748999}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[4].data.Array.data[2].<bundle>k__BackingField
+      value: 
+      objectReference: {fileID: 1114684544}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
       propertyPath: anime.Array.data[5].data.Array.data[0].<bundle>k__BackingField
       value: 
       objectReference: {fileID: 2014251152}
     - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[5].data.Array.data[1].<bundle>k__BackingField
+      value: 
+      objectReference: {fileID: 404898408}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[5].data.Array.data[2].<bundle>k__BackingField
+      value: 
+      objectReference: {fileID: 221431589}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
       propertyPath: anime.Array.data[6].data.Array.data[0].<bundle>k__BackingField
       value: 
-      objectReference: {fileID: 1549167734}
+      objectReference: {fileID: 1833792228}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[6].data.Array.data[1].<bundle>k__BackingField
+      value: 
+      objectReference: {fileID: 1209375155}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[6].data.Array.data[2].<bundle>k__BackingField
+      value: 
+      objectReference: {fileID: 764647223}
     - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
       propertyPath: anime.Array.data[7].data.Array.data[0].<bundle>k__BackingField
       value: 
       objectReference: {fileID: 1973483367}
     - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[7].data.Array.data[1].<bundle>k__BackingField
+      value: 
+      objectReference: {fileID: 1125006296}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[7].data.Array.data[2].<bundle>k__BackingField
+      value: 
+      objectReference: {fileID: 547094526}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
       propertyPath: anime.Array.data[8].data.Array.data[0].<bundle>k__BackingField
       value: 
       objectReference: {fileID: 309225036}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[8].data.Array.data[1].<bundle>k__BackingField
+      value: 
+      objectReference: {fileID: 1669071102}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[8].data.Array.data[2].<bundle>k__BackingField
+      value: 
+      objectReference: {fileID: 621568573}
     - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
       propertyPath: anime.Array.data[9].data.Array.data[0].<bundle>k__BackingField
       value: 
       objectReference: {fileID: 1982457228}
     - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[9].data.Array.data[1].<bundle>k__BackingField
+      value: 
+      objectReference: {fileID: 827938386}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[9].data.Array.data[2].<bundle>k__BackingField
+      value: 
+      objectReference: {fileID: 1791896340}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
       propertyPath: anime.Array.data[10].data.Array.data[0].<bundle>k__BackingField
       value: 
       objectReference: {fileID: 118301356}
     - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[10].data.Array.data[1].<bundle>k__BackingField
+      value: 
+      objectReference: {fileID: 297820953}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[10].data.Array.data[2].<bundle>k__BackingField
+      value: 
+      objectReference: {fileID: 1209189574}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
       propertyPath: anime.Array.data[11].data.Array.data[0].<bundle>k__BackingField
       value: 
       objectReference: {fileID: 1700916790}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[11].data.Array.data[1].<bundle>k__BackingField
+      value: 
+      objectReference: {fileID: 546184780}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[11].data.Array.data[2].<bundle>k__BackingField
+      value: 
+      objectReference: {fileID: 2004830824}
     - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
       propertyPath: viewFactory.Array.data[0].upGrade.Array.data[0].<wood>k__BackingField
       value: 2
@@ -107596,7 +107722,23 @@ PrefabInstance:
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[2].data.Array.data[1].<model>k__BackingField.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[2].data.Array.data[2].<model>k__BackingField.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
       propertyPath: anime.Array.data[3].data.Array.data[0].<model>k__BackingField.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[3].data.Array.data[1].<model>k__BackingField.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[3].data.Array.data[2].<model>k__BackingField.Array.size
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
@@ -107604,11 +107746,35 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[4].data.Array.data[1].<model>k__BackingField.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[4].data.Array.data[2].<model>k__BackingField.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
       propertyPath: anime.Array.data[5].data.Array.data[0].<model>k__BackingField.Array.size
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[5].data.Array.data[1].<model>k__BackingField.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[5].data.Array.data[2].<model>k__BackingField.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
       propertyPath: anime.Array.data[6].data.Array.data[0].<model>k__BackingField.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[6].data.Array.data[1].<model>k__BackingField.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[6].data.Array.data[2].<model>k__BackingField.Array.size
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
@@ -107616,20 +107782,60 @@ PrefabInstance:
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[7].data.Array.data[1].<model>k__BackingField.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[7].data.Array.data[2].<model>k__BackingField.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
       propertyPath: anime.Array.data[8].data.Array.data[0].<model>k__BackingField.Array.size
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[8].data.Array.data[1].<model>k__BackingField.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[8].data.Array.data[2].<model>k__BackingField.Array.size
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
       propertyPath: anime.Array.data[9].data.Array.data[0].<model>k__BackingField.Array.size
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[9].data.Array.data[1].<model>k__BackingField.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[9].data.Array.data[2].<model>k__BackingField.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
       propertyPath: anime.Array.data[10].data.Array.data[0].<model>k__BackingField.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[10].data.Array.data[1].<model>k__BackingField.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[10].data.Array.data[2].<model>k__BackingField.Array.size
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
       propertyPath: anime.Array.data[11].data.Array.data[0].<model>k__BackingField.Array.size
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[11].data.Array.data[1].<model>k__BackingField.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[11].data.Array.data[2].<model>k__BackingField.Array.size
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
       propertyPath: anime.Array.data[0].data.Array.data[0].<model>k__BackingField.Array.data[0]
@@ -107710,19 +107916,47 @@ PrefabInstance:
     - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
       propertyPath: anime.Array.data[2].data.Array.data[0].<model>k__BackingField.Array.data[0]
       value: 
-      objectReference: {fileID: 49604454}
+      objectReference: {fileID: 439847835}
     - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
       propertyPath: anime.Array.data[2].data.Array.data[0].<model>k__BackingField.Array.data[1]
       value: 
-      objectReference: {fileID: 439847835}
+      objectReference: {fileID: 916156668}
     - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
       propertyPath: anime.Array.data[2].data.Array.data[0].<model>k__BackingField.Array.data[2]
       value: 
-      objectReference: {fileID: 916156668}
+      objectReference: {fileID: 1968244439}
     - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
       propertyPath: anime.Array.data[2].data.Array.data[0].<model>k__BackingField.Array.data[3]
       value: 
-      objectReference: {fileID: 1968244439}
+      objectReference: {fileID: 49604454}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[2].data.Array.data[1].<model>k__BackingField.Array.data[0]
+      value: 
+      objectReference: {fileID: 1955000816}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[2].data.Array.data[1].<model>k__BackingField.Array.data[1]
+      value: 
+      objectReference: {fileID: 290247644}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[2].data.Array.data[1].<model>k__BackingField.Array.data[2]
+      value: 
+      objectReference: {fileID: 819501418}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[2].data.Array.data[1].<model>k__BackingField.Array.data[3]
+      value: 
+      objectReference: {fileID: 1201844367}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[2].data.Array.data[2].<model>k__BackingField.Array.data[0]
+      value: 
+      objectReference: {fileID: 667489591}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[2].data.Array.data[2].<model>k__BackingField.Array.data[1]
+      value: 
+      objectReference: {fileID: 1977003333}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[2].data.Array.data[2].<model>k__BackingField.Array.data[2]
+      value: 
+      objectReference: {fileID: 1745422293}
     - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
       propertyPath: anime.Array.data[3].data.Array.data[0].<model>k__BackingField.Array.data[0]
       value: 
@@ -107738,19 +107972,79 @@ PrefabInstance:
     - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
       propertyPath: anime.Array.data[3].data.Array.data[0].<model>k__BackingField.Array.data[3]
       value: 
-      objectReference: {fileID: 1968244439}
+      objectReference: {fileID: 1284622188}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[3].data.Array.data[1].<model>k__BackingField.Array.data[0]
+      value: 
+      objectReference: {fileID: 834281769}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[3].data.Array.data[1].<model>k__BackingField.Array.data[1]
+      value: 
+      objectReference: {fileID: 1265970409}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[3].data.Array.data[1].<model>k__BackingField.Array.data[2]
+      value: 
+      objectReference: {fileID: 1046647645}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[3].data.Array.data[1].<model>k__BackingField.Array.data[3]
+      value: 
+      objectReference: {fileID: 821647759}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[3].data.Array.data[2].<model>k__BackingField.Array.data[0]
+      value: 
+      objectReference: {fileID: 1410794793}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[3].data.Array.data[2].<model>k__BackingField.Array.data[1]
+      value: 
+      objectReference: {fileID: 157429416}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[3].data.Array.data[2].<model>k__BackingField.Array.data[2]
+      value: 
+      objectReference: {fileID: 1130889035}
     - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
       propertyPath: anime.Array.data[4].data.Array.data[0].<model>k__BackingField.Array.data[0]
       value: 
-      objectReference: {fileID: 771729090}
+      objectReference: {fileID: 1977733500}
     - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
       propertyPath: anime.Array.data[4].data.Array.data[0].<model>k__BackingField.Array.data[1]
       value: 
-      objectReference: {fileID: 1780359040}
+      objectReference: {fileID: 771729090}
     - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
       propertyPath: anime.Array.data[4].data.Array.data[0].<model>k__BackingField.Array.data[2]
       value: 
-      objectReference: {fileID: 1977733500}
+      objectReference: {fileID: 1780359040}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[4].data.Array.data[1].<model>k__BackingField.Array.data[0]
+      value: 
+      objectReference: {fileID: 707608173}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[4].data.Array.data[1].<model>k__BackingField.Array.data[1]
+      value: 
+      objectReference: {fileID: 1836981246}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[4].data.Array.data[1].<model>k__BackingField.Array.data[2]
+      value: 
+      objectReference: {fileID: 1162557646}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[4].data.Array.data[1].<model>k__BackingField.Array.data[3]
+      value: 
+      objectReference: {fileID: 1467052526}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[4].data.Array.data[2].<model>k__BackingField.Array.data[0]
+      value: 
+      objectReference: {fileID: 1248615999}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[4].data.Array.data[2].<model>k__BackingField.Array.data[1]
+      value: 
+      objectReference: {fileID: 481411877}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[4].data.Array.data[2].<model>k__BackingField.Array.data[2]
+      value: 
+      objectReference: {fileID: 1339775473}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[4].data.Array.data[2].<model>k__BackingField.Array.data[3]
+      value: 
+      objectReference: {fileID: 1286113181}
     - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
       propertyPath: anime.Array.data[5].data.Array.data[0].<model>k__BackingField.Array.data[0]
       value: 
@@ -107764,9 +108058,49 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1978339447}
     - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[5].data.Array.data[1].<model>k__BackingField.Array.data[0]
+      value: 
+      objectReference: {fileID: 199209091}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[5].data.Array.data[1].<model>k__BackingField.Array.data[1]
+      value: 
+      objectReference: {fileID: 294622590}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[5].data.Array.data[1].<model>k__BackingField.Array.data[2]
+      value: 
+      objectReference: {fileID: 928935130}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[5].data.Array.data[1].<model>k__BackingField.Array.data[3]
+      value: 
+      objectReference: {fileID: 1549513558}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[5].data.Array.data[2].<model>k__BackingField.Array.data[0]
+      value: 
+      objectReference: {fileID: 1845170403}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[5].data.Array.data[2].<model>k__BackingField.Array.data[1]
+      value: 
+      objectReference: {fileID: 1431346440}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[5].data.Array.data[2].<model>k__BackingField.Array.data[2]
+      value: 
+      objectReference: {fileID: 1802319553}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[5].data.Array.data[2].<model>k__BackingField.Array.data[3]
+      value: 
+      objectReference: {fileID: 70770669}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
       propertyPath: anime.Array.data[6].data.Array.data[0].<model>k__BackingField.Array.data[0]
       value: 
       objectReference: {fileID: 1549167734}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[6].data.Array.data[1].<model>k__BackingField.Array.data[0]
+      value: 
+      objectReference: {fileID: 1610241581}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[6].data.Array.data[2].<model>k__BackingField.Array.data[0]
+      value: 
+      objectReference: {fileID: 1451772908}
     - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
       propertyPath: anime.Array.data[7].data.Array.data[0].<model>k__BackingField.Array.data[0]
       value: 
@@ -107784,6 +108118,38 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1441808538}
     - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[7].data.Array.data[1].<model>k__BackingField.Array.data[0]
+      value: 
+      objectReference: {fileID: 296074527}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[7].data.Array.data[1].<model>k__BackingField.Array.data[1]
+      value: 
+      objectReference: {fileID: 472992552}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[7].data.Array.data[1].<model>k__BackingField.Array.data[2]
+      value: 
+      objectReference: {fileID: 325204364}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[7].data.Array.data[1].<model>k__BackingField.Array.data[3]
+      value: 
+      objectReference: {fileID: 16361718}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[7].data.Array.data[2].<model>k__BackingField.Array.data[0]
+      value: 
+      objectReference: {fileID: 1502580097}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[7].data.Array.data[2].<model>k__BackingField.Array.data[1]
+      value: 
+      objectReference: {fileID: 942850253}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[7].data.Array.data[2].<model>k__BackingField.Array.data[2]
+      value: 
+      objectReference: {fileID: 511263005}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[7].data.Array.data[2].<model>k__BackingField.Array.data[3]
+      value: 
+      objectReference: {fileID: 276630867}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
       propertyPath: anime.Array.data[8].data.Array.data[0].<model>k__BackingField.Array.data[0]
       value: 
       objectReference: {fileID: 1117044082}
@@ -107795,6 +108161,38 @@ PrefabInstance:
       propertyPath: anime.Array.data[8].data.Array.data[0].<model>k__BackingField.Array.data[2]
       value: 
       objectReference: {fileID: 295104368}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[8].data.Array.data[1].<model>k__BackingField.Array.data[0]
+      value: 
+      objectReference: {fileID: 1538585731}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[8].data.Array.data[1].<model>k__BackingField.Array.data[1]
+      value: 
+      objectReference: {fileID: 502231177}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[8].data.Array.data[1].<model>k__BackingField.Array.data[2]
+      value: 
+      objectReference: {fileID: 574184285}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[8].data.Array.data[1].<model>k__BackingField.Array.data[3]
+      value: 
+      objectReference: {fileID: 1502363540}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[8].data.Array.data[2].<model>k__BackingField.Array.data[0]
+      value: 
+      objectReference: {fileID: 1075834581}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[8].data.Array.data[2].<model>k__BackingField.Array.data[1]
+      value: 
+      objectReference: {fileID: 2021685705}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[8].data.Array.data[2].<model>k__BackingField.Array.data[2]
+      value: 
+      objectReference: {fileID: 1444236589}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[8].data.Array.data[2].<model>k__BackingField.Array.data[3]
+      value: 
+      objectReference: {fileID: 1420179993}
     - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
       propertyPath: anime.Array.data[9].data.Array.data[0].<model>k__BackingField.Array.data[0]
       value: 
@@ -107808,6 +108206,38 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1844551032}
     - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[9].data.Array.data[1].<model>k__BackingField.Array.data[0]
+      value: 
+      objectReference: {fileID: 1791567093}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[9].data.Array.data[1].<model>k__BackingField.Array.data[1]
+      value: 
+      objectReference: {fileID: 1908680530}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[9].data.Array.data[1].<model>k__BackingField.Array.data[2]
+      value: 
+      objectReference: {fileID: 155236694}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[9].data.Array.data[1].<model>k__BackingField.Array.data[3]
+      value: 
+      objectReference: {fileID: 812475594}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[9].data.Array.data[2].<model>k__BackingField.Array.data[0]
+      value: 
+      objectReference: {fileID: 1822596047}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[9].data.Array.data[2].<model>k__BackingField.Array.data[1]
+      value: 
+      objectReference: {fileID: 1760178126}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[9].data.Array.data[2].<model>k__BackingField.Array.data[2]
+      value: 
+      objectReference: {fileID: 1554041644}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[9].data.Array.data[2].<model>k__BackingField.Array.data[3]
+      value: 
+      objectReference: {fileID: 844531592}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
       propertyPath: anime.Array.data[0].data.Array.data[0].<Influence>k__BackingField.Array.size
       value: 0
       objectReference: {fileID: 0}
@@ -107818,11 +108248,27 @@ PrefabInstance:
     - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
       propertyPath: anime.Array.data[10].data.Array.data[0].<model>k__BackingField.Array.data[1]
       value: 
-      objectReference: {fileID: 1328193811}
+      objectReference: {fileID: 1515936185}
     - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
       propertyPath: anime.Array.data[10].data.Array.data[0].<model>k__BackingField.Array.data[2]
       value: 
-      objectReference: {fileID: 1515936185}
+      objectReference: {fileID: 1328193811}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[10].data.Array.data[1].<model>k__BackingField.Array.data[0]
+      value: 
+      objectReference: {fileID: 1892147846}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[10].data.Array.data[2].<model>k__BackingField.Array.data[0]
+      value: 
+      objectReference: {fileID: 229480814}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[10].data.Array.data[2].<model>k__BackingField.Array.data[1]
+      value: 
+      objectReference: {fileID: 238526772}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[10].data.Array.data[2].<model>k__BackingField.Array.data[2]
+      value: 
+      objectReference: {fileID: 1691214789}
     - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
       propertyPath: anime.Array.data[11].data.Array.data[0].<model>k__BackingField.Array.data[0]
       value: 
@@ -107836,8 +108282,48 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 837202925}
     - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[11].data.Array.data[1].<model>k__BackingField.Array.data[0]
+      value: 
+      objectReference: {fileID: 811722045}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[11].data.Array.data[1].<model>k__BackingField.Array.data[1]
+      value: 
+      objectReference: {fileID: 1036043495}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[11].data.Array.data[1].<model>k__BackingField.Array.data[2]
+      value: 
+      objectReference: {fileID: 1132085360}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[11].data.Array.data[1].<model>k__BackingField.Array.data[3]
+      value: 
+      objectReference: {fileID: 1940679279}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[11].data.Array.data[2].<model>k__BackingField.Array.data[0]
+      value: 
+      objectReference: {fileID: 1350948896}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[11].data.Array.data[2].<model>k__BackingField.Array.data[1]
+      value: 
+      objectReference: {fileID: 142017064}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[11].data.Array.data[2].<model>k__BackingField.Array.data[2]
+      value: 
+      objectReference: {fileID: 2136961297}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[11].data.Array.data[2].<model>k__BackingField.Array.data[3]
+      value: 
+      objectReference: {fileID: 716291469}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[11].data.Array.data[2].<model>k__BackingField.Array.data[4]
+      value: 
+      objectReference: {fileID: 1919240695}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
+      propertyPath: anime.Array.data[11].data.Array.data[2].<model>k__BackingField.Array.data[5]
+      value: 
+      objectReference: {fileID: 1376041825}
+    - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
       propertyPath: anime.Array.data[1].data.Array.data[0].<Influence>k__BackingField.Array.size
-      value: 0
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
       propertyPath: anime.Array.data[2].data.Array.data[0].<Influence>k__BackingField.Array.size
@@ -107885,15 +108371,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
       propertyPath: anime.Array.data[1].data.Array.data[0].<Influence>k__BackingField.Array.data[0]
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
       propertyPath: anime.Array.data[1].data.Array.data[0].<Influence>k__BackingField.Array.data[1]
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
       propertyPath: anime.Array.data[1].data.Array.data[0].<Influence>k__BackingField.Array.data[2]
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
       propertyPath: anime.Array.data[2].data.Array.data[0].<Influence>k__BackingField.Array.data[0]
@@ -115366,7 +115852,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2134443214
 Transform:
   m_ObjectHideFlags: 0
@@ -115398,7 +115884,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2136961298
 Transform:
   m_ObjectHideFlags: 0
