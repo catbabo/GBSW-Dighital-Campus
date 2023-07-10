@@ -57,6 +57,7 @@ public class PrefabManager : MonoBehaviour
         }
         /*오브젝트 풀링*/
     }
+
     public GameObject UsePoolingObject(GameObject useObject, Vector3 position, Quaternion rotation)
     {
         if (poolingObject.ContainsKey(useObject.name) && poolingObject[useObject.name].Count > 0)

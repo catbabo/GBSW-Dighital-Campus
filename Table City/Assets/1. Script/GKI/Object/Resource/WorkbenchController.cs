@@ -55,7 +55,7 @@ public class WorkbenchController : MonoBehaviour
             int resourceIndex = 0;
             if (_isWoopdSide)
             {
-                resourceIndex = 1;
+                resourceIndex = 0;
             }
             else
             {
@@ -74,7 +74,7 @@ public class WorkbenchController : MonoBehaviour
         for (int resourceIndex = 0; resourceIndex < 6; resourceIndex++)
         {
             box = root.Find($"Crate{resourceIndex + 1 }");
-            Managers.system.SetWorkbechPoint(resourceIndex, box.position);
+            Managers.system.SetWorkbechPoint(resourceIndex, box.position, NetworkManager.Net.IsPlayerTeamA());
 
             _sourcePath = _sourceInBoxPath + _resourceName[resourceIndex + startIndex];
             _resourcePrefab = NetworkManager.Net.SpawnObject(_sourcePath, box);

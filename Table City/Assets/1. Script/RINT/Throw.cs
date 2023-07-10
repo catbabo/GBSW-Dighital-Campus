@@ -23,7 +23,8 @@ public class Throw : MonoBehaviour
         m_StartPosition = transform.position;
 
         if (itemShot == true) 
-            m_TargetPosition = Managers.system._workbenchPoints[(int)itemType];
+            m_TargetPosition = 
+                NetworkManager.Net.IsPlayerTeamA() ? Managers.system._workbenchPointsA[(int)itemType] : Managers.system._workbenchPointsB[(int)itemType];
 
 
     }
