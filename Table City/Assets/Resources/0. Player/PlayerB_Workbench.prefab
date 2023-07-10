@@ -1483,7 +1483,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _type: 3
-  _resourseType: 8
+  _resourseType: 11
 --- !u!1 &3457745984441208915
 GameObject:
   m_ObjectHideFlags: 0
@@ -2080,7 +2080,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _type: 3
-  _resourseType: 6
+  _resourseType: 9
 --- !u!1 &5288061128590653959
 GameObject:
   m_ObjectHideFlags: 0
@@ -2459,7 +2459,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _type: 3
-  _resourseType: 0
+  _resourseType: 6
 --- !u!1 &7027111078008921959
 GameObject:
   m_ObjectHideFlags: 0
@@ -2571,7 +2571,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _type: 3
-  _resourseType: 3
+  _resourseType: 8
 --- !u!1 &7141746304768042004
 GameObject:
   m_ObjectHideFlags: 0
@@ -2891,7 +2891,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _type: 3
-  _resourseType: 2
+  _resourseType: 7
 --- !u!1 &7922028078145427190
 GameObject:
   m_ObjectHideFlags: 0
