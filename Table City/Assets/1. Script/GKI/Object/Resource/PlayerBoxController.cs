@@ -49,9 +49,9 @@ public class PlayerBoxController : ObjectBase
         //_resourceInstant[0].gameObject = Photon.Pun.PhotonNetwork.Instantiate(_sourcePath, transform.position, Quaternion.identity);
         _resourceInstant[0].gameObject = Instantiate(_resourcePrefab, transform.position, Quaternion.identity);
         _resourceInstant[0].Init(transform, _resourseType);
-        _resourceInstant[1].gameObject = Instantiate(_resourcePrefab, transform.position, Quaternion.identity);
+        //_resourceInstant[1].gameObject = Instantiate(_resourcePrefab, transform.position, Quaternion.identity);
         //_resourceInstant[1].gameObject = Photon.Pun.PhotonNetwork.Instantiate(_sourcePath, transform.position, Quaternion.identity);
-        _resourceInstant[1].Init(transform, _resourseType);
+        //_resourceInstant[1].Init(transform, _resourseType);
 
         _isInit = true;
     }
@@ -70,9 +70,11 @@ public class PlayerBoxController : ObjectBase
         {
             _resourceInstant[0].Grab(interactedHand, target);
         }
-        else if (!_resourceInstant[1].IsGrab())
+        /*
+         else if (!_resourceInstant[1].IsGrab())
         {
             _resourceInstant[1].Grab(interactedHand, target);
         }
+        */
     }
 }

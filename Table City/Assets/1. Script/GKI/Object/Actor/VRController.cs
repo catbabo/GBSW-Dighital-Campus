@@ -44,56 +44,8 @@ public class VRController : MonoBehaviour
         if (_isTesting)
             return;
 
-        SetLaser();
         SetButton();
-    }
-
-    private void SetLaser()
-    {
-        _laser = transform.GetComponent<LineRenderer>();
-
-        Material material = new Material(Shader.Find("Standard"));
-
-        _laserColor = Color.cyan;
-        SetLaserColor(_laserColor);
-
-        _laser.material = material;
-        _laser.positionCount = 2;
-        _laser.startWidth = 0.02f;
-        _laser.endWidth = 0.02f;
-
         _toolGrabPoint = transform.Find("ToolGrabPoint");
-    }
-
-    public void SetLaserColor(Color color)
-    {
-        _laserColor = color;
-        _laserColor.a = 0.5f;
-        _laser.material.color = _laserColor;
-    }
-
-    public void DrawLaser(Vector3 destnation)
-    {
-        //if(cursorVisual == null)
-            //cursorVisual = GameObject.FindWithTag("UIHelpers").transform.Find("Cursor").gameObject;
-
-        /*if (_isRight == false)
-        {
-            _laser.SetPosition(0, transform.position);
-            _laser.SetPosition(1, destnation);
-        }
-        else
-        {
-            //버그로 인한 가리기
-            _laser.SetPosition(0, transform.position);
-            _laser.SetPosition(1, transform.position);
-        }
-        */
-    }
-
-    public void LaserEnable(bool enable)
-    {
-        _laser.enabled = enable;
     }
 
     private void SetButton()
@@ -147,14 +99,11 @@ public class VRController : MonoBehaviour
         if (IsHitRay())
         {
             _hitTransform = _hit.transform;
-            DrawLaser(_hit.point);
 
             ObjectCasting();
         }
         else
         {
-            DrawLaser(_dir.normalized * _rayLength);
-
             if (_castedObject != null)
             {
                 ExitCasting();
@@ -191,8 +140,6 @@ public class VRController : MonoBehaviour
 
     private void GetDownTrigger()
     {
-        SetLaserColor(Color.white);
-
         if (_castedObject == null)
             return;
 
@@ -212,7 +159,6 @@ public class VRController : MonoBehaviour
             {
                 _castedComponent.Interact(this, _toolGrabPoint);
                 _isGrab = true;
-                LaserEnable(false);
                 break;
             }
         }
@@ -221,7 +167,6 @@ public class VRController : MonoBehaviour
     private void GetUpTrigger()
     {
         ExitInteract();
-        SetLaserColor(Color.cyan);
     }
 
     public void ExitInteract(bool isInterrupt = false)
@@ -236,7 +181,6 @@ public class VRController : MonoBehaviour
             case Define.CastingType.Resource:
             {
                 _isGrab = false;
-                LaserEnable(true);
                 break;
             }
         }
