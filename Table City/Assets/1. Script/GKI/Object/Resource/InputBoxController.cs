@@ -17,7 +17,7 @@ public class InputBoxController : MonoBehaviour
 
 	private void Update()
     {
-        if(OVRInput.GetDown(OVRInput.Button.Two) || OVRInput.GetDown(OVRInput.Button.Four) && _pv_workBench.IsMine)
+        if((OVRInput.GetDown(OVRInput.Button.Two) || OVRInput.GetDown(OVRInput.Button.Four)) && _pv_workBench.IsMine)
         {
             sendUI.SetActive(!sendUI.activeSelf);
         }

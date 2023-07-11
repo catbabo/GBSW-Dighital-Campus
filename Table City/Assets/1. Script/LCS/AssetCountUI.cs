@@ -17,7 +17,7 @@ public class AssetCountUI : MonoBehaviour
 		}
 		else
 		{
-			for (int i = 6; i < 12; i++) { _assetCount[i].text = Managers.system.asset[i].ToString(); }
+			for (int i = 0; i < 6; i++) { _assetCount[i].text = Managers.system.asset[i+6].ToString(); }
 		}
 	}
 
