@@ -17,14 +17,16 @@ public class Throw : MonoBehaviour
 
     [SerializeField]
     private bool itemShot = false;
+    private TrailRenderer trail;
 
     private void Start()
     {
         m_StartPosition = transform.position;
+        trail = GetComponent<TrailRenderer>();
 
         if (itemShot == true) 
             m_TargetPosition = 
-                NetworkManager.Net.IsPlayerTeamA() ? Managers.system._workbenchPointsA[(int)itemType] : Managers.system._workbenchPointsB[(int)itemType];
+                NetworkManager.Net.IsPlayerTeamA() ? Managers.system._workbenchPointsA[(int)itemType] : Managers.system._workbenchPointsB[(int)itemType-6];
 
 
     }
@@ -53,10 +55,9 @@ public class Throw : MonoBehaviour
 
     void Arrived()
     {
-        Debug.Log("µµÂø");
-
+        if(trail != null)
+            trail.Clear();
         Managers.instantiate.AddPooling(gameObject);
-
     }
 
     Quaternion LookAt3D(Vector3 forward)
