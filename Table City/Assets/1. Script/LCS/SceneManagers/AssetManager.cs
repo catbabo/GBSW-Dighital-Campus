@@ -78,7 +78,7 @@ public class AssetManager : MonoBehaviourPunCallbacks
 	{
 		foreach (Define.AssetData _assetData in _Assets)
 		{
-			Debug.Log("Add " + _Assets[(int)_assetData]);
+			//Debug.Log("Add " + _Assets[(int)_assetData]);
 			Managers.system.InputFactoryItem(_factoryType, _assetData, _Assets[(int)_assetData]);
 		}
 	}

@@ -41,6 +41,8 @@ public class ResourceController : GrabableObject
     public override void ExitInteract()
     {
         base.ExitInteract();
+
+        Debug.Log("복귀");
         if(_isOnInputBox)
         {
             //아이템 이동
@@ -108,7 +110,7 @@ public class ResourceController : GrabableObject
             }
             else if (inputStick < -0.5f)
             {
-                if (_count > 0)
+                if (_count > 1)
                 {
                     Managers.system.asset[(int)_resourceType]++;
                     _count--;

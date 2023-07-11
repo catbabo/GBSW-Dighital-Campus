@@ -23,7 +23,9 @@ public class GameManager : MonoBehaviour
     [field: SerializeField, Header("레벨 변경 상황")]
     private int[] factoryLvCheck = new int[12]; // 레벨 변경 상황 확인 용도
 
+    [field:SerializeField]
     public Vector3[] _workbenchPointsA { get; private set; } =  new Vector3[6];
+    [field: SerializeField]
     public Vector3[] _workbenchPointsB { get; private set; } =  new Vector3[6];
 
     #region 타이머
