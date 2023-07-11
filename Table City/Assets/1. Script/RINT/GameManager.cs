@@ -225,8 +225,17 @@ public class GameManager : MonoBehaviour
 
     }
 
+    public void PlayInputFactoryItem(Define.AssetData _factoryType, int[] _Assets)
+	{
+        foreach (Define.AssetData _assetData in _Assets)
+        {
+            Debug.Log("Add " + _Assets[(int)_assetData]);
+            InputFactoryItem(_factoryType, _assetData, _Assets[(int)_assetData]);
+        }
+    }
+
     //공장에 아이템 넣기
-    public void InputFactoryItem(Define.AssetData factoryType, Define.AssetData itemType, int count)
+    private void InputFactoryItem(Define.AssetData factoryType, Define.AssetData itemType, int count)
     {
         //아이템 증가
         factoryScript[factoryType].asset[(int)itemType] += count;

@@ -76,11 +76,7 @@ public class AssetManager : MonoBehaviourPunCallbacks
 	[PunRPC]
 	private void InputFactoryAssetData(Define.AssetData _factoryType, int[] _Assets)
 	{
-		foreach (Define.AssetData _assetData in _Assets)
-		{
-			//Debug.Log("Add " + _Assets[(int)_assetData]);
-			Managers.system.InputFactoryItem(_factoryType, _assetData, _Assets[(int)_assetData]);
-		}
+		Managers.system.PlayInputFactoryItem(_factoryType, _Assets);
 	}
 
 	/// <summary> 공장에서 생성한 자원들 저장 </summary>
