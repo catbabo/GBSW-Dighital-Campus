@@ -59,8 +59,8 @@ public class VRController : MonoBehaviour
 
         _laser.material = material;
         _laser.positionCount = 2;
-        _laser.startWidth = 0.02f;
-        _laser.endWidth = 0.02f;
+        _laser.startWidth = 0.01f;
+        _laser.endWidth = 0.01f;
 
         _toolGrabPoint = transform.Find("ToolGrabPoint");
     }
