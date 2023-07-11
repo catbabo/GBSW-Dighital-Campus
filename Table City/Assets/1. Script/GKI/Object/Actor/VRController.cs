@@ -45,6 +45,7 @@ public class VRController : MonoBehaviour
             return;
 
         SetButton();
+        _toolGrabPoint = transform.Find("ToolGrabPoint");
     }
 
     private void SetButton()
