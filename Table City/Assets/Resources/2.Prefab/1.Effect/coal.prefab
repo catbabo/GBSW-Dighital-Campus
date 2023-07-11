@@ -146,7 +146,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <m_TargetPosition>k__BackingField: {x: 0, y: 0, z: 0}
   m_Speed: 1
-  m_HeightArc: 3
+  m_HeightArc: 4
   itemType: 2
   itemShot: 1
 --- !u!96 &1249742818515532296
