@@ -116,7 +116,6 @@ public class GameManager : MonoBehaviour
                 for (int a = 0; a < k.model.Length; a++)
                 {
                     k.model[a].SetActive(false);
-                    Debug.Log("2");
                 }
             }
         }
@@ -170,9 +169,9 @@ public class GameManager : MonoBehaviour
 
         for(int i = 0; i < viewFactory.Length; i++)
         {
-            foreach(var csvLineSet in csvData)
+            viewFactory[i].upgrade = new int[viewFactory[i].maxLv, 12];
+            foreach (var csvLineSet in csvData)
             {
-                viewFactory[i].upgrade = new int[viewFactory[i].maxLv, 12];
 
                 if (viewFactory[i].name == csvLineSet["업그레이드 요소"].ToString())
                 {
@@ -244,7 +243,15 @@ public class GameManager : MonoBehaviour
                 }
             }
 
-            if(checkLvUp == true) factoryScript[factoryType].data.lv += 1;
+            if (checkLvUp == true)
+            {
+                factoryScript[factoryType].data.lv += 1;
+                //레벨이 오른만큼 아이템 삭제
+                for (int j = 0; j < 12; j++)
+                {
+                    factoryScript[factoryType].asset[j] -= factoryScript[factoryType].data.upgrade[i, j];
+                }
+            }
         }
         //연출 조건 확인 및 실행
         if (factoryLvCheck[(int)factoryType] != factoryScript[factoryType].data.lv)
@@ -298,18 +305,16 @@ public struct AnimeBundle
 
     public void SetData(int[] csvLine)
     {
-        Debug.Log(data[csvLine[0] - 1].Influence.Length);
-        Debug.Log(data[csvLine[0] - 1]);
-        if (data[csvLine[0] - 1].Influence.Length == 0)
-        {
-            data[csvLine[0]-1].Influence = new int[data[csvLine[0] - 1].model.Length];
-            data[csvLine[0]-1].condition = new int[data[csvLine[0] - 1].model.Length, 12];
-        }
+
+        data[csvLine[0] - 1].Influence = new int[data[csvLine[0] - 1].model.Length];
+        data[csvLine[0] - 1].condition = new int[data[csvLine[0] - 1].model.Length, 12];
 
         data[csvLine[0] - 1].Influence[csvLine[1] - 1] = csvLine[2];
 
         for(int i = 3; i < csvLine.Length; i++)
-            data[csvLine[0] - 1].condition[csvLine[1] - 1,i-3] = csvLine[i];
+        {
+            data[csvLine[0] - 1].condition[csvLine[1] - 1, i - 3] = csvLine[i];
+        }
 
     }
     
@@ -324,6 +329,7 @@ public struct Anime
     [field: SerializeField]
     public GameObject[] model { get; set; } // 소환 모델
 
+    [field: SerializeField]
     public int[] Influence { get; set; } // 영향력
 
     public int[,] condition { get; set; }  // 조건

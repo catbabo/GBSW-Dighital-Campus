@@ -83,7 +83,7 @@ public class SendItemButton : MonoBehaviour
                     [
                         Managers.system.factoryScript[type].data.lv, (int)_assetData
                     ]
-                    - inputBoxController.asset[(int)_assetData]
+                    - Managers.system.factoryScript[type].asset[(int)_assetData]
 
                 ) + "\n";
             }
