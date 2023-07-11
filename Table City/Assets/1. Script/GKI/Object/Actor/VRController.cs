@@ -45,26 +45,6 @@ public class VRController : MonoBehaviour
             return;
 
         SetButton();
-<<<<<<< HEAD
-=======
-    }
-
-    private void SetLaser()
-    {
-        _laser = transform.GetComponent<LineRenderer>();
-
-        Material material = new Material(Shader.Find("Standard"));
-
-        _laserColor = Color.cyan;
-        SetLaserColor(_laserColor);
-
-        _laser.material = material;
-        _laser.positionCount = 2;
-        _laser.startWidth = 0.01f;
-        _laser.endWidth = 0.01f;
-
->>>>>>> origin/Rint0712_BUG7
-        _toolGrabPoint = transform.Find("ToolGrabPoint");
     }
 
     private void SetButton()
