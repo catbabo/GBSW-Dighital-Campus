@@ -227,10 +227,10 @@ public class GameManager : MonoBehaviour
 
     public void PlayInputFactoryItem(Define.AssetData _factoryType, int[] _Assets)
 	{
-        foreach (Define.AssetData _assetData in _Assets)
+        Debug.LogError(_Assets.Length);
+        for (int i = 0; i<_Assets.Length; i++)
         {
-            Debug.Log("Add " + _Assets[(int)_assetData]);
-            InputFactoryItem(_factoryType, _assetData, _Assets[(int)_assetData]);
+            InputFactoryItem(_factoryType, (Define.AssetData)i, _Assets[i]);
         }
     }
 
