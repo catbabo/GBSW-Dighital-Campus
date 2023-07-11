@@ -154,9 +154,8 @@ public class GameManager : MonoBehaviour
 
                         if(j.data[k].model[a].activeSelf == false)
                         {
-                            endingValues[(int)j.ending] = j.data[k].Influence[a];
                             j.data[k].model[a].SetActive(true);
-                            endingValues[(int)j.ending] += j.data[k].Influence[k];
+                            endingValues[(int)j.ending] += j.data[k].Influence[a];
                         }
                     }
                 }
