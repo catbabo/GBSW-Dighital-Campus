@@ -7,6 +7,7 @@ public class PlayerBoxController : ObjectBase
 {
     private bool _isMine, _isInit;
     private GameObject _viewItem, _resourcePrefab;
+
     public Define.AssetData _resourseType;
 
     private string
