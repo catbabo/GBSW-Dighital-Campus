@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    [field: SerializeField, Header("엔딩 에니메이션")]
+    public Animator endingAnime { set; get; }
 
     [field: SerializeField, Header("엔딩 진행도")]
     public int[] endingValues { get; set; } = new int[4];
@@ -49,14 +51,6 @@ public class GameManager : MonoBehaviour
         SetFactory();
         SetAnimation();
     }
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.K))
-        {
-            Debug.Log(anime[0].data[0].condition[0, 0]);
-        }
-    }
-
     // 연출 초기 설정 #엑셀 파싱
     private void SetAnimation()
     {
@@ -80,6 +74,8 @@ public class GameManager : MonoBehaviour
                     }
 
                     anime[i].data[groupNum].Influence[animeNum] = int.Parse(csvLineSet["영향력"].ToString().Replace("%", ""));
+
+                    Debug.Log(anime[i].ending);
 
 
                     anime[i].data[groupNum].condition[animeNum,(int)Define.AssetData.wood]
@@ -158,7 +154,6 @@ public class GameManager : MonoBehaviour
 
                         if (n == 11)
                         {
-                            Debug.Log("조건 충족!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
                             for (int ni = 0; ni < 12; ni++)
                             {
                                 Debug.Log(anime[j].name + anime[j].data[k].condition[a, ni] + " " + factoryLvCheck[ni]);
@@ -166,6 +161,43 @@ public class GameManager : MonoBehaviour
                             //조건 충족
                             anime[j].data[k].model[a].SetActive(true);
                             endingValues[(int)anime[j].ending] += anime[j].data[k].Influence[a];
+
+                            int allEnding1 = 0;
+                            int _ending = 0;
+                            int big = 0;
+                            bool normal = true;
+                            for (int i = 0; i < endingValues.Length; i++)
+                            {
+                                allEnding1 += endingValues[i];
+                                if (big > endingValues[i])
+                                {
+                                    big = endingValues[i];
+                                    _ending = i;
+                                }
+                                if(endingValues[i] < 23)
+                                {
+                                    normal = false;
+                                }
+                            }
+
+                            if (allEnding1 >= 100)
+                            {
+                                ActionTimer(4,()=> 
+                                {
+                                    endingAnime.SetBool("Ending", true);
+
+                                    if(normal == false)
+                                        endingAnime.SetInteger("Num", _ending);
+                                    else
+                                        endingAnime.SetInteger("Num", 4);
+
+                                });
+                            }
+
+                            if (allEnding1 > 100)
+                            {
+                                endingValues[(int)anime[j].ending] += 100 - allEnding1;
+                            }
 
                             if (k - 1 != -1)
                                 if (anime[j].data[k - 1].bundle.activeSelf == true)
