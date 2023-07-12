@@ -24,6 +24,7 @@ public class Throw : MonoBehaviour
         m_StartPosition = transform.position;
         trail = GetComponent<TrailRenderer>();
 
+        Debug.Log((int)itemType - 6);
         if (itemShot == true) 
             m_TargetPosition = 
                 NetworkManager.Net.IsPlayerTeamA() ? Managers.system._workbenchPointsA[(int)itemType] : Managers.system._workbenchPointsB[(int)itemType-6];

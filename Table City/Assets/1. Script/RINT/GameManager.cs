@@ -133,6 +133,8 @@ public class GameManager : MonoBehaviour
             {
                 if (j.data[k].bundle.activeSelf == false)
                     continue;
+
+
                 for (int a = 0; a < j.data[k].model.Length; a++)
                 {
                     bool on = true;
@@ -146,7 +148,7 @@ public class GameManager : MonoBehaviour
                     }
                     if(on == true)
                     {
-                        if (k-1 != -1 && j.data[k].bundle.activeSelf == true)
+                        if (k-1 != -1 && j.data[k-1].bundle.activeSelf == true)
                         {
                             j.data[k - 1].bundle.GetComponent<Animator>().SetBool("Start", true);
                             ActionTimer(4, () => j.data[k - 1].bundle.SetActive(false));
