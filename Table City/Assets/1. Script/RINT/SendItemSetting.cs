@@ -98,7 +98,7 @@ public class SendItemSetting : MonoBehaviour
 
         }
         valueText.text = viewText;
-        int time = inputBoxController.coolTime > 20 ? 0 : Mathf.CeilToInt(inputBoxController.coolTime);
+        string time = inputBoxController.coolTime > 20 ? "0 / 20 초" : Mathf.CeilToInt(inputBoxController.coolTime)+ " / 20 초";
         speedUpText.text = $"가속\n-------------\n남은 시간: {time}\n사용 여부 : {inputBoxController.speedUpSkill}";
         
     }

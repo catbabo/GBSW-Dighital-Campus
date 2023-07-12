@@ -20,7 +20,8 @@ public class InputBoxController : MonoBehaviour
 
 	private void Update()
     {
-        if(coolTime > 20)
+        coolTime += Time.deltaTime;
+        if (coolTime > 20)
         {
             speedUpSkill = true;
         }

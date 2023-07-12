@@ -78,7 +78,7 @@ public class RoomManager : MonoBehaviourPunCallbacks
 	/// <param name="_factoryType">동기화 할 공장 데이터</param>
 	public void SyncSpeedUp(Define.AssetData _factoryType)
 	{
-		_pv.RPC("FactorySpeedUp", RpcTarget.All, _factoryType);
+		_pv.RPC("FactroySpeedUp", RpcTarget.All, _factoryType);
 	}
 	/// <summary> 공장 스피드 업 </summary>
 	/// <param name="_factroyData">스피드를 올릴 공장 타입</param>

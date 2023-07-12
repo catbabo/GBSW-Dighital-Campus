@@ -35,7 +35,12 @@ public class FactoyData : MonoBehaviour
     float timer =0,speedUpTimer;
     private void ItemGet()
     {
-        if (data.lv <= 0) return;
+        if (data.lv <= 0)
+        {
+            if (speedUpState == true) 
+                speedUpState = false;
+            return;
+        }
 
         if(speedUpState == true)
         {
