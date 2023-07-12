@@ -1436,6 +1436,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <_pv_workBench>k__BackingField: {fileID: 9051716955400520980}
   <asset>k__BackingField: 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+  <speedUpSkill>k__BackingField: 0
   sendUI: {fileID: 5904730604504233633}
 --- !u!1 &2246837825286913118
 GameObject:

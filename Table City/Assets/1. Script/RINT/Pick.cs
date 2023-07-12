@@ -17,12 +17,13 @@ public class Pick : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(time > 0.25f)
+        if(time > 0.1f)
         {
             if (collision.transform.CompareTag("Stone"))
             {
                 RoomManager.room.SyncSpawnObejct(Define.prefabType.effect, "ExplosionStone", collision.contacts[0].point, Quaternion.identity, Define.AssetData.stone);
                 AssetManager._asset.SyncFactroyCreateAsset(Define.AssetData.stone, 1);
+
                 Managers.instantiate.UsePoolingObject(Define.prefabType.effect + Define.AssetData.stone.ToString(), transform.position, Quaternion.identity);
             }
             if (collision.transform.CompareTag("Wood"))

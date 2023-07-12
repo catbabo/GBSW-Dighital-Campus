@@ -10,6 +10,9 @@ public class InputBoxController : MonoBehaviour
     public PhotonView _pv_workBench { get; set; }
     [field:SerializeField]
     public int[] asset { get; set; } = new int[12];
+    [field: SerializeField]
+    public bool speedUpSkill { get; set; } = false;
+    public float coolTime { get; set; } = 0;
 
     [SerializeField] private GameObject sendUI;
 
@@ -17,6 +20,11 @@ public class InputBoxController : MonoBehaviour
 
 	private void Update()
     {
+        if(coolTime > 10)
+        {
+            speedUpSkill = true;
+        }
+
         if((OVRInput.GetDown(OVRInput.Button.Two) || OVRInput.GetDown(OVRInput.Button.Four)) && _pv_workBench.IsMine)
         {
             sendUI.SetActive(!sendUI.activeSelf);
