@@ -67,7 +67,7 @@ public class WorkbenchController : MonoBehaviour
             
         }
 
-        SetBoxPosition();
+        SetBoxPosition(NetworkManager.Net.IsPlayerTeamA());
     }
 
     private void SetResourceInBox(int startIndex)
@@ -92,7 +92,7 @@ public class WorkbenchController : MonoBehaviour
 
     }
 
-    private void SetBoxPosition()
+    private void SetBoxPosition(bool _pointA)
 	{
         Transform root = transform.Find("Player_Box");
         Transform box;
@@ -103,6 +103,6 @@ public class WorkbenchController : MonoBehaviour
             BoxPos[i] = box.position;
 		}
 
-        Managers.system.SetWorkbechPoint(BoxPos, pv.IsMine ? _isWoopdSide : !_isWoopdSide);
+        Managers.system.SetWorkbechPoint(BoxPos, pv.IsMine ? _pointA : !_pointA);
     }
 }
