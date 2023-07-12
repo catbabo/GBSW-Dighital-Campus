@@ -82,6 +82,7 @@ public class Define : MonoBehaviour
             if (!_isGrab)
             {
                 hand.ImplusiveGrab<ResourceController>(transform);
+                _isGrab = true;
             }
         }
 

@@ -7,7 +7,7 @@ public class WorkbenchController : MonoBehaviour
 {
     [SerializeField]
     private bool _isWoopdSide;
-    private string _firstSourcePath = "ResourceItems/FirstSource/";
+    private string _firstSourcePath = "ResourceItems/FirstSource/", _firstResourcePath;
     private PhotonView pv;
 
     private Vector3[] BoxPos = new Vector3[6];
@@ -28,16 +28,16 @@ public class WorkbenchController : MonoBehaviour
     {
         if(_isWoopdSide)
         {
-            _firstSourcePath += "Wood";
+            _firstResourcePath = _firstSourcePath + "Wood";
         }
         else
         {
-            _firstSourcePath += "Stone";
+            _firstResourcePath = _firstSourcePath + "Stone";
         }
 
         Transform firstResourceRoot = transform.Find("FirstResource");
 
-        GameObject firstObject = NetworkManager.Net.SpawnObject(_firstSourcePath);
+        GameObject firstObject = NetworkManager.Net.SpawnObject(_firstResourcePath);
         firstObject.transform.SetParent(firstResourceRoot);
         firstObject.transform.localPosition = Vector3.zero;
         firstObject.transform.localRotation = Quaternion.identity;
