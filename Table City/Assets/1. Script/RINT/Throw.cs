@@ -21,15 +21,16 @@ public class Throw : MonoBehaviour
 
     private void Start()
     {
+
         m_StartPosition = transform.position;
         trail = GetComponent<TrailRenderer>();
+    }
 
-        Debug.Log((int)itemType - 6);
+    private void OnEnable()
+    {
         if (itemShot == true) 
-            m_TargetPosition = 
-                NetworkManager.Net.IsPlayerTeamA() ? Managers.system._workbenchPointsA[(int)itemType] : Managers.system._workbenchPointsB[(int)itemType-6];
-
-
+            m_TargetPosition =
+                (int)itemType > 5 ? Managers.system._workbenchPointsA[(int)itemType] : Managers.system._workbenchPointsB[(int)itemType];
     }
 
     void Update()

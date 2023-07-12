@@ -23,10 +23,10 @@ public class GameManager : MonoBehaviour
     [field: SerializeField, Header("레벨 변경 상황")]
     private int[] factoryLvCheck = new int[12]; // 레벨 변경 상황 확인 용도
 
-    [field:SerializeField]
-    public Vector3[] _workbenchPointsA { get; private set; } =  new Vector3[6];
     [field: SerializeField]
-    public Vector3[] _workbenchPointsB { get; private set; } =  new Vector3[6];
+    public Vector3[] _workbenchPointsA { get; private set; } = new Vector3[6];
+    [field: SerializeField]
+    public Vector3[] _workbenchPointsB { get; private set; } = new Vector3[6];
 
     #region 타이머
     public void ActionTimer(float time, int repeatCount, Action action, bool actionFirst) => StartCoroutine(ActionTimerCoroutine(time, repeatCount, action, actionFirst));
@@ -49,6 +49,13 @@ public class GameManager : MonoBehaviour
         SetFactory();
         SetAnimation();
     }
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            Debug.Log(anime[0].data[0].condition[0, 0]);
+        }
+    }
 
     // 연출 초기 설정 #엑셀 파싱
     private void SetAnimation()
@@ -58,54 +65,60 @@ public class GameManager : MonoBehaviour
 
         for (int i = 0; i < anime.Length; i++)
         {
+            bool check = false;
             foreach (var csvLineSet in csvData)
             {
                 if (anime[i].name == csvLineSet["AreaName"].ToString())
                 {
-                    int[] csvLine = new int[15];
+                    int groupNum = int.Parse(csvLineSet["GroupNum"].ToString())-1;
+                    int animeNum = int.Parse(csvLineSet["AnimeNum"].ToString()) -1;
+
+                    if (check==false)
+                    {
+                        anime[i].data[groupNum].Influence = new int[anime[i].data[groupNum].model.Length];
+                        anime[i].data[groupNum].condition = new int[anime[i].data[groupNum].model.Length, 12];
+                        check = true;
+                    }
+
+                    anime[i].data[groupNum].Influence[animeNum] = int.Parse(csvLineSet["영향력"].ToString().Replace("%", ""));
 
 
-                    csvLine[0] = int.Parse(csvLineSet["GroupNum"].ToString());
-                    csvLine[1] = int.Parse(csvLineSet["AnimeNum"].ToString());
-                    csvLine[2] = int.Parse(csvLineSet["영향력"].ToString().Replace("%", ""));
-
-                    csvLine[(int)Define.AssetData.wood + 3]
+                    anime[i].data[groupNum].condition[animeNum,(int)Define.AssetData.wood]
                        = int.Parse(csvLineSet["나무"].ToString());
 
-                    csvLine[(int)Define.AssetData.stone + 3]
+                    anime[i].data[groupNum].condition[animeNum, (int)Define.AssetData.stone]
                         = int.Parse(csvLineSet["돌"].ToString());
 
-                    csvLine[(int)Define.AssetData.steel + 3]
+                    anime[i].data[groupNum].condition[animeNum, (int)Define.AssetData.steel]
                         = int.Parse(csvLineSet["철"].ToString());
 
-                    csvLine[(int)Define.AssetData.cloth + 3]
+                    anime[i].data[groupNum].condition[animeNum, (int)Define.AssetData.cloth]
                         = int.Parse(csvLineSet["천"].ToString());
 
-                    csvLine[(int)Define.AssetData.coal + 3]
+                    anime[i].data[groupNum].condition[animeNum, (int)Define.AssetData.coal]
                         = int.Parse(csvLineSet["석탄"].ToString());
 
-                    csvLine[(int)Define.AssetData.electricity + 3]
+                    anime[i].data[groupNum].condition[animeNum, (int)Define.AssetData.electricity]
                         = int.Parse(csvLineSet["전기"].ToString());
 
-                    csvLine[(int)Define.AssetData.glass + 3]
+                    anime[i].data[groupNum].condition[animeNum, (int)Define.AssetData.glass]
                         = int.Parse(csvLineSet["유리"].ToString());
 
-                    csvLine[(int)Define.AssetData.rubber + 3]
+                    anime[i].data[groupNum].condition[animeNum, (int)Define.AssetData.rubber]
                         = int.Parse(csvLineSet["고무"].ToString());
 
-                    csvLine[(int)Define.AssetData.uranium + 3]
+                    anime[i].data[groupNum].condition[animeNum, (int)Define.AssetData.uranium]
                         = int.Parse(csvLineSet["우라늄"].ToString());
 
-                    csvLine[(int)Define.AssetData.semiconductor + 3]
+                    anime[i].data[groupNum].condition[animeNum, (int)Define.AssetData.semiconductor]
                         = int.Parse(csvLineSet["반도체"].ToString());
 
-                    csvLine[(int)Define.AssetData.mithril + 3]
+                    anime[i].data[groupNum].condition[animeNum, (int)Define.AssetData.mithril]
                         = int.Parse(csvLineSet["미스릴"].ToString());
 
-                    csvLine[(int)Define.AssetData.floatingStone + 3]
+                    anime[i].data[groupNum].condition[animeNum, (int)Define.AssetData.floatingStone]
                         = int.Parse(csvLineSet["부유석"].ToString());
 
-                    anime[i].SetData(csvLine);
                 }
             }
 
@@ -129,36 +142,33 @@ public class GameManager : MonoBehaviour
     {
         foreach (AnimeBundle j in anime)
         {
-            for (int k =0; k< j.data.Length;k++)
+            for (int k = 0; k < j.data.Length; k++)
             {
-                if (j.data[k].bundle.activeSelf == false)
-                    continue;
-
+                if (j.data[k].bundle.activeSelf == false) continue;// 예전에 사용됨 (다음 걸로 )
 
                 for (int a = 0; a < j.data[k].model.Length; a++)
                 {
-                    bool on = true;
-                    for (int b = 0; b < 12; b++)
-                    {
-                        if (j.data[k].condition[a,b] > factoryLvCheck[b])
-                        {
-                            on = false;
-                            break;
-                        }
-                    }
-                    if(on == true)
-                    {
-                        if (k-1 != -1 && j.data[k-1].bundle.activeSelf == true)
-                        {
-                            j.data[k - 1].bundle.GetComponent<Animator>().SetBool("Start", true);
-                            ActionTimer(4, () => j.data[k - 1].bundle.SetActive(false));
-                        }
+                    if (j.data[k].model[a].activeSelf == true) continue; // 지금 등장한 연출 (스킵)
 
-                        if(j.data[k].model[a].activeSelf == false)
+                    for (int n = 0; n < 12; n++)
+                    {
+                        if (j.data[k].condition[a, n] > factoryLvCheck[n]) break; // 조건이 아직 부족함
+
+                        if (n == 11)
                         {
+                            Debug.Log("조건 충족!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+                            //조건 충족
                             j.data[k].model[a].SetActive(true);
                             endingValues[(int)j.ending] += j.data[k].Influence[a];
+
+                            if (k - 1 != -1)
+                                if (j.data[k - 1].bundle.activeSelf == true)
+                                {
+                                    j.data[k - 1].bundle.GetComponent<Animator>().SetBool("Start", true);
+                                    ActionTimer(4, () => j.data[k - 1].bundle.SetActive(false));
+                                }
                         }
+
                     }
                 }
             }
@@ -170,7 +180,7 @@ public class GameManager : MonoBehaviour
     {
         List<Dictionary<string, object>> csvData = CSVReader.Read("3.Csv/Upgrade");
 
-        for(int i = 0; i < viewFactory.Length; i++)
+        for (int i = 0; i < viewFactory.Length; i++)
         {
             viewFactory[i].upgrade = new int[viewFactory[i].maxLv, 12];
             foreach (var csvLineSet in csvData)
@@ -178,8 +188,8 @@ public class GameManager : MonoBehaviour
 
                 if (viewFactory[i].name == csvLineSet["업그레이드 요소"].ToString())
                 {
-                    
-                    viewFactory[i].upgrade[int.Parse(csvLineSet["LV"].ToString()) - 1,(int)Define.AssetData.wood] 
+
+                    viewFactory[i].upgrade[int.Parse(csvLineSet["LV"].ToString()) - 1, (int)Define.AssetData.wood]
                         = int.Parse(csvLineSet["나무"].ToString());
 
                     viewFactory[i].upgrade[int.Parse(csvLineSet["LV"].ToString()) - 1, (int)Define.AssetData.stone]
@@ -227,9 +237,9 @@ public class GameManager : MonoBehaviour
     }
 
     public void PlayInputFactoryItem(Define.AssetData _factoryType, int[] _Assets)
-	{
+    {
         Debug.LogError(_Assets.Length);
-        for (int i = 0; i<_Assets.Length; i++)
+        for (int i = 0; i < _Assets.Length; i++)
         {
             InputFactoryItem(_factoryType, (Define.AssetData)i, _Assets[i]);
         }
@@ -248,7 +258,7 @@ public class GameManager : MonoBehaviour
             bool checkLvUp = true;
             for (int j = 0; j < 12; j++)
             {
-                if (factoryScript[factoryType].data.upgrade[i,j] > factoryScript[factoryType].asset[j])
+                if (factoryScript[factoryType].data.upgrade[i, j] > factoryScript[factoryType].asset[j])
                 {
                     checkLvUp = false;
                     break;
@@ -277,7 +287,7 @@ public class GameManager : MonoBehaviour
 
     public void SetWorkbechPoint(Vector3[] pos, bool _pointA)
     {
-		if (_pointA) { _workbenchPointsA = pos; }
+        if (_pointA) { _workbenchPointsA = pos; }
         else { _workbenchPointsB = pos; }
     }
 
@@ -293,8 +303,8 @@ public class GameManager : MonoBehaviour
         {
             return _workbenchPointsA[index];
         }
-		else
-		{
+        else
+        {
             return _workbenchPointsB[index];
         }
     }
@@ -310,26 +320,12 @@ public struct AnimeBundle
     [field: SerializeField]
     public Define.Ending ending { get; set; }
 
-    [field:SerializeField]
+    [field: SerializeField]
     public GameObject group { get; set; }
 
     public Anime[] data;
 
-    public void SetData(int[] csvLine)
-    {
 
-        data[csvLine[0] - 1].Influence = new int[data[csvLine[0] - 1].model.Length];
-        data[csvLine[0] - 1].condition = new int[data[csvLine[0] - 1].model.Length, 12];
-
-        data[csvLine[0] - 1].Influence[csvLine[1] - 1] = csvLine[2];
-
-        for(int i = 3; i < csvLine.Length; i++)
-        {
-            data[csvLine[0] - 1].condition[csvLine[1] - 1, i - 3] = csvLine[i];
-        }
-
-    }
-    
 }
 
 [System.Serializable]
