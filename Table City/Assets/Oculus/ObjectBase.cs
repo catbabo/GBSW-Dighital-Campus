@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class ObjectBase : MonoBehaviour
 {
+    public bool IsInteracting
+    { get { return _isInteracting; } set { } }
     protected bool _isInteracting;
     public Define.CastingType _type;
     protected VRController _interactedHand;

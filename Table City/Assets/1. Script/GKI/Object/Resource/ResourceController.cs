@@ -11,6 +11,12 @@ public class ResourceController : GrabableObject
     private Transform _inputBox;
     private int _count;
     private Define.Point handPos;
+    Define.ResourceObject _resourceObject;
+
+    public void Init(Define.ResourceObject resourceObject)
+    {
+        _resourceObject = resourceObject;
+    }
 
     public void SetResourceType(Define.AssetData type)
     {
@@ -25,6 +31,11 @@ public class ResourceController : GrabableObject
 
     public override void Interact(VRController interactedHand, Transform target)
     {
+        if (_resourceObject._isGrab)
+        {
+            return;
+        }
+
         gameObject.SetActive(true);
 
         if (interactedHand._isRight)
@@ -33,9 +44,12 @@ public class ResourceController : GrabableObject
             handPos = Define.Point.Left;
 
 
-        _count = 1;
-        Managers.system.countText[(int)handPos] = _count.ToString();
         base.Interact(interactedHand, target);
+        
+        _count = 1;
+        Managers.system.asset[(int)_resourceType]--; //감소
+        Managers.system.countText[(int)handPos] = _count.ToString();
+        _resourceObject._isGrab = true;
     }
 
     public override void ExitInteract()
@@ -43,7 +57,7 @@ public class ResourceController : GrabableObject
         base.ExitInteract();
 
         Debug.Log("복귀");
-        if(_isOnInputBox)
+        if (_isOnInputBox)
         {
             //아이템 이동
             _inputBox.GetComponent<InputBoxController>().OnDropResource(_resourceType, _count);
@@ -53,13 +67,14 @@ public class ResourceController : GrabableObject
             //데이터 원상 복귀
             Managers.system.asset[(int)_resourceType] += _count;
         }
-        
+
         //초기화
         _count = 0;
 
         //메시지 안 보이게 하기
         Managers.system.countText[(int)handPos] = "";
 
+        _resourceObject._isGrab = false;
 
         gameObject.SetActive(false);
         transform.position = _originPos;
@@ -68,7 +83,7 @@ public class ResourceController : GrabableObject
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.CompareTag("InputBox"))
+        if (other.CompareTag("InputBox"))
         {
             _isOnInputBox = true;
             _inputBox = other.transform;
@@ -93,14 +108,14 @@ public class ResourceController : GrabableObject
         }
 
         deleyTime += Time.deltaTime;
-        if(deleyTime > 0.1f)
+        if (deleyTime > 0.1f)
         {
             float inputStick = 0;
             inputStick = OVRInput.Get(_interactedHand._thumbStick).y;
 
             if (inputStick > 0.5f)
             {
-                if(Managers.system.asset[(int)_resourceType] > 0)
+                if (Managers.system.asset[(int)_resourceType] > 0)
                 {
                     Managers.system.asset[(int)_resourceType]--;
                     _count++;
@@ -121,6 +136,6 @@ public class ResourceController : GrabableObject
                 }
             }
         }
-        
+
     }
 }

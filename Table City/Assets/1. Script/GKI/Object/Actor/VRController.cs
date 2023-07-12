@@ -201,6 +201,13 @@ public class VRController : MonoBehaviour
         ExitInteract();
         _castedObject = target;
         _castedComponent = _castedObject.GetComponent<T>();
+        if (_castedComponent.IsInteracting)
+        {
+            _castedObject = null;
+            _castedComponent = null;
+            return;
+        }
+
         _targetType = _castedComponent._type;
         _isGrab = true;
         _castedComponent.Interact(this, _toolGrabPoint);
