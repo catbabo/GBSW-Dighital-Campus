@@ -267,4 +267,19 @@ public class NetworkManager : MonoBehaviourPunCallbacks
 	{
 		return _pointA;
 	}
+
+	/// <summary> 네트워크 씬 로드 </summary>
+	/// <param name="_sceneName">로드할 씬 이름</param>
+	public void LoadScene(string _sceneName)
+	{
+		PhotonNetwork.LoadLevel(_sceneName);
+	}
+
+	/// <summary> 실행시 방을 나간 후 서버 연결 해제 그 다음 메인로비로 이동 </summary>
+	public void OutRoom_GoMain()
+	{
+		PhotonNetwork.LeaveRoom();
+		DisConnect();
+		LoadScene("MainLobby");
+	}
 }

@@ -2,11 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using System;
 using UnityEngine;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
     [field: SerializeField, Header("엔딩 에니메이션")]
     public Animator endingAnime { set; get; }
+    [SerializeField, Header("엔딩 텍스트")]
+    private GameObject endingAnimeText;
+    public int endingType { set; get; }
+
 
     [field: SerializeField, Header("엔딩 진행도")]
     public int[] endingValues { get; set; } = new int[4];
@@ -135,6 +140,10 @@ public class GameManager : MonoBehaviour
     // 연출 확인 조건 확인 후 실행
     private void PlayAnimation()
     {
+        int allEnding0 = 0;
+        for (int i = 0; i < endingValues.Length; i++) allEnding0 += endingValues[i];
+        if (allEnding0 >= 100) return;
+
         for (int j = 0; j < anime.Length; j++)
         {
             for (int k = 0; k < anime[j].data.Length; k++)
@@ -185,12 +194,18 @@ public class GameManager : MonoBehaviour
                                 ActionTimer(4,()=> 
                                 {
                                     endingAnime.SetBool("Ending", true);
+                                    endingAnimeText.SetActive(true);
 
-                                    if(normal == false)
+                                    if (normal == false)
+                                    {
                                         endingAnime.SetInteger("Num", _ending);
+                                        endingType = _ending;
+                                    }
                                     else
+                                    {
                                         endingAnime.SetInteger("Num", 4);
-
+                                        endingType = 4;
+                                    }
                                 });
                             }
 

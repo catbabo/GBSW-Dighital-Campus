@@ -74,6 +74,22 @@ public class RoomManager : MonoBehaviourPunCallbacks
 		else { _Object_PlayerB = _player; }
 	}
 
+	/// <summary> 공상 스피드업 동기화 실행 </summary>
+	/// <param name="_factoryType">동기화 할 공장 데이터</param>
+	public void SyncSpeedUp(Define.AssetData _factoryType)
+	{
+		_pv.RPC("FactorySpeedUp", RpcTarget.All, _factoryType);
+	}
+	/// <summary> 공장 스피드 업 </summary>
+	/// <param name="_factroyData">스피드를 올릴 공장 타입</param>
+	[PunRPC]
+	private void FactroySpeedUp(Define.AssetData _factroyType)
+	{
+		Managers.system.factoryScript[_factroyType].speedUpState = true;
+	}
+
+
+
 	#region Syncron
 	/// <summary> 오브젝트 소환 동기화 실행 </summary>
 	/// <param name="_type">소환할 오브젝트의 타입</param>

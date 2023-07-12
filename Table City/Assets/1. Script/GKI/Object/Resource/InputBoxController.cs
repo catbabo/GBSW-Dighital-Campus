@@ -47,5 +47,5 @@ public class InputBoxController : MonoBehaviour
         RoomManager.room.SyncSpawnObejct(Define.prefabType.effect, "truck", transform.position, Quaternion.identity, factoryType);
         
     }
-    public void SpeedUp(Define.AssetData factoryType) => Managers.system.factoryScript[factoryType].speedUpState = true;
+    public void SpeedUp(Define.AssetData factoryType) => RoomManager.room.SyncSpeedUp(factoryType);
 }
