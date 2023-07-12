@@ -35170,9 +35170,9 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1351674002}
-  - {fileID: 1872662841}
-  - {fileID: 1120006002}
   - {fileID: 1926872352}
+  - {fileID: 1120006002}
+  - {fileID: 1872662841}
   m_Father: {fileID: 1855481163}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -79405,7 +79405,7 @@ PrefabInstance:
     - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
       propertyPath: anime.Array.data[3].data.Array.data[1].<model>k__BackingField.Array.data[1]
       value: 
-      objectReference: {fileID: 1872662840}
+      objectReference: {fileID: 1926872351}
     - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
       propertyPath: anime.Array.data[3].data.Array.data[1].<model>k__BackingField.Array.data[2]
       value: 
@@ -79413,7 +79413,7 @@ PrefabInstance:
     - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
       propertyPath: anime.Array.data[3].data.Array.data[1].<model>k__BackingField.Array.data[3]
       value: 
-      objectReference: {fileID: 1926872351}
+      objectReference: {fileID: 1872662840}
     - target: {fileID: 4993613574451457174, guid: a8204c3b14e013340a5b85cc7b993f43, type: 3}
       propertyPath: anime.Array.data[3].data.Array.data[2].<model>k__BackingField.Array.data[0]
       value: 
@@ -96042,7 +96042,7 @@ Transform:
   m_Children:
   - {fileID: 2075670539}
   m_Father: {fileID: 501694358}
-  m_RootOrder: 1
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1880493751
 GameObject:
@@ -97064,7 +97064,7 @@ Transform:
   m_Children:
   - {fileID: 1165469863}
   m_Father: {fileID: 501694358}
-  m_RootOrder: 3
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1928952868
 GameObject:
