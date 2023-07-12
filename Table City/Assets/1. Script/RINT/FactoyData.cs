@@ -6,7 +6,7 @@ using Photon.Pun;
 public class FactoyData : MonoBehaviour
 {
     public Factory data;
-    private int checkLv = 0;
+    public bool speedUpState { get; set; } = false;
 
     [field:Header("저장된 자원"),SerializeField]
     public int[] asset { get; set; } = new int[12];
@@ -32,12 +32,25 @@ public class FactoyData : MonoBehaviour
         ItemGet();
     }
 
-    float timer =0;
+    float timer =0,speedUpTimer;
     private void ItemGet()
     {
         if (data.lv <= 0) return;
 
-        timer += Time.deltaTime;
+        if(speedUpState == true)
+        {
+            timer += Time.deltaTime*2;
+            speedUpTimer += Time.deltaTime;
+            if(speedUpTimer > 10)
+            {
+                speedUpState = false;
+                speedUpTimer = 0;
+            }
+        }
+        else
+        {
+            timer += Time.deltaTime;
+        }
 
         if (timer < (float)(data.maxLv + 1 - data.lv )/ 2 )return;
 

@@ -259,7 +259,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 8137156044075739519}
         m_TargetAssemblyTypeName: SendItemButton, Assembly-CSharp
-        m_MethodName: SendItemPlay
+        m_MethodName: SpeedUp
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

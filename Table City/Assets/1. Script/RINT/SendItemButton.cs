@@ -152,6 +152,7 @@ public class SendItemButton : MonoBehaviour
         {
             inputBoxController.coolTime = 0;
             inputBoxController.speedUpSkill = false;
+            inputBoxController.SpeedUp(type);
         }
     }
 }

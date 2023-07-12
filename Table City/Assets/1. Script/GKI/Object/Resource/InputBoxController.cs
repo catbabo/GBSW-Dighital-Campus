@@ -20,7 +20,7 @@ public class InputBoxController : MonoBehaviour
 
 	private void Update()
     {
-        if(coolTime > 10)
+        if(coolTime > 20)
         {
             speedUpSkill = true;
         }
@@ -47,4 +47,5 @@ public class InputBoxController : MonoBehaviour
         RoomManager.room.SyncSpawnObejct(Define.prefabType.effect, "truck", transform.position, Quaternion.identity, factoryType);
         
     }
+    public void SpeedUp(Define.AssetData factoryType) => Managers.system.factoryScript[factoryType].speedUpState = true;
 }

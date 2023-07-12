@@ -15,7 +15,7 @@ public class SendItemSetting : MonoBehaviour
     private InputBoxController inputBoxController;
 
     [SerializeField]
-    private TextMeshProUGUI valueText;
+    private TextMeshProUGUI valueText,speedUpText;
     
     void Start()
     {
@@ -98,5 +98,8 @@ public class SendItemSetting : MonoBehaviour
 
         }
         valueText.text = viewText;
+        int time = inputBoxController.coolTime > 20 ? 0 : Mathf.CeilToInt(inputBoxController.coolTime);
+        speedUpText.text = $"가속\n-------------\n남은 시간: {time}\n사용 여부 : {inputBoxController.speedUpSkill}";
+        
     }
 }
