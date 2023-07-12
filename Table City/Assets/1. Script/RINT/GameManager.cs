@@ -139,32 +139,39 @@ public class GameManager : MonoBehaviour
     // 연출 확인 조건 확인 후 실행
     private void PlayAnimation()
     {
-        foreach (AnimeBundle j in anime)
+        for (int j = 0; j < anime.Length; j++)
         {
-            for (int k = 0; k < j.data.Length; k++)
+            for (int k = 0; k < anime[j].data.Length; k++)
             {
-                if (j.data[k].bundle.activeSelf == false) continue;// 예전에 사용됨 (다음 걸로 )
+                if (anime[j].data[k].bundle.activeSelf == false) continue;// 예전에 사용됨 (다음 걸로 )
 
-                for (int a = 0; a < j.data[k].model.Length; a++)
+                if (k - 1 != -1)
+                    if (anime[j].data[k - 1].bundle.activeSelf == true) continue; // 전에 트리가 아직 작동하지 않는다면?
+
+                for (int a = 0; a < anime[j].data[k].model.Length; a++)
                 {
-                    if (j.data[k].model[a].activeSelf == true) continue; // 지금 등장한 연출 (스킵)
+                    if (anime[j].data[k].model[a].activeSelf == true) continue; // 지금 등장한 연출 (스킵)
 
                     for (int n = 0; n < 12; n++)
                     {
-                        if (j.data[k].condition[a, n] > factoryLvCheck[n]) break; // 조건이 아직 부족함
+                        if (anime[j].data[k].condition[a, n] > factoryLvCheck[n]) break; // 조건이 아직 부족함
 
                         if (n == 11)
                         {
                             Debug.Log("조건 충족!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+                            for (int ni = 0; ni < 12; ni++)
+                            {
+                                Debug.Log(anime[j].name + anime[j].data[k].condition[a, ni] + " " + factoryLvCheck[ni]);
+                            }
                             //조건 충족
-                            j.data[k].model[a].SetActive(true);
-                            endingValues[(int)j.ending] += j.data[k].Influence[a];
+                            anime[j].data[k].model[a].SetActive(true);
+                            endingValues[(int)anime[j].ending] += anime[j].data[k].Influence[a];
 
                             if (k - 1 != -1)
-                                if (j.data[k - 1].bundle.activeSelf == true)
+                                if (anime[j].data[k - 1].bundle.activeSelf == true)
                                 {
-                                    j.data[k - 1].bundle.GetComponent<Animator>().SetBool("Start", true);
-                                    ActionTimer(4, () => j.data[k - 1].bundle.SetActive(false));
+                                    anime[j].data[k - 1].bundle.GetComponent<Animator>().SetBool("Start", true);
+                                    ActionTimer(4, () => anime[j].data[k - 1].bundle.SetActive(false));
                                 }
                         }
 
@@ -237,7 +244,6 @@ public class GameManager : MonoBehaviour
 
     public void PlayInputFactoryItem(Define.AssetData _factoryType, int[] _Assets)
     {
-        Debug.LogError(_Assets.Length);
         for (int i = 0; i < _Assets.Length; i++)
         {
             InputFactoryItem(_factoryType, (Define.AssetData)i, _Assets[i]);
