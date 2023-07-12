@@ -94,6 +94,10 @@ public class WorkbenchController : MonoBehaviour
 
     private void SetBoxPosition(bool _pointA)
 	{
+        Debug.LogError("isMine : "+ pv.IsMine);
+        Debug.LogError("isMinePoint : " + _pointA);
+        Debug.LogError("isAnotherPoint : " + !_pointA);
+
         Transform root = transform.Find("Player_Box");
         Transform box;
 

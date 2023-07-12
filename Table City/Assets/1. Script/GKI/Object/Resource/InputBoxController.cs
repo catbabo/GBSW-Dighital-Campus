@@ -27,13 +27,8 @@ public class InputBoxController : MonoBehaviour
 
     public void SendItem(Define.AssetData factoryType)
     {
-        bool sendItemCheck = false;
-        //������ ����
         foreach (Define.AssetData _assetData in Enum.GetValues(typeof(Define.AssetData)))
         {
-            if (asset[(int)_assetData] != 0)
-                sendItemCheck = true;
-
 
             AssetManager._asset.SetAssetData(_assetData, asset[(int)_assetData]);
             asset[(int)_assetData] = 0;
@@ -41,9 +36,7 @@ public class InputBoxController : MonoBehaviour
         
         AssetManager._asset.SyncFactroyData(factoryType);
 
-        //����
-        if(sendItemCheck == true)
-            RoomManager.room.SyncSpawnObejct(Define.prefabType.effect, "truck", transform.position, Quaternion.identity, factoryType);
+        RoomManager.room.SyncSpawnObejct(Define.prefabType.effect, "truck", transform.position, Quaternion.identity, factoryType);
         
     }
 }

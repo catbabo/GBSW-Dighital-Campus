@@ -107,7 +107,7 @@ public class ResourceController : GrabableObject
             transform.rotation = _grapPoint.rotation;
         }
 
-        deleyTime += Time.deltaTime;
+        deleyTime += Time.deltaTime * (1+(float)_count/20);
         if (deleyTime > 0.1f)
         {
             float inputStick = 0;
