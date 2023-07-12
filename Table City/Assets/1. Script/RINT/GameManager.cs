@@ -61,11 +61,10 @@ public class GameManager : MonoBehaviour
     private void SetAnimation()
     {
         List<Dictionary<string, object>> csvData = CSVReader.Read("3.Csv/Animation");
-
+        int backGroupNum = 99999;
 
         for (int i = 0; i < anime.Length; i++)
         {
-            bool check = false;
             foreach (var csvLineSet in csvData)
             {
                 if (anime[i].name == csvLineSet["AreaName"].ToString())
@@ -73,11 +72,11 @@ public class GameManager : MonoBehaviour
                     int groupNum = int.Parse(csvLineSet["GroupNum"].ToString())-1;
                     int animeNum = int.Parse(csvLineSet["AnimeNum"].ToString()) -1;
 
-                    if (check==false)
+                    if (backGroupNum != groupNum)
                     {
                         anime[i].data[groupNum].Influence = new int[anime[i].data[groupNum].model.Length];
                         anime[i].data[groupNum].condition = new int[anime[i].data[groupNum].model.Length, 12];
-                        check = true;
+                        backGroupNum = groupNum;
                     }
 
                     anime[i].data[groupNum].Influence[animeNum] = int.Parse(csvLineSet["¿µÇâ·Â"].ToString().Replace("%", ""));
