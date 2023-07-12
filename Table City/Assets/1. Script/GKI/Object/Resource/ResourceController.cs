@@ -47,15 +47,16 @@ public class ResourceController : GrabableObject
         {
             //아이템 이동
             _inputBox.GetComponent<InputBoxController>().OnDropResource(_resourceType, _count);
-            //초기화
-            _count = 0;
         }
         else
         {
             //데이터 원상 복귀
             Managers.system.asset[(int)_resourceType] += _count;
-            _count = 0;
         }
+        
+        //초기화
+        _count = 0;
+
         //메시지 안 보이게 하기
         Managers.system.countText[(int)handPos] = "";
 

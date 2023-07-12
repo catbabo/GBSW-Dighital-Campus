@@ -64,10 +64,10 @@ public class PlayerBoxController : ObjectBase
         if (Managers.system.asset[(int)_resourseType] <= 0)
             return;
 
-        Managers.system.asset[(int)_resourseType]--; //감소
-
         if (!_resourceInstant[0].IsGrab())
         {
+            Managers.system.asset[(int)_resourseType]--; //감소
+
             _resourceInstant[0].Grab(interactedHand, target);
         }
         /*
