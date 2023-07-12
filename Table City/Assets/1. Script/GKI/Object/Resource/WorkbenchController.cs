@@ -10,6 +10,8 @@ public class WorkbenchController : MonoBehaviour
     private string _firstSourcePath = "ResourceItems/FirstSource/";
     private PhotonView pv;
 
+    private Vector3[] BoxPos = new Vector3[6];
+
     private string
         _sourceInBoxPath = "ResourceItems/InBox/",
         _sourcePath;
@@ -64,6 +66,8 @@ public class WorkbenchController : MonoBehaviour
             SetResourceInBox(resourceIndex);
             
         }
+
+        SetBoxPosition();
     }
 
     private void SetResourceInBox(int startIndex)
@@ -74,7 +78,6 @@ public class WorkbenchController : MonoBehaviour
         for (int resourceIndex = 0; resourceIndex < 6; resourceIndex++)
         {
             box = root.Find($"Crate{resourceIndex + 1 }");
-            Managers.system.SetWorkbechPoint(resourceIndex, box.position, NetworkManager.Net.IsPlayerTeamA());
 
             _sourcePath = _sourceInBoxPath + _resourceName[resourceIndex + startIndex];
             _resourcePrefab = NetworkManager.Net.SpawnObject(_sourcePath, box);
@@ -86,5 +89,20 @@ public class WorkbenchController : MonoBehaviour
 
             box.GetComponent<PlayerBoxController>().Init(_resourcePrefab, pv.IsMine, (Define.AssetData)(resourceIndex + startIndex));
         }
+
+    }
+
+    private void SetBoxPosition()
+	{
+        Transform root = transform.Find("Player_Box");
+        Transform box;
+
+        for (int i = 0; i<6; i++)
+		{
+            box = root.Find($"Crate{i + 1 }");
+            BoxPos[i] = box.position;
+		}
+
+        Managers.system.SetWorkbechPoint(BoxPos, pv.IsMine ? _isWoopdSide : !_isWoopdSide);
     }
 }

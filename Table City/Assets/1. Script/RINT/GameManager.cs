@@ -273,12 +273,12 @@ public class GameManager : MonoBehaviour
 
     }
 
-    public void SetWorkbechPoint(int index, Vector3 pos, bool _pointA)
+    public void SetWorkbechPoint(Vector3[] pos, bool _pointA)
     {
-		if (_pointA) { _workbenchPointsA[index] = pos; }
-        else { _workbenchPointsB[index] = pos; }
-        
+		if (_pointA) { _workbenchPointsA = pos; }
+        else { _workbenchPointsB = pos; }
     }
+
     public Vector3 GetWorkbechPoint(Define.AssetData type, bool _pointA)
     {
         int index = (int)type;

@@ -33,6 +33,9 @@ public class RoomManager : MonoBehaviourPunCallbacks
 	/// <summary> 포톤 뷰 </summary>
 	private PhotonView _pv;
 
+	public GameObject _Object_PlayerA { get; private set; } = null;
+	public GameObject _Object_PlayerB { get; private set; } = null;
+
 	private void Start()
 	{
 		_pv = gameObject.GetComponent<PhotonView>();
@@ -60,6 +63,15 @@ public class RoomManager : MonoBehaviourPunCallbacks
 		NetworkManager.Net.LeaveRoom();
 		NetworkManager.Net.SetForceOut(true);
 		PhotonNetwork.LoadLevel("MainLobby");
+	}
+
+	/// <summary> 들어온 플레이어 오브젝트 가져오기 </summary>
+	/// <param name="_player">플레이어 오브젝트</param>
+	/// <param name="_pointA">플레이어의 포지션</param>
+	public void SetPlayerObject(GameObject _player, bool _pointA)
+	{
+		if (_pointA) { _Object_PlayerA = _player; }
+		else { _Object_PlayerB = _player; }
 	}
 
 	#region Syncron

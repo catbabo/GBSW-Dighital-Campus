@@ -51,7 +51,10 @@ public class Throw : MonoBehaviour
 
     /// <summary> 트럭이 이동할 목표지점 설정 </summary>
     /// <param name="_pos">목표 Position</param>
-    public void SetTargetPosition(Vector3 _pos) => m_TargetPosition = _pos;
+    public void SetTargetPosition(Vector3 _pos)
+	{
+        m_TargetPosition = _pos;
+    }
 
     void Arrived()
     {

@@ -8847,7 +8847,6 @@ GameObject:
   - component: {fileID: 827685655046173277}
   - component: {fileID: 827685655036226035}
   - component: {fileID: 2352505336031020752}
-  - component: {fileID: 4832825750245238251}
   m_Layer: 8
   m_Name: OVRControllerPrefab_Right
   m_TagString: Untagged
@@ -11157,7 +11156,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9103164868292052499}
-  - component: {fileID: 5192711188758016291}
   m_Layer: 9
   m_Name: Male Head
   m_TagString: Untagged
@@ -12519,38 +12517,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &4832825750245238251
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 827685655045764649}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SynchronizePosition: 1
-  m_SynchronizeRotation: 1
-  m_SynchronizeScale: 0
-  m_UseLocal: 1
---- !u!114 &4835244745456016801
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5025677533625119406}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SynchronizePosition: 1
-  m_SynchronizeRotation: 1
-  m_SynchronizeScale: 0
-  m_UseLocal: 1
 --- !u!4 &4851959319281846265
 Transform:
   m_ObjectHideFlags: 0
@@ -12651,7 +12617,6 @@ GameObject:
   - component: {fileID: 5025677533625202394}
   - component: {fileID: 5025677533632032116}
   - component: {fileID: 8422904862923551123}
-  - component: {fileID: 4835244745456016801}
   m_Layer: 8
   m_Name: OVRControllerPrefab_Left
   m_TagString: Untagged
@@ -12704,22 +12669,6 @@ MonoBehaviour:
   m_modelMetaTouchProLeftController: {fileID: 8334202718601516634}
   m_modelMetaTouchProRightController: {fileID: 6232012807402859207}
   m_controller: 0
---- !u!114 &5192711188758016291
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3076419384660483602}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SynchronizePosition: 1
-  m_SynchronizeRotation: 1
-  m_SynchronizeScale: 0
-  m_UseLocal: 1
 --- !u!1 &5202094537577192443
 GameObject:
   m_ObjectHideFlags: 0
@@ -13275,10 +13224,7 @@ MonoBehaviour:
   Synchronization: 3
   OwnershipTransfer: 0
   observableSearch: 2
-  ObservedComponents:
-  - {fileID: 5192711188758016291}
-  - {fileID: 4835244745456016801}
-  - {fileID: 4832825750245238251}
+  ObservedComponents: []
   sceneViewId: 1
   InstantiationId: 0
   isRuntimeInstantiated: 0

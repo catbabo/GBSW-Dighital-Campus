@@ -9,7 +9,7 @@ using UnityEngine.EventSystems;
 public class VRController : MonoBehaviour
 {
     #region Elements
-    [field:SerializeField]
+    [field: SerializeField]
     public bool _isRight { get; set; }
     [SerializeField]
     private bool _isTesting;
@@ -152,15 +152,15 @@ public class VRController : MonoBehaviour
             return;
 
 
-        switch(_targetType)
+        switch (_targetType)
         {
             case Define.CastingType.Tool:
             case Define.CastingType.PlayerBox:
-            {
-                _castedComponent.Interact(this, _toolGrabPoint);
-                _isGrab = true;
-                break;
-            }
+                {
+                    _castedComponent.Interact(this, _toolGrabPoint);
+                    _isGrab = true;
+                    break;
+                }
         }
     }
 
@@ -174,18 +174,18 @@ public class VRController : MonoBehaviour
         if (_castedComponent == null)
             return;
 
-        switch(_targetType)
+        switch (_targetType)
         {
             case Define.CastingType.Tool:
             case Define.CastingType.PlayerBox:
             case Define.CastingType.Resource:
-            {
-                _isGrab = false;
-                break;
-            }
+                {
+                    _isGrab = false;
+                    break;
+                }
         }
 
-        if(!isInterrupt)
+        if (!isInterrupt)
             _castedComponent.ExitInteract();
 
         _castedObject = null;

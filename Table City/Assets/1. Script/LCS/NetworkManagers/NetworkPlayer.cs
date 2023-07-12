@@ -27,4 +27,5 @@ public class NetworkPlayer : MonoBehaviourPunCallbacks
 
 	/// <summary> 플레이어의 머리 오브젝트 레이어 변경 </summary>
 	private void SetHeadLayer() => _PlayerHead.layer = _PV.IsMine ? LayerMask.NameToLayer("Head_IsMine") : LayerMask.NameToLayer("Head");
+
 }

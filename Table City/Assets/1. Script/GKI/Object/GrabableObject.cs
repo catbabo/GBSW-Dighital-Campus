@@ -24,9 +24,8 @@ public class GrabableObject : ObjectBase
 
     public override void Interact(VRController interactedHand, Transform target)
     {
-
-        //if (!_isMine)
-          //  return;
+        if (!_isMine)
+            return;
 
         if (_isInteracting)
         {
@@ -42,7 +41,7 @@ public class GrabableObject : ObjectBase
     public override void ExitInteract()
     {
         //if (!_isMine)
-            //return;
+        //return;
 
         _isGrab = false;
         _isInteracting = false;
