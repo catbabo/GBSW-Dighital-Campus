@@ -72,6 +72,7 @@ public class Define : MonoBehaviour
             transform.localRotation = Quaternion.identity;
             
             resource = gameObject.GetComponent<ResourceController>();
+            resource.Init(this);
             resource.SetResourceType(type);
 
             gameObject.SetActive(false);
@@ -82,7 +83,6 @@ public class Define : MonoBehaviour
             if (!_isGrab)
             {
                 hand.ImplusiveGrab<ResourceController>(transform);
-                _isGrab = true;
             }
         }
 

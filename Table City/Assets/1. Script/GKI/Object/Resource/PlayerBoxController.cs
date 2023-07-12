@@ -66,8 +66,6 @@ public class PlayerBoxController : ObjectBase
 
         if (!_resourceInstant[0].IsGrab())
         {
-            Managers.system.asset[(int)_resourseType]--; //°¨¼Ò
-
             _resourceInstant[0].Grab(interactedHand, target);
         }
         /*
