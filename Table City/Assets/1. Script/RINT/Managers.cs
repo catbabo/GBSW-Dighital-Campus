@@ -6,7 +6,6 @@ public class Managers : MonoBehaviour
 {
     public static GameManager system { get; set; }
     public static UIManager ui { get; private set; }
-    public static SoundManager sound { get; private set; }
     public static PrefabManager instantiate { get; private set; }
 
     private void Awake()
@@ -14,9 +13,6 @@ public class Managers : MonoBehaviour
         if(system == null)
         {
             system = gameObject.GetComponent<GameManager>();
-
-            GameObject soundObject = EmptyInstantiate("SoundManager");
-            sound = soundObject.AddComponent<SoundManager>();
 
             GameObject uiObject = EmptyInstantiate("UI_Manager");
             ui = uiObject.AddComponent<UIManager>();

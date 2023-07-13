@@ -19,6 +19,7 @@ public class Pick : MonoBehaviour
     {
         if(time > 0.1f)
         {
+            SoundManager.sound.SfxPlay("pick");
             if (collision.transform.CompareTag("Stone"))
             {
                 RoomManager.room.SyncSpawnObejct(Define.prefabType.effect, "ExplosionStone", collision.contacts[0].point, Quaternion.identity, Define.AssetData.stone);

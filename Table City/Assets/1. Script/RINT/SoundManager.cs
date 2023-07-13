@@ -9,33 +9,38 @@ public class SoundManager : MonoBehaviour
     private List<AudioSource> sfxSource = new List<AudioSource>();
     private Transform sfxParent;
 
-    private Dictionary<string,AudioClip> bgmClip,sfxClip = new Dictionary<string, AudioClip>();
+    private Dictionary<string,AudioClip> bgmClip = new Dictionary<string, AudioClip>();
+    private Dictionary<string, AudioClip> sfxClip = new Dictionary<string, AudioClip>();
 
     private float bgmVolume =1,sfxVolume =1;
     [SerializeField]
     private float maxSfxCount = 10;
+    public static SoundManager sound { get; private set; }
 
     void Awake()
     {
-        if (bgmSource != null) return;
+        if (sound == null)
+        {
+            sound = gameObject.GetComponent<SoundManager>();
+            GameObject bgmEmpty = EmptyInstantiate("bgm");
+            bgmSource = bgmEmpty.AddComponent<AudioSource>();
+            bgmSource.loop = true;
 
-        GameObject bgmEmpty = EmptyInstantiate("bgm");
-        bgmSource = bgmEmpty.AddComponent<AudioSource>();
-        bgmSource.loop = true;
+            sfxParent = EmptyInstantiate("sfx").transform;
 
-        sfxParent = EmptyInstantiate("sfx").transform;
+            ResourceLoad(bgmClip, "1.Sound/1.BGM");
+            ResourceLoad(sfxClip, "1.Sound/2.SFX");
+            DontDestroyOnLoad(this.gameObject);
+        }
+        else
+        {
+            if (sound != this)
+                Destroy(this.gameObject);
+        }
 
-        ResourceLoad(bgmClip, "1.Sound/1.BGM");
-        ResourceLoad(sfxClip, "1.Sound/2.SFX");
+
     }
 
-    private void Update()
-    {
-        /*테스트 부분
-        if(Input.GetKey(KeyCode.Space))
-            SfxPlay("a");
-        */
-    }
 
 
     private void ResourceLoad(Dictionary<string, AudioClip> dictionary, string filePath)

@@ -80,7 +80,6 @@ public class GameManager : MonoBehaviour
 
                     anime[i].data[groupNum].Influence[animeNum] = int.Parse(csvLineSet["영향력"].ToString().Replace("%", ""));
 
-                    Debug.Log(anime[i].ending);
 
 
                     anime[i].data[groupNum].condition[animeNum,(int)Define.AssetData.wood]
@@ -169,6 +168,7 @@ public class GameManager : MonoBehaviour
                             }
                             //조건 충족
                             anime[j].data[k].model[a].SetActive(true);
+                            SoundManager.sound.SfxPlay("event");
                             endingValues[(int)anime[j].ending] += anime[j].data[k].Influence[a];
 
                             int allEnding1 = 0;
