@@ -42,7 +42,7 @@ AudioSource:
   m_GameObject: {fileID: 4796399431063894523}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 6594330213953423371, guid: 18d45d14d4e7d7b47ac54c245afd9669, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -89,7 +89,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -143,7 +143,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playDelayConfig:
     Low: 200
-    High: 400
+    High: 200
     Max: 1000
     SpeedUpPerc: 5
   restartOnDeviceChange: 1
