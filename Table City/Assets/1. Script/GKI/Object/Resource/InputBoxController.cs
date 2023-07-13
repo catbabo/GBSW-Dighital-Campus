@@ -45,8 +45,13 @@ public class InputBoxController : MonoBehaviour
         
         AssetManager._asset.SyncFactroyData(factoryType);
 
+        SoundManager.sound.SfxPlay("fireTruck");
         RoomManager.room.SyncSpawnObejct(Define.prefabType.effect, "truck", transform.position, Quaternion.identity, factoryType);
         
     }
-    public void SpeedUp(Define.AssetData factoryType) => RoomManager.room.SyncSpeedUp(factoryType);
+    public void SpeedUp(Define.AssetData factoryType)
+    {
+        RoomManager.room.SyncSpeedUp(factoryType);
+        SoundManager.sound.SfxPlay("sharara");
+    }
 }

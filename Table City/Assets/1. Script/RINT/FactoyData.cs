@@ -60,8 +60,9 @@ public class FactoyData : MonoBehaviour
         if (timer < (float)(data.maxLv + 1 - data.lv )/ 2 )return;
 
         animator.SetTrigger("GetAsset");
+        SoundManager.sound.SfxPlay("sendItem");
 
-        if(PhotonNetwork.IsMasterClient) AssetManager._asset.SyncFactroyCreateAsset(data.createAsset, 1);
+        if (PhotonNetwork.IsMasterClient) AssetManager._asset.SyncFactroyCreateAsset(data.createAsset, 1);
 
         Managers.instantiate.UsePoolingObject(Define.prefabType.effect+data.createAsset.ToString(),transform.position,Quaternion.identity);
         timer = 0;

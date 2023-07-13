@@ -12,7 +12,7 @@ public class SoundManager : MonoBehaviour
     private Dictionary<string,AudioClip> bgmClip = new Dictionary<string, AudioClip>();
     private Dictionary<string, AudioClip> sfxClip = new Dictionary<string, AudioClip>();
 
-    private float bgmVolume =1,sfxVolume =1;
+    private float bgmVolume =0.5f,sfxVolume =1;
     [SerializeField]
     private float maxSfxCount = 10;
     public static SoundManager sound { get; private set; }

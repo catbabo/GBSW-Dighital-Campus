@@ -118,6 +118,7 @@ public class ResourceController : GrabableObject
                 if (Managers.system.asset[(int)_resourceType] > 0)
                 {
                     Managers.system.asset[(int)_resourceType]--;
+                    SoundManager.sound.SfxPlay("countUp");
                     _count++;
                     //갯수 증가 단 조건
                     deleyTime = 0;
@@ -129,6 +130,7 @@ public class ResourceController : GrabableObject
                 if (_count > 1)
                 {
                     Managers.system.asset[(int)_resourceType]++;
+                    SoundManager.sound.SfxPlay("countDown");
                     _count--;
                     //갯수 감소 단 조건
                     deleyTime = 0;
