@@ -178,14 +178,25 @@ public class GameManager : MonoBehaviour
                             for (int i = 0; i < endingValues.Length; i++)
                             {
                                 allEnding1 += endingValues[i];
-                                if (big > endingValues[i])
+                            }
+
+                            if (allEnding1 > 100)
+                            {
+                                endingValues[(int)anime[j].ending] += 100 - allEnding1;
+                            }
+
+                            for (int i = 0; i < endingValues.Length; i++)
+                            {
+                                if (big < endingValues[i])
                                 {
                                     big = endingValues[i];
                                     _ending = i;
+                                    //가장 큰 엔딩
                                 }
-                                if(endingValues[i] < 23)
+                                if (endingValues[i] < 23)
                                 {
                                     normal = false;
+                                    //노멀 엔딩 아님
                                 }
                             }
 
@@ -209,10 +220,6 @@ public class GameManager : MonoBehaviour
                                 });
                             }
 
-                            if (allEnding1 > 100)
-                            {
-                                endingValues[(int)anime[j].ending] += 100 - allEnding1;
-                            }
 
                             if (k - 1 != -1)
                                 if (anime[j].data[k - 1].bundle.activeSelf == true)

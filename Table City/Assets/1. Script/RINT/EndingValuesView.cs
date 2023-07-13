@@ -21,7 +21,7 @@ public class EndingValuesView : MonoBehaviour
     void Update()
     {
         int allEndingValue =0;
-        for (int i =0; i> system.endingValues.Length; i++)
+        for (int i =0; i< system.endingValues.Length; i++)
         {
             allEndingValue += system.endingValues[i];
         }
