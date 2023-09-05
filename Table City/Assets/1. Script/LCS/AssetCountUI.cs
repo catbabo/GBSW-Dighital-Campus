@@ -13,11 +13,11 @@ public class AssetCountUI : MonoBehaviour
 	{
 		if (_PointA)
 		{
-			for (int i = 0; i < 6; i++) { _assetCount[i].text = Managers.system.asset[i].ToString(); }
+			for (int i = 0; i < 6; i++) { _assetCount[i].text = Managers._game.asset[i].ToString(); }
 		}
 		else
 		{
-			for (int i = 0; i < 6; i++) { _assetCount[i].text = Managers.system.asset[i+6].ToString(); }
+			for (int i = 0; i < 6; i++) { _assetCount[i].text = Managers._game.asset[i+6].ToString(); }
 		}
 	}
 

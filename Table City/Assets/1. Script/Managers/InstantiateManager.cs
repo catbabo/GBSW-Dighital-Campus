@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PrefabManager : MonoBehaviour
+public class InstantiateManager : ManagerBase
 {
     /*프리펩 데이터*/
     Dictionary<string, GameObject> prefab = new Dictionary<string, GameObject>();
@@ -11,7 +11,7 @@ public class PrefabManager : MonoBehaviour
     private Dictionary<string, Queue<GameObject>> poolingObject = new Dictionary<string, Queue<GameObject>>();
     private Transform poolingParent;
 
-    private void Awake()
+    public override void Init()
     {
         if (prefab.Count == 0)
         {
@@ -35,6 +35,7 @@ public class PrefabManager : MonoBehaviour
             dictionary.Add(type + oneGameObject.name, oneGameObject);
         }
     }
+
     /*오브젝트 풀링*/
     public GameObject UsePoolingObject(string useObjectname, Vector3 position, Quaternion rotation)
     {
@@ -78,9 +79,12 @@ public class PrefabManager : MonoBehaviour
             return returnObject;
         }
     }
+
     public void AddPooling(GameObject addObject)
     {
-        if (!poolingObject.ContainsKey(addObject.name)) poolingObject.Add(addObject.name, new Queue<GameObject>());
+        if (!poolingObject.ContainsKey(addObject.name))
+            poolingObject.Add(addObject.name, new Queue<GameObject>());
+
         poolingObject[addObject.name].Enqueue(addObject);
         addObject.SetActive(false);
     }

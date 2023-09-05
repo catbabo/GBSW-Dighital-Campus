@@ -6,7 +6,7 @@ using TMPro;
 using Photon.Pun;
 using Photon.Realtime;
 
-public class LobbyManager : MonoBehaviourPunCallbacks
+public class LobbyManager : PunManagerBase
 {
 
 	#region Window
@@ -14,10 +14,10 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 	[SerializeField] private GameObject _Window_Title;
 
 	/// <summary> 메인 화면 창 </summary>
-	[SerializeField] private GameObject _Window_Main;
+	[SerializeField] private GameObject _Window_Lobby;
 
 	/// <summary> 팝업 창 </summary>
-	[SerializeField] private GameObject _Window_Popup;
+	[SerializeField] private GameObject _Window_SetTeam;
 	#endregion
 
 	#region InputField
@@ -70,13 +70,13 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 	/// <summary> 플레이어가 포인트 선택을 했는지의 여부 </summary>
 	private bool _Selected_PointA = false, _Selected_PointB = false;
 
-	private void Start()
+	public override void Init()
 	{
 		_pv = gameObject.GetComponent<PhotonView>();
-		if (NetworkManager.Net._forceOut)
+		if (Managers._network._forceOut)
 		{
 			SetPopup(Define.PopupState.Warning, "Warning", "Your partner is out.");
-			NetworkManager.Net.SetForceOut(false);
+			Managers._network.SetForceOut(false);
 		}
 		else { InitWindow(); }
 	}
@@ -85,8 +85,8 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 	private void InitWindow()
 	{
 		_Window_Title.SetActive(true);
-		_Window_Main.SetActive(false);
-		_Window_Popup.SetActive(false);
+		_Window_Lobby.SetActive(false);
+		_Window_SetTeam.SetActive(false);
 	}
 
 	#region Button
@@ -96,9 +96,9 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 	/// </summary>
 	public void Button_Start()
 	{
-		NetworkManager.Net.Connect();
+		Managers._network.Connect();
 		_Window_Title.SetActive(false);
-		_Window_Main.SetActive(true);
+		_Window_Lobby.SetActive(true);
 	}
 
 	/// <summary>
@@ -113,10 +113,10 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 			return;
 		}
 
-		NetworkManager.Net.SetRoomCode(_Input_RoomCode.text);
-		NetworkManager.Net.SetNickName(_Input_NickName.text);
+		Managers._network.SetRoomCode(_Input_RoomCode.text);
+		Managers._network.SetNickName(_Input_NickName.text);
 
-		NetworkManager.Net.JoinLobby();
+		Managers._network.JoinLobby();
 	}
 
 	// 방 입장시 실행
@@ -133,8 +133,8 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 	/// </summary>
 	public void Button_Cancel()
 	{
-		if (_PopupState == Define.PopupState.Wait) { NetworkManager.Net.LeaveRoom(); }
-		_Window_Popup.SetActive(false);
+		if (_PopupState == Define.PopupState.Wait) { Managers._network.LeaveRoom(); }
+		_Window_SetTeam.SetActive(false);
 	}
 
 	/// <summary>
@@ -146,7 +146,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 	{
 		SetPopup(Define.PopupState.MaxPlayer, "Choose your tools", "You choice : " + (_A ? "Wood" : "Stone"));
 
-		NetworkManager.Net.SetPlayerSpawnPoint(_A);
+		Managers._network.SetPlayerSpawnPoint(_A);
 
 		_Selected = true;
 
@@ -164,7 +164,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 	/// <param name="_subjectText">팝업 내용</param>
 	private void SetPopup(Define.PopupState _state, string _headerText, string _subjectText)
 	{
-		_Window_Popup.SetActive(true);
+		_Window_SetTeam.SetActive(true);
 		_PopupState = _state;
 
 		_Text_Popup_Header.text = _headerText;

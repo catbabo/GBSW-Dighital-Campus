@@ -15,7 +15,7 @@ public class EndingValuesView : MonoBehaviour
     private GameManager system;
     private void Start()
     {
-        system = Managers.system;
+        system = Managers._game;
     }
 
     void Update()

@@ -5,12 +5,12 @@ using UnityEngine.UI;
 using System;
 using TMPro;
 
-public class UIManager : MonoBehaviour
+public class UIManager : ManagerBase
 {
     Dictionary<string, GameObject> ui = new Dictionary<string, GameObject>();
     Stack<GameObject> order = new Stack<GameObject>();
 
-    void Awake()
+    public override void Init()
     {
         if(ui.Count == 0) ResourceLoad(ui, "2.Prefab/2.UI");
 

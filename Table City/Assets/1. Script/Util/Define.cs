@@ -5,6 +5,13 @@ using UnityEngine.UI;
 
 public class Define : MonoBehaviour
 {
+    public enum SoundClipName
+    {
+        bgm1, bgm6,
+        button, countDown, countUp,
+        eventTrigger, fireTruck, pick, sharara
+    }
+
     public enum CastingType
     {
         Tool, Resource, InputBox, PlayerBox

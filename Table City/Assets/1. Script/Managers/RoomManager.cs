@@ -4,19 +4,8 @@ using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
 
-public class RoomManager : MonoBehaviourPunCallbacks
+public class RoomManager : PunManagerBase
 {
-	#region Singleton
-	public static RoomManager room = null;
-
-	private void Awake()
-	{
-		if(room == null)
-		{
-			room = this;
-		}
-	}
-	#endregion
 
 	#region SpawnPoint
 	/// <summary> 플레이어 소환 위치 A </summary>
@@ -36,7 +25,7 @@ public class RoomManager : MonoBehaviourPunCallbacks
 	public GameObject _Object_PlayerA { get; private set; } = null;
 	public GameObject _Object_PlayerB { get; private set; } = null;
 
-	private void Start()
+	public override void Init()
 	{
 		_pv = gameObject.GetComponent<PhotonView>();
 		InitSapwnPoint();
@@ -53,15 +42,15 @@ public class RoomManager : MonoBehaviourPunCallbacks
 		_WorkbenchPointA = spawnPoint.Find("Spawn_Workbench").Find("Point_A");
 		_WorkbenchPointB = spawnPoint.Find("Spawn_Workbench").Find("Point_B");
 
-		NetworkManager.Net.SpawnPlayer();
+		Managers._network.SpawnPlayer();
 	}
 
 	// 플레이어가 방에서 나간다면 실행
 	public override void OnPlayerLeftRoom(Player otherPlayer)
 	{
 		Debug.Log(otherPlayer.NickName + " 나감.");
-		NetworkManager.Net.LeaveRoom();
-		NetworkManager.Net.SetForceOut(true);
+		Managers._network.LeaveRoom();
+		Managers._network.SetForceOut(true);
 		PhotonNetwork.LoadLevel("MainLobby");
 	}
 
@@ -85,7 +74,7 @@ public class RoomManager : MonoBehaviourPunCallbacks
 	[PunRPC]
 	private void FactroySpeedUp(Define.AssetData _factroyType)
 	{
-		Managers.system.factoryScript[_factroyType].speedUpState = true;
+		Managers._game.factoryScript[_factroyType].speedUpState = true;
 	}
 
 
@@ -114,8 +103,8 @@ public class RoomManager : MonoBehaviourPunCallbacks
 	[PunRPC]
 	private void SpawnEffect(string _objName, Vector3 _spawnPoint, Quaternion _spawnAngle, Define.AssetData _assetType)
 	{ 
-		GameObject _object = Managers.instantiate.UsePoolingObject(Define.prefabType.effect + _objName, _spawnPoint, _spawnAngle);
-		if(_objName == "truck") { _object.GetComponent<Throw>().SetTargetPosition(AssetManager._asset.GetTargetPosition((int)_assetType)); }
+		GameObject _object = Managers._inst.UsePoolingObject(Define.prefabType.effect + _objName, _spawnPoint, _spawnAngle);
+		if(_objName == "truck") { _object.GetComponent<Throw>().SetTargetPosition(Managers._asset.GetTargetPosition((int)_assetType)); }
 	}
 	#endregion
 }

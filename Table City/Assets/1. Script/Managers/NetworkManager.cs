@@ -7,29 +7,16 @@ using Photon.Pun;
 using Photon.Realtime;
 
 
-public class NetworkManager : MonoBehaviourPunCallbacks
+public class NetworkManager : PunManagerBase
 {
+	public override void Init()
+	{
+		InitNetworkSetting();
+	}
 
 	/// <summary> 게임 버전 </summary>
 	private string _gameVersion = "1";
 
-	#region Singleton
-	public static NetworkManager Net = null;
-	private void Awake()
-	{
-		if (Net == null)
-		{
-			Net = this;
-
-			DontDestroyOnLoad(this.gameObject);
-		}
-		else
-		{
-			Destroy(this.gameObject);
-		}
-		InitNetworkSetting();
-	}
-	#endregion
 
 	#region PlayerServerInfo
 	/// <summary> 들어갈 방의 이름 </summary>
@@ -160,12 +147,12 @@ public class NetworkManager : MonoBehaviourPunCallbacks
 	/// <summary> 플레이어 및 작업대 소환 </summary>
 	public void SpawnPlayer()
 	{
-		GameObject player = SpawnObject("0. Player/Player_Prefab", _pointA ? RoomManager.room._PlayerPointA : RoomManager.room._PlayerPointB);
+		GameObject player = SpawnObject("0. Player/Player_Prefab", _pointA ? Managers._room._PlayerPointA : Managers._room._PlayerPointB);
 		//player.name = "Player_" + PhotonNetwork.NickName.ToString();
 		
 		GameObject workbench;
-		if(_pointA)	{ workbench = SpawnObject("0. Player/PlayerA_Workbench", RoomManager.room._WorkbenchPointA); }
-		else { workbench = SpawnObject("0. Player/PlayerB_Workbench", RoomManager.room._WorkbenchPointB); }
+		if(_pointA)	{ workbench = SpawnObject("0. Player/PlayerA_Workbench", Managers._room._WorkbenchPointA); }
+		else { workbench = SpawnObject("0. Player/PlayerB_Workbench", Managers._room._WorkbenchPointB); }
 		//workbench.name = "Player_WorkBench_" + PhotonNetwork.NickName.ToString();
 	}
 	#endregion

@@ -4,11 +4,15 @@ using UnityEngine;
 
 public class BgmPlay : MonoBehaviour
 {
+
     [SerializeField]
-    private string bgmName;
-    // Start is called before the first frame update
+    private int bgmId;
+
+
+    private Define.SoundClipName[] bgmName = { Define.SoundClipName.bgm1, Define.SoundClipName.bgm6 };
+
     void Start()
     {
-        SoundManager.sound.BgmPlay(bgmName);
+        Managers._sound.BgmPlay(bgmName[bgmId]);
     }
 }

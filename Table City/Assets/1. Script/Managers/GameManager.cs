@@ -4,7 +4,7 @@ using System;
 using UnityEngine;
 using TMPro;
 
-public class GameManager : MonoBehaviour
+public class GameManager : ManagerBase
 {
     [field: SerializeField, Header("엔딩 에니메이션")]
     public Animator endingAnime { set; get; }
@@ -51,7 +51,7 @@ public class GameManager : MonoBehaviour
     #endregion
 
 
-    private void Awake()
+    public override void Init()
     {
         SetFactory();
         SetAnimation();
@@ -168,7 +168,7 @@ public class GameManager : MonoBehaviour
                             }
                             //조건 충족
                             anime[j].data[k].model[a].SetActive(true);
-                            SoundManager.sound.SfxPlay("event");
+                            Managers._sound.SfxPlay(Define.SoundClipName.eventTrigger);
                             endingValues[(int)anime[j].ending] += anime[j].data[k].Influence[a];
 
                             int allEnding1 = 0;

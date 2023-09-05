@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class Particle_Pooling : MonoBehaviour
 {
-    PrefabManager instantiate;
+    InstantiateManager instantiate;
     GameManager system;
     [SerializeField]
     float poolingTime =1;
     private void Awake()
     {
-        instantiate = Managers.instantiate;
-        system = Managers.system;
+        instantiate = Managers._inst;
+        system = Managers._game;
     }
     // Start is called before the first frame update
     private void OnEnable()

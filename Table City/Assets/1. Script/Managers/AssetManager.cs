@@ -4,21 +4,8 @@ using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
 
-public class AssetManager : MonoBehaviourPunCallbacks
+public class AssetManager : PunManagerBase
 {
-
-	#region Singleton
-	public static AssetManager _asset = null;
-
-	private void Awake()
-	{
-		if (_asset == null)
-		{
-			_asset = this;
-		}
-	}
-	#endregion
-
 	/// <summary> 포톤 뷰 </summary>
 	private PhotonView _pv;
 
@@ -45,7 +32,7 @@ public class AssetManager : MonoBehaviourPunCallbacks
 	/// <summary> 트럭이 이동할 공장 위치 반환 </summary>
 	/// <param name="_factoryNum">공장 번호</param>
 	/// <returns>공장 Position</returns>
-	public Vector3 GetTargetPosition(int _factoryNum) { return Managers.system.factoryScript[(Define.AssetData)_factoryNum].transform.position; }
+	public Vector3 GetTargetPosition(int _factoryNum) { return Managers._game.factoryScript[(Define.AssetData)_factoryNum].transform.position; }
 
 	#region Syncron
 	/// <summary> 트럭이 이동할 공장 위치 동기화 실행 </summary>
@@ -76,7 +63,7 @@ public class AssetManager : MonoBehaviourPunCallbacks
 	[PunRPC]
 	private void InputFactoryAssetData(Define.AssetData _factoryType, int[] _Assets)
 	{
-		Managers.system.PlayInputFactoryItem(_factoryType, _Assets);
+		Managers._game.PlayInputFactoryItem(_factoryType, _Assets);
 	}
 
 	/// <summary> 공장에서 생성한 자원들 저장 </summary>
@@ -85,7 +72,7 @@ public class AssetManager : MonoBehaviourPunCallbacks
 	[PunRPC]
 	private void OutputFactoryAssetData(Define.AssetData _data, int _createCount)
 	{
-		Managers.system.asset[(int)_data] += _createCount;
+		Managers._game.asset[(int)_data] += _createCount;
 	}
 	#endregion
 
