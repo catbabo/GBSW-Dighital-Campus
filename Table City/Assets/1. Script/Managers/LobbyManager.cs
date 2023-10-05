@@ -101,8 +101,8 @@ public class LobbyManager : PunManagerBase
 		GameObject go = Managers._find.Find("Match");
 
         Managers._find.SetRoot(go.transform);
-        Managers._ui.SetUI(Define.UI.match, "Match");
-        Managers._ui.SetUI(Define.UI.match, "Match");
+        Managers._ui.SetUI(Define.UI.matchHeader, "Header");
+        Managers._ui.SetUI(Define.UI.matchText, "Subject");
     }
 
 	private void InitPopupInfo()
