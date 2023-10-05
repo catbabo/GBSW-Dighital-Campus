@@ -7,15 +7,15 @@ using UnityEngine;
 
 public class Managers : MonoBehaviour
 {
-    public static GameManager _game;
+    public static FindManager _find;
     public static UIManager _ui;
+    public static GameManager _game;
     public static InstantiateManager _inst;
     public static SoundManager _sound;
     public static RoomManager _room;
     public static AssetManager _asset;
     public static LobbyManager _lobby;
     public static NetworkManager _network;
-    public static FindManager _find;
 
     private T Init<T>() where T : ManagerBase
     {
@@ -44,8 +44,8 @@ public class Managers : MonoBehaviour
     private void Awake()
     {
         _find = Init<FindManager>();
-        _game = Init<GameManager>();
         _ui = Init<UIManager>();
+        _game = Init<GameManager>();
         _inst = Init<InstantiateManager>();
         _sound = Init<SoundManager>();
         _room = InitPun<RoomManager>();

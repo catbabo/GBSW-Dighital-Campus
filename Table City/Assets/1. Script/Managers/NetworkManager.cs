@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using TMPro;
 using Photon.Pun;
 using Photon.Realtime;
+using PN = Photon.Pun.PhotonNetwork;
 
 
 public class NetworkManager : PunManagerBase
@@ -50,10 +51,10 @@ public class NetworkManager : PunManagerBase
 	/// <summary>네트워크 셋팅 초기화</summary>
 	private void InitNetworkSetting()
 	{
-		PhotonNetwork.GameVersion = this._gameVersion; // 게임 버전 설정 ( 버전이 같은 사람끼리만 매칭이 가능함 )
-		PhotonNetwork.SendRate = 60; // 초당 패키지를 전송하는 횟수
-		PhotonNetwork.SerializationRate = 30; // 초당 OnPhotonSerialize를 실행하는 횟수
-		PhotonNetwork.AutomaticallySyncScene = true; // PhotonNetwork.LoadLevel을 사용하였을 때 모든 참가자를 동일한 레벨로 이동하게 하는지의 여부
+		PN.GameVersion = this._gameVersion; // 게임 버전 설정 ( 버전이 같은 사람끼리만 매칭이 가능함 )
+        PN.SendRate = 60; // 초당 패키지를 전송하는 횟수
+		PN.SerializationRate = 30; // 초당 OnPhotonSerialize를 실행하는 횟수
+		PN.AutomaticallySyncScene = true; // PhotonNetwork.LoadLevel을 사용하였을 때 모든 참가자를 동일한 레벨로 이동하게 하는지의 여부
 	}
 
 	private void Update()
@@ -265,8 +266,27 @@ public class NetworkManager : PunManagerBase
 	/// <summary> 실행시 방을 나간 후 서버 연결 해제 그 다음 메인로비로 이동 </summary>
 	public void OutRoom_GoMain()
 	{
-		PhotonNetwork.LeaveRoom();
+		PN.LeaveRoom();
 		DisConnect();
 		LoadScene("MainLobby");
 	}
+
+
+    // 플레이어가 방에 들어오면 실행
+    public override void OnPlayerEnteredRoom(Player newPlayer)
+    {
+        GetInRoomPlayerCount();
+        _pv.RPC("JoinPlayer", RpcTarget.All);
+    }
+
+    /// <summary> 플레이어가 방에 현재 몇명 들어와 있는지 출력 </summary>
+    public string GetInRoomPlayerCount()
+	{ return "Player : " + PN.CurrentRoom.PlayerCount + " / " + PN.CurrentRoom.MaxPlayers; }
+
+    // 플레이어가 방에서 나가면 실행
+    public override void OnPlayerLeftRoom(Player otherPlayer)
+    {
+        Debug.Log(otherPlayer.NickName + " 나감.");
+        GetInRoomPlayerCount();
+    }
 }

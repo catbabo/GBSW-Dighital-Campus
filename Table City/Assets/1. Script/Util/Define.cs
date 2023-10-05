@@ -21,7 +21,7 @@ public class Define : MonoBehaviour
     public enum PopupState
     {
         /// <summary> 플레이어를 기다리는 상태 </summary>
-        Wait,
+        Wait = 0,
         /// <summary> 플레이어가 모두 들어온 상태  </summary>
         MaxPlayer,
         /// <summary> 위험을 경고하는 상태 </summary>
@@ -63,6 +63,19 @@ public class Define : MonoBehaviour
         Left,
         Right
     }
+
+    public enum UI
+    {
+        title = 0,
+        lobby,
+        match,
+        matchHeader,
+        matchText
+    }
+    public static int LobbyUI = 0;
+    public static int LobbyUITitle = (int)UI.title;
+    public static int LobbyUILobby = (int)UI.lobby;
+    public static int LobbyUISelectTeam = (int)UI.match;
 
     public struct ResourceObject
     {

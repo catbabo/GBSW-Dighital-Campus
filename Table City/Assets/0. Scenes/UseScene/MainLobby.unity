@@ -138,7 +138,7 @@ GameObject:
   - component: {fileID: 190132110}
   - component: {fileID: 190132111}
   m_Layer: 5
-  m_Name: Lobby Canvas
+  m_Name: LobbyCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -349,11 +349,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
---- !u!1 &453182713 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7769090417130368871, guid: 6a31fde6f9ad40c41a241279ca8ecd96, type: 3}
-  m_PrefabInstance: {fileID: 7769090417314851742}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &453182714 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7769090417130368868, guid: 6a31fde6f9ad40c41a241279ca8ecd96, type: 3}
@@ -370,11 +365,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &566740666 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5664316644819985412, guid: a02742673826bcc4dbd45cc827f0fd56, type: 3}
-  m_PrefabInstance: {fileID: 5664316645327512254}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &566740667 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5664316644819985413, guid: a02742673826bcc4dbd45cc827f0fd56, type: 3}
@@ -589,9 +579,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd518bc5faee50d4bb3cb5c246a62db2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _Window_Title: {fileID: 453182713}
-  _Window_Main: {fileID: 566740666}
-  _Window_Popup: {fileID: 1612794636}
   _Input_RoomCode: {fileID: 1262035269}
   _Input_NickName: {fileID: 824702943}
   _Text_Popup_Header: {fileID: 7792198174827354127}
@@ -624,11 +611,6 @@ MonoBehaviour:
   sceneViewId: 2
   InstantiationId: 0
   isRuntimeInstantiated: 0
---- !u!1 &1612794636 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 210317415173550217, guid: 7a7adcd972b945d47809188bf764e9b6, type: 3}
-  m_PrefabInstance: {fileID: 210317415708244869}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &1612794637 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 210317415173550216, guid: 7a7adcd972b945d47809188bf764e9b6, type: 3}
@@ -5362,7 +5344,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 210317415173550217, guid: 7a7adcd972b945d47809188bf764e9b6, type: 3}
       propertyPath: m_Name
-      value: SetTeam
+      value: Match
+      objectReference: {fileID: 0}
+    - target: {fileID: 210317415173550217, guid: 7a7adcd972b945d47809188bf764e9b6, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 210317415432130190, guid: 7a7adcd972b945d47809188bf764e9b6, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 210317415786353405, guid: 7a7adcd972b945d47809188bf764e9b6, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -5372,6 +5362,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1322232607}
+    - target: {fileID: 7982701153113299392, guid: 7a7adcd972b945d47809188bf764e9b6, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7a7adcd972b945d47809188bf764e9b6, type: 3}
 --- !u!1 &247393382624756514
@@ -10533,6 +10527,10 @@ PrefabInstance:
     - target: {fileID: 5664316644819985412, guid: a02742673826bcc4dbd45cc827f0fd56, type: 3}
       propertyPath: m_Name
       value: Lobby
+      objectReference: {fileID: 0}
+    - target: {fileID: 5664316644819985412, guid: a02742673826bcc4dbd45cc827f0fd56, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5664316644819985413, guid: a02742673826bcc4dbd45cc827f0fd56, type: 3}
       propertyPath: m_Pivot.x
