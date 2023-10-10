@@ -6,27 +6,133 @@ using System;
 using TMPro;
 using Photon.Pun;
 
-public class UIManager : ManagerBase
+public class UIManager : PunManagerBase
 {
-    private GameObject[] _uis = new GameObject[3];
 
-    public void ShowUI(Define.UI target)
+    private PhotonView _pv;
+
+    #region Object_UI
+    /// <summary> 취소 버튼 오브젝트 </summary>
+    [SerializeField] private GameObject _Object_CancelButton;
+
+    /// <summary> 포인트 선택 버튼 오브젝트 </summary>
+    [SerializeField] private GameObject _Object_PointButton;
+
+
+    #endregion
+
+    #region Sprite
+    /// <summary> 포인트 선택 스프라이트 </summary>
+    [SerializeField] private Sprite _Sprite_Check;
+
+    /// <summary> 포인트 선택 불가 스프라이트 </summary>
+    [SerializeField] private Sprite _Sprite_X;
+    #endregion
+
+    [SerializeField]
+    private List<UnityEngine.Object> _uis = new List<UnityEngine.Object>();
+    private List<GameObject> _uiObjects = new List<GameObject>();
+
+    public void ShowPannel(Define.UI target)
     {
         foreach (GameObject ui in _uis)
         {
             ui.SetActive(false);
         }
-        _uis[(int)target].SetActive(true);
+        GetUI<GameObject>(target).SetActive(true);
+    }
+
+    public void ShowUIOnPopup(Define.PopupState target)
+    {
+        switch (target)
+        {
+
+            /// <summary> 캔슬과 포인트 선택 버튼을 교체 </summary>
+            /// <param name="_on">true : 포인트 선택 버튼으로 교체, false : 캔슬 버튼으로 교체</param>
+            case Define.PopupState.MaxPlayer:
+                //_Object_PointButton.SetActive(true);
+                //_Object_CancelButton.SetActive(false);
+                break;
+        }
+    }
+
+    public void CloseUIOnPopup(Define.PopupState target)
+    {
+        switch (target)
+        {
+
+            /// <summary> 캔슬과 포인트 선택 버튼을 교체 </summary>
+            /// <param name="_on">true : 포인트 선택 버튼으로 교체, false : 캔슬 버튼으로 교체</param>
+            case Define.PopupState.MaxPlayer:
+                //_Object_PointButton.SetActive(false);
+                //_Object_CancelButton.SetActive(true);
+                break;
+        }
     }
 
     public void CloseUI(Define.UI target)
     {
-        _uis[(int)target].SetActive(false);
+        GetUI<GameObject>(target).SetActive(false);
     }
 
-    public void SetUI(Define.UI index, string target)
+    public void AddUI<T>(Define.UI index, string target) where T : UnityEngine.Object
     {
-        _uis[(int)index] = Managers._find.Find(target);
+        for(; (int)index > _uis.Count;)
+        {
+            _uis.Add(null);
+            _uiObjects.Add(null);
+        }
+        SetUI<T>(index, target);
+    }
+
+    public void SetUI<T>(Define.UI index, string target) where T : UnityEngine.Object
+    {
+        UnityEngine.Object _object = Managers._find.Find(target);
+        
+        _uiObjects[(int)index] = _object as GameObject;
+        if (_object != null)
+        {
+            Debug.LogError("No Object");
+        }
+
+        _object = _uiObjects[(int)index].GetComponent<T>();
+        if (_object != null)
+        {
+            Debug.LogError("No Component");
+        }
+        
+        _uis[(int)index] = _object;
+    }
+
+    public T GetUI<T>(Define.UI index) where T : UnityEngine.Object
+    {
+        if (_uis[(int)index] is T == false)
+        {
+            Debug.LogError("Can't Get");
+            return null;
+        }
+
+        return _uis[(int)index] as T;
+    }
+
+    public GameObject GetUI(Define.UI index)
+    {
+        return _uiObjects[(int)index];
+    }
+
+    public void UIActive(Define.UI index, bool active)
+    {
+        _uiObjects[(int)index].SetActive(active);
+    }
+
+    public void SetText(Define.UI index, string text)
+    {
+        GetUI<TMP_Text>(Define.UI.matchHeader).text = text;
+    }
+
+    public void SetImageColor(Define.UI index, Color color)
+    {
+        GetUI<Image>(Define.UI.matchHeader).color = color;
     }
 
 
@@ -38,7 +144,7 @@ public class UIManager : ManagerBase
     public void Button_Start()
     {
         Managers._network.Connect();
-        ShowUI(Define.UI.lobby);
+        ShowPannel(Define.UI.lobby);
     }
 
     /// <summary>
@@ -47,14 +153,15 @@ public class UIManager : ManagerBase
     /// </summary>
     public void Button_CreateOrJoin()
     {
-        if (_Input_RoomCode.text.Length <= 0 || _Input_NickName.text.Length <= 0)
+        if (GetUI<TMP_InputField>(Define.UI.roomCodeField).text.Length <= 0 ||
+            GetUI<TMP_InputField>(Define.UI.nickNameField).text.Length <= 0)
         {
-            SetPopup(Define.PopupState.Warning);
+            Managers._lobby.SetPopup(Define.PopupState.Warning);
             return;
         }
 
-        Managers._network.SetRoomCode(_Input_RoomCode.text);
-        Managers._network.SetNickName(_Input_NickName.text);
+        Managers._network.SetRoomCode(GetUI<TMP_InputField>(Define.UI.roomCodeField).text);
+        Managers._network.SetNickName(GetUI<TMP_InputField>(Define.UI.nickNameField).text);
 
         Managers._network.JoinLobby();
     }
@@ -63,10 +170,11 @@ public class UIManager : ManagerBase
     public override void OnJoinedRoom()
     {
         Debug.Log("방 입장 성공!");
-        SetPopup(Define.PopupState.Wait);
+        Managers._lobby.SetPopup(Define.PopupState.Wait);
         _pv.RPC("JoinPlayer", RpcTarget.All);
     }
 
+    Define.PopupState _PopupState;
     /// <summary>
     /// 팝업창 종료 다른 플레이어를 기다리는 중이라면 Discnnect 후 종료
     /// '팝업창의 Cancel버튼과 연결되어 있음
@@ -74,9 +182,10 @@ public class UIManager : ManagerBase
     public void Button_Cancel()
     {
         if (_PopupState == Define.PopupState.Wait) { Managers._network.LeaveRoom(); }
-        CloseUI(Define.LobbyUI.selectTeam);
+        CloseUI(Define.UI.match);
     }
 
+    private bool _Selected = false;
     /// <summary>
     /// 선택한 위치를 네트워크 매니저에 저장
     /// 메인 화면의 A, B 버튼에 연결되어 있음
@@ -84,7 +193,8 @@ public class UIManager : ManagerBase
     /// <param name="_A">true : 포인트 A 선택, false : 포인트 B 선택</param>
     public void Button_Point(bool _A)
     {
-        SetPopup(Define.PopupState.MaxPlayer, "Choose your tools", "You choice : " + (_A ? "Wood" : "Stone"));
+        Managers._lobby.SetPopupInfo(Define.PopupState.MaxPlayer, "Choose your tools", "You choice : " + (_A ? "Wood" : "Stone"));
+        Managers._lobby.SetPopup(Define.PopupState.MaxPlayer);
 
         Managers._network.SetPlayerSpawnPoint(_A);
 

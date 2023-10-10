@@ -17,11 +17,12 @@ public class NetworkManager : PunManagerBase
 
 	/// <summary> 게임 버전 </summary>
 	private string _gameVersion = "1";
+    private PhotonView _pv;
 
 
-	#region PlayerServerInfo
-	/// <summary> 들어갈 방의 이름 </summary>
-	public string _roomCode { get; private set; }
+    #region PlayerServerInfo
+    /// <summary> 들어갈 방의 이름 </summary>
+    public string _roomCode { get; private set; }
 	
 	/// <summary> 플레이어의 닉네임 </summary>
 	public string _nickName { get; private set; }

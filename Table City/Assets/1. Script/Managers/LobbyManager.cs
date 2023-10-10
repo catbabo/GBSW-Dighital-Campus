@@ -4,34 +4,9 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using Photon.Pun;
-using Photon.Realtime;
 
 public class LobbyManager : PunManagerBase
 {
-
-	#region InputField
-	/// <summary> 방 코드 입력 필드 </summary>
-	[SerializeField] private TMP_InputField _Input_RoomCode;
-
-	/// <summary> 플레이어 닉네임 임력 필드 </summary>
-	[SerializeField] private TMP_InputField _Input_NickName;
-	#endregion
-
-	#region Text
-	/// <summary> 팝업창 헤더 텍스트 </summary>
-	[SerializeField] private TMP_Text _Text_Popup_Header;
-
-	/// <summary> 팝업창 내용 텍스트 </summary>
-	[SerializeField] private TMP_Text _Text_Popup_Subject;
-	#endregion
-
-	#region Image
-	/// <summary> A 포인트 선택 이미지 </summary>
-	[SerializeField] private Image _Image_Select_PointA;
-
-	/// <summary> B 포인트 선택 이미지 </summary>
-	[SerializeField] private Image _Image_Select_PointB;
-	#endregion
 
 	#region Object_UI
 	/// <summary> 취소 버튼 오브젝트 </summary>
@@ -84,28 +59,48 @@ public class LobbyManager : PunManagerBase
 			SetPopup(Define.PopupState.Warning);
 			Managers._network.SetForceOut(false);
 		}
-		else
-		{
-			InitWindow();
-			InitPopupInfo();
-            Managers._ui.ShowUI(Define.UI.title);
-        }
-	}
-
-	private void InitWindow()
-	{
-		Managers._find.SetRoot("LobbyCanvas");
-        Managers._ui.SetUI(Define.UI.title, "Title");
-        Managers._ui.SetUI(Define.UI.lobby, "Lobby");
-        Managers._ui.SetUI(Define.UI.match, "Match");
-		GameObject go = Managers._find.Find("Match");
-
-        Managers._find.SetRoot(go.transform);
-        Managers._ui.SetUI(Define.UI.matchHeader, "Header");
-        Managers._ui.SetUI(Define.UI.matchText, "Subject");
     }
 
-	private void InitPopupInfo()
+    private void OnEnterTitle()
+    {
+        InitWindow();
+        InitPopupInfo();
+        Managers._ui.ShowPannel(Define.UI.title);
+    }
+
+    private void OnEnterLobby()
+    {
+
+    }
+
+    private void InitWindow()
+	{
+		Managers._find.SetRoot("LobbyCanvas");
+        Managers._ui.AddUI<GameObject>(Define.UI.title, "Title");
+        Managers._ui.AddUI<GameObject>(Define.UI.lobby, "Lobby");
+        Managers._ui.AddUI<GameObject>(Define.UI.match, "Match");
+
+        GameObject go = Managers._ui.GetUI<GameObject>(Define.UI.lobby);
+        Managers._find.SetRoot(go);
+        Managers._ui.AddUI<TMP_InputField>(Define.UI.roomCodeField, "InputField_RoomCode");
+        Managers._ui.AddUI<TMP_InputField>(Define.UI.nickNameField, "InputField_NickName");
+
+		go = Managers._ui.GetUI<GameObject>(Define.UI.match);
+        Managers._find.SetRoot(go);
+        Managers._find.SetRoot("Popup01");
+        Managers._ui.AddUI<TMP_Text>(Define.UI.matchHeader, "Header");
+        Managers._ui.AddUI<TMP_Text>(Define.UI.matchText, "Subject");
+
+		go = Managers._find.Find("Select Point Button");
+        Managers._find.SetRoot("Button_PointA");
+        Managers._ui.AddUI<Image>(Define.UI.pointAImage, "Image_Select_PointA");
+
+        Managers._find.SetRoot(go);
+        Managers._find.SetRoot("Button_PointB");
+        Managers._ui.AddUI<Image>(Define.UI.pointBImage, "Image_Select_PointB");
+    }
+
+    private void InitPopupInfo()
     {
         popupInfos.Add(new PopupInfo { });
         popupInfos[(int)Define.PopupState.Wait].SetInfo("Wait for Player", "Player : 0 / 2");
@@ -115,31 +110,26 @@ public class LobbyManager : PunManagerBase
 
         popupInfos.Add(new PopupInfo { });
         popupInfos[(int)Define.PopupState.Warning].SetInfo("Warning", "Nothing Enter");
-        
     }
 
-	private void SetPopup(Define.PopupState state)
+    public void SetPopupInfo(Define.PopupState popup, string header, string text)
+    {
+        popupInfos[(int)popup].SetInfo(header, text);
+    }
+
+    public void SetPopup(Define.PopupState state)
 	{
-        Managers._ui.ShowUI(Define.UI.match);
+        Managers._ui.ShowPannel(Define.UI.match);
 
         // 대기중이라면 플레이어가 현재 몇명 들어와 있는지 출력
         if (state == Define.PopupState.Wait)
         { popupInfos[(int)state].SetText(Managers._network.GetInRoomPlayerCount()); }
 
-        _Text_Popup_Header.text = popupInfos[(int)state]._header;
-		_Text_Popup_Subject.text = popupInfos[(int)state]._text;
+        Managers._ui.SetText(Define.UI.matchHeader, popupInfos[(int)state]._header);
+        Managers._ui.SetText(Define.UI.matchText, popupInfos[(int)state]._text);
 
 		// 플레이어가 모두 들어오면 시작지점 선택 버튼 등장
-		OnPointButton(state == Define.PopupState.MaxPlayer);
-		
-	}
-
-	/// <summary> 캔슬과 포인트 선택 버튼을 교체 </summary>
-	/// <param name="_on">true : 포인트 선택 버튼으로 교체, false : 캔슬 버튼으로 교체</param>
-	private void OnPointButton(bool _on)
-	{
-		_Object_PointButton.SetActive(_on);
-		_Object_CancelButton.SetActive(!_on);
+		Managers._ui.ShowUIOnPopup(Define.PopupState.MaxPlayer);
 	}
 
 	/// <summary> 선택한 시작지점 초기화 </summary>
@@ -147,8 +137,8 @@ public class LobbyManager : PunManagerBase
 	{
 		_Object_PointButton.transform.Find("Button_PointA").GetComponent<Button>().interactable = true;
 		_Object_PointButton.transform.Find("Button_PointB").GetComponent<Button>().interactable = true;
-		_Image_Select_PointA.gameObject.SetActive(false);
-		_Image_Select_PointB.gameObject.SetActive(false);
+        Managers._ui.UIActive(Define.UI.pointAImage, false);
+        Managers._ui.UIActive(Define.UI.pointBImage, false);
 		_Selected = false;
 		_Selected_PointA = false;
 		_Selected_PointB = false;
@@ -162,11 +152,11 @@ public class LobbyManager : PunManagerBase
 		{
 			InitSelectPoint();
 			SetPopup(Define.PopupState.MaxPlayer);
-			OnPointButton(true);
-		}
+            Managers._ui.ShowUIOnPopup(Define.PopupState.MaxPlayer);
+        }
 		else
-		{
-			OnPointButton(false);
+        {
+            Managers._ui.CloseUIOnPopup(Define.PopupState.MaxPlayer);
 		}
 	}
 
@@ -182,17 +172,17 @@ public class LobbyManager : PunManagerBase
 			if (_A)
 			{
 				_Selected_PointA = true;
-				_Image_Select_PointA.gameObject.SetActive(true);
-				_Image_Select_PointA.sprite = _Sprite_Check;
-				_Image_Select_PointA.color = Color.green;
-			}
+                Managers._ui.UIActive(Define.UI.pointAImage, true);
+                Managers._ui.GetUI<Image>(Define.UI.pointAImage).sprite = _Sprite_Check;
+                Managers._ui.SetImageColor(Define.UI.pointAImage, Color.green);
+            }
 			else
 			{
 				_Selected_PointB = true;
-				_Image_Select_PointB.gameObject.SetActive(true);
-				_Image_Select_PointB.sprite = _Sprite_Check;
-				_Image_Select_PointB.color = Color.green;
-			}
+                Managers._ui.UIActive(Define.UI.pointBImage, true);
+                Managers._ui.GetUI<Image>(Define.UI.pointBImage).sprite = _Sprite_Check;
+                Managers._ui.SetImageColor(Define.UI.pointBImage, Color.green);
+            }
 			_Selected = false;
 		}
 		else
@@ -201,17 +191,18 @@ public class LobbyManager : PunManagerBase
 			{
 				_Selected_PointA = true;
 				_Object_PointButton.transform.Find("Button_PointA").GetComponent<Button>().interactable = false;
-				_Image_Select_PointA.gameObject.SetActive(true);
-				_Image_Select_PointA.sprite = _Sprite_X;
-				_Image_Select_PointA.color = Color.red;
-			}
+                Managers._ui.UIActive(Define.UI.pointAImage, true);
+                Managers._ui.GetUI<Image>(Define.UI.pointAImage).sprite = _Sprite_X;
+                Managers._ui.SetImageColor(Define.UI.pointAImage, Color.red);
+                _Selected_PointA = true;
+            }
 			else
 			{
 				_Selected_PointB = true;
 				_Object_PointButton.transform.Find("Button_PointB").GetComponent<Button>().interactable = false;
-				_Image_Select_PointB.gameObject.SetActive(true);
-				_Image_Select_PointB.sprite = _Sprite_X;
-				_Image_Select_PointB.color = Color.red;
+                Managers._ui.UIActive(Define.UI.pointBImage, true);
+                Managers._ui.GetUI<Image>(Define.UI.pointBImage).sprite = _Sprite_X;
+                Managers._ui.SetImageColor(Define.UI.pointBImage, Color.red);
 			}
 		}
 

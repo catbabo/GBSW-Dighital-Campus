@@ -20,9 +20,28 @@ public class FindManager : ManagerBase
         return _root.Find(target).gameObject;
     }
 
+    public GameObject FindChild(string target)
+    {
+        if (_root = null)
+            Debug.LogError("No Root Object");
+
+        Transform go = null;
+        for(int i = 0; i < _root.childCount; i++)
+        {
+            go = _root.GetChild(i).Find(target);
+        }
+
+        return go.gameObject;
+    }
+
     public void SetRoot(Transform root)
     {
         _root = root;
+    }
+
+    public void SetRoot(GameObject root)
+    {
+        _root = root.transform;
     }
 
     public void SetRoot(string root)

@@ -44,7 +44,7 @@ public class Managers : MonoBehaviour
     private void Awake()
     {
         _find = Init<FindManager>();
-        _ui = Init<UIManager>();
+        _ui = InitPun<UIManager>();
         _game = Init<GameManager>();
         _inst = Init<InstantiateManager>();
         _sound = Init<SoundManager>();

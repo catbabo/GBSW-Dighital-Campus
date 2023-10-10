@@ -70,7 +70,11 @@ public class Define : MonoBehaviour
         lobby,
         match,
         matchHeader,
-        matchText
+        matchText,
+        roomCodeField,
+        nickNameField,
+        pointAImage,
+        pointBImage,
     }
     public static int LobbyUI = 0;
     public static int LobbyUITitle = (int)UI.title;

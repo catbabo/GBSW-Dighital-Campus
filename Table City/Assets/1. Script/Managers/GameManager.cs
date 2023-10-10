@@ -36,17 +36,11 @@ public class GameManager : ManagerBase
     public Vector3[] _workbenchPointsB { get; private set; } = new Vector3[6];
 
     #region Å¸ÀÌ¸Ó
-    public void ActionTimer(float time, int repeatCount, Action action, bool actionFirst) => StartCoroutine(ActionTimerCoroutine(time, repeatCount, action, actionFirst));
-    public void ActionTimer(float time, int repeatCount, Action action) => StartCoroutine(ActionTimerCoroutine(time, repeatCount, action, false));
-    public void ActionTimer(float time, Action action) => StartCoroutine(ActionTimerCoroutine(time, 1, action, false));
-    private IEnumerator ActionTimerCoroutine(float time, int repeatCount, Action action, bool actionFirst)
+    public void ActionTimer(float time, Action action) => StartCoroutine(ActionTimerCoroutine(time, action));
+    private IEnumerator ActionTimerCoroutine(float time, Action action)
     {
-        for (int i = 0; i < repeatCount; i++)
-        {
-            if (actionFirst == true) action();
-            yield return new WaitForSeconds(time);
-            if (actionFirst == false) action();
-        }
+        yield return new WaitForSeconds(time);
+        action();
     }
     #endregion
 
