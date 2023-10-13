@@ -8,6 +8,12 @@ using Photon.Pun;
 
 public class UIManager : PunManagerBase
 {
+    private struct UIData
+    {
+        public string name;
+        public UnityEngine.Object ui;
+        public GameObject obj;
+    }
 
     private PhotonView _pv;
 
@@ -30,16 +36,20 @@ public class UIManager : PunManagerBase
     #endregion
 
     [SerializeField]
-    private List<UnityEngine.Object> _uis = new List<UnityEngine.Object>();
-    private List<GameObject> _uiObjects = new List<GameObject>();
-
-    public void ShowPannel(Define.UI target)
+    //private List<UnityEngine.Object> _uis = new List<UnityEngine.Object>();
+    private Dictionary<Type, List<UIData>> _uis = new Dictionary<Type, List<UIData>>();
+    public override void Init()
     {
-        foreach (GameObject ui in _uis)
+        _uis.Add(typeof(TMP_Text), new List<UIData>());
+    }
+
+    public void ShowPannel(string name)
+    {
+        foreach (UIData ui in _uis[typeof(Pannel)])
         {
-            ui.SetActive(false);
+            ui.obj.SetActive(false);
         }
-        GetUI<GameObject>(target).SetActive(true);
+        GetUI<GameObject>(name).SetActive(true);
     }
 
     public void ShowUIOnPopup(Define.PopupState target)
@@ -70,69 +80,108 @@ public class UIManager : PunManagerBase
         }
     }
 
-    public void CloseUI(Define.UI target)
+    public void CloseUI(string name)
     {
-        GetUI<GameObject>(target).SetActive(false);
+        GetUI<GameObject>(name).SetActive(false);
     }
 
-    public void AddUI<T>(Define.UI index, string target) where T : UnityEngine.Object
+    public void AddUI<T>(string target) where T : UnityEngine.Object
     {
-        for(; (int)index > _uis.Count;)
+        if(!_uis.ContainsKey(typeof(T)))
         {
-            _uis.Add(null);
-            _uiObjects.Add(null);
+            _uis.Add(typeof(T), new List<UIData>());
         }
-        SetUI<T>(index, target);
+
+        if(IsContainUI<T>(target))
+        {
+            Debug.LogError("It's aleady In List");
+            return;
+        }
+            
+        SetUI<T>(target);
     }
 
-    public void SetUI<T>(Define.UI index, string target) where T : UnityEngine.Object
+    public void SetUI<T>(string target) where T : UnityEngine.Object
     {
-        UnityEngine.Object _object = Managers._find.Find(target);
-        
-        _uiObjects[(int)index] = _object as GameObject;
-        if (_object != null)
-        {
+        UIData ui;
+
+        ui.obj = Utill.Find(target);
+        if (ui.obj == null)
             Debug.LogError("No Object");
-        }
 
-        _object = _uiObjects[(int)index].GetComponent<T>();
-        if (_object != null)
-        {
+        ui.ui = ui.obj.GetComponent<T>();
+        if (ui.ui)
             Debug.LogError("No Component");
-        }
-        
-        _uis[(int)index] = _object;
+
+        ui.name = target;
+
+        _uis[typeof(T)].Add(ui);
     }
 
-    public T GetUI<T>(Define.UI index) where T : UnityEngine.Object
+    private bool IsContainUI<T>(string target) where T : UnityEngine.Object
     {
-        if (_uis[(int)index] is T == false)
+        if (!HasKey<T>())
         {
-            Debug.LogError("Can't Get");
-            return null;
+            Debug.LogError("No UI");
+            return false;
         }
 
-        return _uis[(int)index] as T;
+        if (GetUIData<T>(target).obj == null)
+        {
+            Debug.LogError("No UI");
+            return false;
+        }
+
+        return true;
     }
 
-    public GameObject GetUI(Define.UI index)
+    private bool HasKey<T>() where T : UnityEngine.Object
     {
-        return _uiObjects[(int)index];
+        if (!_uis.ContainsKey(typeof(T)))
+        {
+            Debug.LogError("No Key");
+            return false;
+        }
+
+        return true;
     }
 
-    public void UIActive(Define.UI index, bool active)
+    private UIData GetUIData<T>(string target) where T : UnityEngine.Object
     {
-        _uiObjects[(int)index].SetActive(active);
+        for (int i = 0; i < _uis.Count; i++)
+        {
+            if(_uis[typeof(T)][i].name.Equals(target))
+                return _uis[typeof(T)][i];
+        }
+
+        Debug.LogError("No UI");
+        return new UIData();
     }
 
-    public void SetText(Define.UI index, string text)
+    public T GetUI<T>(string name) where T : UnityEngine.Object
     {
-        GetUI<TMP_Text>(Define.UI.matchHeader).text = text;
+        return GetUIData<T>(name).ui as T;
     }
 
-    public void SetImageColor(Define.UI index, Color color)
+
+    public GameObject GetUIObject<T>(string name) where T : UnityEngine.Object
     {
-        GetUI<Image>(Define.UI.matchHeader).color = color;
+        return GetUIData<T>(name).obj;
+    }
+
+    public void UIActive<T>(string name, bool active) where T : UnityEngine.Object
+    {
+        GetUIObject<T>(name).SetActive(active);
+    }
+
+    public void SetText(string name, string text)
+    {
+        GetUI<TMP_Text>(name).text = text;
+    }
+
+    public void SetImageColor(string name, Color color)
+    {
+        GetUI<Image>(name).color = color;
     }
 
 

@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using TMPro;
 using Photon.Pun;
 
-public class LobbyManager : PunManagerBase
+public class LobbyController : MonoBehaviourPunCallbacks
 {
 
 	#region Object_UI
@@ -51,7 +51,7 @@ public class LobbyManager : PunManagerBase
     }
 	private List<PopupInfo> popupInfos = new List<PopupInfo>();
 
-	public override void Init()
+	private void Start()
 	{
 		_pv = gameObject.GetComponent<PhotonView>();
 		if (Managers._network._forceOut)
@@ -75,17 +75,16 @@ public class LobbyManager : PunManagerBase
 
     private void InitWindow()
 	{
-		Managers._find.SetRoot("LobbyCanvas");
-        Managers._ui.AddUI<GameObject>(Define.UI.title, "Title");
-        Managers._ui.AddUI<GameObject>(Define.UI.lobby, "Lobby");
-        Managers._ui.AddUI<GameObject>(Define.UI.match, "Match");
+		Utill.SetRoot("LobbyCanvas");
+        Managers._ui.AddUI<Pannel>("Title");
+        Managers._ui.AddUI<Pannel>("Lobby");
+        Managers._ui.AddUI<Pannel>("Match");
 
-        GameObject go = Managers._ui.GetUI<GameObject>(Define.UI.lobby);
-        Managers._find.SetRoot(go);
-        Managers._ui.AddUI<TMP_InputField>(Define.UI.roomCodeField, "InputField_RoomCode");
-        Managers._ui.AddUI<TMP_InputField>(Define.UI.nickNameField, "InputField_NickName");
+        Utill.SetRoot("Lobby", true);
+        Managers._ui.AddUI<TMP_InputField>("InputField_RoomCode");
+        Managers._ui.AddUI<TMP_InputField>("InputField_NickName");
 
-		go = Managers._ui.GetUI<GameObject>(Define.UI.match);
+		go = Managers._ui.GetUIObject<Pannel>("Match");
         Managers._find.SetRoot(go);
         Managers._find.SetRoot("Popup01");
         Managers._ui.AddUI<TMP_Text>(Define.UI.matchHeader, "Header");

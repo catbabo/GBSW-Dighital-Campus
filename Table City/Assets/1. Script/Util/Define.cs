@@ -80,6 +80,10 @@ public class Define : MonoBehaviour
     public static int LobbyUITitle = (int)UI.title;
     public static int LobbyUILobby = (int)UI.lobby;
     public static int LobbyUISelectTeam = (int)UI.match;
+    public enum ui
+    {
+        TMP_Text
+    }
 
     public struct ResourceObject
     {
