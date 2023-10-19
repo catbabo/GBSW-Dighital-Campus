@@ -141,7 +141,7 @@ public class VRController : MonoBehaviour
     private void GetDownTrigger()
     {
         // »ç¿îµå
-        Managers._sound.SfxPlay(Define.SoundClipName.button);
+        Managers.Sound.SfxPlay(Define.SoundClipName.button);
         if (_castedObject == null)
             return;
 

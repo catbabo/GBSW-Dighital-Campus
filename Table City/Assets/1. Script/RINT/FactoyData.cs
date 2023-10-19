@@ -61,9 +61,9 @@ public class FactoyData : MonoBehaviour
 
         animator.SetTrigger("GetAsset");
 
-        if (PhotonNetwork.IsMasterClient) Managers._asset.SyncFactroyCreateAsset(data.createAsset, 1);
+        if (PhotonNetwork.IsMasterClient) Managers.Asset.SyncFactroyCreateAsset(data.createAsset, 1);
 
-        Managers._inst.UsePoolingObject(Define.prefabType.effect+data.createAsset.ToString(),transform.position,Quaternion.identity);
+        Managers.Instance.UsePoolingObject(Define.prefabType.effect+data.createAsset.ToString(),transform.position,Quaternion.identity);
         timer = 0;
     }
     private void LvUpParticle()

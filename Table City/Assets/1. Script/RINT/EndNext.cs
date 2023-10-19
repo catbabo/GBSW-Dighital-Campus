@@ -11,7 +11,7 @@ public class EndNext : MonoBehaviour
     private string eningNameString;
     private void OnEnable()
     {
-        switch (Managers._game.endingType)
+        switch (Managers.Game.endingType)
         {
             case 0:
                 eningNameString = "부유 도시";
@@ -37,6 +37,6 @@ public class EndNext : MonoBehaviour
     }
     public void Exit()
     {
-        Managers._network.OutRoom_GoMain();
+        Managers.Network.OutRoom_GoMain();
     }
 }

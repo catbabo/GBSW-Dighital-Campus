@@ -42,15 +42,15 @@ public class RoomManager : PunManagerBase
 		_WorkbenchPointA = spawnPoint.Find("Spawn_Workbench").Find("Point_A");
 		_WorkbenchPointB = spawnPoint.Find("Spawn_Workbench").Find("Point_B");
 
-		Managers._network.SpawnPlayer();
+		Managers.Network.SpawnPlayer();
 	}
 
 	// 플레이어가 방에서 나간다면 실행
 	public override void OnPlayerLeftRoom(Player otherPlayer)
 	{
 		Debug.Log(otherPlayer.NickName + " 나감.");
-		Managers._network.LeaveRoom();
-		Managers._network.SetForceOut(true);
+		Managers.Network.LeaveRoom();
+		Managers.Network.SetForceOut(true);
 		PhotonNetwork.LoadLevel("MainLobby");
 	}
 
@@ -74,7 +74,7 @@ public class RoomManager : PunManagerBase
 	[PunRPC]
 	private void FactroySpeedUp(Define.AssetData _factroyType)
 	{
-		Managers._game.factoryScript[_factroyType].speedUpState = true;
+		Managers.Game.factoryScript[_factroyType].speedUpState = true;
 	}
 
 
@@ -103,8 +103,8 @@ public class RoomManager : PunManagerBase
 	[PunRPC]
 	private void SpawnEffect(string _objName, Vector3 _spawnPoint, Quaternion _spawnAngle, Define.AssetData _assetType)
 	{ 
-		GameObject _object = Managers._inst.UsePoolingObject(Define.prefabType.effect + _objName, _spawnPoint, _spawnAngle);
-		if(_objName == "truck") { _object.GetComponent<Throw>().SetTargetPosition(Managers._asset.GetTargetPosition((int)_assetType)); }
+		GameObject _object = Managers.Instance.UsePoolingObject(Define.prefabType.effect + _objName, _spawnPoint, _spawnAngle);
+		if(_objName == "truck") { _object.GetComponent<Throw>().SetTargetPosition(Managers.Asset.GetTargetPosition((int)_assetType)); }
 	}
 	#endregion
 }

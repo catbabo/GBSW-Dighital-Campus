@@ -162,7 +162,7 @@ public class GameManager : ManagerBase
                             }
                             //조건 충족
                             anime[j].data[k].model[a].SetActive(true);
-                            Managers._sound.SfxPlay(Define.SoundClipName.eventTrigger);
+                            Managers.Sound.SfxPlay(Define.SoundClipName.eventTrigger);
                             endingValues[(int)anime[j].ending] += anime[j].data[k].Influence[a];
 
                             int allEnding1 = 0;

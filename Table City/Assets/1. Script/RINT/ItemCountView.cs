@@ -11,6 +11,6 @@ public class ItemCountView : MonoBehaviour
     private Define.Point point;
     void Update()
     {
-        countText.text = Managers._game.countText[(int)point];
+        countText.text = Managers.Game.countText[(int)point];
     }
 }

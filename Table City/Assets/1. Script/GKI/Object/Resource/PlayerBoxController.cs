@@ -24,7 +24,7 @@ public class PlayerBoxController : ObjectBase
         if (!_isInit)
             return;
 
-        if (Managers._game.asset[(int)_resourseType] < 1)
+        if (Managers.Game.asset[(int)_resourseType] < 1)
             _viewItem.SetActive(false);
         else
             _viewItem.SetActive(true);
@@ -61,7 +61,7 @@ public class PlayerBoxController : ObjectBase
         if (!_isMine)
             return;
 
-        if (Managers._game.asset[(int)_resourseType] <= 0)
+        if (Managers.Game.asset[(int)_resourseType] <= 0)
             return;
 
         if (!_resourceInstant[0].IsGrab())

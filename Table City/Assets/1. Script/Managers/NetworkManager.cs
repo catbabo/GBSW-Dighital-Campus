@@ -149,12 +149,12 @@ public class NetworkManager : PunManagerBase
 	/// <summary> 플레이어 및 작업대 소환 </summary>
 	public void SpawnPlayer()
 	{
-		GameObject player = SpawnObject("0. Player/Player_Prefab", _pointA ? Managers._room._PlayerPointA : Managers._room._PlayerPointB);
+		GameObject player = SpawnObject("0. Player/Player_Prefab", _pointA ? Managers.Room._PlayerPointA : Managers.Room._PlayerPointB);
 		//player.name = "Player_" + PhotonNetwork.NickName.ToString();
 		
 		GameObject workbench;
-		if(_pointA)	{ workbench = SpawnObject("0. Player/PlayerA_Workbench", Managers._room._WorkbenchPointA); }
-		else { workbench = SpawnObject("0. Player/PlayerB_Workbench", Managers._room._WorkbenchPointB); }
+		if(_pointA)	{ workbench = SpawnObject("0. Player/PlayerA_Workbench", Managers.Room._WorkbenchPointA); }
+		else { workbench = SpawnObject("0. Player/PlayerB_Workbench", Managers.Room._WorkbenchPointB); }
 		//workbench.name = "Player_WorkBench_" + PhotonNetwork.NickName.ToString();
 	}
 	#endregion

@@ -13,6 +13,6 @@ public class BgmPlay : MonoBehaviour
 
     void Start()
     {
-        Managers._sound.BgmPlay(bgmName[bgmId]);
+        Managers.Sound.BgmPlay(bgmName[bgmId]);
     }
 }

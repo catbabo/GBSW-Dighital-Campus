@@ -37,7 +37,7 @@ public class WorkbenchController : MonoBehaviour
 
         Transform firstResourceRoot = transform.Find("FirstResource");
 
-        GameObject firstObject = Managers._network.SpawnObject(_firstResourcePath);
+        GameObject firstObject = Managers.Network.SpawnObject(_firstResourcePath);
         firstObject.transform.SetParent(firstResourceRoot);
         firstObject.transform.localPosition = Vector3.zero;
         firstObject.transform.localRotation = Quaternion.identity;
@@ -53,7 +53,7 @@ public class WorkbenchController : MonoBehaviour
         {
             SetFirstResources();
 
-            _isWoopdSide = Managers._network.IsPlayerTeamA();
+            _isWoopdSide = Managers.Network.IsPlayerTeamA();
             int resourceIndex = 0;
             if (_isWoopdSide)
             {
@@ -67,7 +67,7 @@ public class WorkbenchController : MonoBehaviour
             
         }
 
-        SetBoxPosition(Managers._network.IsPlayerTeamA());
+        SetBoxPosition(Managers.Network.IsPlayerTeamA());
     }
 
     private void SetResourceInBox(int startIndex)
@@ -80,7 +80,7 @@ public class WorkbenchController : MonoBehaviour
             box = root.Find($"Crate{resourceIndex + 1 }");
 
             _sourcePath = _sourceInBoxPath + _resourceName[resourceIndex + startIndex];
-            _resourcePrefab = Managers._network.SpawnObject(_sourcePath, box);
+            _resourcePrefab = Managers.Network.SpawnObject(_sourcePath, box);
 
             _resourcePrefab.transform.SetParent(box);
             _resourcePrefab.transform.localPosition = Vector3.zero;
@@ -107,6 +107,6 @@ public class WorkbenchController : MonoBehaviour
             BoxPos[i] = box.position;
 		}
 
-        Managers._game.SetWorkbechPoint(BoxPos, pv.IsMine ? _pointA : !_pointA);
+        Managers.Game.SetWorkbechPoint(BoxPos, pv.IsMine ? _pointA : !_pointA);
     }
 }

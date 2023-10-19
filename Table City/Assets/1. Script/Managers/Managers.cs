@@ -7,21 +7,18 @@ using UnityEngine;
 
 public class Managers : MonoBehaviour
 {
-    public static UIManager _ui;
-    public static GameManager _game;
-    public static InstantiateManager _inst;
-    public static SoundManager _sound;
-    public static RoomManager _room;
-    public static AssetManager _asset;
-    public static NetworkManager _network;
+    public static Managers Root;
+    public static UIManager UI;
+    public static GameManager Game;
+    public static InstantiateManager Instance;
+    public static SoundManager Sound;
+    public static RoomManager Room;
+    public static AssetManager Asset;
+    public static NetworkManager Network;
 
     private T Init<T>() where T : ManagerBase
     {
-        T manager = GetComponent<T>();
-        if (manager == null)
-        {
-            manager = gameObject.AddComponent<T>();
-        }
+        T manager = Util.GetOrAddComponent<T>(gameObject);
         manager.Init();
 
         return manager;
@@ -29,26 +26,20 @@ public class Managers : MonoBehaviour
     
     private T InitPun<T>() where T : PunManagerBase
     {
-        T manager = GetComponent<T>();
-        if (manager == null)
-        {
-            manager = gameObject.AddComponent<T>();
-        }
+        T manager = Util.GetOrAddComponent<T>(gameObject);
         manager.Init();
 
         return manager;
     }
 
-    private void Awake()
+    public void Init()
     {
-        _ui = InitPun<UIManager>();
-        _game = Init<GameManager>();
-        _inst = Init<InstantiateManager>();
-        _sound = Init<SoundManager>();
-        _room = InitPun<RoomManager>();
-        _asset = InitPun<AssetManager>();
-        _network = InitPun<NetworkManager>();
-
-        DontDestroyOnLoad(this.gameObject);
+        UI = InitPun<UIManager>();
+        Game = Init<GameManager>();
+        Instance = Init<InstantiateManager>();
+        Sound = Init<SoundManager>();
+        Room = InitPun<RoomManager>();
+        Asset = InitPun<AssetManager>();
+        Network = InitPun<NetworkManager>();
     }
 }

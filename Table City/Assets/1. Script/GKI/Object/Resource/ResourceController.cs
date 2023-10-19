@@ -47,8 +47,8 @@ public class ResourceController : GrabableObject
         base.Interact(interactedHand, target);
         
         _count = 1;
-        Managers._game.asset[(int)_resourceType]--; //감소
-        Managers._game.countText[(int)handPos] = _count.ToString();
+        Managers.Game.asset[(int)_resourceType]--; //감소
+        Managers.Game.countText[(int)handPos] = _count.ToString();
         _resourceObject._isGrab = true;
     }
 
@@ -65,14 +65,14 @@ public class ResourceController : GrabableObject
         else
         {
             //데이터 원상 복귀
-            Managers._game.asset[(int)_resourceType] += _count;
+            Managers.Game.asset[(int)_resourceType] += _count;
         }
 
         //초기화
         _count = 0;
 
         //메시지 안 보이게 하기
-        Managers._game.countText[(int)handPos] = "";
+        Managers.Game.countText[(int)handPos] = "";
 
         _resourceObject._isGrab = false;
 
@@ -115,26 +115,26 @@ public class ResourceController : GrabableObject
 
             if (inputStick > 0.5f)
             {
-                if (Managers._game.asset[(int)_resourceType] > 0)
+                if (Managers.Game.asset[(int)_resourceType] > 0)
                 {
-                    Managers._game.asset[(int)_resourceType]--;
-                    Managers._sound.SfxPlay(Define.SoundClipName.countUp);
+                    Managers.Game.asset[(int)_resourceType]--;
+                    Managers.Sound.SfxPlay(Define.SoundClipName.countUp);
                     _count++;
                     //갯수 증가 단 조건
                     deleyTime = 0;
-                    Managers._game.countText[(int)handPos] = _count.ToString();
+                    Managers.Game.countText[(int)handPos] = _count.ToString();
                 }
             }
             else if (inputStick < -0.5f)
             {
                 if (_count > 1)
                 {
-                    Managers._game.asset[(int)_resourceType]++;
-                    Managers._sound.SfxPlay(Define.SoundClipName.countDown);
+                    Managers.Game.asset[(int)_resourceType]++;
+                    Managers.Sound.SfxPlay(Define.SoundClipName.countDown);
                     _count--;
                     //갯수 감소 단 조건
                     deleyTime = 0;
-                    Managers._game.countText[(int)handPos] = _count.ToString();
+                    Managers.Game.countText[(int)handPos] = _count.ToString();
                 }
             }
         }

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Utill
+public class Util
 {
     private static Transform _root = null;
 
@@ -52,5 +52,14 @@ public class Utill
     public static GameObject GetRoot()
     {
         return _root.gameObject;
+    }
+
+    public static T GetOrAddComponent<T>(GameObject go) where T : Component
+    {
+        Component component = go.GetComponent<T>();
+        if(component == null)
+            component = go.AddComponent<T>();
+
+        return component as T;
     }
 }

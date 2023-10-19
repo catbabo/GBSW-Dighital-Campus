@@ -43,15 +43,6 @@ public class UIManager : PunManagerBase
         _uis.Add(typeof(TMP_Text), new List<UIData>());
     }
 
-    public void ShowPannel(string name)
-    {
-        foreach (UIData ui in _uis[typeof(Pannel)])
-        {
-            ui.obj.SetActive(false);
-        }
-        GetUI<GameObject>(name).SetActive(true);
-    }
-
     public void ShowUIOnPopup(Define.PopupState target)
     {
         switch (target)
@@ -80,24 +71,37 @@ public class UIManager : PunManagerBase
         }
     }
 
-    public void CloseUI(string name)
+    public void CloseUI<T>(string name) where T : UnityEngine.Object
     {
-        GetUI<GameObject>(name).SetActive(false);
+        GetUIObject<T>(name).SetActive(false);
+    }
+
+    public void ShowUI<T>(string name) where T : UnityEngine.Object
+    {
+        GetUIObject<T>(name).SetActive(true);
+    }
+
+    public void CloseUI<T>() where T : UnityEngine.Object
+    {
+        foreach (UIData ui in _uis[typeof(T)])
+        {
+            ui.obj.SetActive(false);
+        }
     }
 
     public void AddUI<T>(string target) where T : UnityEngine.Object
     {
-        if(!_uis.ContainsKey(typeof(T)))
+        if (!_uis.ContainsKey(typeof(T)))
         {
             _uis.Add(typeof(T), new List<UIData>());
         }
 
-        if(IsContainUI<T>(target))
+        if (IsContainUI<T>(target))
         {
             Debug.LogError("It's aleady In List");
             return;
         }
-            
+
         SetUI<T>(target);
     }
 
@@ -105,7 +109,7 @@ public class UIManager : PunManagerBase
     {
         UIData ui;
 
-        ui.obj = Utill.Find(target);
+        ui.obj = Util.Find(target);
         if (ui.obj == null)
             Debug.LogError("No Object");
 
@@ -169,11 +173,6 @@ public class UIManager : PunManagerBase
         return GetUIData<T>(name).obj;
     }
 
-    public void UIActive<T>(string name, bool active) where T : UnityEngine.Object
-    {
-        GetUIObject<T>(name).SetActive(active);
-    }
-
     public void SetText(string name, string text)
     {
         GetUI<TMP_Text>(name).text = text;
@@ -183,75 +182,6 @@ public class UIManager : PunManagerBase
     {
         GetUI<Image>(name).color = color;
     }
-
-
-    #region Button
-    /// <summary>
-    /// 타이틀 화면에서 메인 화면으로 이동 및 마스터 서버 연결
-    /// '타이틀 화면의 START버튼과 연결되어 있음'
-    /// </summary>
-    public void Button_Start()
-    {
-        Managers._network.Connect();
-        ShowPannel(Define.UI.lobby);
-    }
-
-    /// <summary>
-    /// 방 이름과 닉네임을 NetworkManager에 전달하고 방을 입장하거나 생성
-    /// '메인 화면의 JOIN버튼과 연결되어 있음
-    /// </summary>
-    public void Button_CreateOrJoin()
-    {
-        if (GetUI<TMP_InputField>(Define.UI.roomCodeField).text.Length <= 0 ||
-            GetUI<TMP_InputField>(Define.UI.nickNameField).text.Length <= 0)
-        {
-            Managers._lobby.SetPopup(Define.PopupState.Warning);
-            return;
-        }
-
-        Managers._network.SetRoomCode(GetUI<TMP_InputField>(Define.UI.roomCodeField).text);
-        Managers._network.SetNickName(GetUI<TMP_InputField>(Define.UI.nickNameField).text);
-
-        Managers._network.JoinLobby();
-    }
-
-    // 방 입장시 실행
-    public override void OnJoinedRoom()
-    {
-        Debug.Log("방 입장 성공!");
-        Managers._lobby.SetPopup(Define.PopupState.Wait);
-        _pv.RPC("JoinPlayer", RpcTarget.All);
-    }
-
-    Define.PopupState _PopupState;
-    /// <summary>
-    /// 팝업창 종료 다른 플레이어를 기다리는 중이라면 Discnnect 후 종료
-    /// '팝업창의 Cancel버튼과 연결되어 있음
-    /// </summary>
-    public void Button_Cancel()
-    {
-        if (_PopupState == Define.PopupState.Wait) { Managers._network.LeaveRoom(); }
-        CloseUI(Define.UI.match);
-    }
-
-    private bool _Selected = false;
-    /// <summary>
-    /// 선택한 위치를 네트워크 매니저에 저장
-    /// 메인 화면의 A, B 버튼에 연결되어 있음
-    /// </summary>
-    /// <param name="_A">true : 포인트 A 선택, false : 포인트 B 선택</param>
-    public void Button_Point(bool _A)
-    {
-        Managers._lobby.SetPopupInfo(Define.PopupState.MaxPlayer, "Choose your tools", "You choice : " + (_A ? "Wood" : "Stone"));
-        Managers._lobby.SetPopup(Define.PopupState.MaxPlayer);
-
-        Managers._network.SetPlayerSpawnPoint(_A);
-
-        _Selected = true;
-
-        _pv.RPC("SelectPoint", RpcTarget.All, _A);
-    }
-    #endregion
 }
 
 public class TestUIManager : ManagerBase

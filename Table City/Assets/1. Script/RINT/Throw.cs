@@ -30,7 +30,7 @@ public class Throw : MonoBehaviour
     {
         if (itemShot == true) 
             m_TargetPosition =
-                (int)itemType < 6 ? Managers._game._workbenchPointsA[(int)itemType] : Managers._game._workbenchPointsB[(int)itemType-6];
+                (int)itemType < 6 ? Managers.Game._workbenchPointsA[(int)itemType] : Managers.Game._workbenchPointsB[(int)itemType-6];
     }
 
     void Update()
@@ -62,7 +62,7 @@ public class Throw : MonoBehaviour
     {
         if(trail != null)
             trail.Clear();
-        Managers._inst.AddPooling(gameObject);
+        Managers.Instance.AddPooling(gameObject);
     }
 
     Quaternion LookAt3D(Vector3 forward)

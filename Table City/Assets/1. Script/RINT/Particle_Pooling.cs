@@ -10,8 +10,8 @@ public class Particle_Pooling : MonoBehaviour
     float poolingTime =1;
     private void Awake()
     {
-        instantiate = Managers._inst;
-        system = Managers._game;
+        instantiate = Managers.Instance;
+        system = Managers.Game;
     }
     // Start is called before the first frame update
     private void OnEnable()

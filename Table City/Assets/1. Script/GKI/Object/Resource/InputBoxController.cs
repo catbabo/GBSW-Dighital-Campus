@@ -39,19 +39,19 @@ public class InputBoxController : MonoBehaviour
         foreach (Define.AssetData _assetData in Enum.GetValues(typeof(Define.AssetData)))
         {
 
-            Managers._asset.SetAssetData(_assetData, asset[(int)_assetData]);
+            Managers.Asset.SetAssetData(_assetData, asset[(int)_assetData]);
             asset[(int)_assetData] = 0;
         }
 
-        Managers._asset.SyncFactroyData(factoryType);
+        Managers.Asset.SyncFactroyData(factoryType);
 
-        Managers._sound.SfxPlay(Define.SoundClipName.fireTruck);
-        Managers._room.SyncSpawnObejct(Define.prefabType.effect, "truck", transform.position, Quaternion.identity, factoryType);
+        Managers.Sound.SfxPlay(Define.SoundClipName.fireTruck);
+        Managers.Room.SyncSpawnObejct(Define.prefabType.effect, "truck", transform.position, Quaternion.identity, factoryType);
         
     }
     public void SpeedUp(Define.AssetData factoryType)
     {
-        Managers._room.SyncSpeedUp(factoryType);
-        Managers._sound.SfxPlay(Define.SoundClipName.sharara);
+        Managers.Room.SyncSpeedUp(factoryType);
+        Managers.Sound.SfxPlay(Define.SoundClipName.sharara);
     }
 }
