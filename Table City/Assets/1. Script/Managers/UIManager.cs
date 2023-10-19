@@ -4,9 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using System;
 using TMPro;
-using Photon.Pun;
 
-public class UIManager : PunManagerBase
+public class UIManager : ManagerBase
 {
     private struct UIData
     {
@@ -15,33 +14,9 @@ public class UIManager : PunManagerBase
         public GameObject obj;
     }
 
-    private PhotonView _pv;
-
-    #region Object_UI
-    /// <summary> 취소 버튼 오브젝트 </summary>
-    [SerializeField] private GameObject _Object_CancelButton;
-
-    /// <summary> 포인트 선택 버튼 오브젝트 </summary>
-    [SerializeField] private GameObject _Object_PointButton;
-
-
-    #endregion
-
-    #region Sprite
-    /// <summary> 포인트 선택 스프라이트 </summary>
-    [SerializeField] private Sprite _Sprite_Check;
-
-    /// <summary> 포인트 선택 불가 스프라이트 </summary>
-    [SerializeField] private Sprite _Sprite_X;
-    #endregion
-
-    [SerializeField]
-    //private List<UnityEngine.Object> _uis = new List<UnityEngine.Object>();
     private Dictionary<Type, List<UIData>> _uis = new Dictionary<Type, List<UIData>>();
-    public override void Init()
-    {
-        _uis.Add(typeof(TMP_Text), new List<UIData>());
-    }
+
+    public override void Init() { }
 
     public void ShowUIOnPopup(Define.PopupState target)
     {
@@ -166,7 +141,6 @@ public class UIManager : PunManagerBase
     {
         return GetUIData<T>(name).ui as T;
     }
-
 
     public GameObject GetUIObject<T>(string name) where T : UnityEngine.Object
     {

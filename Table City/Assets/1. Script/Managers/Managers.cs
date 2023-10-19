@@ -34,8 +34,8 @@ public class Managers : MonoBehaviour
 
     public void Init()
     {
-        UI = InitPun<UIManager>();
         Game = Init<GameManager>();
+        UI = Init<UIManager>();
         Instance = Init<InstantiateManager>();
         Sound = Init<SoundManager>();
         Room = InitPun<RoomManager>();

@@ -58,31 +58,11 @@ public class Define : MonoBehaviour
         space,
         Destruction
     }
+    
     public enum Point
     {
         Left,
         Right
-    }
-
-    public enum UI
-    {
-        title = 0,
-        lobby,
-        match,
-        matchHeader,
-        matchText,
-        roomCodeField,
-        nickNameField,
-        pointAImage,
-        pointBImage,
-    }
-    public static int LobbyUI = 0;
-    public static int LobbyUITitle = (int)UI.title;
-    public static int LobbyUILobby = (int)UI.lobby;
-    public static int LobbyUISelectTeam = (int)UI.match;
-    public enum ui
-    {
-        TMP_Text
     }
 
     public struct ResourceObject

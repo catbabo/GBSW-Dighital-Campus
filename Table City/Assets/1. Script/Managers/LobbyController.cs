@@ -32,21 +32,16 @@ public class LobbyController : MonoBehaviourPunCallbacks
     }
 	private List<PopupInfo> popupInfos = new List<PopupInfo>();
 
-	private void Start()
-	{
-		//_pv = gameObject.GetComponent<PhotonView>();
-		if (Managers.Network._forceOut)
-		{
-			SetPopup(Define.PopupState.Warning);
-			Managers.Network.SetForceOut(false);
-		}
-    }
-
     private void OnEnterTitle()
     {
         InitWindow();
         InitPopupInfo();
         ShowPannel("Title");
+		if (Managers.Network._forceOut)
+		{
+			SetPopup(Define.PopupState.Warning);
+			Managers.Network.SetForceOut(false);
+		}
     }
 
     private void OnEnterLobby()

@@ -50,6 +50,7 @@ public class GameManager : ManagerBase
         SetFactory();
         SetAnimation();
     }
+
     // ¿¬Ãâ ÃÊ±â ¼³Á¤ #¿¢¼¿ ÆÄ½Ì
     private void SetAnimation()
     {
