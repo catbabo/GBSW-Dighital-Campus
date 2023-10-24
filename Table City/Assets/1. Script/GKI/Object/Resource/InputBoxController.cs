@@ -45,13 +45,28 @@ public class InputBoxController : MonoBehaviour
         
         AssetManager._asset.SyncFactroyData(factoryType);
 
-        SoundManager.sound.SfxPlay("fireTruck");
-        RoomManager.room.SyncSpawnObejct(Define.prefabType.effect, "truck", transform.position, Quaternion.identity, factoryType);
+        Managers.Sound.SfxPlay("fireTruck");
+        Managers.Network.SyncSpawnObejct(Define.prefabType.effect, "truck", transform.position, Quaternion.identity, factoryType);
         
     }
+
+    PlayRoomScene room
+    {
+        get
+        {
+            if(room == null)
+            {
+                room = GameObject.Find("PlayRoomController").GetComponent<PlayRoomScene>();
+            }
+            return room;
+        }
+
+        set { room = value; }
+    }
+
     public void SpeedUp(Define.AssetData factoryType)
     {
-        RoomManager.room.SyncSpeedUp(factoryType);
-        SoundManager.sound.SfxPlay("sharara");
+        room.SyncSpeedUp(factoryType);
+        Managers.Sound.SfxPlay("sharara");
     }
 }

@@ -75,15 +75,15 @@ public class SendItemButton : MonoBehaviour
 
             }
 
-            if(Managers.system.factoryScript[type].data.lv  != Managers.system.factoryScript[type].data.maxLv)
+            if(Managers.Game.factoryScript[type].data.lv  != Managers.Game.factoryScript[type].data.maxLv)
             {
                 viewText += "<color=#A4A4A4>" + itemName + " : </color>" +
                 (
-                    Managers.system.factoryScript[type].data.upgrade
+                    Managers.Game.factoryScript[type].data.upgrade
                     [
-                        Managers.system.factoryScript[type].data.lv, (int)_assetData
+                        Managers.Game.factoryScript[type].data.lv, (int)_assetData
                     ]
-                    - Managers.system.factoryScript[type].asset[(int)_assetData]
+                    - Managers.Game.factoryScript[type].asset[(int)_assetData]
 
                 ) + "\n";
             }
@@ -141,7 +141,7 @@ public class SendItemButton : MonoBehaviour
                 break;
 
         }
-        nameText.text = itemName + " 공장"+" : LV" + Managers.system.factoryScript[type].data.lv;
+        nameText.text = itemName + " 공장"+" : LV" + Managers.Game.factoryScript[type].data.lv;
     }
 
     public void SendItemPlay() => inputBoxController.SendItem(type);

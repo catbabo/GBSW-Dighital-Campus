@@ -168,7 +168,7 @@ public class GameManager : MonoBehaviour
                             }
                             //조건 충족
                             anime[j].data[k].model[a].SetActive(true);
-                            SoundManager.sound.SfxPlay("event");
+                            Managers.Sound.SfxPlay("event");
                             endingValues[(int)anime[j].ending] += anime[j].data[k].Influence[a];
 
                             int allEnding1 = 0;

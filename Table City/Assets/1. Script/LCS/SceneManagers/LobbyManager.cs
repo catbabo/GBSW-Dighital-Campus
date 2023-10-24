@@ -73,10 +73,10 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 	private void Start()
 	{
 		_pv = gameObject.GetComponent<PhotonView>();
-		if (NetworkManager.Net._forceOut)
+		if (Managers.Network._forceOut)
 		{
 			SetPopup(Define.PopupState.Warning, "Warning", "Your partner is out.");
-			NetworkManager.Net.SetForceOut(false);
+            Managers.Network.SetForceOut(false);
 		}
 		else { InitWindow(); }
 	}
@@ -96,7 +96,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 	/// </summary>
 	public void Button_Start()
 	{
-		NetworkManager.Net.Connect();
+		Managers.Network.Connect();
 		_Window_Title.SetActive(false);
 		_Window_Main.SetActive(true);
 	}
@@ -113,10 +113,10 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 			return;
 		}
 
-		NetworkManager.Net.SetRoomCode(_Input_RoomCode.text);
-		NetworkManager.Net.SetNickName(_Input_NickName.text);
+		Managers.Network.SetRoomCode(_Input_RoomCode.text);
+		Managers.Network.SetNickName(_Input_NickName.text);
 
-		NetworkManager.Net.JoinLobby();
+		Managers.Network.JoinLobby();
 	}
 
 	// 방 입장시 실행
@@ -133,7 +133,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 	/// </summary>
 	public void Button_Cancel()
 	{
-		if (_PopupState == Define.PopupState.Wait) { NetworkManager.Net.LeaveRoom(); }
+		if (_PopupState == Define.PopupState.Wait) { Managers.Network.LeaveRoom(); }
 		_Window_Popup.SetActive(false);
 	}
 
@@ -146,7 +146,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 	{
 		SetPopup(Define.PopupState.MaxPlayer, "Choose your tools", "You choice : " + (_A ? "Wood" : "Stone"));
 
-		NetworkManager.Net.SetPlayerSpawnPoint(_A);
+		Managers.Network.SetPlayerSpawnPoint(_A);
 
 		_Selected = true;
 

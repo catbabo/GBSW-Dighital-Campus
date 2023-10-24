@@ -1,8 +1,9 @@
  using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
-public class PrefabManager : MonoBehaviour
+public class InstanceManager : MonoBehaviour
 {
     /*프리펩 데이터*/
     Dictionary<string, GameObject> prefab = new Dictionary<string, GameObject>();
@@ -11,7 +12,7 @@ public class PrefabManager : MonoBehaviour
     private Dictionary<string, Queue<GameObject>> poolingObject = new Dictionary<string, Queue<GameObject>>();
     private Transform poolingParent;
 
-    private void Awake()
+    public void Init()
     {
         if (prefab.Count == 0)
         {
@@ -35,6 +36,19 @@ public class PrefabManager : MonoBehaviour
             dictionary.Add(type + oneGameObject.name, oneGameObject);
         }
     }
+
+    public GameObject SpawnObject(string objectName, Transform point = null)
+    {
+        GameObject go = PhotonNetwork.Instantiate(objectName, Vector3.zero, Quaternion.identity);
+
+        if (point != null)
+        {
+            go.transform.position = point.position;
+            go.transform.rotation = point.rotation;
+        }
+        return go;
+    }
+
     /*오브젝트 풀링*/
     public GameObject UsePoolingObject(string useObjectname, Vector3 position, Quaternion rotation)
     {
