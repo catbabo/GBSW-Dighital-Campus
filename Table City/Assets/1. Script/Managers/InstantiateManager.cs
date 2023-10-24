@@ -5,6 +5,12 @@ using static UnityEditor.ShaderGraph.Internal.KeywordDependentCollection;
 
 public class InstantiateManager : ManagerBase
 {
+    public struct InstanceData
+    {
+        public string name;
+        public GameObject gameObject;
+    }
+
     /*프리펩 데이터*/
     private Dictionary<string, GameObject> prefab = new Dictionary<string, GameObject>();
     private Dictionary<string, List<GameObject>> _instance = new Dictionary<string, List<GameObject>>();
@@ -73,8 +79,7 @@ public class InstantiateManager : ManagerBase
 
         if (isPooling)
         {
-
-            GameObject returnObject = poolingObject[useObjectname].Dequeue();
+            returnObject = poolingObject[objectName].Dequeue();
 
             returnObject.SetActive(true);
 
@@ -100,45 +105,24 @@ public class InstantiateManager : ManagerBase
     /*오브젝트 풀링*/
     public GameObject UsePoolingObject(string useObjectname, Vector3 position, Quaternion rotation)
     {
+        GameObject returnObject;
         if (poolingObject.ContainsKey(useObjectname) && poolingObject[useObjectname].Count > 0)
         {
-            GameObject returnObject = poolingObject[useObjectname].Dequeue();
+            returnObject = poolingObject[useObjectname].Dequeue();
             returnObject.transform.position = position;
             returnObject.transform.rotation = rotation;
 
             returnObject.SetActive(true);
-
-            return returnObject;
         }
         else
         {
-            GameObject returnObject = Instantiate(prefab[useObjectname], position, rotation);
+            returnObject = Instantiate(prefab[useObjectname], position, rotation);
             returnObject.name = useObjectname;
             returnObject.transform.parent = poolingParent;
-            return returnObject;
         }
+
+            return returnObject;
         /*오브젝트 풀링*/
-    }
-
-    public GameObject UsePoolingObject(GameObject useObject, Vector3 position, Quaternion rotation)
-    {
-        if (poolingObject.ContainsKey(useObject.name) && poolingObject[useObject.name].Count > 0)
-        {
-            GameObject returnObject = poolingObject[useObject.name].Dequeue();
-            returnObject.transform.position = position;
-            returnObject.transform.rotation = rotation;
-
-            returnObject.SetActive(true);
-
-            return returnObject;
-        }
-        else
-        {
-            GameObject returnObject = Instantiate(useObject, position, rotation);
-            returnObject.name = useObject.name;
-            returnObject.transform.parent = poolingParent;
-            return returnObject;
-        }
     }
 
     public void AddPooling(GameObject addObject)
