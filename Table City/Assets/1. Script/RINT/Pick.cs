@@ -4,12 +4,8 @@ using UnityEngine;
 
 public class Pick : MonoBehaviour
 {
-    InstanceManager instantiate;
     float time = 0;
-    private void Start()
-    {
-        instantiate = Managers.Instance;
-    }
+
     private void Update()
     {
         time += Time.deltaTime;

@@ -15,7 +15,7 @@ public class Managers : MonoBehaviour
     {
         if(Game == null)
         {
-            Game = gameObject.GetComponent<GameManager>();
+            Game = gameObject.AddComponent<GameManager>();
             UI = gameObject.AddComponent<UIManager>();
             Instance = gameObject.AddComponent<InstanceManager>();
             Instance.Init();

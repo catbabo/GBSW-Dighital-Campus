@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class Define : MonoBehaviour
+public class Define
 {
+    public const int RESOURCES_COUNT = 12;
+    public const int Factory_COUNT = 12;
+
     public enum CastingType
     {
         Tool, Resource, InputBox, PlayerBox
@@ -30,17 +32,17 @@ public class Define : MonoBehaviour
 
     public enum AssetData
     {
-        wood,
-        rubber,
-        coal,
-        glass,
-        uranium,
-        mithril,
+        wood = 0,
         stone,
+        rubber,
         cloth,
         steel,
+        coal,
         electricity,
+        glass,
         semiconductor,
+        uranium,
+        mithril,
         floatingStone
     }
 

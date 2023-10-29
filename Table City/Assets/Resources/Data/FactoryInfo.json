@@ -1,0 +1,64 @@
+{
+  "datas": [
+    {
+      "factoryType": 0,
+      "resource": "wood",
+      "maxLevel": 9
+    },
+    {
+      "factoryType": 1,
+      "resource": "stone",
+      "maxLevel": 9
+    },
+    {
+      "factoryType": 2,
+      "resource": "rubber",
+      "maxLevel": 9
+    },
+    {
+      "factoryType": 3,
+      "resource": "cloth",
+      "maxLevel": 9
+    },
+    {
+      "factoryType": 4,
+      "resource": "steel",
+      "maxLevel": 6
+    },
+    {
+      "factoryType": 5,
+      "resource": "coal",
+      "maxLevel": 6
+    },
+    {
+      "factoryType": 6,
+      "resource": "electricity",
+      "maxLevel": 6
+    },
+    {
+      "factoryType": 7,
+      "resource": "glass",
+      "maxLevel": 6
+    },
+    {
+      "factoryType": 8,
+      "resource": "semiconductor",
+      "maxLevel": 3
+    },
+    {
+      "factoryType": 9,
+      "resource": "Uranium",
+      "maxLevel": 3
+    },
+    {
+      "factoryType": 10,
+      "resource": "mithril",
+      "maxLevel": 3
+    },
+    {
+      "factoryType": 11,
+      "resource": "floatingStone",
+      "maxLevel": 3
+    }
+  ]
+}

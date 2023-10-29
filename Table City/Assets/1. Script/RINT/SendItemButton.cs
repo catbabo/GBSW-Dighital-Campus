@@ -146,13 +146,27 @@ public class SendItemButton : MonoBehaviour
 
     public void SendItemPlay() => inputBoxController.SendItem(type);
 
+    PlayRoomScene room
+    {
+        get
+        {
+            if (room == null)
+            {
+                room = GameObject.Find("PlayRoomController").GetComponent<PlayRoomScene>();
+            }
+            return room;
+        }
+
+        set { room = value; }
+    }
+
     public void SpeedUp()
     {
         if(inputBoxController.speedUpSkill == true)
         {
             inputBoxController.coolTime = 0;
             inputBoxController.speedUpSkill = false;
-            inputBoxController.SpeedUp(type);
+            room.SpeedUp(type);
         }
     }
 }

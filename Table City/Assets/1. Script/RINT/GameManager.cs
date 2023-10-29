@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour
     public int[] endingValues { get; set; } = new int[4];
 
     [field: SerializeField, Header("자원")]
-    public int[] asset { get; set; } = new int[12];
+    public int[] asset { get; set; } = new int[Define.RESOURCES_COUNT];
 
     public string[] countText { get; set; } = new string[2];
 
@@ -28,12 +28,14 @@ public class GameManager : MonoBehaviour
 
     public Dictionary<Define.AssetData, FactoyData> factoryScript = new Dictionary<Define.AssetData, FactoyData>(); //공장 스크립트들 모두 연결
     [field: SerializeField, Header("레벨 변경 상황")]
-    private int[] factoryLvCheck = new int[12]; // 레벨 변경 상황 확인 용도
+    private int[] factoryLvCheck = new int[Define.RESOURCES_COUNT]; // 레벨 변경 상황 확인 용도
 
     [field: SerializeField]
     public Vector3[] _workbenchPointsA { get; private set; } = new Vector3[6];
     [field: SerializeField]
     public Vector3[] _workbenchPointsB { get; private set; } = new Vector3[6];
+
+    string[] resourcesName = { "wood", "stone", "rubber", "cloth", "steel", "coal", "electricity", "glass", "semiconductor", "uranium", "mithril", "floatingStone" };
 
     #region 타이머
     public void ActionTimer(float time, int repeatCount, Action action, bool actionFirst) => StartCoroutine(ActionTimerCoroutine(time, repeatCount, action, actionFirst));
@@ -56,6 +58,7 @@ public class GameManager : MonoBehaviour
         SetFactory();
         SetAnimation();
     }
+
     // 연출 초기 설정 #엑셀 파싱
     private void SetAnimation()
     {
@@ -74,7 +77,7 @@ public class GameManager : MonoBehaviour
                     if (backGroupNum != groupNum)
                     {
                         anime[i].data[groupNum].Influence = new int[anime[i].data[groupNum].model.Length];
-                        anime[i].data[groupNum].condition = new int[anime[i].data[groupNum].model.Length, 12];
+                        anime[i].data[groupNum].condition = new int[anime[i].data[groupNum].model.Length, Define.RESOURCES_COUNT];
                         backGroupNum = groupNum;
                     }
 
@@ -156,13 +159,13 @@ public class GameManager : MonoBehaviour
                 {
                     if (anime[j].data[k].model[a].activeSelf == true) continue; // 지금 등장한 연출 (스킵)
 
-                    for (int n = 0; n < 12; n++)
+                    for (int n = 0; n < Define.RESOURCES_COUNT; n++)
                     {
                         if (anime[j].data[k].condition[a, n] > factoryLvCheck[n]) break; // 조건이 아직 부족함
 
                         if (n == 11)
                         {
-                            for (int ni = 0; ni < 12; ni++)
+                            for (int ni = 0; ni < Define.RESOURCES_COUNT; ni++)
                             {
                                 Debug.Log(anime[j].name + anime[j].data[k].condition[a, ni] + " " + factoryLvCheck[ni]);
                             }
@@ -239,52 +242,22 @@ public class GameManager : MonoBehaviour
     private void SetFactory()
     {
         List<Dictionary<string, object>> csvData = CSVReader.Read("3.Csv/Upgrade");
-
-        for (int i = 0; i < viewFactory.Length; i++)
+        viewFactory = new Factory[Define.Factory_COUNT];
+        for (int i = 0; i < Define.Factory_COUNT; i++)
         {
-            viewFactory[i].upgrade = new int[viewFactory[i].maxLv, 12];
+            viewFactory[i].upgrade = new int[viewFactory[i].maxLv, Define.RESOURCES_COUNT];
             foreach (var csvLineSet in csvData)
             {
-
-                if (viewFactory[i].name == csvLineSet["업그레이드 요소"].ToString())
+                Debug.Log(resourcesName[i] + " 공장" + " : " + csvLineSet["factory"].ToString());
+                if (resourcesName[i]+" 공장" == csvLineSet["업그레이드 요소"].ToString())
                 {
+                    int lv = int.Parse(csvLineSet["LV"].ToString());
 
-                    viewFactory[i].upgrade[int.Parse(csvLineSet["LV"].ToString()) - 1, (int)Define.AssetData.wood]
-                        = int.Parse(csvLineSet["나무"].ToString());
-
-                    viewFactory[i].upgrade[int.Parse(csvLineSet["LV"].ToString()) - 1, (int)Define.AssetData.stone]
-                        = int.Parse(csvLineSet["돌"].ToString());
-
-                    viewFactory[i].upgrade[int.Parse(csvLineSet["LV"].ToString()) - 1, (int)Define.AssetData.steel]
-                        = int.Parse(csvLineSet["철"].ToString());
-
-                    viewFactory[i].upgrade[int.Parse(csvLineSet["LV"].ToString()) - 1, (int)Define.AssetData.cloth]
-                        = int.Parse(csvLineSet["천"].ToString());
-
-                    viewFactory[i].upgrade[int.Parse(csvLineSet["LV"].ToString()) - 1, (int)Define.AssetData.coal]
-                        = int.Parse(csvLineSet["석탄"].ToString());
-
-                    viewFactory[i].upgrade[int.Parse(csvLineSet["LV"].ToString()) - 1, (int)Define.AssetData.electricity]
-                        = int.Parse(csvLineSet["전기"].ToString());
-
-                    viewFactory[i].upgrade[int.Parse(csvLineSet["LV"].ToString()) - 1, (int)Define.AssetData.glass]
-                        = int.Parse(csvLineSet["유리"].ToString());
-
-                    viewFactory[i].upgrade[int.Parse(csvLineSet["LV"].ToString()) - 1, (int)Define.AssetData.rubber]
-                        = int.Parse(csvLineSet["고무"].ToString());
-
-                    viewFactory[i].upgrade[int.Parse(csvLineSet["LV"].ToString()) - 1, (int)Define.AssetData.uranium]
-                        = int.Parse(csvLineSet["우라늄"].ToString());
-
-                    viewFactory[i].upgrade[int.Parse(csvLineSet["LV"].ToString()) - 1, (int)Define.AssetData.semiconductor]
-                        = int.Parse(csvLineSet["반도체"].ToString());
-
-                    viewFactory[i].upgrade[int.Parse(csvLineSet["LV"].ToString()) - 1, (int)Define.AssetData.mithril]
-                        = int.Parse(csvLineSet["미스릴"].ToString());
-
-                    viewFactory[i].upgrade[int.Parse(csvLineSet["LV"].ToString()) - 1, (int)Define.AssetData.floatingStone]
-                        = int.Parse(csvLineSet["부유석"].ToString());
-
+                    for (int j = 0; j < Define.RESOURCES_COUNT; j++)
+                    {
+                        int value = int.Parse(csvLineSet[resourcesName[j]].ToString());
+                        viewFactory[i].upgrade[lv - 1, j] = value;
+                    }
                 }
             }
             //스크립트 넣기
@@ -315,7 +288,7 @@ public class GameManager : MonoBehaviour
         for (int i = factoryScript[factoryType].data.lv; i < factoryScript[factoryType].data.maxLv; i++)
         {
             bool checkLvUp = true;
-            for (int j = 0; j < 12; j++)
+            for (int j = 0; j < Define.RESOURCES_COUNT; j++)
             {
                 if (factoryScript[factoryType].data.upgrade[i, j] > factoryScript[factoryType].asset[j])
                 {
@@ -328,7 +301,7 @@ public class GameManager : MonoBehaviour
             {
                 factoryScript[factoryType].data.lv += 1;
                 //레벨이 오른만큼 아이템 삭제
-                for (int j = 0; j < 12; j++)
+                for (int j = 0; j < Define.RESOURCES_COUNT; j++)
                 {
                     factoryScript[factoryType].asset[j] -= factoryScript[factoryType].data.upgrade[i, j];
                 }

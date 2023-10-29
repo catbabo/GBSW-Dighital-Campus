@@ -47,26 +47,5 @@ public class InputBoxController : MonoBehaviour
 
         Managers.Sound.SfxPlay("fireTruck");
         Managers.Network.SyncSpawnObejct(Define.prefabType.effect, "truck", transform.position, Quaternion.identity, factoryType);
-        
-    }
-
-    PlayRoomScene room
-    {
-        get
-        {
-            if(room == null)
-            {
-                room = GameObject.Find("PlayRoomController").GetComponent<PlayRoomScene>();
-            }
-            return room;
-        }
-
-        set { room = value; }
-    }
-
-    public void SpeedUp(Define.AssetData factoryType)
-    {
-        room.SyncSpeedUp(factoryType);
-        Managers.Sound.SfxPlay("sharara");
     }
 }

@@ -67,5 +67,11 @@ public class PlayRoomScene : MonoBehaviourPunCallbacks
 	private void FactroySpeedUp(Define.AssetData _factroyType)
 	{
 		Managers.Game.factoryScript[_factroyType].speedUpState = true;
-	}
+    }
+
+    public void SpeedUp(Define.AssetData factoryType)
+    {
+        SyncSpeedUp(factoryType);
+        Managers.Sound.SfxPlay("sharara");
+    }
 }
