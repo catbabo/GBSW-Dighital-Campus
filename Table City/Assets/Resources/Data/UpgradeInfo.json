@@ -143,6 +143,177 @@
       "uranium": 350,
       "mithril": 350,
       "floatingStone": 350
+    },
+    {
+      "factoryType": 1,
+      "level": 1,
+      "wood": 60,
+      "stone": 60,
+      "rubber": 0,
+      "cloth": 0,
+      "steel": 0,
+      "coal": 0,
+      "electricity": 0,
+      "glass": 0,
+      "semiconductor": 0,
+      "uranium": 0,
+      "mithril": 0,
+      "floatingStone": 0
+    },
+    {
+      "factoryType": 1,
+      "level": 2,
+      "wood": 120,
+      "stone": 120,
+      "rubber": 0,
+      "cloth": 0,
+      "steel": 90,
+      "coal": 90,
+      "electricity": 30,
+      "glass": 30,
+      "semiconductor": 0,
+      "uranium": 0,
+      "mithril": 0,
+      "floatingStone": 0
+    },
+    {
+      "factoryType": 1,
+      "level": 3,
+      "wood": 300,
+      "stone": 180,
+      "rubber": 30,
+      "cloth": 30,
+      "steel": 120,
+      "coal": 150,
+      "electricity": 60,
+      "glass": 60,
+      "semiconductor": 0,
+      "uranium": 0,
+      "mithril": 0,
+      "floatingStone": 0
+    },
+    {
+      "factoryType": 1,
+      "level": 4,
+      "wood": 360,
+      "stone": 240,
+      "rubber": 60,
+      "cloth": 210,
+      "steel": 210,
+      "coal": 180,
+      "electricity": 90,
+      "glass": 90,
+      "semiconductor": 0,
+      "uranium": 0,
+      "mithril": 0,
+      "floatingStone": 0
+    },
+    {
+      "factoryType": 1,
+      "level": 5,
+      "wood": 540,
+      "stone": 300,
+      "rubber": 270,
+      "cloth": 240,
+      "steel": 240,
+      "coal": 210,
+      "electricity": 120,
+      "glass": 120,
+      "semiconductor": 0,
+      "uranium": 0,
+      "mithril": 0,
+      "floatingStone": 0
+    },
+    {
+      "factoryType": 1,
+      "level": 6,
+      "wood": 600,
+      "stone": 660,
+      "rubber": 300,
+      "cloth": 270,
+      "steel": 270,
+      "coal": 240,
+      "electricity": 180,
+      "glass": 330,
+      "semiconductor": 0,
+      "uranium": 0,
+      "mithril": 0,
+      "floatingStone": 0
+    },
+    {
+      "factoryType": 1,
+      "level": 7,
+      "wood": 660,
+      "stone": 720,
+      "rubber": 330,
+      "cloth": 300,
+      "steel": 300,
+      "coal": 270,
+      "electricity": 390,
+      "glass": 360,
+      "semiconductor": 240,
+      "uranium": 0,
+      "mithril": 0,
+      "floatingStone": 0
     }
+
   ]
 }
+
+"stone	7	660	720	330	300	300	270	390	360	240	0	0	0"
+"stone	8	720	780	360	330	330	450	420	390	300	0	0	240"
+"stone	9	780	840	390	360	360	480	510	420	350	0	350	350"
+"rubber	1	60	60	0	0	0	0	0	0	0	0	0	0"
+"rubber	2	120	180	90	30	30	0	0	30	0	0	0	0"
+"rubber	3	180	240	150	150	60	30	30	60	0	0	0	0"
+"rubber	4	240	300	180	210	90	210	60	90	0	0	0	0"
+"rubber	5	540	360	210	240	270	240	90	120	0	0	0	0"
+"rubber	6	600	420	240	270	300	270	330	150	0	0	0	0"
+"rubber	7	660	480	270	300	330	300	360	180	0	240	0	0"
+"rubber	8	720	540	300	330	360	330	390	420	240	300	0	0"
+"rubber	9	780	600	330	480	390	360	420	450	350	350	0	350"
+"cloth	1	60	60	0	0	0	0	0	0	0	0	0	0"
+"cloth	2	60	180	30	30	30	0	0	90	0	0	0	0"
+"cloth	3	120	240	60	60	150	150	30	120	0	0	0	0"
+"cloth	4	180	300	90	210	180	210	60	150	0	0	0	0"
+"cloth	5	240	360	270	240	210	240	90	270	0	0	0	0"
+"cloth	6	300	180	300	270	240	330	330	300	0	0	0	0"
+"cloth	7	360	480	330	300	270	360	360	390	0	240	0	0"
+"cloth	8	900	540	360	330	300	390	390	420	0	300	240	0"
+"cloth	9	960	1020	390	360	330	420	420	450	350	350	350	0"
+"steel	1	0	120	60	0	0	0	0	0	0	0	0	0"
+"steel	2	120	240	120	180	180	60	0	60	0	0	0	0"
+"steel	3	240	360	300	240	240	120	300	120	0	0	0	0"
+"steel	4	360	480	360	300	300	180	360	420	0	0	0	0"
+"steel	5	480	600	420	360	540	480	420	480	0	350	0	0"
+"steel	6	1320	720	480	420	600	540	480	540	0	400	0	400"
+"coal	1	120	0	0	60	0	0	0	0	0	0	0	0"
+"coal	2	240	120	60	120	180	60	60	180	0	0	0	0"
+"coal	3	360	240	120	180	240	300	300	240	0	0	0	0"
+"coal	4	480	360	420	240	420	360	360	300	0	0	0	0"
+"coal	5	1080	480	480	300	480	420	420	360	0	0	350	0"
+"coal	6	1200	600	660	660	540	420	480	420	400	0	400	0"
+"electricity	1	120	0	0	60	0	0	0	0	0	0	0	0"
+"electricity	2	240	120	60	120	0	60	180	180	0	0	0	0"
+"electricity	3	360	240	300	180	60	300	240	240	0	0	0	0"
+"electricity	4	480	840	360	420	120	360	300	300	0	0	0	0"
+"electricity	5	600	960	420	480	540	420	360	360	0	0	0	350"
+"electricity	6	720	1080	480	540	600	660	420	420	0	400	0	400"
+"glass	1	0	120	60	0	0	0	0	0	0	0	0	0"
+"glass	2	120	360	120	0	60	60	180	60	0	0	0	0"
+"glass	3	240	480	180	300	300	120	240	120	0	0	0	0"
+"glass	4	840	840	240	360	360	180	300	180	0	0	0	0"
+"glass	5	960	960	300	420	420	540	360	240	350	0	0	0"
+"glass	6	1080	1080	360	660	480	600	420	300	400	0	400	0"
+"semiconductor	1	400	400	100	100	100	100	100	200	0	0	0	0"
+"semiconductor	2	800	800	600	600	300	300	600	400	0	0	0	100"
+"semiconductor	3	1200	1200	1000	800	500	1000	800	600	0	0	200	200"
+"uranium	1	400	200	100	200	100	100	100	200	0	0	0	0"
+"uranium	2	800	600	300	400	600	300	600	400	100	0	0	0"
+"uranium	3	2000	1000	1000	600	500	400	800	600	200	0	200	0"
+"mithril	1	200	400	100	200	100	100	100	200	0	0	0	0"
+"mithril	2	600	800	600	400	300	600	300	400	100	0	0	0"
+"mithril	3	1000	2000	800	600	500	800	1000	600	200	0	0	200"
+"floatingStone	1	200	200	200	200	200	100	100	100	0	0	0	0"
+"floatingStone	2	600	1200	400	400	400	300	600	300	0	100	0	0"
+"floatingStone	3	1000	1600	600	600	600	1000	800	1000	0	200	0	200"
