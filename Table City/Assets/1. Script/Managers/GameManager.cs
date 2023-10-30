@@ -35,7 +35,7 @@ public class GameManager : MonoBehaviour
     [field: SerializeField]
     public Vector3[] _workbenchPointsB { get; private set; } = new Vector3[6];
 
-    string[] resourcesName = { "wood", "stone", "rubber", "cloth", "steel", "coal", "electricity", "glass", "semiconductor", "uranium", "mithril", "floatingStone" };
+    string[] resourcesName = { "나무", "돌", "고무", "천", "철", "석탄", "전기", "유리", "반도체", "우라늄", "미스릴", "부유석" };
 
     #region 타이머
     public void ActionTimer(float time, int repeatCount, Action action, bool actionFirst) => StartCoroutine(ActionTimerCoroutine(time, repeatCount, action, actionFirst));
@@ -248,7 +248,7 @@ public class GameManager : MonoBehaviour
             viewFactory[i].upgrade = new int[viewFactory[i].maxLv, Define.RESOURCES_COUNT];
             foreach (var csvLineSet in csvData)
             {
-                Debug.Log(resourcesName[i] + " 공장" + " : " + csvLineSet["factory"].ToString());
+                Debug.Log(resourcesName[i] + " 공장" + " : " + csvLineSet["업그레이드 요소"].ToString());
                 if (resourcesName[i]+" 공장" == csvLineSet["업그레이드 요소"].ToString())
                 {
                     int lv = int.Parse(csvLineSet["LV"].ToString());
