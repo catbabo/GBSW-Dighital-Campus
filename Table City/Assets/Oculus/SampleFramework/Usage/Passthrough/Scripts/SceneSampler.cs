@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using SM = UnityEngine.SceneManagement.SceneManager;
 
 public class SceneSampler : MonoBehaviour
 {
@@ -24,8 +25,8 @@ public class SceneSampler : MonoBehaviour
         if (OVRInput.GetUp(OVRInput.Button.Start))
         {
             currentSceneIndex++;
-            if (currentSceneIndex >= SceneManager.sceneCountInBuildSettings) currentSceneIndex = 0;
-            SceneManager.LoadScene(currentSceneIndex);
+            if (currentSceneIndex >= SM.sceneCountInBuildSettings) currentSceneIndex = 0;
+            SM.LoadScene(currentSceneIndex);
         }
 
         Vector3 menuPosition = OVRInput.GetLocalControllerPosition(OVRInput.Controller.LTouch) + Vector3.up * 0.09f;

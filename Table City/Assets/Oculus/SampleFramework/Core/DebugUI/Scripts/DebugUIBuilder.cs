@@ -24,6 +24,7 @@ using UnityEngine;
 using UnityEngine.UI;
 #if UNITY_EDITOR
 using UnityEngine.SceneManagement;
+using SM = UnityEngine.SceneManagement.SceneManager;
 #endif
 using TMPro;
 
@@ -151,7 +152,7 @@ public class DebugUIBuilder : MonoBehaviour
         GetComponent<OVRRaycaster>().pointer = lp.gameObject;
         lp.gameObject.SetActive(false);
 #if UNITY_EDITOR
-        string scene = SceneManager.GetActiveScene().name;
+        string scene = SM.GetActiveScene().name;
         OVRPlugin.SendEvent("debug_ui_builder",
             ((scene == "DebugUI") ||
              (scene == "DistanceGrab") ||

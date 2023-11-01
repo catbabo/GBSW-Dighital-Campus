@@ -25,6 +25,7 @@ using UnityEngine;
 using OVRTouchSample;
 #if UNITY_EDITOR
 using UnityEngine.SceneManagement;
+using SM = UnityEngine.SceneManagement.SceneManager;
 #endif
 
 namespace OVRTouchSample
@@ -98,7 +99,7 @@ namespace OVRTouchSample
             OVRManager.InputFocusAcquired += OnInputFocusAcquired;
             OVRManager.InputFocusLost += OnInputFocusLost;
 #if UNITY_EDITOR
-            OVRPlugin.SendEvent("custom_hand", (SceneManager.GetActiveScene().name == "CustomHands").ToString(),
+            OVRPlugin.SendEvent("custom_hand", (SM.GetActiveScene().name == "CustomHands").ToString(),
                 "sample_framework");
 #endif
         }

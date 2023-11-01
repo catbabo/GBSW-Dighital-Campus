@@ -3,6 +3,7 @@
 using System.Text.RegularExpressions;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using SM = UnityEngine.SceneManagement.SceneManager;
 using UnityEngine.UI;
 using TMPro;
 
@@ -20,10 +21,10 @@ public class UiSceneMenu : MonoBehaviour
 
     private void Awake()
     {
-        m_activeScene = SceneManager.GetActiveScene();
+        m_activeScene = SM.GetActiveScene();
 
         // Build labels
-        for (int i = 0; i < SceneManager.sceneCountInBuildSettings; ++i)
+        for (int i = 0; i < SM.sceneCountInBuildSettings; ++i)
         {
             string scenePath = SceneUtility.GetScenePathByBuildIndex(i);
             CreateLabel(i, scenePath);
@@ -32,7 +33,7 @@ public class UiSceneMenu : MonoBehaviour
 
     private void Update()
     {
-        int sceneCount = SceneManager.sceneCountInBuildSettings;
+        int sceneCount = SM.sceneCountInBuildSettings;
         if (InputPrevScene())
         {
             ChangeScene((m_activeScene.buildIndex - 1 + sceneCount) % sceneCount);
@@ -87,7 +88,7 @@ public class UiSceneMenu : MonoBehaviour
 
     private void ChangeScene(int nextScene)
     {
-        SceneManager.LoadScene(nextScene);
+        SM.LoadScene(nextScene);
     }
 
     private void CreateLabel(int sceneIndex, string scenePath)

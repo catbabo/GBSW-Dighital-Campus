@@ -23,6 +23,7 @@ using System.Collections.Generic;
 using UnityEngine;
 #if UNITY_EDITOR
 using UnityEngine.SceneManagement;
+using SM = UnityEngine.SceneManagement.SceneManager;
 #endif
 
 
@@ -118,7 +119,7 @@ namespace OculusSampleFramework
             Debug.Assert(m_otherHand != null);
 
 #if UNITY_EDITOR
-            OVRPlugin.SendEvent("distance_grabber", (SceneManager.GetActiveScene().name == "DistanceGrab").ToString(),
+            OVRPlugin.SendEvent("distance_grabber", (SM.GetActiveScene().name == "DistanceGrab").ToString(),
                 "sample_framework");
 #endif
         }

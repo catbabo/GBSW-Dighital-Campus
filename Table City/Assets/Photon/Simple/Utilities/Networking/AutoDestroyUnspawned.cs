@@ -5,6 +5,7 @@
 
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using SM = UnityEngine.SceneManagement.SceneManager;
 using Photon.Utilities;
 using Photon.Pun.Simple.Internal;
 
@@ -47,7 +48,7 @@ namespace Photon.Pun.Simple
 
 #if UNITY_2018_3_OR_NEWER
 
-			if (gameObject.scene == SceneManager.GetActiveScene())
+			if (gameObject.scene == SM.GetActiveScene())
 			{
 				hasPrefabParent = PrefabUtility.IsPartOfPrefabAsset(gameObject);
 				if (!hasPrefabParent)
@@ -82,7 +83,7 @@ namespace Photon.Pun.Simple
 						continue;
 				}
 
-				if (obj.gameObject.scene == SceneManager.GetActiveScene())
+				if (obj.gameObject.scene == SM.GetActiveScene())
 				{
 					Object.Destroy(obj.gameObject);
 				}

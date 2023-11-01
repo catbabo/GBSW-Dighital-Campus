@@ -14,6 +14,7 @@ using JetBrains.Annotations;
 using UnityEngine.Assertions;
 #if UNITY_EDITOR
 using UnityEngine.SceneManagement;
+using SM = UnityEngine.SceneManagement.SceneManager;
 #endif
 
 /// <summary>
@@ -50,7 +51,7 @@ public class LocomotionController : MonoBehaviour
 
         Assert.IsNotNull(CameraRig);
 #if UNITY_EDITOR
-        OVRPlugin.SendEvent("locomotion_controller", (SceneManager.GetActiveScene().name == "Locomotion").ToString(),
+        OVRPlugin.SendEvent("locomotion_controller", (SM.GetActiveScene().name == "Locomotion").ToString(),
             "sample_framework");
 #endif
     }
