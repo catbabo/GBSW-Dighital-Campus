@@ -34,7 +34,6 @@ public class GameManager : ManagerBase
     public Vector3[] _workbenchPointsA { get; private set; } = new Vector3[6];
     public Vector3[] _workbenchPointsB { get; private set; } = new Vector3[6];
 
-    #region 타이머
     public void ActionTimer(float time, Action action)
     { StartCoroutine(ActionTimerCoroutine(time, action)); }
 
@@ -43,7 +42,6 @@ public class GameManager : ManagerBase
         yield return new WaitForSeconds(time);
         action();
     }
-    #endregion
 
 
     public override void Init()
@@ -76,47 +74,13 @@ public class GameManager : ManagerBase
 
                     anime[i].data[groupNum].Influence[animeNum] = int.Parse(csvLineSet["영향력"].ToString().Replace("%", ""));
 
-
-
-                    anime[i].data[groupNum].condition[animeNum,(int)Define.AssetData.wood]
-                       = int.Parse(csvLineSet["나무"].ToString());
-
-                    anime[i].data[groupNum].condition[animeNum, (int)Define.AssetData.stone]
-                        = int.Parse(csvLineSet["돌"].ToString());
-
-                    anime[i].data[groupNum].condition[animeNum, (int)Define.AssetData.steel]
-                        = int.Parse(csvLineSet["철"].ToString());
-
-                    anime[i].data[groupNum].condition[animeNum, (int)Define.AssetData.cloth]
-                        = int.Parse(csvLineSet["천"].ToString());
-
-                    anime[i].data[groupNum].condition[animeNum, (int)Define.AssetData.coal]
-                        = int.Parse(csvLineSet["석탄"].ToString());
-
-                    anime[i].data[groupNum].condition[animeNum, (int)Define.AssetData.electricity]
-                        = int.Parse(csvLineSet["전기"].ToString());
-
-                    anime[i].data[groupNum].condition[animeNum, (int)Define.AssetData.glass]
-                        = int.Parse(csvLineSet["유리"].ToString());
-
-                    anime[i].data[groupNum].condition[animeNum, (int)Define.AssetData.rubber]
-                        = int.Parse(csvLineSet["고무"].ToString());
-
-                    anime[i].data[groupNum].condition[animeNum, (int)Define.AssetData.uranium]
-                        = int.Parse(csvLineSet["우라늄"].ToString());
-
-                    anime[i].data[groupNum].condition[animeNum, (int)Define.AssetData.semiconductor]
-                        = int.Parse(csvLineSet["반도체"].ToString());
-
-                    anime[i].data[groupNum].condition[animeNum, (int)Define.AssetData.mithril]
-                        = int.Parse(csvLineSet["미스릴"].ToString());
-
-                    anime[i].data[groupNum].condition[animeNum, (int)Define.AssetData.floatingStone]
-                        = int.Parse(csvLineSet["부유석"].ToString());
-
+                    for(int j = 0; j < Define.RESOURCES_COUNT; j++)
+                    {
+                        string resource = Define.Resources[j];
+                        anime[i].data[groupNum].condition[animeNum, j] = int.Parse(csvLineSet[resource].ToString());
+                    }
                 }
             }
-
         }
 
         foreach (AnimeBundle j in anime)
@@ -244,7 +208,6 @@ public class GameManager : ManagerBase
         {
             foreach (var csvLineSet in csvData)
             {
-                Debug.Log(Define.Resources[i] + " 공장" + " : " + csvLineSet["업그레이드 요소"].ToString());
                 if (Define.Resources[i]+" 공장" == csvLineSet["업그레이드 요소"].ToString())
                 {
                     int lv = int.Parse(csvLineSet["LV"].ToString());

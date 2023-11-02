@@ -41,8 +41,8 @@ public class Managers : MonoBehaviour
     public void Init()
     {
         Event = Init<EventManager>();
-        Scene = Init<SceneManager>();
         Network = InitPun<NetworkManager>();
+        Scene = Init<SceneManager>();
         Game = Init<GameManager>();
         UI = Init<UIManager>();
         Instance = Init<InstanceManager>();

@@ -43,6 +43,12 @@ public class LobbyScene : SceneBase
         InitEvent();
     }
 
+    protected override void InitUI()
+    {
+        _Input_RoomCode.GetComponent<SetRoomCode>().Init();
+        _Input_NickName.GetComponent<SetNickName>().Init();
+    }
+
     private void InitEvent()
     {
         Managers.Event.AddMatchRoomButton(MatchRoomButton);

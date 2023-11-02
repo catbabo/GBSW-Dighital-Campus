@@ -2,24 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.UI;
+using TMPro;
 
-public class SetRoomCode : MonoBehaviour, IUpdateSelectedHandler
+public class SetRoomCode : MonoBehaviour
 {
-    private InputField field
+    public void Init()
     {
-        get
-        {
-            if(field == null)
-            {
-                field = gameObject.GetComponent<InputField>();
-            }
-            return field;
-        }
-        set { field = value; }
+        field = gameObject.GetComponent<TMP_InputField>();
+        Managers.Network.SetRoomCode(field.text);
+        field.onEndEdit.AddListener(Submit);
     }
 
-    public void OnUpdateSelected(BaseEventData eventData)
+    private TMP_InputField field;
+
+    private void Submit(string text)
     {
         Managers.Network.SetRoomCode(field.text);
     }

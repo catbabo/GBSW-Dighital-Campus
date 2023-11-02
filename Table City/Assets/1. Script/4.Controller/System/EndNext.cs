@@ -34,8 +34,8 @@ public class EndNext : MonoBehaviour
         {
             endingName[i].text = "¿£µù : "+ endingNameString;
         }
-
     }
+
     public void Exit()
     {
         Managers.Network.OutRoom_GoMain();
