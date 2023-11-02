@@ -35,15 +35,21 @@ public class NetworkManager : PunManagerBase
         PN.AutomaticallySyncScene = true;
 
         InitEvent();
+		Connect();
     }
 
     private void InitEvent()
     {
-        Managers.Event.AddOnGameStart(OnGameStart);
         Managers.Event.AddMatchRoomButton(MatchRoomButton);
+        Managers.Event.AddJobButton(JobButton);
     }
 
-	public PhotonView GetPhotonView()
+    public void Connect()
+    {
+        PN.ConnectUsingSettings();
+    }
+
+    public PhotonView GetPhotonView()
 	{
 		return _mainPv;
 	}
@@ -51,8 +57,6 @@ public class NetworkManager : PunManagerBase
 	public void SetNickName(string _name) { _nickName = _name; }
 
 	public void SetRoomCode(string _code) { _roomCode = _code; }
-
-	public void Connect() { PN.ConnectUsingSettings(); }
 
 	public override void OnConnectedToMaster()
 	{
@@ -84,18 +88,18 @@ public class NetworkManager : PunManagerBase
 	{
 		Debug.Log("방 입장 성공!");
 		lobby.OnJoinedRoom();
+        _mainPv.RPC("JoinPlayer", RpcTarget.All);
     }
 
     public override void OnPlayerEnteredRoom(Player newPlayer)
     {
         Debug.Log(newPlayer.NickName + " 참가.");
-        lobby.OnPlayerEnteredRoom();
+        _mainPv.RPC("JoinPlayer", RpcTarget.All);
     }
 
     public override void OnPlayerLeftRoom(Player otherPlayer)
     {
 		Debug.Log(otherPlayer.NickName + " 나감.");
-        lobby.OnPlayerLeftRoom();
     }
 
     public override void OnLeftRoom()
@@ -115,7 +119,8 @@ public class NetworkManager : PunManagerBase
 		Debug.Log("서버 연결 해제\n"+cause);
 	}
 
-    public void SetPlayerSpawnPoint(bool _point) { _pointA = _point; }
+    public void SetPlayerJob(bool _point) { _pointA = _point; }
+
 	public bool IsPlayerTeamA() { return _pointA; }
 
     public void SetForceOut(bool _force) { _forceOut = _force; }
@@ -149,7 +154,7 @@ public class NetworkManager : PunManagerBase
 	{
 		SetNickName("admin");
 		SetRoomCode("DevelopRoom");
-		SetPlayerSpawnPoint(true);
+		SetPlayerJob(true);
 	}
 
     public void OutRoom_GoMain()
@@ -177,13 +182,48 @@ public class NetworkManager : PunManagerBase
         }
     }
 
-    private void OnGameStart()
-    {
-        Connect();
-    }
-
     private void MatchRoomButton()
     {
-		JoinOrCreate();
+		if(IsCanCreateRoom())
+			JoinOrCreate();
     }
+
+    private void JobButton(bool _A)
+    {
+		SetPlayerJob(_A);
+		_mainPv.RPC("SelectJob", RpcTarget.All, _A);
+    }
+
+	[PunRPC]
+	private void SelectJob()
+	{
+		lobby.SelectJob(IsPlayerTeamA());
+	}
+
+    [PunRPC]
+    private void JoinPlayer()
+	{
+		lobby.JoinPlayer();
+	}
+
+
+    public bool IsCanCreateRoom()
+	{
+		return (_nickName != "" && _roomCode != "");
+    }
+
+    public string GetJoinRoomPlayerCount()
+	{
+		return "Player : " + PN.CurrentRoom.PlayerCount + " / " + PN.CurrentRoom.MaxPlayers;
+	}
+
+	public bool IsFullPlayers()
+	{
+		return (PN.CurrentRoom.PlayerCount == PN.CurrentRoom.MaxPlayers);
+	}
+
+	public bool IsMaster()
+	{
+		return PN.IsMasterClient;
+	}
 }

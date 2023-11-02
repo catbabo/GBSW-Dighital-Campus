@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class MatchRoomButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
+public class CancleButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
     public void OnPointerEnter(PointerEventData eventData) { }
 
@@ -11,6 +11,6 @@ public class MatchRoomButton : MonoBehaviour, IPointerEnterHandler, IPointerExit
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        Managers.Event.ExcuteMatchRoomButton();
+        Managers.Event.ExcuteCancleButton();
     }
 }

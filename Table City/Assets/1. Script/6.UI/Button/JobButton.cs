@@ -3,14 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class MatchRoomButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
+public class JobButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
+    [SerializeField]
+    private bool isSideA;
     public void OnPointerEnter(PointerEventData eventData) { }
 
     public void OnPointerExit(PointerEventData eventData) { }
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        Managers.Event.ExcuteMatchRoomButton();
+        Managers.Event.ExcuteJobButton(isSideA);
     }
 }

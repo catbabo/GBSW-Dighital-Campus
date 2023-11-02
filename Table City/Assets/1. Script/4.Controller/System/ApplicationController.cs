@@ -95,7 +95,14 @@ public class ApplicationController : MonoBehaviour
 
     private void MatchRoom()
     {
-        Debug.Log("Start Match");
-        _behaviour = Define.PlayerBehaviourState.CreateLobby;
+        if(Managers.Network.IsCanCreateRoom())
+        {
+            Debug.Log("Start Match");
+            _behaviour = Define.PlayerBehaviourState.CreateLobby;
+        }
+        else
+        {
+            Debug.Log("Can't Start Match");
+        }
     }
 }
