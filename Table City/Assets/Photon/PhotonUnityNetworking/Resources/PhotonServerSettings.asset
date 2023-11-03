@@ -59,6 +59,15 @@ MonoBehaviour:
   - FactroySpeedUp
   - SelectJob
   - StartGame
+  - GameStart
+  - InGameStart
+  - AddReadyPlayer
+  - ReadyOtherPlayer
+  - PleaseReady
+  - UpdateReadyPopup
+  - SyncReadyData
+  - ShowJobButton
+  - SetSelectSync
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1

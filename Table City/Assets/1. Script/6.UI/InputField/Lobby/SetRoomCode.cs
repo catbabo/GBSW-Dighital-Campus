@@ -10,7 +10,7 @@ public class SetRoomCode : MonoBehaviour
     {
         field = gameObject.GetComponent<TMP_InputField>();
         Managers.Network.SetRoomCode(field.text);
-        field.onEndEdit.AddListener(Submit);
+        field.onValueChanged.AddListener(Submit);
     }
 
     private TMP_InputField field;

@@ -25,6 +25,23 @@ public class SceneManager : ManagerBase
 
     public void LoadScene(Define.Scene scene = Define.Scene.Load)
     {
+        LoadScene(scene, false);
+    }
+
+    public void LoadScene(bool isSkip)
+    {
+        LoadScene(Define.Scene.Load, isSkip);
+    }
+
+    public void LoadScene(Define.Scene scene, bool isSkip)
+    {
+        if(isSkip)
+        {
+            scenes[(int)_nextScene].LeftScene();
+            _nextScene = scene;
+            _onLoading = true;
+        }
+
         if (_onLoading)
         {
             _onLoading = false;

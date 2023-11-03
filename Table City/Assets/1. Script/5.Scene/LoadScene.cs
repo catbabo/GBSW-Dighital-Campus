@@ -20,6 +20,7 @@ public class LoadScene : SceneBase
     public override void StartLoad()
     {
         _speed = 100f / Managers.Scene.GetLoadTime();
+        loadBar.value = 0;
         StartCoroutine(Loading());
     }
 

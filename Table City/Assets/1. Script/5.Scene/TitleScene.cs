@@ -17,12 +17,12 @@ public class TitleScene : SceneBase
 
     private void InitEvent()
     {
-        Managers.Event.AddOnGameStart(OnGameStart);
+        Managers.Event.AddGameStartButton(OnGameStart);
     }
 
     public void OnGameStart()
     {
-        Managers.Scene.LoadScene(Define.Scene.Lobby);
+        Managers.Scene.LoadScene(Define.Scene.Lobby, true);
     }
 
     public override void StartLoad()

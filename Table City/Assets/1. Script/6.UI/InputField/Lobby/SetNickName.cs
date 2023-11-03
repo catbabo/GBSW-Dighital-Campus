@@ -10,13 +10,13 @@ public class SetNickName : MonoBehaviour
     {
         field = gameObject.GetComponent<TMP_InputField>();
         Managers.Network.SetNickName(field.text);
-        field.onEndEdit.AddListener(Submit);
+        field.onValueChanged.AddListener(Submit);
     }
 
     private TMP_InputField field;
 
     private void Submit(string text)
     {
-        Managers.Network.SetRoomCode(field.text);
+        Managers.Network.SetNickName(field.text);
     }
 }

@@ -11,12 +11,12 @@ public class Define
 
     public enum Scene
     {
-        Title, Lobby, Room, Load
+        Title, Lobby, Room, InGame, Load
     }
 
     public enum PlayerBehaviourState
     {
-        StartApplication, Title, CreateLobby, CreateRoom, 
+        StartApplication, Lobby, InRoom, Ready, SelectJob, InGame
     }
 
     public enum CastingType
@@ -27,8 +27,9 @@ public class Define
     /// <summary> 팝업 상태의 enum </summary>
     public enum PopupState
     {
-        /// <summary> 플레이어를 기다리는 상태 </summary>
         Wait,
+        Ready,
+        ReadyPlease,
         /// <summary> 플레이어가 모두 들어온 상태  </summary>
         MaxPlayer,
         /// <summary> 위험을 경고하는 상태 </summary>

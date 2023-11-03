@@ -36,6 +36,7 @@ public class ApplicationController : MonoBehaviour
         Managers.Scene.LoadScene(Define.Scene.Title);
     }
 
+    [SerializeField]
     private Define.PlayerBehaviourState _behaviour;
 
     private void Update()
@@ -43,66 +44,97 @@ public class ApplicationController : MonoBehaviour
         if (!debugMode)
             return;
 
-        if(Input.GetKeyDown(KeyCode.N))
+        if (Input.GetKeyDown(KeyCode.E))
         {
-            switch(_behaviour)
+            Managers.Event.ExcuteCancleButton();
+        }
+
+        if (Input.GetKeyDown(KeyCode.N))
+        {
+            switch (_behaviour)
             {
                 case Define.PlayerBehaviourState.StartApplication:
-                    Managers.Event.ExcuteOnGameStart();
+                    Managers.Event.ExcuteGameStartButton();
                     break;
-                case Define.PlayerBehaviourState.Title:
+                case Define.PlayerBehaviourState.Lobby:
                     Managers.Event.ExcuteMatchRoomButton();
+                    break;
+                case Define.PlayerBehaviourState.InRoom:
+                    Managers.Event.ExcuteReadyButton(false);
+                    break;
+                case Define.PlayerBehaviourState.Ready:
+                    Managers.Event.ExcuteReadyButton(true);
                     break;
             }
         }
 
-
-        // B를 누르면 로비 입장
-        if (Input.GetKeyDown(KeyCode.B)) Managers.Network.JoinLobby();
-
-        // C를 누르면 마스터 서버로 입장
-        if (Input.GetKeyDown(KeyCode.C)) Managers.Network.Connect();
-
-        // D를 누르면 서버 연결 해제
-        if (Input.GetKeyDown(KeyCode.D)) Managers.Network.DisConnect();
-
-        // I를 누르면 서버 정보 호출
-        if (Input.GetKeyDown(KeyCode.I)) Managers.Network.Info();
-
-        // J을 누르면 방 입장
-        if (Input.GetKeyDown(KeyCode.J)) Managers.Network.JoinOrCreate();
-
         // L을 누르면 방 떠나기
-        if (Input.GetKeyDown(KeyCode.L)) Managers.Network.LeaveRoom();
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            if (_behaviour == Define.PlayerBehaviourState.InRoom ||
+                _behaviour == Define.PlayerBehaviourState.Ready ||
+                _behaviour == Define.PlayerBehaviourState.SelectJob)
+            {
+                Managers.Event.ExcuteLeaveButton();
+            }
+        }
 
-        // S를 누르면 기본 셋팅
-        if (Input.GetKeyDown(KeyCode.S)) Managers.Network.EnterRoomSolo();
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            Managers.Event.ExcuteJobButton(true);
+        }
 
-        // T를 누르면 혼자서 입장
-        if (Input.GetKeyDown(KeyCode.T)) PhotonNetwork.LoadLevel("PlayRoom");
+        if (Input.GetKeyDown(KeyCode.B))
+        {
+            Managers.Event.ExcuteJobButton(false);
+        }
     }
 
     private void InitEvent()
     {
-        Managers.Event.AddOnGameStart(OnGameStart);
+        Managers.Event.AddGameStartButton(GameStartButton);
         Managers.Event.AddMatchRoomButton(MatchRoom);
+        Managers.Event.AddLeaveButton(LeaveButton);
+        Managers.Event.AddReadyButton(ReadyButton);
+        Managers.Event.AddAllReady(SelectJob);
     }
 
-    private void OnGameStart()
+    private void GameStartButton()
     {
-        _behaviour = Define.PlayerBehaviourState.Title;
+        Debug.Log("Start Game");
+        _behaviour = Define.PlayerBehaviourState.Lobby;
     }
 
     private void MatchRoom()
     {
-        if(Managers.Network.IsCanCreateRoom())
+        if (Managers.Network.IsCanCreateRoom())
         {
             Debug.Log("Start Match");
-            _behaviour = Define.PlayerBehaviourState.CreateLobby;
+            _behaviour = Define.PlayerBehaviourState.InRoom;
         }
         else
         {
             Debug.Log("Can't Start Match");
         }
     }
+    private void LeaveButton()
+    {
+        Debug.Log("LeaveRoom");
+        _behaviour = Define.PlayerBehaviourState.Lobby;
+    }
+
+    private void ReadyButton(bool trigger)
+    {
+        if(!trigger)
+        {
+            _behaviour = Define.PlayerBehaviourState.Ready;
+            Debug.Log("Ready");
+        }
+    }
+
+    private void SelectJob(bool isSolo)
+    {
+        _behaviour = Define.PlayerBehaviourState.SelectJob;
+    }
+
 }

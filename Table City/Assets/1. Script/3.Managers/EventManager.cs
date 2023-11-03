@@ -10,11 +10,11 @@ public class EventManager : ManagerBase
     public override void Init() { }
 
 
-    private Function OnGameStart;
-    public void AddOnGameStart(Function func)
-    { OnGameStart += func; }
-    public void ExcuteOnGameStart()
-    { OnGameStart(); }
+    private Function OnGameStartButton;
+    public void AddGameStartButton(Function func)
+    { OnGameStartButton += func; }
+    public void ExcuteGameStartButton()
+    { OnGameStartButton(); }
 
 
     private Function MatchRoomButton;
@@ -36,4 +36,25 @@ public class EventManager : ManagerBase
     { JobButton += func; }
     public void ExcuteJobButton(bool trigger)
     { JobButton(trigger); }
+
+
+    private FunctionBool AllReady;
+    public void AddAllReady(FunctionBool func)
+    { AllReady += func; }
+    public void ExcuteAllReady(bool isSolo)
+    { AllReady(isSolo); }
+
+
+    private FunctionBool ReadyButton;
+    public void AddReadyButton(FunctionBool func)
+    { ReadyButton += func; }
+    public void ExcuteReadyButton(bool isReady)
+    { ReadyButton(isReady); }
+
+
+    private Function LeaveButton;
+    public void AddLeaveButton(Function func)
+    { LeaveButton += func; }
+    public void ExcuteLeaveButton()
+    { LeaveButton(); }
 }

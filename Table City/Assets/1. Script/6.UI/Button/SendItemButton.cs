@@ -66,13 +66,13 @@ public class SendItemButton : MonoBehaviour
 
     public void SendItemPlay() { inputBoxController.SendItem(type); }
 
-    RoomScene room
+    InGameScene room
     {
         get
         {
             if (room == null)
             {
-                room = GameObject.Find("RoomScene").GetComponent<RoomScene>();
+                room = GameObject.Find("InGameScene").GetComponent<InGameScene>();
             }
             return room;
         }

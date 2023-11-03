@@ -6,13 +6,15 @@ using TMPro;
 using Photon.Pun;
 using Photon.Realtime;
 using PN = Photon.Pun.PhotonNetwork;
+using Photon.Voice.PUN.UtilityScripts;
 
 [RequireComponent(typeof(PhotonView))]
 public class NetworkManager : PunManagerBase
 {
 	private string _gameVersion = "1";
-	public string _roomCode { get; private set; }
-	public string _nickName { get; private set; }
+	
+	public string _roomCode;
+	public string _nickName;
 
 	private bool _pointA;
 
@@ -20,9 +22,19 @@ public class NetworkManager : PunManagerBase
 	private PhotonView _mainPv;
 
 	[SerializeField]
-	private LobbyScene lobby;
+	private RoomScene room;
 
-	public override void Init()
+	[SerializeField]
+	private bool _masterReady, _clientReady;
+	[SerializeField]
+	private int _readyPlayerCount;
+	[SerializeField]
+	private bool _isMaster;
+	[SerializeField]
+	private bool _masterJobSelect, _clientJobSelect;
+
+
+    public override void Init()
 	{
         _mainPv = GetComponent<PhotonView>();
         // 게임 버전 설정 ( 버전이 같은 사람끼리만 매칭이 가능함 )
@@ -42,6 +54,8 @@ public class NetworkManager : PunManagerBase
     {
         Managers.Event.AddMatchRoomButton(MatchRoomButton);
         Managers.Event.AddJobButton(JobButton);
+        Managers.Event.AddReadyButton(ReadyButton);
+        Managers.Event.AddAllReady(AllReady);
     }
 
     public void Connect()
@@ -73,7 +87,6 @@ public class NetworkManager : PunManagerBase
 	public override void OnJoinedLobby()
 	{
 		Debug.Log("로비 접속 완료.");
-		//JoinOrCreate();
 	}
 
 	public void JoinOrCreate()
@@ -82,31 +95,70 @@ public class NetworkManager : PunManagerBase
 	}
 
 	public override void OnCreatedRoom()
-	{ Debug.Log("방 만들기 완료."); }
+	{
+		Debug.Log("방 만들기 완료.");
+		_isMaster = PN.IsMasterClient;
+
+    }
 
 	public override void OnJoinedRoom()
 	{
 		Debug.Log("방 입장 성공!");
-		lobby.OnJoinedRoom();
-        _mainPv.RPC("JoinPlayer", RpcTarget.All);
+        _isMaster = PN.IsMasterClient;
+        //_mainPv.RPC("JoinPlayer", RpcTarget.All);
     }
 
     public override void OnPlayerEnteredRoom(Player newPlayer)
     {
         Debug.Log(newPlayer.NickName + " 참가.");
-        _mainPv.RPC("JoinPlayer", RpcTarget.All);
+		_mainPv.RPC("SyncReadyData", RpcTarget.Others, _masterReady, _readyPlayerCount);
+		room.OnPlayerEnteredRoom();
     }
+
+	[PunRPC]
+	private void SyncReadyData(bool master, int count)
+	{
+		_masterReady = master;
+		_readyPlayerCount = count;
+	}
 
     public override void OnPlayerLeftRoom(Player otherPlayer)
     {
 		Debug.Log(otherPlayer.NickName + " 나감.");
+
+		if (_isMaster)
+        {
+			if(_clientReady)
+                _readyPlayerCount--;
+
+            _clientReady = false;
+        }
+		else
+        {
+            if (_masterReady)
+                _readyPlayerCount--;
+
+            _masterReady = _clientReady;
+			_clientReady = false;
+			Managers.UI.ShowPopup("Master Exit", "Now You Are Master");
+			_isMaster = IsMaster();
+        }
+		room.OnPlayerLeftRoom();
     }
 
-    public override void OnLeftRoom()
-	{ Debug.Log("방 퇴장 성공!"); }
-
     public void LeaveRoom()
-	{ PN.LeaveRoom(); }
+	{
+		PN.LeaveRoom();
+	}
+
+    public override void OnLeftRoom()
+	{
+		Debug.Log("방 퇴장 성공!");
+		_masterReady = false;
+		_clientReady = false;
+		_readyPlayerCount = 0;
+        _isMaster = PN.IsMasterClient;
+    }
 
 	public void DisConnect()
 	{
@@ -118,12 +170,6 @@ public class NetworkManager : PunManagerBase
 	{
 		Debug.Log("서버 연결 해제\n"+cause);
 	}
-
-    public void SetPlayerJob(bool _point) { _pointA = _point; }
-
-	public bool IsPlayerTeamA() { return _pointA; }
-
-    public void SetForceOut(bool _force) { _forceOut = _force; }
 
     public void Info()
 	{
@@ -148,13 +194,6 @@ public class NetworkManager : PunManagerBase
 			Debug.Log("로비에 있는지? : " + PN.InLobby);
 			Debug.Log("연결됐는지? : " + PN.IsConnected);
 		}
-	}
-
-	public void EnterRoomSolo()
-	{
-		SetNickName("admin");
-		SetRoomCode("DevelopRoom");
-		SetPlayerJob(true);
 	}
 
     public void OutRoom_GoMain()
@@ -188,23 +227,151 @@ public class NetworkManager : PunManagerBase
 			JoinOrCreate();
     }
 
-    private void JobButton(bool _A)
+    private void ReadyButton(bool isReady)
     {
-		SetPlayerJob(_A);
-		_mainPv.RPC("SelectJob", RpcTarget.All, _A);
+		if (!isReady)
+        {
+            if (IsMaster())
+            {
+                _masterReady = true;
+            }
+            else
+            {
+                _clientReady = true;
+            }
+			_readyPlayerCount++;
+            _mainPv.RPC("ReadyOtherPlayer", RpcTarget.Others);
+		}
+
+		_mainPv.RPC("UpdateReadyPopup", RpcTarget.All);
     }
 
 	[PunRPC]
-	private void SelectJob()
+    private void UpdateReadyPopup()
 	{
-		lobby.SelectJob(IsPlayerTeamA());
+		room.UpdateReadyPopup();
+    }
+
+
+    [PunRPC]
+	private void ReadyOtherPlayer()
+	{
+		if(IsMaster())
+		{
+			_clientReady = true;
+		}
+		else
+		{
+			_masterReady = true;
+		}
+		_readyPlayerCount++;
+    }
+
+    public bool IsCanStartInGame()
+    {
+        return (_masterReady && _clientReady) || (_readyPlayerCount == PN.CurrentRoom.PlayerCount);
+    }
+
+    public bool IsSolo()
+    {
+        return (1 == PN.CurrentRoom.PlayerCount);
+    }
+
+	public void ReadyMention()
+	{
+		_mainPv.RPC("PleaseReady", RpcTarget.All);
+	}
+
+	[PunRPC]
+	private void PleaseReady()
+	{
+		room.PleaseReady();
+	}
+
+    private void AllReady(bool isSolo)
+    {
+        LockRoom();
+        if (isSolo)
+        {
+            room.InGameStart();
+        }
+		else
+        {
+            _mainPv.RPC("ShowJobButton", RpcTarget.All);
+        }
+    }
+
+	private void LockRoom()
+    {
+        PN.CurrentRoom.IsOpen = false;
+        PN.CurrentRoom.IsVisible = false;
+    }
+
+    [PunRPC]
+    private void ShowJobButton()
+    {
+        room.ShowJobButton();
+    }
+
+    private void JobButton(bool _A)
+    {
+        SetPlayerJob(_A);
+		_mainPv.RPC("SetSelectSync", RpcTarget.All, IsMaster());
+		room.JobButton(_A);
+    }
+
+	public void InGame()
+    {
+        bool isCanInGame = (IsOnSelectJob() && IsMaster());
+        Debug.Log("IsOnSelectJob() && IsMaster()  : " + $"{isCanInGame}");
+        if (isCanInGame)
+        {
+            Debug.Log("InGame");
+            _mainPv.RPC("InGameStart", RpcTarget.All);
+        }
+        else
+        {
+            Debug.Log("Foor");
+        }
+    }
+
+	public void SelectJobSync(bool _A)
+	{
+		_mainPv.RPC("SelectJob", RpcTarget.All, _A);
 	}
 
     [PunRPC]
-    private void JoinPlayer()
-	{
-		lobby.JoinPlayer();
-	}
+    private void SelectJob(bool a)
+    {
+        room.SelectJob(a);
+    }
+
+    [PunRPC]
+    private void SetSelectSync(bool isMaster)
+    {
+		if(isMaster)
+		{
+			Debug.Log("MasterSelect");
+			_masterJobSelect = true;
+		}
+		else
+        {
+            Debug.Log("ClientSelect");
+            _clientJobSelect = true;
+		}
+
+    }
+
+    public void SetPlayerJob(bool _point) { _pointA = _point; }
+
+    public bool IsPlayerTeamA() { return _pointA; }
+
+
+    [PunRPC]
+    private void InGameStart()
+    {
+		room.InGameStart();
+    }
 
 
     public bool IsCanCreateRoom()
@@ -214,7 +381,7 @@ public class NetworkManager : PunManagerBase
 
     public string GetJoinRoomPlayerCount()
 	{
-		return "Player : " + PN.CurrentRoom.PlayerCount + " / " + PN.CurrentRoom.MaxPlayers;
+		return "Player : " + _readyPlayerCount + " / " + PN.CurrentRoom.PlayerCount;
 	}
 
 	public bool IsFullPlayers()
@@ -223,7 +390,14 @@ public class NetworkManager : PunManagerBase
 	}
 
 	public bool IsMaster()
-	{
-		return PN.IsMasterClient;
+    {
+        Debug.Log("IsMasterClient");
+        return PN.IsMasterClient;
+	}
+
+	public bool IsOnSelectJob()
+    {
+        Debug.Log("IsOnSelectJob");
+        return (_masterJobSelect && _clientJobSelect);
 	}
 }
