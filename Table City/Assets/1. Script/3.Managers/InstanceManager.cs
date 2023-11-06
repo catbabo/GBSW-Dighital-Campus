@@ -40,6 +40,7 @@ public class InstanceManager : ManagerBase
 
     public GameObject SpawnObject(string objectName, Transform point = null)
     {
+        Debug.Log("Spawn");
         GameObject go = PhotonNetwork.Instantiate(objectName, Vector3.zero, Quaternion.identity);
 
         if (point != null)

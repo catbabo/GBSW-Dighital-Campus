@@ -1,3 +1,4 @@
+using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -62,7 +63,6 @@ public class RoomScene : SceneBase
 
     private void SpawnPlayer()
     {
-        Managers.player.Destroy();
         Transform spawnPoint = GameObject.Find("SpawnPoint").transform;
         playerPoint = spawnPoint.Find("Spawn_Player");
         string path = "";
@@ -71,21 +71,21 @@ public class RoomScene : SceneBase
         { path = "Point_A"; }
         else
         { path = "Point_B"; }
-        GameObject go = Managers.Instance.SpawnObject("0. Player/Player_Prefab", playerPoint.Find(path));
-        Managers.player = go.GetComponent<PlayerController>();
+        playerPoint = playerPoint.Find(path);
+        Managers.player.Destroy();
+        GameObject go = PhotonNetwork.Instantiate("0. Player/Player_Prefab", playerPoint.position, playerPoint.rotation);
+        Managers.Spawn(go);
         //Managers.onLinePlayer.SetNickName(Managers.localPlayer.GetNickName());
     }
 
     public void OnDataSync()
     {
-        //SpawnPlayer();
-        Managers.player.Destroy();
+        SpawnPlayer();
     }
 
     public void OnCreateRoom()
     {
-        //SpawnPlayer();
-        Managers.player.Destroy();
+        SpawnPlayer();
     }
 
     public override void LeftScene()

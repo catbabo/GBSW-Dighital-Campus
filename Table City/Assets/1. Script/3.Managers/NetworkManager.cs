@@ -81,7 +81,7 @@ public class NetworkManager : PunManagerBase
 
 	public void JoinLobby() { PN.JoinLobby(); }
 
-	public override void OnJoinedLobby() { Debug.Log("로비 접속 완료."); }
+	public override void OnJoinedLobby() { }
 
 	public void JoinOrCreate()
 	{
@@ -99,14 +99,12 @@ public class NetworkManager : PunManagerBase
 
     private void OnRoom()
     {
-		Debug.Log("방 입장 성공!");
         _isMaster = PN.IsMasterClient;
         _readyPlayerCount = 0;
     }
 
     public override void OnPlayerEnteredRoom(Player newPlayer)
     {
-        Debug.Log(newPlayer.NickName + " 참가.");
 		_mainPv.RPC("SyncRoomData", RpcTarget.Others, _masterReady, _isSideA);
 		room.OnPlayerEnteredRoom();
     }
@@ -114,6 +112,7 @@ public class NetworkManager : PunManagerBase
 	[PunRPC]
 	private void SyncRoomData(bool masterReady, bool isSideA)
 	{
+        Debug.Log("sync");
 		_masterReady = masterReady;
         _isSideA = !isSideA;
 
@@ -129,7 +128,6 @@ public class NetworkManager : PunManagerBase
 
     public override void OnPlayerLeftRoom(Player otherPlayer)
     {
-		Debug.Log(otherPlayer.NickName + " 나감.");
 
 		if (_isMaster)
         {
@@ -152,7 +150,6 @@ public class NetworkManager : PunManagerBase
 
     public override void OnLeftRoom()
 	{
-		Debug.Log("방 퇴장 성공!");
 		_masterReady = false;
 		_clientReady = false;
 		_readyPlayerCount = 0;
@@ -170,31 +167,6 @@ public class NetworkManager : PunManagerBase
     public bool IsInRoom() { return PN.InRoom; }
 
     public override void OnDisconnected(DisconnectCause cause) { Debug.Log("서버 연결 해제\n"+cause); }
-
-    public void Info()
-	{
-		if (PN.InRoom)
-		{
-			Debug.Log("현재 방 이름 : " + PN.CurrentRoom.Name);
-			Debug.Log("현재 방 인원수 : " + PN.CurrentRoom.PlayerCount);
-			Debug.Log("현재 방 최대인원수 : " + PN.CurrentRoom.MaxPlayers);
-
-			string playerStr = "방에 있는 플레이어 목록 : ";
-			
-			for (int i = 0; i < PN.PlayerList.Length; i++)
-				playerStr += PN.PlayerList[i].NickName + ", ";
-
-			Debug.Log(playerStr);
-		}
-		else
-		{
-		    Debug.Log("접속한 인원 수 : " + PN.CountOfPlayers);
-			Debug.Log("방 개수 : " + PN.CountOfRooms);
-			Debug.Log("모든 방에 있는 인원 수 : " + PN.CountOfPlayersInRooms);
-			Debug.Log("로비에 있는지? : " + PN.InLobby);
-			Debug.Log("연결됐는지? : " + PN.IsConnected);
-		}
-	}
 
     public void OutRoom_GoMain()
     {
@@ -321,7 +293,6 @@ public class NetworkManager : PunManagerBase
         bool isCanInGame = (IsOnSelectJob() && IsMaster());
         if (isCanInGame)
         {
-            Debug.Log("InGame");
             _mainPv.RPC("InGameStart", RpcTarget.All);
         }
     }
@@ -342,12 +313,10 @@ public class NetworkManager : PunManagerBase
     {
 		if(isMaster)
 		{
-			Debug.Log("MasterSelect");
 			_masterJobSelect = true;
 		}
 		else
         {
-            Debug.Log("ClientSelect");
             _clientJobSelect = true;
 		}
 
@@ -383,13 +352,11 @@ public class NetworkManager : PunManagerBase
 
 	public bool IsMaster()
     {
-        Debug.Log("IsMasterClient");
         return PN.IsMasterClient;
 	}
 
 	public bool IsOnSelectJob()
     {
-        Debug.Log("IsOnSelectJob");
         return (_masterJobSelect && _clientJobSelect);
 	}
 }

@@ -20,8 +20,10 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         _pv = GetComponent<PhotonView>();
+        Debug.Log("Mine : "+_pv.IsMine+"InRoom"+ PN.InRoom);
         if(_pv.IsMine || !PN.InRoom)
         {
+            Debug.Log("Init");
             GetModel();
             GetControllerHelper();
 
@@ -78,6 +80,13 @@ public class PlayerController : MonoBehaviour
 
     public void Destroy()
     {
-        
+        Managers.Destroy();
+        Destroy(gameObject);
+    }
+
+    public void SetPos(Vector3 pos)
+    {
+        transform.position = pos;
+        transform.rotation = Quaternion.Euler(Vector3.zero + Vector3.up * transform.position.y);
     }
 }

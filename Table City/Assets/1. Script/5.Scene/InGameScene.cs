@@ -57,30 +57,57 @@ public class InGameScene : SceneBase
 
         _obejcts.SetActive(true);
 
-        //SpawnWorkBench();
+        if(Managers.Network.IsSolo())
+            SpawnWorkBenchSolo();
+        else
+            SpawnWorkBenchMulty();
+
         StartCoroutine(EndingBarCycle());
     }
 
-    private void SpawnWorkBench()
+    private void SpawnWorkBenchMulty()
     {
         Transform spawnPoint = GameObject.Find("SpawnPoint").transform;
-        Transform playerPoint, workbenchPoint;
+        Transform playerPoint = spawnPoint.Find("Spawn_Player");
+        Transform workbenchPoint = spawnPoint.Find("Spawn_Workbench");
         string workbenchName;
 
         if (Managers.Network.IsPlayerTeamA())
         {
-            playerPoint = spawnPoint.Find("Spawn_Player").Find("Point_A");
             workbenchName = "0. Player/PlayerA_Workbench";
-            workbenchPoint = spawnPoint.Find("Spawn_Workbench").Find("Point_A");
+            workbenchPoint = transform.Find("Point_A");
         }
         else
         {
-            playerPoint = spawnPoint.Find("Spawn_Player").Find("Point_B");
             workbenchName = "0. Player/PlayerB_Workbench";
-            workbenchPoint = spawnPoint.Find("Spawn_Workbench").Find("Point_B");
+            workbenchPoint = transform.Find("Point_B");
         }
+        Managers.Instance.SpawnObject(workbenchName, workbenchPoint);
+
+        if (Managers.Network.IsPlayerTeamA())
+        {
+            playerPoint = transform.Find("Point_A");
+        }
+        else
+        {
+            playerPoint = transform.Find("Point_B");
+        }
+        Managers.player.SetPos(playerPoint.position);
+    }
+
+
+    private void SpawnWorkBenchSolo()
+    {
+        Transform spawnPoint = GameObject.Find("SpawnPoint").transform;
+        Transform playerPoint = spawnPoint.Find("Spawn_Player");
+        Transform workbenchPoint = spawnPoint.Find("Spawn_Workbench");
+        string workbenchName = "0. Player/PlayerC_Workbench";
+        workbenchPoint = workbenchPoint.Find("Point_A");
 
         Managers.Instance.SpawnObject(workbenchName, workbenchPoint);
+
+        playerPoint = playerPoint.Find("Point_A");
+        Managers.player.SetPos(playerPoint.position);
     }
 
     public void SetPlayerObject(GameObject _player, bool _pointA)
@@ -135,11 +162,4 @@ public class InGameScene : SceneBase
         _obejcts.SetActive(false);
         _isEndGame = true;
     }
-
-    //public override void OnPlayerLeftRoom(Player otherPlayer)
-    //{
-    //    Managers.Network.LeaveRoom();
-    //    Managers.Network.SetForceOut(true);
-    //    PhotonNetwork.LoadLevel("MainLobby");
-    //}
 }

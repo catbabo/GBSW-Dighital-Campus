@@ -38,7 +38,7 @@ public class ApplicationController : MonoBehaviour
         Transform playerPoint = spawnPoint.Find("Spawn_Player").Find("Point_A");
         GameObject source = Resources.Load<GameObject>("0. Player/Player_Prefab");
         GameObject go = Instantiate(source, playerPoint.position, playerPoint.rotation);
-        Managers.player = go.GetComponent<PlayerController>();
+        Managers.Spawn(go);
     }
 
     private void GotoStartScene()

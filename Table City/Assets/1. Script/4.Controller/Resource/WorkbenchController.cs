@@ -6,7 +6,7 @@ using Photon.Pun;
 public class WorkbenchController : MonoBehaviour
 {
     [SerializeField]
-    private bool _isWoopdSide;
+    private bool _isWoodSide;
     private string _firstSourcePath = "ResourceItems/FirstSource/", _firstResourcePath;
     private PhotonView pv;
 
@@ -26,7 +26,7 @@ public class WorkbenchController : MonoBehaviour
 
     private void SetFirstResources()
     {
-        if(_isWoopdSide)
+        if(_isWoodSide)
         {
             _firstResourcePath = _firstSourcePath + "Wood";
         }
@@ -53,9 +53,9 @@ public class WorkbenchController : MonoBehaviour
         {
             SetFirstResources();
 
-            _isWoopdSide = Managers.Network.IsPlayerTeamA();
+            _isWoodSide = Managers.Network.IsPlayerTeamA();
             int resourceIndex = 0;
-            if (_isWoopdSide)
+            if (_isWoodSide)
             {
                 resourceIndex = 0;
             }
