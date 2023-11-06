@@ -17,9 +17,6 @@ public class VRController : MonoBehaviour
     private Transform _toolGrabPoint;
     private bool _isGrab;
 
-    public LineRenderer _laser;
-    public Color _laserColor;
-
     private OVRInput.RawButton _triggerButton;
     public OVRInput.Axis2D _thumbStick;
 

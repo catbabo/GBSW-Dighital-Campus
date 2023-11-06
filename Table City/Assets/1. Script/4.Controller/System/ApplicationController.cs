@@ -2,7 +2,6 @@ using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static EventManager;
 
 [RequireComponent(typeof(PhotonView))]
 public class ApplicationController : MonoBehaviour
@@ -28,7 +27,18 @@ public class ApplicationController : MonoBehaviour
     {
         _behaviour = Define.PlayerBehaviourState.StartApplication;
         InitEvent();
+        SpawnLocalPlayer();
+
         GotoStartScene();
+    }
+
+    private void SpawnLocalPlayer()
+    {
+        Transform spawnPoint = GameObject.Find("SpawnPoint").transform;
+        Transform playerPoint = spawnPoint.Find("Spawn_Player").Find("Point_A");
+        GameObject source = Resources.Load<GameObject>("0. Player/Player_Prefab");
+        GameObject go = Instantiate(source, playerPoint.position, playerPoint.rotation);
+        Managers.player = go.GetComponent<PlayerController>();
     }
 
     private void GotoStartScene()

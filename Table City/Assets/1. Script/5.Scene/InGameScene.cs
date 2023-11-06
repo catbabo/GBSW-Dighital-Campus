@@ -1,4 +1,3 @@
-using Meta.WitAi.Events;
 using Photon.Pun;
 using Photon.Realtime;
 using System.Collections;
@@ -58,11 +57,11 @@ public class InGameScene : SceneBase
 
         _obejcts.SetActive(true);
 
-        SpawnPlayerWorkBench();
+        //SpawnWorkBench();
         StartCoroutine(EndingBarCycle());
     }
 
-    private void SpawnPlayerWorkBench()
+    private void SpawnWorkBench()
     {
         Transform spawnPoint = GameObject.Find("SpawnPoint").transform;
         Transform playerPoint, workbenchPoint;

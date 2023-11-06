@@ -70,7 +70,7 @@ public class LaserPointer : OVRCursor
 
     private void Start()
     {
-        if (cursorVisual) cursorVisual.SetActive(false);
+        //if (cursorVisual) cursorVisual.SetActive(false);
         OVRManager.InputFocusAcquired += OnInputFocusAcquired;
         OVRManager.InputFocusLost += OnInputFocusLost;
     }
@@ -145,7 +145,7 @@ public class LaserPointer : OVRCursor
 
     void OnDisable()
     {
-        if (cursorVisual) cursorVisual.SetActive(false);
+        //if (cursorVisual) cursorVisual.SetActive(false);
     }
 
     public void OnInputFocusLost()

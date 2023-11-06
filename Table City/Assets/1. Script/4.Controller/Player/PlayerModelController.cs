@@ -10,22 +10,9 @@ public class PlayerModelController : MonoBehaviour
 
     private OVRControllerHelper _leftHelper, _rightHelper;
 
-    public void InitHead(Transform target, bool _isMine)
+    public void InitHead(Transform target)
     {
         _head = transform.Find("Male Head");
-
-        string layer = "";
-        if (_isMine)
-        {
-            layer = "Head_IsMine";
-        }
-        else
-        {
-            layer = "Head";
-        }
-
-        Util.ChangeLayer(_head, layer);
-
         _headPivot = target;
         _isHeadInit = true;
     }

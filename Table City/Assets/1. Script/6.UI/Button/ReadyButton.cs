@@ -52,16 +52,13 @@ public class ReadyButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
         }
     }
 
-    public void UpdateButon()
+    public void UpdateToMasterButon()
     {
         if (isReady)
         {
-            if (Managers.Network.IsMaster())
-            {
-                text.text = "START";
-                image.sprite = startImage;
-                stopPush = false;
-            }
+            text.text = "START";
+            image.sprite = startImage;
+            stopPush = false;
         }
     }
 }

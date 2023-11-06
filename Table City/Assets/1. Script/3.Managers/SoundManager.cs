@@ -56,4 +56,9 @@ public class SoundManager : ManagerBase
             sfxSource[i].PlayOneShot(sfxClip[name], sfxVolume);
         }
     }
+
+    public void BGMStop()
+    {
+        bgmSource.Stop();
+    }
 }

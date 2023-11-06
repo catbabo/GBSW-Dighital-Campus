@@ -30,8 +30,7 @@ public class Define
         Wait,
         Ready,
         ReadyPlease,
-        /// <summary> 플레이어가 모두 들어온 상태  </summary>
-        MaxPlayer,
+        SelectJob,
         /// <summary> 위험을 경고하는 상태 </summary>
         Warning,
     }

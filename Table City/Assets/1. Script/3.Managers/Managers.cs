@@ -13,6 +13,7 @@ public class Managers : MonoBehaviour
     public static NetworkManager Network;
     public static SceneManager Scene;
     public static EventManager Event;
+    public static PlayerController player;
 
     private T Init<T>() where T : ManagerBase
     {

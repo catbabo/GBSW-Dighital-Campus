@@ -68,6 +68,8 @@ MonoBehaviour:
   - SyncReadyData
   - ShowJobButton
   - SetSelectSync
+  - SyncReadyState
+  - SyncRoomData
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1

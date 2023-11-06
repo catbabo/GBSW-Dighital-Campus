@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -25,6 +26,8 @@ public class RoomScene : SceneBase
     private bool _selectedJobA = false;
 
     private Define.PopupState _popupState;
+
+    private Transform playerPoint;
 
     public override void Init()
     {
@@ -52,19 +55,46 @@ public class RoomScene : SceneBase
 
     protected override void OnLoad()
     {
-        SetPopup(Define.PopupState.Wait);
+        UpdatePopup(Define.PopupState.Wait);
         _readyButton.Init();
-        InitSelectPoint();
+        ResetButton();
+    }
+
+    private void SpawnPlayer()
+    {
+        Managers.player.Destroy();
+        Transform spawnPoint = GameObject.Find("SpawnPoint").transform;
+        playerPoint = spawnPoint.Find("Spawn_Player");
+        string path = "";
+
+        if (Managers.Network.IsSideA())
+        { path = "Point_A"; }
+        else
+        { path = "Point_B"; }
+        GameObject go = Managers.Instance.SpawnObject("0. Player/Player_Prefab", playerPoint.Find(path));
+        Managers.player = go.GetComponent<PlayerController>();
+        //Managers.onLinePlayer.SetNickName(Managers.localPlayer.GetNickName());
+    }
+
+    public void OnDataSync()
+    {
         //SpawnPlayer();
+        Managers.player.Destroy();
+    }
+
+    public void OnCreateRoom()
+    {
+        //SpawnPlayer();
+        Managers.player.Destroy();
     }
 
     public override void LeftScene()
     {
-        InitSelectPoint();
+        ResetButton();
         _readyButton.Init();
     }
 
-    private void SetPopup(Define.PopupState _state)
+    private void UpdatePopup(Define.PopupState _state)
     {
         _popupState = _state;
         string header = "", subject = "";
@@ -84,7 +114,7 @@ public class RoomScene : SceneBase
                 header = "Ready!!";
                 subject = "Please Ready All Players";
                 break;
-            case Define.PopupState.MaxPlayer:
+            case Define.PopupState.SelectJob:
                 header = "Choose your tool";
                 subject = "You choice : " + (_Selected ? (_selectedJobA ? "Wood" : "Stone") : "?");
                 break;
@@ -93,7 +123,7 @@ public class RoomScene : SceneBase
         _Text_Popup_Subject.text = subject;
     }
 
-    private void InitSelectPoint()
+    private void ResetButton()
     {
         _readyButton.gameObject.SetActive(true);
         _leaveButton.gameObject.SetActive(true);
@@ -109,30 +139,6 @@ public class RoomScene : SceneBase
         _selectedJobA = false;
     }
 
-    private void SpawnPlayer()
-    {
-        Transform spawnPoint = GameObject.Find("SpawnPoint").transform;
-        Transform playerPoint, workbenchPoint;
-        string workbenchName;
-
-        if (Managers.Network.IsPlayerTeamA())
-        {
-            playerPoint = spawnPoint.Find("Spawn_Player").Find("Point_A");
-            workbenchName = "0. Player/PlayerA_Workbench";
-            workbenchPoint = spawnPoint.Find("Spawn_Workbench").Find("Point_A");
-        }
-        else
-        {
-            playerPoint = spawnPoint.Find("Spawn_Player").Find("Point_B");
-            workbenchName = "0. Player/PlayerB_Workbench";
-            workbenchPoint = spawnPoint.Find("Spawn_Workbench").Find("Point_B");
-        }
-
-        Managers.Instance.SpawnObject("0. Player/Player_Prefab", playerPoint);
-        Managers.Instance.SpawnObject(workbenchName, workbenchPoint);
-    }
-
-
     public void SetPlayerObject(GameObject _player, bool _pointA)
     {
         if (_pointA) { _Object_PlayerA = _player; }
@@ -144,14 +150,13 @@ public class RoomScene : SceneBase
         Debug.Log("JobButtonStart");
         _Selected = true;
         _selectedJobA = _A;
-        SetPopup(Define.PopupState.MaxPlayer);
+        UpdatePopup(Define.PopupState.SelectJob);
         Managers.Network.SelectJobSync(_A);
         Debug.Log("JobButtonEnd");
     }
 
     private void ReadyButton(bool isReady)
     {
-
         if(isReady)
         {
             OnInGameStartButton();
@@ -159,7 +164,7 @@ public class RoomScene : SceneBase
         else
         {
             _readyButton.SwapButton();
-            SetPopup(Define.PopupState.Ready);
+            UpdatePopup(Define.PopupState.Ready);
         }
     }
 
@@ -167,32 +172,32 @@ public class RoomScene : SceneBase
     {
         if(Managers.Network.IsCanStartInGame())
         {
-            _readyButton.SwapButton();
             bool isSolo = Managers.Network.IsSolo();
             Managers.Event.ExcuteAllReady(isSolo);
         }
         else
         {
+            ReadyMention();
             Managers.Network.ReadyMention();
         }
     }
 
-    public void PleaseReady()
+    public void ReadyMention()
     {
-        SetPopup(Define.PopupState.ReadyPlease);
+        UpdatePopup(Define.PopupState.ReadyPlease);
     }
 
     private void LeaveButton()
     {
-        Managers.Network.LeaveRoom();
         Managers.Scene.LoadScene(Define.Scene.Lobby);
     }
 
     public void OnPlayerLeftRoom()
     {
-        _readyButton.UpdateButon();
-        InitSelectPoint();
-        SetPopup(Define.PopupState.Ready);
+        ResetButton();
+        Managers.UI.ShowPopup("Master Exit", "Now You Are Master");
+        _readyButton.UpdateToMasterButon();
+        UpdatePopup(Define.PopupState.Ready);
     }
 
     public void OnPlayerEnteredRoom()
@@ -203,16 +208,16 @@ public class RoomScene : SceneBase
     public void UpdateReadyPopup()
     {
         if (_popupState == Define.PopupState.Ready)
-            SetPopup(Define.PopupState.Ready);
+            UpdatePopup(Define.PopupState.Ready);
     }
 
     public void ShowJobButton()
     {
-        InitSelectPoint();
-        SetPopup(Define.PopupState.MaxPlayer);
-        _Object_PointButton.SetActive(true);
+        ResetButton();
         _readyButton.gameObject.SetActive(false);
         _leaveButton.gameObject.SetActive(false);
+        _Object_PointButton.SetActive(true);
+        UpdatePopup(Define.PopupState.SelectJob);
     }
 
     public void SelectJob(bool _A)
@@ -231,7 +236,6 @@ public class RoomScene : SceneBase
             _Object_PointButton.transform.Find("Button_PointB").GetComponent<Button>().interactable = false;
             Image_Job[index].sprite = _Sprite_Check;
             Image_Job[index].color = Color.green;
-            _Selected = false;
         }
         else
         {
@@ -253,7 +257,7 @@ public class RoomScene : SceneBase
 
     public void InGameStart()
     {
-        Debug.Log("Load In Game");
+        Managers.Sound.BGMStop();
         Managers.Scene.LoadScene(Define.Scene.InGame);
     }    
 }

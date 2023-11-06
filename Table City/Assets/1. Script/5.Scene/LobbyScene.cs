@@ -6,6 +6,7 @@ public class LobbyScene : SceneBase
 {
     private SetRoomCode roomCode;
     private SetNickName nickName;
+    private Transform playerPoint;
 
     public override void Init()
     {
@@ -33,7 +34,21 @@ public class LobbyScene : SceneBase
 
     public override void StartLoad() { OnLoad(); }
 
-    protected override void OnLoad() { }
+    protected override void OnLoad()
+    {
+        if(Managers.player == null) { SpawnPlayer(); }
+    }
+
+    private void SpawnPlayer()
+    {
+        Debug.Log("jjscjj");
+        Managers.player.Destroy();
+        Transform spawnPoint = GameObject.Find("SpawnPoint").transform;
+        Transform playerPoint = spawnPoint.Find("Spawn_Player").Find("Point_A");
+        GameObject source = Resources.Load<GameObject>("0. Player/Player_Prefab");
+        GameObject go = Instantiate(source, playerPoint.position, playerPoint.rotation);
+        Managers.player = go.GetComponent<PlayerController>();
+    }
 
     private void MatchRoomButton()
     {
