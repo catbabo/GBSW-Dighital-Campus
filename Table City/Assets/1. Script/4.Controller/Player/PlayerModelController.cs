@@ -10,9 +10,13 @@ public class PlayerModelController : MonoBehaviour
 
     private OVRControllerHelper _leftHelper, _rightHelper;
 
-    public void InitHead(Transform target)
+    public void InitHead(Transform target, bool _isMine)
     {
         _head = transform.Find("Male Head");
+
+        if (_isMine) { ChangeLayer(_head, "Head_IsMine"); }
+        else { ChangeLayer(_head, "Head"); }
+
         _headPivot = target;
         _isHeadInit = true;
     }
@@ -34,6 +38,12 @@ public class PlayerModelController : MonoBehaviour
 
     public void SetControllerParent(Transform left, Transform right)
     {
+        //_leftHelper.transform.parent = left;
+        //_rightHelper.transform.parent = right;
+
+        //_leftHelper.transform.localRotation = Quaternion.identity;
+        //_rightHelper.transform.localRotation = Quaternion.identity;
+
         _leftHelper.transform.GetComponent<VRController>().SetFollowObject(left);
         _rightHelper.transform.GetComponent<VRController>().SetFollowObject(right);
     }
@@ -43,4 +53,13 @@ public class PlayerModelController : MonoBehaviour
         OVRControllerHelper[] helpers = { _leftHelper, _rightHelper};
         return helpers;        
     }
+
+    private void ChangeLayer(Transform _trans, string _name)
+	{
+        _trans.gameObject.layer = LayerMask.NameToLayer(_name);
+        foreach(Transform child in _trans)
+		{
+            ChangeLayer(child, _name);
+		}
+	}
 }

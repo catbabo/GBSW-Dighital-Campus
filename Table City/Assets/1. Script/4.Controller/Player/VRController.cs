@@ -17,6 +17,9 @@ public class VRController : MonoBehaviour
     private Transform _toolGrabPoint;
     private bool _isGrab;
 
+    public LineRenderer _laser;
+    public Color _laserColor;
+
     private OVRInput.RawButton _triggerButton;
     public OVRInput.Axis2D _thumbStick;
 
@@ -36,17 +39,16 @@ public class VRController : MonoBehaviour
     private RaycastHit _hit;
     private Transform _hitTransform;
     private GameObject cursorVisual;
-
     private void Start()
     {
         if (_isTesting)
             return;
 
-        InitButton();
+        SetButton();
         _toolGrabPoint = transform.Find("ToolGrabPoint");
     }
 
-    private void InitButton()
+    private void SetButton()
     {
         if (_isRight)
         {

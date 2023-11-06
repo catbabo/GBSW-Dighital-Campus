@@ -9,67 +9,75 @@ using PN = Photon.Pun.PhotonNetwork;
 public class PlayerController : MonoBehaviour
 {
     private PhotonView _pv;
-    private PlayerInitioner initoner;
-    private PlayerUI ui;
-    private string nickName;
-    [SerializeField]
-    private bool isLocal;
+
+    private Transform _headPivot, _models;
+    private PlayerModelController _modelController;
+
+    private GameObject _ovrRoot;
+    private Transform _controllerRoot;
+    private OVRControllerVisual _rightControllerVisual, _leftControllerVisual;
 
     private void Awake()
     {
-        Managers.player = this;
         _pv = GetComponent<PhotonView>();
-        ui = GetComponent<PlayerUI>();
-
-        isLocal = !Managers.Network.IsInRoom();
-        if (_pv.IsMine)
+        if(_pv.IsMine || !PN.InRoom)
         {
-            if(!isLocal)
-            {
-                Debug.Log("1");
-                initoner = Util.AddOrGetComponent<PlayerInitioner>(gameObject);
-                initoner.Init(false);
-            
-                //ui.Init(true);
-            }
-            else
-            {
-                Debug.Log("2");
-                //initoner = Util.AddOrGetComponent<PlayerInitioner>(gameObject);
-                //initoner.Init(true);
+            GetModel();
+            GetControllerHelper();
 
-                //ui.Init(true);
-            }
-        }
-        else
-        {
-            if (isLocal)
-            {
-                isLocal = false;
-                Debug.Log("3");
-                initoner = Util.AddOrGetComponent<PlayerInitioner>(gameObject);
-                initoner.Init(true);
+            InitializeOVRSystem();
+            GetControllerVisual();
 
-                //ui.Init(true);
-            }
+            InitControllerHelper();
+            InitHead();
         }
     }
 
-    public string GetNickName() { return nickName; }
+    private void InitializeOVRSystem()
+    {
+        GameObject _ovrSource = Resources.Load<GameObject>("0. Player/OVR_Systems");
+        _ovrRoot = Instantiate<GameObject>(_ovrSource, transform);
+        //_ovrRoot = PN.Instantiate("0. Player/OVR_Systems", transform.position, Quaternion.identity);
+        _ovrRoot.name = "OVR_Systems";
+        _ovrRoot.transform.localPosition = Vector3.zero;
+        _ovrRoot.transform.localRotation = Quaternion.identity;
+        _controllerRoot = _ovrRoot.transform.Find("OVRInteraction").Find("OVRControllers");
+    }
 
-    public void SetNickName(string name) { nickName = name; }
+    private void GetModel()
+    {
+        _models = transform.Find("Models");
+        _modelController = _models.GetComponent<PlayerModelController>();
+    }
+
+    private void GetControllerVisual()
+    {
+        _rightControllerVisual = _controllerRoot.Find("RightController").GetComponentInChildren<OVRControllerVisual>();
+        _leftControllerVisual = _controllerRoot.Find("LeftController").GetComponentInChildren<OVRControllerVisual>();
+    }
+
+    private void InitControllerHelper()
+    {
+        OVRControllerHelper[] helpers = _modelController.GetControllerHelper();
+        _leftControllerVisual.InjectAllOVRControllerHelper(helpers[0]);
+        _rightControllerVisual.InjectAllOVRControllerHelper(helpers[1]);
+
+        _modelController.SetControllerParent(_leftControllerVisual.transform, _rightControllerVisual.transform);
+    }
+
+    private void InitHead()
+    {
+        _headPivot = _ovrRoot.transform.Find("TrackingSpace").Find("CenterEyeAnchor");
+        _modelController.InitHead(_headPivot, _pv.IsMine);
+    }
+
+    private void GetControllerHelper()
+    {
+        _modelController.InitControllerHelper();
+    }
 
     public void Destroy()
     {
-        Debug.Log("Destroy");
-        Managers.player = null;
-        if(isLocal)
-        {
-            Destroy(gameObject);
-        }
-        else
-        {
-            PN.Destroy(_pv);
-        }
+        
     }
 }
