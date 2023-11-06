@@ -7110,7 +7110,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80cee14257df5434a83be3789876cbdb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _PV: {fileID: 7539349290533047894}
   _NickNameTMP: {fileID: 1766905024877386807}
+  _PlayerHead: {fileID: 6292460650663837073}
 --- !u!114 &7539349290533047892
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7135,7 +7137,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76f05c8cec85e9c40ab9afe9efd41eac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isLocal: 0
 --- !u!1 &7539349292267176316
 GameObject:
   m_ObjectHideFlags: 0
