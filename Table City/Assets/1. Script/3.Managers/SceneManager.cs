@@ -2,25 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using SM = UnityEngine.SceneManagement.SceneManager;
 
 //씬 전환 기능을 담당하고 씬 정보를 갖고 있음
-
 public class SceneManager : ManagerBase
 {
-    [SerializeField]
-    private List<SceneBase> scenes = new List<SceneBase>();
     private Define.Scene _nextScene = Define.Scene.Load;
     private float _loadingTime;
     private bool _onLoading;
+    private SceneBase _scene;
 
     public override void Init()
     {
         _onLoading = false;
         _loadingTime = 3;
-        for (int i = 0; i < scenes.Count; i++)
-        {
-            scenes[i].Init();
-        }
     }
 
     public void LoadScene(Define.Scene scene = Define.Scene.Load)
@@ -28,48 +24,30 @@ public class SceneManager : ManagerBase
         LoadScene(scene, false);
     }
 
-    public void LoadScene(bool isSkip)
-    {
-        LoadScene(Define.Scene.Load, isSkip);
-    }
-
     public void LoadScene(Define.Scene scene, bool isSkip)
     {
+        if(_scene != null)
+            _scene.LeftScene();
+
         if(isSkip)
         {
-            scenes[(int)_nextScene].LeftScene();
             _nextScene = scene;
-            _onLoading = true;
+            _onLoading = false;
+            SM.LoadScene((int)_nextScene);
+            return;
         }
 
         if (_onLoading)
         {
             _onLoading = false;
-            ShowScene(_nextScene);
+            SM.LoadScene((int)_nextScene);
         }
         else
         {
-            scenes[(int)_nextScene].LeftScene();
             _nextScene = scene;
-
-            ShowScene(Define.Scene.Load);
+            _onLoading = true;
+            SM.LoadScene((int)Define.Scene.Load);
         }
-    }
-
-    private void ShowScene(Define.Scene scene)
-    {
-        for (int i = 0; i < scenes.Count; i++)
-        {
-            scenes[i]._scene.SetActive(false);
-        }
-        scenes[(int)scene]._scene.SetActive(true);
-
-        StartLoad(scenes[(int)scene]);
-    }
-
-    private void StartLoad<T>(T scene) where T : SceneBase
-    {
-        scene.StartLoad();
     }
 
     public Define.Scene GetNextScene()
@@ -82,8 +60,28 @@ public class SceneManager : ManagerBase
         return _loadingTime;
     }
 
-    public void OnLoad()
+    public void OnLoad(SceneBase scene)
     {
-        _onLoading = true;
+        _scene = scene;
+    }
+
+    public void ShowPanel(Define.Panel scene)
+    {
+        _scene.ShowPanel(scene);
+    }
+
+
+
+    private bool[,] isInited = new bool
+        [System.Enum.GetValues(typeof(Define.Scene)).Length
+        , System.Enum.GetValues(typeof(Define.Panel)).Length];
+
+    public bool IsInitable(Define.Scene scene, Define.Panel panel)
+    {
+        if (isInited[(int)scene, (int)panel])
+            return false;
+
+        isInited[(int)scene, (int)panel] = true;
+        return true;
     }
 }

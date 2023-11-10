@@ -1,5 +1,6 @@
 using Oculus.Interaction.Input.Visuals;
 using Photon.Pun;
+using Photon.Voice.PUN;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -21,8 +22,12 @@ public class PlayerController : MonoBehaviour
     {
         _pv = GetComponent<PhotonView>();
         Debug.Log("Mine : "+_pv.IsMine+"InRoom"+ PN.InRoom);
+
         if(_pv.IsMine || !PN.InRoom)
         {
+            if(PN.InRoom)
+                gameObject.AddComponent<PhotonVoiceView>();
+
             Debug.Log("Init");
             GetModel();
             GetControllerHelper();
@@ -80,7 +85,7 @@ public class PlayerController : MonoBehaviour
 
     public void Destroy()
     {
-        Managers.Destroy();
+        //Managers.Destroy();
         Destroy(gameObject);
     }
 

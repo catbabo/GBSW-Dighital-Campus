@@ -9,9 +9,16 @@ public class Define
 
     public static string[] Resources = { "나무", "돌", "고무", "천", "철", "석탄", "전기", "유리", "반도체", "우라늄", "미스릴", "부유석" };
 
+    public enum Panel
+    {
+        Title = 0, Lobby = 1,
+        Room = 0, InGame = 1,
+        Load = 0
+    }
+
     public enum Scene
     {
-        Title, Lobby, Room, InGame, Load
+        Awake, UnNetwork, InNetwork, Load
     }
 
     public enum PlayerBehaviourState

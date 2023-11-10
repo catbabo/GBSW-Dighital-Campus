@@ -46,8 +46,8 @@ public class GameManager : ManagerBase
 
     public override void Init()
     {
-        SetFactory();
-        SetAnimation();
+        //SetFactory();
+        //SetAnimation();
     }
 
     // ¿¬Ãâ ÃÊ±â ¼³Á¤ #¿¢¼¿ ÆÄ½Ì

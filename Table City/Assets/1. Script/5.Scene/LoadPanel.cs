@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class LoadScene : SceneBase
+public class LoadPanel : PanelBase
 {
     private float _speed;
     [SerializeField]
@@ -11,13 +11,13 @@ public class LoadScene : SceneBase
 
     public override void Init()
     {
-        _scene = gameObject;
-        _type = Define.Scene.Load;
-        _name = "Load";
+        _panel = gameObject;
+        _type = Define.Panel.Load;
         InitUI();
+        StartLoad();
     }
 
-    public override void StartLoad()
+    private void StartLoad()
     {
         _speed = 100f / Managers.Scene.GetLoadTime();
         loadBar.value = 0;
@@ -33,14 +33,18 @@ public class LoadScene : SceneBase
         }
         
         loadBar.value = 100;
-        OnLoad();
+        OnShow();
 
         yield return null;
     }
 
-    protected override void OnLoad()
+    public override void OnShow()
     {
-        Managers.Scene.OnLoad();
         Managers.Scene.LoadScene();
+    }
+
+    public override void LeftPanel()
+    {
+        base.LeftPanel();
     }
 }

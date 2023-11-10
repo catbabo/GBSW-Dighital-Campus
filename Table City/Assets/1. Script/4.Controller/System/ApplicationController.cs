@@ -12,9 +12,8 @@ public class ApplicationController : MonoBehaviour
     private void Awake()
     {
         Init();
-        DontDestroyOnLoad(gameObject);
-
         OnManagerInit();
+        DontDestroyOnLoad(gameObject);
     }
 
     private void Init()
@@ -27,23 +26,14 @@ public class ApplicationController : MonoBehaviour
     {
         _behaviour = Define.PlayerBehaviourState.StartApplication;
         InitEvent();
-        SpawnLocalPlayer();
 
         GotoStartScene();
     }
 
-    private void SpawnLocalPlayer()
-    {
-        Transform spawnPoint = GameObject.Find("SpawnPoint").transform;
-        Transform playerPoint = spawnPoint.Find("Spawn_Player").Find("Point_A");
-        GameObject source = Resources.Load<GameObject>("0. Player/Player_Prefab");
-        GameObject go = Instantiate(source, playerPoint.position, playerPoint.rotation);
-        Managers.Spawn(go);
-    }
 
     private void GotoStartScene()
     {
-        Managers.Scene.LoadScene(Define.Scene.Title);
+        Managers.Scene.LoadScene(Define.Scene.UnNetwork, true);
     }
 
     [SerializeField]

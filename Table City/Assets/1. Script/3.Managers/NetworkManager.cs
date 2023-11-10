@@ -18,22 +18,15 @@ public class NetworkManager : PunManagerBase
 
     private bool _jobA;
     private bool _isSideA;
-    [SerializeField]
-    private Transform ui;
 
 	public bool _forceOut { get; private set; } = false;
 	private PhotonView _mainPv;
 
-	[SerializeField]
-	private RoomScene room;
+	private RoomPanel _room;
 
-	[SerializeField]
 	private bool _masterReady, _clientReady;
-	[SerializeField]
 	private int _readyPlayerCount;
-	[SerializeField]
 	private bool _isMaster;
-	[SerializeField]
 	private bool _masterJobSelect, _clientJobSelect;
 
     public override void Init()
@@ -54,7 +47,6 @@ public class NetworkManager : PunManagerBase
 
     private void InitEvent()
     {
-        Managers.Event.AddMatchRoomButton(MatchRoomButton);
         Managers.Event.AddJobButton(JobButton);
         Managers.Event.AddReadyButton(ReadyButton);
         Managers.Event.AddAllReady(AllReady);
@@ -92,7 +84,7 @@ public class NetworkManager : PunManagerBase
     {
         OnRoom();
         _isSideA = true;
-        room.OnCreateRoom();
+        _room.OnCreateRoom();
     }
 
 	public override void OnJoinedRoom() { OnRoom(); }
@@ -106,7 +98,7 @@ public class NetworkManager : PunManagerBase
     public override void OnPlayerEnteredRoom(Player newPlayer)
     {
 		_mainPv.RPC("SyncRoomData", RpcTarget.Others, _masterReady, _isSideA);
-		room.OnPlayerEnteredRoom();
+		_room.OnPlayerEnteredRoom();
     }
 
 	[PunRPC]
@@ -119,11 +111,7 @@ public class NetworkManager : PunManagerBase
         if (_masterReady)
 		    _readyPlayerCount = 1;
 
-        room.OnDataSync();
-        if(!_isSideA)
-        {
-            ui.transform.rotation = Quaternion.Euler(Vector3.up * 180);
-        }
+        _room.OnDataSync();
 	}
 
     public override void OnPlayerLeftRoom(Player otherPlayer)
@@ -145,7 +133,7 @@ public class NetworkManager : PunManagerBase
 			_clientReady = false;
 			_isMaster = IsMaster();
         }
-		room.OnPlayerLeftRoom();
+		_room.OnPlayerLeftRoom();
     }
 
     public override void OnLeftRoom()
@@ -171,7 +159,7 @@ public class NetworkManager : PunManagerBase
     public void OutRoom_GoMain()
     {
         PN.LeaveRoom();
-        Managers.Scene.LoadScene(Define.Scene.Lobby);
+        //Managers.Scene.LoadScene(Define.Panel.Lobby);
     }
 
     public void SyncSpawnObejct(Define.prefabType _type, string _objName, Vector3 _spawnPoint, Quaternion _spawnAngle, Define.AssetData _assetType)
@@ -192,7 +180,7 @@ public class NetworkManager : PunManagerBase
         }
     }
 
-    private void MatchRoomButton()
+    public void OnMatchRoom()
     {
 		if(IsCanCreateRoom())
 			JoinOrCreate();
@@ -219,13 +207,12 @@ public class NetworkManager : PunManagerBase
 
     private void LeaveButton()
     {
-        Managers.player.Destroy();
-        ui.transform.rotation = Quaternion.Euler(Vector3.zero);
+        //Managers.player.Destroy();
         PN.LeaveRoom();
     }
 
     [PunRPC]
-    private void UpdateReadyPopup() { room.UpdateReadyPopup(); }
+    private void UpdateReadyPopup() { _room.UpdateReadyPopup(); }
 
     [PunRPC]
 	private void ReadyOtherPlayer()
@@ -254,14 +241,14 @@ public class NetworkManager : PunManagerBase
 	}
 
     [PunRPC]
-    private void PleaseReady() { room.ReadyMention(); }
+    private void PleaseReady() { _room.ReadyMention(); }
 
     private void AllReady(bool isSolo)
     {
         LockRoom();
         if (isSolo)
         {
-            room.InGameStart();
+            _room.InGameStart();
         }
 		else
         {
@@ -278,14 +265,14 @@ public class NetworkManager : PunManagerBase
     [PunRPC]
     private void ShowJobButton()
     {
-        room.ShowJobButton();
+        _room.ShowJobButton();
     }
 
     private void JobButton(bool _A)
     {
         SetPlayerJob(_A);
 		_mainPv.RPC("SetSelectSync", RpcTarget.All, IsMaster());
-		room.JobButton(_A);
+		_room.JobButton(_A);
     }
 
 	public void InGame()
@@ -305,7 +292,7 @@ public class NetworkManager : PunManagerBase
     [PunRPC]
     private void SelectJob(bool a)
     {
-        room.SelectJob(a);
+        _room.SelectJob(a);
     }
 
     [PunRPC]
@@ -332,7 +319,7 @@ public class NetworkManager : PunManagerBase
     [PunRPC]
     private void InGameStart()
     {
-		room.InGameStart();
+		_room.InGameStart();
     }
 
     public bool IsCanCreateRoom()
@@ -359,4 +346,9 @@ public class NetworkManager : PunManagerBase
     {
         return (_masterJobSelect && _clientJobSelect);
 	}
+
+    public void SetRoomPanel(RoomPanel room)
+    {
+        _room = room;
+    }
 }

@@ -6,7 +6,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class RoomScene : SceneBase
+public class RoomPanel : PanelBase
 {
     public GameObject _Object_PlayerA = null;
     public GameObject _Object_PlayerB = null;
@@ -30,20 +30,19 @@ public class RoomScene : SceneBase
 
     private Transform playerPoint;
 
+    [SerializeField]
+    private Transform ui;
+
     public override void Init()
     {
-        _scene = gameObject;
-        _type = Define.Scene.Room;
-        _name = "Room";
+        _panel = gameObject;
+        _type = Define.Panel.Room;
+
+        Managers.Network.SetRoomPanel(this);
 
         InitUI();
         InitEvent();
-    }
-
-    private void InitEvent()
-    {
-        Managers.Event.AddReadyButton(ReadyButton);
-        Managers.Event.AddLeaveButton(LeaveButton);
+        OnShow();
     }
 
     protected override void InitUI()
@@ -52,9 +51,17 @@ public class RoomScene : SceneBase
         _leaveButton = transform.Find("Leave").GetComponent<LeaveButton>();
     }
 
-    public override void StartLoad() { OnLoad(); }
+    private void InitEvent()
+    {
+        if (Managers.Scene.IsInitable(Define.Scene.InNetwork, _type))
+        {
+            Managers.Event.AddReadyButton(ReadyButton);
+            Managers.Event.AddLeaveButton(LeaveButton);
+        }
+    }
 
-    protected override void OnLoad()
+
+    public override void OnShow()
     {
         UpdatePopup(Define.PopupState.Wait);
         _readyButton.Init();
@@ -72,26 +79,24 @@ public class RoomScene : SceneBase
         else
         { path = "Point_B"; }
         playerPoint = playerPoint.Find(path);
-        Managers.player.Destroy();
+        //Managers.player.Destroy();
         GameObject go = PhotonNetwork.Instantiate("0. Player/Player_Prefab", playerPoint.position, playerPoint.rotation);
-        Managers.Spawn(go);
+        //Managers.Spawn(go);
         //Managers.onLinePlayer.SetNickName(Managers.localPlayer.GetNickName());
     }
 
     public void OnDataSync()
     {
+        if (!Managers.Network.IsSideA())
+        {
+            ui.transform.rotation = Quaternion.Euler(Vector3.up * 180);
+        }
         SpawnPlayer();
     }
 
     public void OnCreateRoom()
     {
         SpawnPlayer();
-    }
-
-    public override void LeftScene()
-    {
-        ResetButton();
-        _readyButton.Init();
     }
 
     private void UpdatePopup(Define.PopupState _state)
@@ -189,7 +194,8 @@ public class RoomScene : SceneBase
 
     private void LeaveButton()
     {
-        Managers.Scene.LoadScene(Define.Scene.Lobby);
+        ui.transform.rotation = Quaternion.Euler(Vector3.zero);
+        Managers.Scene.LoadScene(Define.Scene.InNetwork);
     }
 
     public void OnPlayerLeftRoom()
@@ -258,6 +264,13 @@ public class RoomScene : SceneBase
     public void InGameStart()
     {
         Managers.Sound.BGMStop();
-        Managers.Scene.LoadScene(Define.Scene.InGame);
-    }    
+        //Managers.Scene.LoadScene(Define.Panel.InGame);
+    }
+
+    public override void LeftPanel()
+    {
+        ResetButton();
+        _readyButton.Init();
+        base.LeftPanel();
+    }
 }

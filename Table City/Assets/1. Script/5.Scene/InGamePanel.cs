@@ -6,7 +6,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class InGameScene : SceneBase
+public class InGamePanel : PanelBase
 {
     private PhotonView _pv;
 
@@ -29,9 +29,8 @@ public class InGameScene : SceneBase
 
     public override void Init()
     {
-        _scene = gameObject;
-        _type = Define.Scene.InGame;
-        _name = "InGame";
+        _panel = gameObject;
+        _type = Define.Panel.InGame;
         _pv = gameObject.GetComponent<PhotonView>();
 
         InitUI();
@@ -45,12 +44,14 @@ public class InGameScene : SceneBase
 
     private void InitEvent()
     {
+        if(Managers.Scene.IsInitable(Define.Scene.InNetwork, _type))
+        {
 
+        }
     }
 
-    public override void StartLoad() { OnLoad(); }
 
-    protected override void OnLoad()
+    public override void OnShow()
     {
         _isEndGame = false;
         Managers.Sound.BgmPlay(_bgmName);
@@ -92,7 +93,7 @@ public class InGameScene : SceneBase
         {
             playerPoint = transform.Find("Point_B");
         }
-        Managers.player.SetPos(playerPoint.position);
+        //Managers.player.SetPos(playerPoint.position);
     }
 
 
@@ -107,7 +108,7 @@ public class InGameScene : SceneBase
         Managers.Instance.SpawnObject(workbenchName, workbenchPoint);
 
         playerPoint = playerPoint.Find("Point_A");
-        Managers.player.SetPos(playerPoint.position);
+        //Managers.player.SetPos(playerPoint.position);
     }
 
     public void SetPlayerObject(GameObject _player, bool _pointA)
@@ -157,9 +158,10 @@ public class InGameScene : SceneBase
         }
     }
 
-    public override void LeftScene()
+    public override void LeftPanel()
     {
         _obejcts.SetActive(false);
         _isEndGame = true;
+        base.LeftPanel();
     }
 }

@@ -13,7 +13,6 @@ public class Managers : MonoBehaviour
     public static NetworkManager Network;
     public static SceneManager Scene;
     public static EventManager Event;
-    public static PlayerController player;
     public static List<OVRRaycaster> ovr = new List<OVRRaycaster>();
 
     private T Init<T>() where T : ManagerBase
@@ -50,23 +49,5 @@ public class Managers : MonoBehaviour
         Instance = Init<InstanceManager>();
         Sound = Init<SoundManager>();
         Asset = InitPun<AssetManager>();
-    }
-
-    public static void Destroy()
-    {
-        player = null;
-        foreach (OVRRaycaster r in ovr)
-        {
-            r.enabled = false;
-        }
-    }
-
-    public static void Spawn(GameObject go)
-    {
-        player = go.GetComponent<PlayerController>();
-        foreach (OVRRaycaster r in ovr)
-        {
-            r.enabled = true;
-        }
     }
 }
